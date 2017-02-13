@@ -1,0 +1,14 @@
+{
+  "name": "glabs.it",
+  "version": "1.0.0",
+  "description": "G-Labs Home",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server ./"
+  },
+  "author": "Generoso Martello",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.9.0"
+  }
+}

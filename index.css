@@ -1,0 +1,217 @@
+html{ font-size:100%; }
+@media( min-width:60em ){ html { font-size: 100% } }
+body {
+    background-size: cover;
+    font-family: 'Titillium Web', sans-serif !important;
+    font-size: 20px;
+    line-height: 180%;
+}
+footer {
+    font-size: 150%;
+    margin-top: 56px;
+}
+header {
+    font-weight: 400;
+    font-size:150%;
+    padding: 16px;
+    height:60px;
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index: 100;
+}
+header small {
+    font-size:70%;
+    font-weight: 100;
+    margin-left: 12px;
+}
+section {
+    padding: 8px;
+    margin: 0;
+}
+section h2 {
+    margin: 48px 0 0;
+    padding: 0;
+    font-weight: 100;
+}
+section h3 {
+    line-height: 200%;
+}
+section p {
+    font-weight: 100;
+}
+section ul {
+    display:inline;
+    margin: 0 0 0 6px;
+    padding: 0;
+    font-size: 100%;
+    font-weight: 100;
+}
+section ul li {
+    display:inline;
+    margin-left:6px;
+    text-transform: lowercase;
+}
+a {
+    font-family: 'Dosis', sans-serif;
+    text-decoration: none;
+    color: deeppink;;
+    text-transform: lowercase;
+}
+p {
+    font-size: 110%;
+    line-height: 180%;
+    margin: 0 0 24px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Dosis', sans-serif !important;
+    padding-top: 12px;
+    padding-bottom: 8px;
+    text-transform: none;
+    line-height: 200%;
+}
+h3 {
+    font-weight: 700;
+    font-size: 150%;
+    padding-top: 0;
+    margin-top: 0;
+    white-space: nowrap;
+    text-wrap: none;
+}
+h3 small {
+    text-transform: lowercase;
+}
+.icon {
+    font-size:110%;
+    margin-left: 12px;
+}
+.splash {
+    position: fixed;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    overflow: hidden;
+}
+.splash-welcome {
+    position: fixed;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    background-color: transparent;
+}
+.splash-welcome h2 {
+    font-weight: 100;
+}
+.cover {
+    position: fixed;
+    left: 0; top: 0; right: 0; bottom: 0;
+    -moz-animation-delay: 1.5s;
+    -webkit-animation-delay: 1.5s;
+    -o-animation-delay: 1.5s;
+    -ms-animation-delay: 1.5s;
+    -moz-animation-duration: 1.0s;
+    -webkit-animation-duration: 1.0s;
+    -o-animation-duration: 1.0s;
+    -ms-animation-duration: 1.0s;
+}
+.logo {
+    margin: 8px 8px 0;
+    font-weight: 100;
+    font-size: 400%;
+    line-height: 200%;
+}
+.logo div {
+    padding: 4px;
+}
+.logo .g {
+    -moz-animation-delay: 0.2s;
+    -webkit-animation-delay: 0.2s;
+    -o-animation-delay: 0.2s;
+    -ms-animation-delay: 0.2s;
+    font-weight: 400;
+}
+.logo .m {
+    -moz-animation-delay: 1.0s;
+    -webkit-animation-delay: 1.0s;
+    -o-animation-delay: 1.0s;
+    -ms-animation-delay: 1.0s;
+}
+.logo .l {
+    -moz-animation-delay: 0.1s;
+    -webkit-animation-delay: 0.1s;
+    -o-animation-delay: 0.1s;
+    -ms-animation-delay: 0.1s;
+}
+.logo .a {
+    -moz-animation-delay: 0.1s;
+    -webkit-animation-delay: 0.1s;
+    -o-animation-delay: 0.1s;
+    -ms-animation-delay: 0.1s;
+}
+.logo .b {
+    -moz-animation-delay: 0.2s;
+    -webkit-animation-delay: 0.2s;
+    -o-animation-delay: 0.2s;
+    -ms-animation-delay: 0.2s;
+}
+.logo .s {
+    -moz-animation-delay: 0.3s;
+    -webkit-animation-delay: 0.3s;
+    -o-animation-delay: 0.3s;
+    -ms-animation-delay: 0.3s;
+}
+.motto {
+    font-size: 100%;
+    margin-top: -32px;
+    margin-left: 8px;
+    -moz-animation-delay: 0.75s;
+    -webkit-animation-delay: 0.75s;
+    -o-animation-delay: 0.75s;
+    -ms-animation-delay: 0.75s;
+    -moz-animation-duration: 1.25s;
+    -webkit-animation-duration: 1.25s;
+    -o-animation-duration: 1.25s;
+    -ms-animation-duration: 1.25s;
+}
+
+.intro {
+    margin-top:80px;
+    padding: 24px;
+}
+.intro h4 {
+    margin: 0;
+    padding: 0;
+}
+.content-padding {
+    padding: 24px;
+}
+.vertical-margin {
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.about h3 {
+    font-weight: 400;
+    font-size: 110%;
+    margin-bottom: 16px;
+}
+.about p {
+    font-size: 100%;
+}
+.about a {
+    text-transform: none;
+    color: darkblue;
+}
+
+.hire-donate {
+    margin-bottom: 96px;
+}
+.hire-donate .mdl-button {
+    font-weight: 500;
+    min-width: 120px;
+}
+.hire-donate .mdl-button i {
+    margin-right: 8px;
+}
