@@ -1,16 +1,12 @@
-<div self="size-1of2 sm-full md-full top" class="description">
-    <div layout="row top-center">
-        <h3 data-ui-field="title" class="mdl-color-text--accent" layout="row center-left">
+<div self="stretch" layout="row center-center">
+    <div self="size-1of2 sm-full md-full top">
+        <h3 data-ui-field="title" class="mdl-color-text--accent" layout="row center-center">
             homegenie plus
             <i class="icon material-icons">home</i>
         </h3>
     </div>
-    <p data-ui-field="description">
-        Specifically designed to be an HA control panel for the end-user,
-        HomeGenie Plus is the android client app for HomeGenie.
-    </p>
 </div>
-<div self="size-1of2 sm-full md-full" class="gallery">
+<div self="size-1of2 sm-full md-full top" align="center" class="gallery">
     <div self="column stretch" class="media-container mdl-shadow--8dp mdl-button mdl-js-button mdl-js-ripple-effect">
         <div data-ui-field="images"
              data-ui-load="ui/gallery/slider">
@@ -20,11 +16,23 @@
         </div>
     </div>
 </div>
-<div data-ui-field="notes-left" self="size-1of2 sm-full md-full top" class="content-padding">
+<div self="size-1of2 sm-full md-full center" class="description">
+    <p data-ui-field="description">
+        Specifically designed to be an HA control panel for the end-user,
+        HomeGenie Plus is the android client app for HomeGenie.
+    </p>
 </div>
-<div data-ui-field="notes-right" self="size-1of2 sm-full md-full" class="content-padding">
+<div class="info" self="stretch" layout="rows top-center">
+    <div self="size-1of2 sm-full md-full top" data-ui-field="notes-a" class="content-padding">
+    </div>
+    <div self="size-1of2 sm-full md-full top" layout="row top-stretch">
+        <div data-ui-field="notes-b" class="content-padding">
+        </div>
+        <div align="right" class="content-padding">
+            <a data-ui-field="link" class="link mdl-button mdl-js-button mdl-button--accent">
+                <span data-ui-field="link-text">Link</span>
+                <i class="material-icons">link</i>
+            </a>
+        </div>
+    </div>
 </div>
-<a data-ui-field="link" class="link mdl-button mdl-button--raised mdl-js-button mdl-button--accent">
-    <i class="material-icons">link</i>
-    <span data-ui-field="link-text">Link</span>
-</a>

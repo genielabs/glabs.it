@@ -68,11 +68,8 @@
 </header>
 <main data-ui-field="main" layout="columns center-center">
 
-    <section class="vertical-margin">
-        <h2 class="mdl-color-text--blue-600">products</h2>
-    </section>
-
-    <section self="size-xlarge center" layout="rows top-center">
+    <section self="size-xxlarge center" layout="rows top-center">
+        <h2 class="title mdl-color-text--blue-600">products</h2>
 
         <div self="lg-full sm-full md-full" layout="columns center-stretch" class="vertical-margin">
             <div data-ui-include="ui/cards/flexy"
@@ -94,7 +91,7 @@
                     Its implementation allow a smooth transition from traditional web to
                     web components.
                 </p>
-                <div data-ui-field="notes-left">
+                <div data-ui-field="notes-b">
                     <label class="mdl-color-text--blue-600">Development Status</label>
                     <div layout="rows center-left">
                         <ul class="mdl-color-text--grey-600">
@@ -102,10 +99,10 @@
                         </ul>
                     </div>
                 </div>
-                <div data-ui-field="notes-right">
+                <div data-ui-field="notes-a">
                     <label class="mdl-color-text--blue-600">Employed Technologies</label>
                     <div layout="rows center-left">
-                        <ul class="mdl-color-text--grey-600">
+                        <ul class="mdl-color-text--grey-600 truncate">
                             <li>javascript</li>
                             <li>html5</li>
                             <li>css3</li>
@@ -146,7 +143,7 @@
                     from lower level pheripherals like GPIOs to widely spread HA
                     systems such as X10, Z-Wave, Philips Hue.
                 </p>
-                <div data-ui-field="notes-left">
+                <div data-ui-field="notes-b">
                     <label class="mdl-color-text--blue-600">Development Status</label>
                     <div layout="rows center-left">
                         <ul class="mdl-color-text--grey-600">
@@ -154,10 +151,10 @@
                         </ul>
                     </div>
                 </div>
-                <div data-ui-field="notes-right">
+                <div data-ui-field="notes-a">
                     <label class="mdl-color-text--blue-600">Employed Technologies</label>
                     <div layout="rows center-left">
-                        <ul class="mdl-color-text--grey-600">
+                        <ul class="mdl-color-text--grey-600 truncate">
                             <li>.Net/Mono</li>
                             <li>C#</li>
                             <li>JavaScript</li>
@@ -204,7 +201,7 @@
                     Specifically designed to be an HA control panel for the end-user,
                     HomeGenie Plus is the android client app for HomeGenie.
                 </p>
-                <div data-ui-field="notes-left">
+                <div data-ui-field="notes-b">
                     <label class="mdl-color-text--blue-600">Development Status</label>
                     <div layout="rows center-left">
                         <ul class="mdl-color-text--grey-600">
@@ -212,7 +209,7 @@
                         </ul>
                     </div>
                 </div>
-                <div data-ui-field="notes-right">
+                <div data-ui-field="notes-a">
                     <label class="mdl-color-text--blue-600">Employed Tecnologies</label>
                     <div layout="rows center-left">
                         <ul class="mdl-color-text--grey-600">
@@ -228,51 +225,54 @@
         </div>
 
         <div self="size-1of2 sm-full md-half" class="content-padding">
-            <h3>mig-service <i class="material-icons">code</i></h3>
+            <h3 align="center">mig-service <i class="material-icons">code</i></h3>
             <p>
                 .Net portable library providing an integrated solution for developing networked
-                applications and real time web.
+                applications and real time web. With <em>HTTP</em>, <em>SSE</em>, <em>WebSockets</em> and many other plugins.
             </p>
-            <small><a href="https://github.com/genielabs/mig-service-dotnet">github</a></small>
-            <small><a href="https://www.nuget.org/packages/MIG/">nuget</a></small>
+            <div align="right">
+                <small><a href="https://github.com/genielabs/mig-service-dotnet">github</a></small>
+                <small><a href="https://www.nuget.org/packages/MIG/">nuget</a></small>
+            </div>
         </div>
         <div self="size-1of2 sm-full md-half" class="content-padding">
-            <h3>serialport-lib <i class="material-icons">code</i></h3>
+            <h3 align="center">serialport-lib <i class="material-icons">code</i></h3>
             <p>
                 .Net portable library for event driven serial port I/O with hot-plug support.
-                It overcomes the lack of DataReceived event in Mono/Linux.
+                It overcomes the lack of <em>DataReceived</em> event in Mono/Linux.
             </p>
-            <small><a href="https://github.com/genielabs/serialport-lib-dotnet">github</a></small>
-            <small><a href="https://www.nuget.org/packages/SerialPortLib/">nuget</a></small>
+            <div align="right">
+                <small><a href="https://github.com/genielabs/serialport-lib-dotnet">github</a></small>
+                <small><a href="https://www.nuget.org/packages/SerialPortLib/">nuget</a></small>
+            </div>
         </div>
 
-    </section>
 
-    <section self="size-medium" layout="columns top-center">
-
-        <h3 class="vertical-margin mdl-color-text--grey-400" layout="rows center-center">
-            ... and more 20+ projects
-            &nbsp;<i class="material-icons">chevron_right</i>&nbsp;
-            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent">
+        <h3 class="mdl-color-text--grey-400" layout="rows center-center">
+            ... and more 20+ repos
+            <i class="material-icons">chevron_right</i>&nbsp;
+            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
                 <i class="material-icons">link</i>
                 see all on github
             </a>
         </h3>
 
-        <div layout="column top-center" class="about content-padding">
+        <div self="size-medium" layout="column top-center" class="about content-padding">
             <h2 class="mdl-color-text--blue-600 vertical-margin">
-                about g-labs
+                about
             </h2>
             <div align="left">
                 <p self="sm-medium">
-                    <strong>G-Labs</strong> is the home of open source products written by
+                    <strong>G-Labs</strong> is the home of open source software written by
                     <a href="https://github.com/genielabs">Generoso Martello</a>, a passionate
                     techie since the <em>home computers</em> era.
                 </p>
                 <p>
                     He started his own business in the field of IT in the late 90's.
+                    <br/>
                     From 1999 ultil 2013 he has been employed as a software developer by various
                     IT companies in Italy, where he lives.
+                    <br/>
                     Since then, he works as a freelance software developer.
                 </p>
                 <p>
@@ -309,7 +309,7 @@
 
     <footer class="mdl-mini-footer" self="stretch" layout="row center-spread">
         <div class="mdl-mini-footer__left-section">
-            <div class="mdl-logo">g-labs web</div>
+            <div class="mdl-logo">@</div>
             <ul class="mdl-mini-footer__link-list">
                 <li><a href="http://www.zuix.it">ZUIX.it</a></li>
                 <li><a href="http://www.homegenie.it">HomeGenie.it</a></li>

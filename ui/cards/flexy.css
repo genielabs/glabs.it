@@ -1,18 +1,27 @@
 label {
     text-transform: uppercase;
     font-size: 75%;
-    font-weight: 700;
+    font-weight: 500;
     display: block;
 }
 h3 {
-    font-size:200%;
+    font-size: 150%;
     text-align: center;
+    margin: 0 0 24px;
 }
 p {
-    margin: 0;
+    margin: 0 0 16px;
+    font-size:120%;
+    line-height: 180%;
+    font-weight: 100;
 }
 ul {
-    margin-bottom: 24px;
+}
+li:not:first-child {
+    margin: 0;
+}
+a {
+    margin:0;
 }
 .description {
     padding-left: 24px;
@@ -29,7 +38,14 @@ ul {
     margin-top: 24px;
     margin-bottom: 16px;
 }
+.info {
+    margin-bottom: 72px;
+}
 .link {
     margin-top: 24px;
-    margin-bottom: 96px;
+}
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

@@ -31,8 +31,7 @@ section {
 }
 section h2 {
     margin: 48px 0 0;
-    padding: 0;
-    font-weight: 100;
+    font-weight: 200;
 }
 section h3 {
     line-height: 200%;
@@ -192,6 +191,9 @@ h3 small {
     margin-bottom: 32px;
 }
 
+.about {
+    margin-top: 96px;
+}
 .about h3 {
     font-weight: 400;
     font-size: 110%;
@@ -215,4 +217,8 @@ h3 small {
 }
 .hire-donate .mdl-button i {
     margin-right: 8px;
+}
+.title {
+    padding-top:24px;
+    margin-bottom: 24px;
 }
