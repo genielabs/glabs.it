@@ -68,12 +68,8 @@
 </header>
 <main data-ui-field="main" layout="columns center-center">
 
-    <section self="size-medium" class="intro content-padding animated zoomIn" layout="row center-center">
-        <h4>Bringing to you open source software since 2011.</h4>
-    </section>
-
-    <section -class="vertical-margin">
-        <h2 class="mdl-color-text--blue-600">g-labs products</h2>
+    <section class="vertical-margin">
+        <h2 class="mdl-color-text--blue-600">products</h2>
     </section>
 
     <section self="size-xlarge center" layout="rows top-center">
@@ -89,14 +85,24 @@
                     zuix.js
                     <i class="icon material-icons">extension</i>
                 </h3>
-                <a data-ui-field="link" href="http://zuix.it" title="ZUIX Home">link</a>
+                <a data-ui-field="link" href="http://zuix.it" title="ZUIX Home">
+                    <span data-ui-field="link-text">HomePage</span>
+                </a>
                 <p data-ui-field="description">
                     A JavaScript library for creating component-based web sites and applications.
                     <br/>
-                    Its implementation allow a smooth transition between traditional web and
+                    Its implementation allow a smooth transition from traditional web to
                     web components.
                 </p>
-                <div data-ui-field="notes">
+                <div data-ui-field="notes-left">
+                    <label class="mdl-color-text--blue-600">Development Status</label>
+                    <div layout="rows center-left">
+                        <ul class="mdl-color-text--grey-600">
+                            <li><strong class="mdl-color-text--green-400">active</strong> since 2016</li>
+                        </ul>
+                    </div>
+                </div>
+                <div data-ui-field="notes-right">
                     <label class="mdl-color-text--blue-600">Employed Technologies</label>
                     <div layout="rows center-left">
                         <ul class="mdl-color-text--grey-600">
@@ -114,12 +120,6 @@
                             <li>git</li>
                         </ul>
                     </div>
-                    <label class="mdl-color-text--blue-600">Development Status</label>
-                    <div layout="rows center-left">
-                        <ul class="mdl-color-text--grey-600">
-                            <li><strong class="mdl-color-text--green-400">active</strong> since 2016</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -135,7 +135,9 @@
                     homegenie
                     <i class="icon material-icons">lightbulb_outline</i>
                 </h3>
-                <a data-ui-field="link" href="http://homegenie.it" title="HomeGenie Home">link</a>
+                <a data-ui-field="link" href="http://homegenie.it" title="HomeGenie Home">
+                    <span data-ui-field="link-text">HomePage</span>
+                </a>
                 <p data-ui-field="description">
                     Featured and fully programmable Home Automation Server which can
                     run on embedded systems or desktop computers.
@@ -144,7 +146,15 @@
                     from lower level pheripherals like GPIOs to widely spread HA
                     systems such as X10, Z-Wave, Philips Hue.
                 </p>
-                <div data-ui-field="notes">
+                <div data-ui-field="notes-left">
+                    <label class="mdl-color-text--blue-600">Development Status</label>
+                    <div layout="rows center-left">
+                        <ul class="mdl-color-text--grey-600">
+                            <li><strong class="mdl-color-text--green-400">active</strong> since 2012</li>
+                        </ul>
+                    </div>
+                </div>
+                <div data-ui-field="notes-right">
                     <label class="mdl-color-text--blue-600">Employed Technologies</label>
                     <div layout="rows center-left">
                         <ul class="mdl-color-text--grey-600">
@@ -169,12 +179,6 @@
                             <li>git</li>
                         </ul>
                     </div>
-                    <label class="mdl-color-text--blue-600">Development Status</label>
-                    <div layout="rows center-left">
-                        <ul class="mdl-color-text--grey-600">
-                            <li><strong class="mdl-color-text--green-400">active</strong> since 2012</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -194,13 +198,21 @@
                     <i class="icon material-icons">home</i>
                 </h3>
                 <a data-ui-field="link" title="Test" href="https://play.google.com/store/apps/details?id=com.glabs.homegenieplus">
-                    github
+                    <span data-ui-field="link-text">Play Store Link</span>
                 </a>
                 <p data-ui-field="description">
                     Specifically designed to be an HA control panel for the end-user,
                     HomeGenie Plus is the android client app for HomeGenie.
                 </p>
-                <div data-ui-field="notes">
+                <div data-ui-field="notes-left">
+                    <label class="mdl-color-text--blue-600">Development Status</label>
+                    <div layout="rows center-left">
+                        <ul class="mdl-color-text--grey-600">
+                            <li><strong class="mdl-color-text--green-400">active</strong> since 2015</li>
+                        </ul>
+                    </div>
+                </div>
+                <div data-ui-field="notes-right">
                     <label class="mdl-color-text--blue-600">Employed Tecnologies</label>
                     <div layout="rows center-left">
                         <ul class="mdl-color-text--grey-600">
@@ -208,12 +220,6 @@
                             <li>UPnP</li>
                             <li>SSE</li>
                             <li>Voice Control</li>
-                        </ul>
-                    </div>
-                    <label class="mdl-color-text--blue-600">Development Status</label>
-                    <div layout="rows center-left">
-                        <ul class="mdl-color-text--grey-600">
-                            <li><strong class="mdl-color-text--green-400">active</strong> since 2015</li>
                         </ul>
                     </div>
                 </div>
@@ -257,25 +263,23 @@
             <h2 class="mdl-color-text--blue-600 vertical-margin">
                 about g-labs
             </h2>
-            <p self="sm-medium">
-                <strong>G-Labs</strong> is the home of open source products written by
-                <a href="https://github.com/genielabs">Generoso Martello</a>, a passionate
-                techie since the <em>home computers</em> era.
-            </p>
-            <p>
-                He started his own business in the field of IT in the late 90's.
-                From 1999 ultil 2013 he has been employed as a software developer by various
-                IT companies in Italy, where he lives.
-            </p>
-            <p>
-                Since then, he works as a freelance developer and he's
-                <span class="mdl-color-text--green-600">available</span>
-                for hire.
-            </p>
-            <p>
-                If you like any of his works, you might consider
-                making a donation or hiring him.
-            </p>
+            <div align="left">
+                <p self="sm-medium">
+                    <strong>G-Labs</strong> is the home of open source products written by
+                    <a href="https://github.com/genielabs">Generoso Martello</a>, a passionate
+                    techie since the <em>home computers</em> era.
+                </p>
+                <p>
+                    He started his own business in the field of IT in the late 90's.
+                    From 1999 ultil 2013 he has been employed as a software developer by various
+                    IT companies in Italy, where he lives.
+                    Since then, he works as a freelance software developer.
+                </p>
+                <p>
+                    If you like any of his works, you might consider
+                    making a donation or hiring him.
+                </p>
+            </div>
             <div class="hire-donate" layout="rows center-spread" self="size-small">
                 <!-- Hire Button -->
                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored" title="Hire Generoso Martello">
@@ -305,7 +309,7 @@
 
     <footer class="mdl-mini-footer" self="stretch" layout="row center-spread">
         <div class="mdl-mini-footer__left-section">
-            <div class="mdl-logo">G-Labs web</div>
+            <div class="mdl-logo">g-labs web</div>
             <ul class="mdl-mini-footer__link-list">
                 <li><a href="http://www.zuix.it">ZUIX.it</a></li>
                 <li><a href="http://www.homegenie.it">HomeGenie.it</a></li>

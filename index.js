@@ -48,15 +48,18 @@ zuix.field('cover').find('.motto').animateCss(function () {
     welcome.show().animateCss('fadeIn', { duration: '1.0s' }, function() {
         welcome.animateCss('fadeOut', { duration: '3.0s' }, function() {
             this.parent().hide();
-            zuix.$('body').css('overflow', 'auto');
         });
         mainHeader.show().animateCss('fadeInDown', { delay: '0.8s', duration: '.3s' });
         });
-    zuix.field('main')
-        .show()
-        .find('section,div').each(function (k,v) {
-        this.animateCss('fadeIn', { delay: (2+(k/30))+'s', duration: '2.0s' });
-    });
+    zuix.$('body').css('overflow', 'auto');
+    setTimeout(function () {
+        zuix.field('main')
+            .show()
+            .find('section,div,p,ul,img').each(function (k,v) {
+            this.animateCss('fadeIn', { delay: (2+(k/30))+'s', duration: '2.0s' });
+        });
+        zuix.componentize();
+    }, 500);
 });
 
 // ZUIX hooks
