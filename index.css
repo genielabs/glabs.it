@@ -8,7 +8,7 @@ body {
 }
 footer {
     font-size: 150%;
-    margin-top: 56px;
+    margin-top: 16px;
 }
 header {
     font-weight: 400;
@@ -208,7 +208,7 @@ h3 small {
 }
 
 .hire-donate {
-    margin-top: 32px;
+    margin-top: 56px;
     margin-bottom: 96px;
 }
 .hire-donate .mdl-button {
