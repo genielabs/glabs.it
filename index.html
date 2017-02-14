@@ -60,7 +60,7 @@
 
 <header class="mdl-color--black mdl-color-text--green-200 mdl-shadow--8dp">
     <div layout="row center-center">
-        <div self="size-xlarge">
+        <div self="size-xxlarge">
             <strong>g</strong><span class="mdl-color-text--yellow-200">-</span><span>labs</span>
             <small class="mdl-color-text--light-green-A200">the open source factory</small>
         </div>
@@ -69,289 +69,22 @@
 <main data-ui-field="main" layout="columns center-center">
 
     <section self="size-xxlarge center" layout="rows top-center">
-        <h2 class="title mdl-color-text--blue-600">products</h2>
 
-        <div self="lg-full sm-full md-full" layout="columns center-stretch" class="vertical-margin">
-            <div data-ui-include="ui/cards/flexy"
-                 data-ui-lazyload="false"
-                 self="size-x1 sm-full md-full"
-                 layout="rows center-center">
-                <div data-ui-field="images">
-                    <img src="images/zuix.png">
-                </div>
-                <h3 data-ui-field="title">
-                    zuix.js
-                    <i class="icon material-icons">extension</i>
-                </h3>
-                <a data-ui-field="link" href="http://zuix.it" title="ZUIX Home">
-                    <span data-ui-field="link-text">HomePage</span>
-                </a>
-                <p data-ui-field="description">
-                    A JavaScript library for creating component-based web sites and applications.
-                    <br/>
-                    Its implementation allow a smooth transition from traditional web to
-                    web components.
-                </p>
-                <div data-ui-field="notes-b">
-                    <label class="mdl-color-text--blue-600">Development Status</label>
-                    <div layout="rows center-left">
-                        <ul class="mdl-color-text--grey-600">
-                            <li><strong class="mdl-color-text--green-400">active</strong> since 2016</li>
-                        </ul>
-                    </div>
-                </div>
-                <div data-ui-field="notes-a">
-                    <label class="mdl-color-text--blue-600">Employed Technologies</label>
-                    <div layout="rows center-left">
-                        <ul class="mdl-color-text--grey-600 truncate">
-                            <li>javascript</li>
-                            <li>html5</li>
-                            <li>css3</li>
-                            <li>google-mdl</li>
-                            <li>animate.css</li>
-                            <li>npm</li>
-                            <li>bower</li>
-                            <li>gulp</li>
-                            <li>google-closure</li>
-                            <li>jsdoc</li>
-                            <li>browser</li>
-                            <li>git</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div data-ui-include="content/products"
+             data-ui-options="content_no_css"
+             data-ui-lazyload="false"
+             self="size-xxlarge" layout="rows top-center"></div>
 
-        <div self="lg-full sm-full md-full" layout="columns center-stretch" class="vertical-margin">
-            <div data-ui-include="ui/cards/flexy"
-                 self="size-x1 sm-full md-full"
-                 layout="rows center-center reverse">
-                <div data-ui-field="images">
-                    <img src="images/homegenie.png">
-                </div>
-                <h3 data-ui-field="title">
-                    homegenie
-                    <i class="icon material-icons">lightbulb_outline</i>
-                </h3>
-                <a data-ui-field="link" href="http://homegenie.it" title="HomeGenie Home">
-                    <span data-ui-field="link-text">HomePage</span>
-                </a>
-                <p data-ui-field="description">
-                    Featured and fully programmable Home Automation Server which can
-                    run on embedded systems or desktop computers.
-                    <br/>
-                    Can efficiently control
-                    from lower level pheripherals like <em>GPIO</em> to widely spread HA
-                    systems such as <em>X10</em>, <em>Z-Wave</em>, <em>Philips Hue</em>.
-                </p>
-                <div data-ui-field="notes-b">
-                    <label class="mdl-color-text--blue-600">Development Status</label>
-                    <div layout="rows center-left">
-                        <ul class="mdl-color-text--grey-600">
-                            <li><strong class="mdl-color-text--green-400">active</strong> since 2012</li>
-                        </ul>
-                    </div>
-                </div>
-                <div data-ui-field="notes-a">
-                    <label class="mdl-color-text--blue-600">Employed Technologies</label>
-                    <div layout="rows center-left">
-                        <ul class="mdl-color-text--grey-600 truncate">
-                            <li>.Net/Mono</li>
-                            <li>C#</li>
-                            <li>JavaScript</li>
-                            <li>jQuery</li>
-                            <li>jQuery-Mobile</li>
-                            <li>UPnP/DLNA</li>
-                            <li>Z-Wave</li>
-                            <li>X10</li>
-                            <li>Insteon</li>
-                            <li>Philips-Hue</li>
-                            <li>MQTT</li>
-                            <li>Voice-Control</li>
-                            <li>Arduino</li>
-                            <li>Raspberry-Pi</li>
-                            <li>Linux</li>
-                            <li>Windows</li>
-                            <li>OsX</li>
-                            <li>browser</li>
-                            <li>git</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div data-ui-include="content/more_repos" data-ui-options="content_no_css"
+             self="size-xxlarge" layout="rows center-spread"></div>
 
-        <div self="lg-full sm-full md-full" layout="columns center-stretch" class="vertical-margin">
-
-            <div data-ui-include="ui/cards/flexy"
-                 self="size-x1 sm-full md-full"
-                 layout="rows center-center">
-                <div data-ui-field="images">
-                    <img src="images/hgplus_07.jpg">
-                    <img src="images/hgplus_08.jpg">
-                    <img src="images/hgplus_12.jpg">
-                </div>
-                <h3 data-ui-field="title">
-                    homegenie plus
-                    <i class="icon material-icons">home</i>
-                </h3>
-                <a data-ui-field="link" title="Test" href="https://play.google.com/store/apps/details?id=com.glabs.homegenieplus">
-                    <span data-ui-field="link-text">Play Store Link</span>
-                </a>
-                <p data-ui-field="description">
-                    Specifically designed to be an HA <em>control panel</em> for the end-user,
-                    HomeGenie Plus is the android client app for HomeGenie.
-                </p>
-                <div data-ui-field="notes-b">
-                    <label class="mdl-color-text--blue-600">Development Status</label>
-                    <div layout="rows center-left">
-                        <ul class="mdl-color-text--grey-600">
-                            <li><strong class="mdl-color-text--green-400">active</strong> since 2015</li>
-                        </ul>
-                    </div>
-                </div>
-                <div data-ui-field="notes-a">
-                    <label class="mdl-color-text--blue-600">Employed Tecnologies</label>
-                    <div layout="rows center-left">
-                        <ul class="mdl-color-text--grey-600">
-                            <li>android</li>
-                            <li>UPnP</li>
-                            <li>SSE</li>
-                            <li>Voice Control</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div self="size-1of2 sm-full md-half" class="content-padding">
-            <h3 align="center" class="mdl-color-text--blue-800">mig-service <i class="material-icons">code</i></h3>
-            <p>
-                .Net portable library providing an integrated solution for developing networked
-                applications and real time web. With <em>HTTP</em>, <em>SSE</em>, <em>WebSockets</em> and many other plugins.
-            </p>
-            <div align="right">
-                <small><a href="https://github.com/genielabs/mig-service-dotnet">github</a></small>
-                <small><a href="https://www.nuget.org/packages/MIG/">nuget</a></small>
-            </div>
-        </div>
-        <div self="size-1of2 sm-full md-half" class="content-padding">
-            <h3 align="center" class="mdl-color-text--blue-800">serialport-lib <i class="material-icons">code</i></h3>
-            <p>
-                .Net portable library for event driven serial port I/O with hot-plug support.
-                It overcomes the lack of <em>DataReceived</em> event in Mono/Linux.
-            </p>
-            <div align="right">
-                <small><a href="https://github.com/genielabs/serialport-lib-dotnet">github</a></small>
-                <small><a href="https://www.nuget.org/packages/SerialPortLib/">nuget</a></small>
-            </div>
-        </div>
-
-
-        <h3 class="mdl-color-text--grey-400" layout="rows center-center">
-            ... and more 20+ repos
-            <i class="material-icons">chevron_right</i>&nbsp;
-            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">
-                <i class="material-icons">link</i>
-                see all on github
-            </a>
-        </h3>
-
-        <div self="size-medium" layout="column top-center" class="about content-padding">
-            <h2 class="mdl-color-text--blue-600 vertical-margin">
-                about
-            </h2>
-            <div align="left">
-                <p self="sm-medium">
-                    <strong>G-Labs</strong> is the home of open source software written by
-                    <a href="https://github.com/genielabs">Generoso Martello</a>, a passionate
-                    techie since the <em>home computers</em> era.
-                </p>
-                <p>
-                    He started his own business in the field of IT in the late 90's.
-                    From 1999 ultil 2013 he has been employed as a software developer by various
-                    IT companies in Italy, where he lives.
-                    <br/>
-                    Since then, he works as a freelance software developer.
-                </p>
-                <p>
-                    If you like any of his works, you might consider
-                    making a donation or hiring him.
-                </p>
-            </div>
-            <div class="hire-donate" layout="rows center-spread" self="size-small">
-                <!-- Hire Button -->
-                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent" title="Hire Generoso Martello">
-                    <div layout="row center-center">
-                        <i class="material-icons">work</i>
-                        Hire
-                    </div>
-                </button>
-                <!-- PayPal Donation -->
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                    <input type="hidden" name="cmd" value="_s-xclick">
-                    <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----MIIHRwYJKoZIhvcNAQcEoIIHODCCBzQCAQExggEwMIIBLAIBADCBlDCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb20CAQAwDQYJKoZIhvcNAQEBBQAEgYBCFAVhWON7kSi2rigi9m2CoEUaeUMzbfF0YtN66CRRigXzUlmv9VedVVjURnVLp7DOanQGCR7Tt2t9NDQZfWxYcVO94zKIt0wX7TEc85gaFR8V6jiqIUR1qGc5FobP5NrYRB474n7zijgzHAjvqJQFdM3MCKgTbtGzd+2SiUxeQjELMAkGBSsOAwIaBQAwgcQGCSqGSIb3DQEHATAUBggqhkiG9w0DBwQIYc2AiTHiMt2AgaCHmI6F2CdnwnDbdD0CuEQhtCKmn4qTrVqI4D81C9fl8XnFKg+DpB2/nyKq08jVPaaDrXd7+i4F4VXrqAauTwzpV6nAite6jw67u3r9x5+AXQoHxKz61N53Q1mlbgC/ERysVe18ri206K5LEeFiYA0Ji6tidFUucWLMyzaP6TudQs7RnBHzT4/9F2NWYPeiKXoQ+h123n7up73DSv04P3czoIIDhzCCA4MwggLsoAMCAQICAQAwDQYJKoZIhvcNAQEFBQAwgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tMB4XDTA0MDIxMzEwMTMxNVoXDTM1MDIxMzEwMTMxNVowgY4xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDQTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLUGF5UGFsIEluYy4xEzARBgNVBAsUCmxpdmVfY2VydHMxETAPBgNVBAMUCGxpdmVfYXBpMRwwGgYJKoZIhvcNAQkBFg1yZUBwYXlwYWwuY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDBR07d/ETMS1ycjtkpkvjXZe9k+6CieLuLsPumsJ7QC1odNz3sJiCbs2wC0nLE0uLGaEtXynIgRqIddYCHx88pb5HTXv4SZeuv0Rqq4+axW9PLAAATU8w04qqjaSXgbGLP3NmohqM6bV9kZZwZLR/klDaQGo1u9uDb9lr4Yn+rBQIDAQABo4HuMIHrMB0GA1UdDgQWBBSWn3y7xm8XvVk/UtcKG+wQ1mSUazCBuwYDVR0jBIGzMIGwgBSWn3y7xm8XvVk/UtcKG+wQ1mSUa6GBlKSBkTCBjjELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAkNBMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtQYXlQYWwgSW5jLjETMBEGA1UECxQKbGl2ZV9jZXJ0czERMA8GA1UEAxQIbGl2ZV9hcGkxHDAaBgkqhkiG9w0BCQEWDXJlQHBheXBhbC5jb22CAQAwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQUFAAOBgQCBXzpWmoBa5e9fo6ujionW1hUhPkOBakTr3YCDjbYfvJEiv/2P+IobhOGJr85+XHhN0v4gUkEDI8r2/rNk1m0GA8HKddvTjyGw/XqXa+LSTlDYkqI8OwR8GEYj4efEtcRpRYBxV8KxAW93YDWzFGvruKnnLbDAF6VR5w/cCMn5hzGCAZowggGWAgEBMIGUMIGOMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExFjAUBgNVBAcTDU1vdW50YWluIFZpZXcxFDASBgNVBAoTC1BheVBhbCBJbmMuMRMwEQYDVQQLFApsaXZlX2NlcnRzMREwDwYDVQQDFAhsaXZlX2FwaTEcMBoGCSqGSIb3DQEJARYNcmVAcGF5cGFsLmNvbQIBADAJBgUrDgMCGgUAoF0wGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMTUwMTA2MDMzODAwWjAjBgkqhkiG9w0BCQQxFgQU9Mlo2AvF/KNqm3sI3I0T1kUUgh4wDQYJKoZIhvcNAQEBBQAEgYACTvmh7Nx58AKobeex4Vj4JWMdj8gH7A4o/eFHG1KcvNh3xE0WCXjRU3kC3Yhzy75AF9Gc0KP9AAbaQTWHlaIYQ8ckilGLW6dV3dR9CIi9MyuR3nStdydbI4MyD40Ya57DSQwgVGihc5GhNlRSKXJHadYxvhaoBBBcsz8gg/m1cA==-----END PKCS7-----">
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--accent" name="submit" title="PayPal – The safer, easier way to pay online.">
-                        <div layout="row center-center">
-                            <i class="material-icons">attach_money</i>
-                            Donate
-                        </div>
-                    </button>
-                    <img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
-                </form>
-
-            </div>
-        </div>
+        <div data-ui-include="content/about" data-ui-lazyload="false" data-ui-options="content_no_css"
+             self="size-medium" layout="column top-center" class="about content-padding"></div>
 
     </section>
 
-
-    <footer class="mdl-mini-footer" self="stretch" layout="row center-spread">
-        <div class="mdl-mini-footer__left-section">
-            <div class="mdl-logo">@</div>
-            <ul class="mdl-mini-footer__link-list">
-                <li><a href="http://www.zuix.it">ZUIX.it</a></li>
-                <li><a href="http://www.homegenie.it">HomeGenie.it</a></li>
-            </ul>
-        </div>
-        <div class="mdl-mini-footer__right-section" align="right">
-            <div data-ui-include="http://www.zuix.it/content/home/sharing"
-                 data-ui-options="sharing_buttons_options"
-                 layout="row center-center">
-                <a data-ui-field="url" href="http://glabs.it">G-Labs Home</a>
-                <p data-ui-field="description">G-Labs, the open source factory.</p>
-            </div>
-            <script>
-                var sharing_buttons_options = {
-                    ready: function () {
-                        var html = this.view().innerHTML,
-                            outHtml = '', matched = 0, currentIndex = 0;
-                        var tags = new RegExp(/[^{}]+(?=})/g);
-                        while (result = tags.exec(html)) {
-                            var value = '{'+result[0]+'}';
-                            switch (result[0]) {
-                                case 'url':
-                                    matched++;
-                                    value = encodeURIComponent(this.model()[result[0]].href);
-                                    break;
-                                case 'description':
-                                    matched++;
-                                    value = encodeURIComponent(this.model()[result[0]].innerHTML);
-                                    break;
-                            }
-                            outHtml += html.substr(currentIndex, result.index-currentIndex-1)+value;
-                            currentIndex = result.index+result[0].length+1;
-                        }
-                        if (matched > 0) {
-                            outHtml += html.substr(currentIndex);
-                            this.view(outHtml);
-                        }
-                    }
-                };
-            </script>
-        </div>
-    </footer>
+    <footer data-ui-include="content/footer" data-ui-lazyload="false" data-ui-options="content_no_css"
+            class="mdl-mini-footer" self="stretch" layout="row center-spread"></footer>
 
 </main>
 

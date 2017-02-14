@@ -62,6 +62,11 @@ zuix.field('cover').find('.motto').animateCss(function () {
     }, 500);
 });
 
+// Content loading options
+var content_no_css = {
+    css: false
+};
+
 // ZUIX hooks
 zuix.hook('component:ready', function (view) {
     console.log('component ready', this);

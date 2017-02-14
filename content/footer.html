@@ -1,0 +1,43 @@
+<div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">@</div>
+    <ul class="mdl-mini-footer__link-list">
+        <li><a href="http://www.zuix.it">ZUIX.it</a></li>
+        <li><a href="http://www.homegenie.it">HomeGenie.it</a></li>
+    </ul>
+</div>
+<div class="mdl-mini-footer__right-section" align="right">
+    <div data-ui-include="http://www.zuix.it/content/home/sharing"
+         data-ui-options="sharing_buttons_options"
+         layout="row center-center">
+        <a data-ui-field="url" href="http://glabs.it">G-Labs Home</a>
+        <p data-ui-field="description">G-Labs, the open source factory.</p>
+    </div>
+    <script>
+        var sharing_buttons_options = {
+            ready: function () {
+                var html = this.view().innerHTML,
+                    outHtml = '', matched = 0, currentIndex = 0;
+                var tags = new RegExp(/[^{}]+(?=})/g);
+                while (result = tags.exec(html)) {
+                    var value = '{'+result[0]+'}';
+                    switch (result[0]) {
+                        case 'url':
+                            matched++;
+                            value = encodeURIComponent(this.model()[result[0]].href);
+                            break;
+                        case 'description':
+                            matched++;
+                            value = encodeURIComponent(this.model()[result[0]].innerHTML);
+                            break;
+                    }
+                    outHtml += html.substr(currentIndex, result.index-currentIndex-1)+value;
+                    currentIndex = result.index+result[0].length+1;
+                }
+                if (matched > 0) {
+                    outHtml += html.substr(currentIndex);
+                    this.view(outHtml);
+                }
+            }
+        };
+    </script>
+</div>
