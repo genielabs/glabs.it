@@ -35,7 +35,7 @@
     font-size:150%;
     font-weight: 500;
     position: absolute;
-    top: 0; left: 16px;
+    top: 8px; left: 16px;
     margin: 0;
     padding: 0;
 }
@@ -47,8 +47,8 @@
 
 .desc {
     position: absolute;
-    top: 46px;
-    left: 8px;
+    bottom: 0;
+    padding: 8px;
     text-align: left;
     font-weight: 500;
 }
