@@ -1,11 +1,10 @@
 .box {
     width: 200px;
-    height: 150px;
+    height: 140px;
     text-align: center;
     border: solid 2px dodgerblue;
     padding: 6px;
     margin: 48px;
-    margin-top: 140px;
     color: white;
     font-size: 16px;
     line-height: 110%;
