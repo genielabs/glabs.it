@@ -12,7 +12,7 @@ zuix.controller(function (cp) {
                 'overflow': 'hidden',
                 'position': 'relative',
             });
-        slides = this.view().children();
+        slides = cp.view().children();
         slides.each(function (i, el) {
             if (i > 0)
                 this.visibility('hidden')
