@@ -9,6 +9,9 @@
   "author": "Generoso Martello",
   "license": "GPL-3.0",
   "dependencies": {
+    "zuix-dist": "^0.4.9-11"
+  },
+  "devDependencies": {
     "http-server": "^0.9.0"
   }
 }
