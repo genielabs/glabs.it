@@ -85,6 +85,9 @@ h3 small {
     font-weight: 400;
     font-size:150%;
 }
+a.header-logo {
+    color:lime;
+}
 .icon {
     font-size:110%;
     margin-left: 12px;
@@ -218,7 +221,7 @@ h3 small {
     margin-right: 8px;
 }
 .title {
-    padding-top:24px;
+    padding-top:48px;
     margin-bottom: 24px;
 }
 /*

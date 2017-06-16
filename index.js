@@ -61,9 +61,6 @@ zuix.$.ZxQuery.prototype.animateCss  = function (animationName, param1, param2) 
 // Splash Screen
 zuix.field('main').hide();
 var mainHeader = zuix.$.find('header').hide();
-mainHeader.find('.header-logo').on('click', function() {
-    location.href='https://github.com/genielabs';
-});
 zuix.$('body').css('overflow', 'hidden');
 zuix.field('cover').find('.motto').animateCss(function () {
     zuix.field('cover').hide();
