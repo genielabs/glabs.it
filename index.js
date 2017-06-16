@@ -81,7 +81,7 @@ var content_no_css = {
 // ZUIX hooks
 zuix.hook('view:process', function(){
     // Force opening of all non-local links in a new window
-    zuix.$('a[href*="://"]').attr('target','_blank');
+    //zuix.$('a[href*="://"]').attr('target','_blank');
 }).hook('component:ready', function (view) {
     console.log('component ready', this);
     // fade in effect apploed to every component once
