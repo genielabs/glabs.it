@@ -10,7 +10,7 @@ zuix.controller(function (cp) {
         cp.view()
             .css({
                 'overflow': 'hidden',
-                'position': 'relative',
+                'position': 'relative'
             });
         var link = null;
         slides = cp.view().children();

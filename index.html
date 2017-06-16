@@ -55,12 +55,11 @@
     <script src="node_modules/zuix-dist/js/zuix.min.js"></script>
 
 </head>
-<body class="-mdl-color--blue-50 mdl-color-text--grey-800"
-      data-ui-lazyload="scroll">
+<body class="-mdl-color--blue-50 mdl-color-text--grey-800">
 
 <header class="mdl-color--black mdl-color-text--green-200 mdl-shadow--8dp">
     <div layout="row center-center">
-        <div self="size-xxlarge">
+        <div class="header-logo">
             <strong>g</strong><span class="mdl-color-text--yellow-200">-</span><span>labs</span>
             <small class="mdl-color-text--light-green-A200">the open source factory</small>
         </div>
@@ -74,33 +73,34 @@
 
         <div data-ui-include="content/products"
              data-ui-options="content_no_css"
-             data-ui-lazyload="false"
              self="size-xxlarge" layout="columns spread-stretch" class="products"></div>
 
-        <div data-ui-include="content/about" data-ui-lazyload="false" data-ui-options="content_no_css"
+        <!--
+        <div data-ui-include="content/about" data-ui-options="content_no_css"
              self="size-medium" layout="column top-center" class="about content-padding"></div>
+        -->
 
         <div data-ui-include="content/more_repos" data-ui-options="content_no_css"
              self="size-xxlarge" layout="rows center-spread" class="more-repos"></div>
 
     </section>
 
-    <footer data-ui-include="content/footer" data-ui-lazyload="false" data-ui-options="content_no_css"
+    <footer data-ui-include="content/footer" data-ui-options="content_no_css"
             class="mdl-mini-footer" self="stretch" layout="row center-spread"></footer>
 
 </main>
 
 <!-- Splash Screen -->
 
-<div layout="column stretch-stretch" class="splash-welcome">
+<!--div layout="column stretch-stretch" class="splash-welcome">
     <div layout="column center-center" class="mdl-color-text--blue-600">
 
         <h2>welcome</h2>
 
     </div>
-</div>
+</div-->
 <div data-ui-field="cover" layout="column stretch-stretch" class="splash">
-    <div layout="column center-center" class="cover mdl-color--black animated fadeOut">
+    <div layout="column center-center" class="cover mdl-color--black animated fadeOutUp">
 
         <div class="logo mdl-color-text--green-200" layout="row center-center">
             <div class="g animated fadeInLeft">g</div>

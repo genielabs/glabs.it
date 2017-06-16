@@ -11,10 +11,8 @@ footer {
     margin-top: 16px;
 }
 header {
-    font-weight: 400;
-    font-size:150%;
     padding: 16px;
-    height:60px;
+    height:80px;
     position: fixed;
     top:0;
     width: 100%;
@@ -82,6 +80,11 @@ h3 {
 h3 small {
     text-transform: lowercase;
 }
+.header-logo {
+    cursor: pointer;
+    font-weight: 400;
+    font-size:150%;
+}
 .icon {
     font-size:110%;
     margin-left: 12px;
@@ -93,17 +96,6 @@ h3 small {
     right:0;
     bottom:0;
     overflow: hidden;
-}
-.splash-welcome {
-    position: fixed;
-    left:0;
-    top:0;
-    right:0;
-    bottom:0;
-    background-color: transparent;
-}
-.splash-welcome h2 {
-    font-weight: 100;
 }
 .cover {
     position: fixed;
@@ -194,12 +186,7 @@ h3 small {
 }
 
 .more-repos {
-    margin-top: 72px;
     margin-bottom: 96px;
-}
-
-.products {
-    margin-bottom: 72px;
 }
 
 .about {
@@ -234,3 +221,11 @@ h3 small {
     padding-top:24px;
     margin-bottom: 24px;
 }
+/*
+.scroll-watch {
+    visibility: hidden;
+}
+.scroll-visible {
+    visibility: visible;
+}
+*/
