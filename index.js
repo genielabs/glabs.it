@@ -30,20 +30,22 @@
 zuix.$.ZxQuery.prototype.animateCss  = animateCss;
 
 // Splash Screen
+zuix.$.find('header').hide();
 zuix.field('main').hide();
-var mainHeader = zuix.$.find('header').hide();
 zuix.$('body').css('overflow', 'hidden');
-zuix.field('cover').find('.motto').animateCss(function () {
-    zuix.field('cover')
-        .hide();
-    mainHeader.show()
-        .animateCss('fadeInDown', { delay: '0.0s', duration: '.3s' });
-    zuix.field('main')
-        .show();
-    zuix.$('body').css('overflow', 'auto');
-    //zuix.componentize();
-});
 //zuix.load('ui/controls/scroll_helper', { view: document.body });
+zuix.field('cover').animateCss(function () {
+//    zuix.field('cover')
+//        .hide();
+    setTimeout(function () {
+        zuix.$.find('header').show()
+            .animateCss('fadeInDown', { delay: '0.25s', duration: '0.5s' });
+        zuix.field('main').show()
+            .animateCss('fadeInUpBig', { delay: '0s', duration: '0.75s' }, function () {
+                zuix.$('body').css('overflow', 'auto');
+            });
+    }, 1500);
+});
 
 // Content loading options
 var content_no_css = {
@@ -56,14 +58,6 @@ zuix.hook('view:process', function(){
     //zuix.$('a[href*="://"]').attr('target','_blank');
 }).hook('component:ready', function (view) {
     console.log('component ready', this);
-    // fade in effect apploed to every component once
-    // its view is created
-    if (view.get() !== document.body) {
-        view.animateCss('fadeInUpBig', {duration: '1.0s'});
-        // Google's Material Design Light
-        if (componentHandler)
-            componentHandler.upgradeElements(view.get());
-    }
 }).hook('load:end', function () {
     // Initial resource loading completed...
 });
