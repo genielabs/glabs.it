@@ -44,7 +44,7 @@ zuix.field('cover').animateCss(function () {
             .animateCss('fadeInUpBig', { delay: '0s', duration: '0.75s' }, function () {
                 zuix.$('body').css('overflow', 'auto');
             });
-    }, 1500);
+    }, 500);
 });
 
 // Content loading options

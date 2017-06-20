@@ -100,10 +100,10 @@ h3 small {
 .cover {
     position: fixed;
     left: 0; top: 0; right: 0; bottom: 0;
-    -moz-animation-delay: 3.0s;
-    -webkit-animation-delay: 3.0s;
-    -o-animation-delay: 3.0s;
-    -ms-animation-delay: 3.0s;
+    -moz-animation-delay: 2.0s;
+    -webkit-animation-delay: 2.0s;
+    -o-animation-delay: 2.0s;
+    -ms-animation-delay: 2.0s;
     -moz-animation-duration: 1.0s;
     -webkit-animation-duration: 1.0s;
     -o-animation-duration: 1.0s;
