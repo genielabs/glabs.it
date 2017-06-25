@@ -53,8 +53,8 @@ var content_no_css = {
 
 // ZUIX hooks
 zuix.hook('view:process', function(){
-    // Force opening of all non-local links to a new window
-    //zuix.$('a[href*="://"]').attr('target','_blank');
+    // Force opening of all non-local links to top window
+    zuix.$('a[href*="://"]').attr('target','_top');
 }).hook('component:ready', function (view) {
     console.log('component ready', this);
 }).hook('load:end', function () {
