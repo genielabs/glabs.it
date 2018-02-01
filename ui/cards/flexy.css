@@ -28,12 +28,19 @@ a {
     padding-right: 24px;
     margin-top: 24px;
 }
+.description p {
+    font-size: 100%;
+    font-weight: 100;
+}
+.description ul {
+    font-size: 100%;
+}
 .gallery {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding: 24px;
+    text-align: right;
 }
 .media-container {
-    padding: 24px;
+    padding: 8px;
     height: auto;
     margin-top: 24px;
     margin-bottom: 16px;
@@ -48,4 +55,16 @@ a {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.info ul {
+    display:inline;
+    margin: 0 0 0 6px;
+    padding: 0;
+    font-size: 100%;
+    font-weight: 100;
+}
+.info ul li {
+    display:inline;
+    margin-left:6px;
+    text-transform: lowercase;
 }

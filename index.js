@@ -37,7 +37,7 @@ zuix.$('body').css('overflow', 'hidden');
 zuix.field('cover').animateCss(function () {
     setTimeout(function () {
         zuix.$.find('header').show()
-            .animateCss('fadeInDown', { delay: '0.25s', duration: '0.5s' });
+            .animateCss('fadeInDown', { delay: '0.25s', duration: '0.75s' });
         zuix.field('main').show()
             .animateCss('fadeInUpBig', { delay: '0s', duration: '0.75s' }, function () {
                 zuix.$('body').css('overflow', 'auto');
