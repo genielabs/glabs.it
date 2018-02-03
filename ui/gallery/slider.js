@@ -51,13 +51,13 @@ zuix.controller(function (cp) {
     }
 
     function slide() {
-        slides.eq(current).animateCss('zoomOutLeft', function () {
+        slides.eq(current).animateCss('zoomOutRight', function () {
             this.visibility('hidden');
         });
         current++;
         if (current >= slides.length())
             current = 0;
-        slides.eq(current).visibility('visible').animateCss('fadeInRightBig');
+        slides.eq(current).visibility('visible').animateCss('fadeInLeftBig');
         if (sliderTimeout != null) {
             clearTimeout(sliderTimeout);
         }
