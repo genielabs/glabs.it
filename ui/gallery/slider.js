@@ -1,5 +1,5 @@
 zuix.controller(function (cp) {
-    var slides = null, current = 0;
+    var slides = null, current = 0, sliderTimeout = null, SLIDE_TIMEOUT = 5000;
 
     cp.init = function() {
         cp.options().html = false;
@@ -15,35 +15,52 @@ zuix.controller(function (cp) {
         var link = null;
         slides = cp.view().children();
         slides.each(function (i, el) {
-            if (i > 0)
+            if (i > 0) {
                 this.visibility('hidden')
                     .css({
                         'position': 'absolute',
                         'left': 0,
                         'top': 0
                     });
+            }
             this.css('width', '100%');
-            if (link == null)
+            if (link == null) {
                 link = this.attr('data-href');
+            }
         });
-        if (link != null)
+        if (link != null) {
             cp.view().parent().on('click', function () {
                 setTimeout(function () {
                     window.open(link);
                 }, 100);
             });
-        if (slides.length() > 1)
-            setTimeout(slide, 5000);
+        }
+        start(cp);
     };
 
+    function start(cp) {
+        if (slides.length() > 1) {
+            cp.view()
+                .css({
+                    'cursor': 'pointer'
+                }).on('click', function () {
+                    slide();
+                });
+            sliderTimeout = setTimeout(slide, SLIDE_TIMEOUT);
+        }
+    }
+
     function slide() {
-        slides.eq(current).animateCss('fadeOutUp', function () {
+        slides.eq(current).animateCss('zoomOutLeft', function () {
             this.visibility('hidden');
         });
         current++;
         if (current >= slides.length())
             current = 0;
-        slides.eq(current).visibility('visible').animateCss('fadeInUp');
-        setTimeout(slide, 5000);
+        slides.eq(current).visibility('visible').animateCss('fadeInRightBig');
+        if (sliderTimeout != null) {
+            clearTimeout(sliderTimeout);
+        }
+        sliderTimeout = setTimeout(slide, SLIDE_TIMEOUT);
     }
 });
