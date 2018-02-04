@@ -73,3 +73,7 @@ a {
     margin-left:6px;
     text-transform: lowercase;
 }
+
+.mdl-button {
+    min-width: 120px;
+}
