@@ -40,7 +40,6 @@ zuix.field('cover').animateCss(function () {
             .animateCss('fadeInDown', { delay: '0.25s', duration: '0.75s' });
         zuix.field('main').show()
             .animateCss('fadeInUpBig', { delay: '0s', duration: '1.00s' }, function () {
-                zuix.$('body').css('overflow', 'auto');
                 zuix.field('cover').hide();
             });
     }, 500);
@@ -50,7 +49,8 @@ zuix.field('cover').animateCss(function () {
 var content_no_css = {
     css: false
 };
-
+var bootTimeout = null;
+var menuOverlay = null, menuButton = null, menuButtonClose, menuOverlayShowing = false;
 // ZUIX hooks
 zuix.hook('view:process', function(){
     // Force opening of all non-local links to a new window
@@ -59,7 +59,131 @@ zuix.hook('view:process', function(){
     console.log('component ready', this);
 }).hook('load:end', function () {
     // Initial resource loading completed...
+    if (bootTimeout != null) {
+        clearTimeout(bootTimeout);
+    }
+    bootTimeout = setTimeout(function () {
+        console.log("Boot completed!");
+        var headingTitles = zuix.field('main').find('h3');
+        var headerLogo = zuix.field('header_logo');
+        var headerTitle = zuix.field('header_title').hide();
+        var currentIndex = -1;
+        var currentOffset = 0;
+        var menuButtonShowing = true;
+        menuButton = zuix.field('menu_button').animateCss('slideInUp').show()
+            .on('click', toggleMenu);
+        menuButtonClose = zuix.field('menu_button_close').hide()
+            .on('click', toggleMenu);
+        menuOverlay = zuix.field('menu_overlay').hide()
+            .on('click', toggleMenu);
+        zuix.$('body')
+            .css('overflow', 'auto')
+            .on('scroll', function (e) {
+                var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+                if (menuButtonShowing && currentOffset < scrollTop) {
+                    menuButtonShowing = false;
+                    menuButton.animateCss('fadeOutDown', function () {
+                        this.hide();
+                    });
+                } else if (!menuButtonShowing && currentOffset > scrollTop) {
+                    menuButtonShowing = true;
+                    menuButton.animateCss('fadeInUp', function () {
+                    }).show();
+                }
+                currentOffset = scrollTop;
+                if (menuOverlayShowing) {
+                    toggleMenu();
+                }
+
+                for (i = 0; i < headingTitles.length()-1; i++) {
+                    var currentHeader = headingTitles.eq(i);
+                    var nextHeader = headingTitles.eq(i+1);
+                    var chPosition = currentHeader.position();
+                    var nhPosition = nextHeader.position();
+                    if (i !== currentIndex && chPosition.y < 0 && nhPosition.y >= window.innerHeight/2) {
+                        currentIndex = i;
+                        currentHeader.animateCss('fadeOutUp', function () {
+                            this.visibility('hidden');
+                        });
+                        headerLogo.animateCss('fadeOutDown', function () {
+                            headerLogo.hide();
+                        });
+                        headerTitle.html(currentHeader.html())
+                            .animateCss('fadeInDown')
+                            .show();
+                    } else if (i !== currentIndex && chPosition.y < 60 && nhPosition.y >= window.innerHeight/2) {
+                        currentIndex = i;
+                        currentHeader.animateCss('fadeOutUp', function () {
+                            this.visibility('hidden');
+                        });
+                        headerLogo.animateCss('fadeOutUp', function () {
+                            headerLogo.hide();
+                        });
+                        headerTitle.html(currentHeader.html())
+                            .animateCss('fadeInUp')
+                            .show();
+                    } else if (currentIndex === i && chPosition.y >= 60) {
+                        currentIndex = -1;
+                        headerTitle.animateCss('fadeOutDown', function () {
+                            this.hide();
+                        });
+                        headerLogo.animateCss('fadeInDown').show();
+                        currentHeader.animateCss('slideInDown', function () {
+                        }).visibility('');
+                    } else if (currentIndex === i && nhPosition.y < window.innerHeight/2) {
+                        currentIndex = -1;
+                        headerTitle.animateCss('fadeOutUp', function () {
+                            this.hide();
+                        });
+                        headerLogo.animateCss('fadeInUp').show();
+                        currentHeader.animateCss('fadeIn', function () {
+                        }).visibility('');
+                    }
+                }
+            });
+    }, 1000);
 });
+
+function toggleMenu() {
+    var menuItems = menuOverlay.find('a');
+    if (!menuOverlayShowing) {
+        menuOverlayShowing = true;
+        menuOverlay.animateCss('fadeIn').show();
+        menuItems.each(function (p,el) {
+            showMenuItem(this, p*50);
+            console.log("P "+p, el);
+        });
+        menuButton.animateCss('rubberBand', { 'duration': '0.3s' });
+        menuButtonClose.animateCss('rotateIn', { 'duration': '0.3s' }).show();
+    } else if (menuOverlayShowing) {
+        menuOverlayShowing = false;
+        menuOverlay.animateCss('fadeOut', function () {
+            this.hide();
+        });
+        menuItems.each(function (p,el) {
+            hideMenuItem(this, (menuItems.length()-p+1)*50);
+        });
+        menuButtonClose.animateCss('rotateOut', { 'duration': '0.3s' }, function () {
+            this.hide();
+        });
+        menuButton.animateCss('rubberBand', { 'duration': '0.3s' });
+    }
+}
+
+function hideMenuItem(item, delay) {
+    setTimeout(function () {
+        item.animateCss('bounceOutDown', { duration: '0.2s' }, function () {
+            item.visibility('hidden');
+        });
+    }, delay);
+}
+
+function showMenuItem(item, delay) {
+    item.visibility('hidden');
+    setTimeout(function () {
+        item.animateCss('bounceInUp', { duration: '0.2s' }).visibility('');
+    }, delay);
+}
 
 function animateCss(animationName, param1, param2) {
     var callback, options;
@@ -92,11 +216,16 @@ function animateCss(animationName, param1, param2) {
 
     this.one(animationEnd, function () {
         this.removeClass('animated ' + animationName);
-        for(var key in options)
-            for (var p in prefixes)
-                _t.css(prefixes[p] + '-animation-' + key, '');
+        //for(var key in options)
+        //    for (var p in prefixes)
+        //        _t.css(prefixes[p] + '-animation-' + key, '');
         if (typeof callback === 'function')
             callback.call(_t, animationName);
     });
+
     return this;
+}
+
+function contact() {
+    document.location.href = ('ma'+'il'+'to:info'+'@'+'glabs.it');
 }
