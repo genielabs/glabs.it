@@ -32,7 +32,6 @@ zuix.$.ZxQuery.prototype.animateCss  = animateCss;
 // Splash Screen
 zuix.$.find('header').hide();
 zuix.field('main').hide();
-zuix.$('body').css('overflow', 'hidden');
 //zuix.load('ui/controls/scroll_helper', { view: document.body });
 zuix.field('cover').animateCss(function () {
     setTimeout(function () {
@@ -49,8 +48,14 @@ zuix.field('cover').animateCss(function () {
 var content_no_css = {
     css: false
 };
-var bootTimeout = null;
-var menuOverlay = null, menuButton = null, menuButtonClose, menuOverlayShowing = false;
+var bootTimeout = null, updateHeaderTimeout = null;
+var menuOverlayShowing = false, menuButtonShowing = true;
+var menuButton = zuix.field('menu_button').hide()
+    .on('click', toggleMenu);
+var menuButtonClose = zuix.field('menu_button_close').hide()
+    .on('click', toggleMenu);
+var menuOverlay = zuix.field('menu_overlay').hide()
+    .on('click', toggleMenu);
 // ZUIX hooks
 zuix.hook('view:process', function(){
     // Force opening of all non-local links to a new window
@@ -64,22 +69,10 @@ zuix.hook('view:process', function(){
     }
     bootTimeout = setTimeout(function () {
         console.log("Boot completed!");
-        var headingTitles = zuix.field('main').find('h3');
-        var headerLogo = zuix.field('header_logo');
-        var headerTitle = zuix.field('header_title').hide();
-        var currentIndex = -1;
         var currentOffset = 0;
-        var menuButtonShowing = true;
-        menuButton = zuix.field('menu_button').animateCss('slideInUp').show()
-            .on('click', toggleMenu);
-        menuButtonClose = zuix.field('menu_button_close').hide()
-            .on('click', toggleMenu);
-        menuOverlay = zuix.field('menu_overlay').hide()
-            .on('click', toggleMenu);
-        zuix.$('body')
-            .css('overflow', 'auto')
+        zuix.field('main')
             .on('scroll', function (e) {
-                var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+                var scrollTop = zuix.field('main').get().scrollTop;
                 if (menuButtonShowing && currentOffset < scrollTop) {
                     menuButtonShowing = false;
                     menuButton.animateCss('fadeOutDown', function () {
@@ -95,66 +88,86 @@ zuix.hook('view:process', function(){
                     toggleMenu();
                 }
 
-                for (i = 0; i < headingTitles.length()-1; i++) {
-                    var currentHeader = headingTitles.eq(i);
-                    var nextHeader = headingTitles.eq(i+1);
-                    var chPosition = currentHeader.position();
-                    var nhPosition = nextHeader.position();
-                    if (i !== currentIndex && chPosition.y < 0 && nhPosition.y >= window.innerHeight/2) {
-                        currentIndex = i;
-                        currentHeader.animateCss('fadeOutUp', function () {
-                            this.visibility('hidden');
-                        });
-                        headerLogo.animateCss('fadeOutDown', function () {
-                            headerLogo.hide();
-                        });
-                        headerTitle.html(currentHeader.html())
-                            .animateCss('fadeInDown')
-                            .show();
-                    } else if (i !== currentIndex && chPosition.y < 60 && nhPosition.y >= window.innerHeight/2) {
-                        currentIndex = i;
-                        currentHeader.animateCss('fadeOutUp', function () {
-                            this.visibility('hidden');
-                        });
-                        headerLogo.animateCss('fadeOutUp', function () {
-                            headerLogo.hide();
-                        });
-                        headerTitle.html(currentHeader.html())
-                            .animateCss('fadeInUp')
-                            .show();
-                    } else if (currentIndex === i && chPosition.y >= 60) {
-                        currentIndex = -1;
-                        headerTitle.animateCss('fadeOutDown', function () {
-                            this.hide();
-                        });
-                        headerLogo.animateCss('fadeInDown').show();
-                        currentHeader.animateCss('slideInDown', function () {
-                        }).visibility('');
-                    } else if (currentIndex === i && nhPosition.y < window.innerHeight/2) {
-                        currentIndex = -1;
-                        headerTitle.animateCss('fadeOutUp', function () {
-                            this.hide();
-                        });
-                        headerLogo.animateCss('fadeInUp').show();
-                        currentHeader.animateCss('fadeIn', function () {
-                        }).visibility('');
-                    }
+                if (updateHeaderTimeout != null) {
+                    clearTimeout(updateHeaderTimeout);
                 }
+                updateHeaderTimeout = setTimeout(updateHeaderTitle, 10);
             });
+        headingTitles = zuix.field('main').find('h3');
+        setTimeout(function () {
+            menuButton.animateCss('slideInUp').show();
+            routeCurrentUrl(window.location.hash);
+        }, 1000);
     }, 1000);
 });
+
+var currentIndex = -1;
+var headerLogo = zuix.field('header_logo');
+var headerTitle = zuix.field('header_title').hide();
+var headingTitles;
+function updateHeaderTitle() {
+    for (var i = 0; i < headingTitles.length()-1; i++) {
+        var currentHeader = headingTitles.eq(i);
+        var nextHeader = headingTitles.eq(i+1);
+        var chPosition = currentHeader.position();
+        var nhPosition = nextHeader.position();
+        if (i !== currentIndex && chPosition.y < 0 && nhPosition.y >= window.innerHeight/2) {
+            currentIndex = i;
+            currentHeader.animateCss('fadeOutUp', function () {
+                this.visibility('hidden');
+            });
+            headerLogo.animateCss('fadeOutDown', function () {
+                headerLogo.hide();
+            });
+            headerTitle.html(currentHeader.html())
+                .animateCss('fadeInDown')
+                .show();
+        } else if (i !== currentIndex && chPosition.y < 60 && nhPosition.y >= window.innerHeight/2) {
+            currentIndex = i;
+            currentHeader.animateCss('fadeOutUp', function () {
+                this.visibility('hidden');
+            });
+            headerLogo.animateCss('fadeOutUp', function () {
+                headerLogo.hide();
+            });
+            headerTitle.html(currentHeader.html())
+                .animateCss('fadeInUp')
+                .show();
+        } else if (currentIndex === i && chPosition.y >= 60) {
+            currentIndex = -1;
+            headerTitle.animateCss('fadeOutDown', function () {
+                this.hide();
+            });
+            headerLogo.animateCss('fadeInDown').show();
+            currentHeader.animateCss('slideInDown', function () {
+            }).visibility('');
+        } else if (currentIndex === i && nhPosition.y < window.innerHeight/2) {
+            currentIndex = -1;
+            headerTitle.animateCss('fadeOutUp', function () {
+                this.hide();
+            });
+            headerLogo.animateCss('fadeInUp').show();
+            currentHeader.animateCss('fadeIn', function () {
+            }).visibility('');
+        } else if (i !== currentIndex && currentHeader.visibility() === 'hidden') {
+            currentHeader.visibility('');
+        }
+    }
+
+}
 
 function toggleMenu() {
     var menuItems = menuOverlay.find('a');
     if (!menuOverlayShowing) {
         menuOverlayShowing = true;
         menuOverlay.animateCss('fadeIn').show();
-        menuItems.each(function (p,el) {
-            showMenuItem(this, p*50);
-            console.log("P "+p, el);
+        menuItems.each(function (p, el) {
+            showMenuItem(this, (menuItems.length()-p+1)*50);
         });
         menuButton.animateCss('rubberBand', { 'duration': '0.3s' });
-        menuButtonClose.animateCss('rotateIn', { 'duration': '0.3s' }).show();
+        menuButtonClose.animateCss('rotateIn', { 'duration': '0.3s' }, function () {
+            menuButton.hide();
+        }).show();
     } else if (menuOverlayShowing) {
         menuOverlayShowing = false;
         menuOverlay.animateCss('fadeOut', function () {
@@ -163,10 +176,17 @@ function toggleMenu() {
         menuItems.each(function (p,el) {
             hideMenuItem(this, (menuItems.length()-p+1)*50);
         });
-        menuButtonClose.animateCss('rotateOut', { 'duration': '0.3s' }, function () {
-            this.hide();
-        });
-        menuButton.animateCss('rubberBand', { 'duration': '0.3s' });
+        if (menuButtonShowing) {
+            menuButtonClose.animateCss('rotateOut', { 'duration': '0.3s' }, function () {
+                this.hide();
+            });
+            menuButton.animateCss('fadeIn', { 'duration': '0.3s' });
+        } else {
+            menuButtonClose.animateCss('fadeOutDown', { 'duration': '0.3s' }, function () {
+                this.hide();
+            });
+        }
+        menuButton.show();
     }
 }
 
@@ -228,4 +248,43 @@ function animateCss(animationName, param1, param2) {
 
 function contact() {
     document.location.href = ('ma'+'il'+'to:info'+'@'+'glabs.it');
+}
+
+
+// url routing
+window.onhashchange = function () {
+    routeCurrentUrl(window.location.hash);
+};
+function routeCurrentUrl(path) {
+    // check if pagedView is loaded
+    var anchorIndex = path.lastIndexOf('#');
+    var pageAnchor = null;
+    if (anchorIndex > 0) {
+        pageAnchor = path.substring(anchorIndex + 1);
+        path = path.substring(0, anchorIndex);
+    }
+    switch (path) {
+        case '#/start':
+            break;
+        case '#/docs':
+            break;
+        case '#/api':
+            break;
+        case '':
+        case '#/':
+            break;
+    }
+    scrollTo(pageAnchor);
+}
+
+function scrollTo(pageAnchor) {
+    var p = zuix.field('main');
+    if (pageAnchor !== null) {
+        var a = p.find('a[id=' + pageAnchor+']');
+        if (a.length() > 0) {
+            setTimeout(function () {
+                zuix.$.scrollTo(p.get(), a.position().y, 750);
+            }, 200);
+        }
+    } //else p.get().scrollTop = 0;
 }
