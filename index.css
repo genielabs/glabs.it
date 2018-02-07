@@ -191,6 +191,7 @@ h3 small {
 }
 .padding-right {
     padding-right: 8px;
+    vertical-align: middle;
 }
 
 .more-repos {
@@ -267,4 +268,8 @@ h3 small {
 }
 .menu-item.right a span {
     text-align: right;
+}
+
+.footer_bar {
+    font-size:75%;
 }

@@ -190,6 +190,7 @@ function toggleMenu() {
     }
 }
 
+// TODO: update ZUIX component library to use this code
 function animateCss(animationName, param1, param2) {
     var callback, options;
 
