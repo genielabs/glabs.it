@@ -252,17 +252,16 @@ h3 small {
     margin-left: -28px;
     bottom: 48px;
 }
-.menu-item {
+.menu-item a {
     font-size: 90%;
     font-weight: 600;
     line-height: 120%;
     padding: 16px;
-    cursor: pointer;
 }
-.menu-item span {
+.menu-item a span {
     padding-right: 12px;
     padding-left: 12px;
 }
-.menu-item.right span {
+.menu-item.right a span {
     text-align: right;
 }

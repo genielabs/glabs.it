@@ -98,54 +98,68 @@
 
 </main>
 
-
+<!-- FAB menu overlay -->
 <div data-ui-field="menu_overlay" layout="column stretch-stretch" class="menu-overlay">
-    <div self="size-x1" layout="rows spread-spread">
+    <div self="size-x1" layout="rows stretch-stretch">
         <div self="size-1of2" layout="column bottom-left">
-            <a href="https://github.com/genielabs" class="menu-item" layout="row center-left">
+            <div class="menu-item" layout="row center-left">
+                <a href="https://github.com/genielabs">
                     <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
                         <i class="material-icons">domain</i>
                     </span>
-                <span self="size-x1">github</span>
-            </a>
-            <a href="javascript:contact()" class="menu-item" layout="row center-left">
+                    <span self="size-x1">github</span>
+                </a>
+            </div>
+            <div class="menu-item" layout="row center-left">
+                <a href="javascript:contact()">
                     <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
                         <i class="material-icons">mail_outline</i>
                     </span>
-                <span self="size-x1">contact</span>
-            </a>
-            <a href="javascript:scrollTo('about')" class="menu-item" layout="row center-left">
+                    <span self="size-x1">contact</span>
+                </a>
+            </div>
+            <div class="menu-item" layout="row center-left">
+                <a href="javascript:scrollTo('about')">
                     <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
                         <i class="material-icons">help_outline</i>
                     </span>
-                <span self="size-x1">about</span>
-            </a>
+                    <span self="size-x1">about</span>
+                </a>
+            </div>
         </div>
         <div self="size-1of2" layout="column bottom-right">
-            <a href="javascript:scrollTo('homegenie_plus')" class="menu-item right" layout="row center-right">
-                <span self="size-x1">homegenie plus</span>
-                <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">lightbulb_outline</i>
-                    </span>
-            </a>
-            <a href="javascript:scrollTo('homegenie_server')" class="menu-item right" layout="row center-right">
-                <span self="size-x1">homegenie server</span>
-                <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">lightbulb_outline</i>
-                    </span>
-            </a>
-            <a href="javascript:scrollTo('zuix')" class="menu-item right" layout="row center-right">
-                <span self="size-x1">zuix</span>
-                <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">extension</i>
-                    </span>
-            </a>
-            <a href="javascript:scrollTo('logcam')" class="menu-item right" layout="row center-right">
-                <span self="size-x1">logcam</span>
-                <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">linked_camera</i>
-                    </span>
-            </a>
+            <div class="menu-item" layout="row center-right">
+                <a href="javascript:scrollTo('homegenie_plus')">
+                    <span self="size-x1">homegenie plus</span>
+                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                            <i class="material-icons">lightbulb_outline</i>
+                        </span>
+                </a>
+            </div>
+            <div class="menu-item" layout="row center-right">
+                <a href="javascript:scrollTo('homegenie_server')">
+                    <span self="size-x1">homegenie server</span>
+                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                            <i class="material-icons">lightbulb_outline</i>
+                        </span>
+                </a>
+            </div>
+            <div class="menu-item" layout="row center-right">
+                <a href="javascript:scrollTo('zuix')">
+                    <span self="size-x1">zuix</span>
+                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                            <i class="material-icons">extension</i>
+                        </span>
+                </a>
+            </div>
+            <div class="menu-item" layout="row center-right">
+                <a href="javascript:scrollTo('logcam')">
+                    <span self="size-x1">logcam</span>
+                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                            <i class="material-icons">linked_camera</i>
+                        </span>
+                </a>
+            </div>
         </div>
     </div>
 </div>

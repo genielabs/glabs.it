@@ -49,13 +49,6 @@ var content_no_css = {
     css: false
 };
 var bootTimeout = null, updateHeaderTimeout = null;
-var menuOverlayShowing = false, menuButtonShowing = true;
-var menuButton = zuix.field('menu_button').hide()
-    .on('click', toggleMenu);
-var menuButtonClose = zuix.field('menu_button_close').hide()
-    .on('click', toggleMenu);
-var menuOverlay = zuix.field('menu_overlay').hide()
-    .on('click', toggleMenu);
 // ZUIX hooks
 zuix.hook('view:process', function(){
     // Force opening of all non-local links to a new window
@@ -156,53 +149,39 @@ function updateHeaderTitle() {
 
 }
 
+var menuOverlayShowing = false, menuButtonShowing = true;
+var menuButton = zuix.field('menu_button').hide()
+    .on('click', toggleMenu);
+var menuButtonClose = zuix.field('menu_button_close').hide()
+    .on('click', toggleMenu);
+var menuOverlay = zuix.field('menu_overlay').visibility('hidden')
+    .on('click', toggleMenu);
 function toggleMenu() {
-    var menuItems = menuOverlay.find('a');
     if (!menuOverlayShowing) {
         menuOverlayShowing = true;
-        menuOverlay.animateCss('fadeIn').show();
-        menuItems.each(function (p, el) {
-            showMenuItem(this, (menuItems.length()-p+1)*50);
-        });
-        menuButton.animateCss('rubberBand', { 'duration': '0.3s' });
-        menuButtonClose.animateCss('rotateIn', { 'duration': '0.3s' }, function () {
+        menuButton.animateCss('rubberBand', { duration: '0.3s' });
+        menuButtonClose.animateCss('rotateIn', { duration: '0.3s' }, function () {
             menuButton.hide();
         }).show();
+        menuOverlay.animateCss('fadeIn', { duration: '0.5s' }).visibility('')
+            .find('a').each(function(p,el) { this.animateCss('bounceInUp', { duration: '0.3s' }); });
     } else if (menuOverlayShowing) {
         menuOverlayShowing = false;
-        menuOverlay.animateCss('fadeOut', function () {
-            this.hide();
-        });
-        menuItems.each(function (p,el) {
-            hideMenuItem(this, (menuItems.length()-p+1)*50);
-        });
         if (menuButtonShowing) {
-            menuButtonClose.animateCss('rotateOut', { 'duration': '0.3s' }, function () {
+            menuButtonClose.animateCss('rotateOut', { duration: '0.3s' }, function () {
                 this.hide();
             });
-            menuButton.animateCss('fadeIn', { 'duration': '0.3s' });
+            menuButton.animateCss('fadeIn', { duration: '0.3s' });
         } else {
-            menuButtonClose.animateCss('fadeOutDown', { 'duration': '0.3s' }, function () {
+            menuButtonClose.animateCss('fadeOutDown', { duration: '0.3s' }, function () {
                 this.hide();
             });
         }
+        menuOverlay.animateCss('fadeOut', { duration: '0.5s' }, function () {
+            this.visibility('hidden');
+        }).find('a').each(function(p,el) { this.animateCss('bounceOutDown', { duration: '0.3s' }); });
         menuButton.show();
     }
-}
-
-function hideMenuItem(item, delay) {
-    setTimeout(function () {
-        item.animateCss('bounceOutDown', { duration: '0.2s' }, function () {
-            item.visibility('hidden');
-        });
-    }, delay);
-}
-
-function showMenuItem(item, delay) {
-    item.visibility('hidden');
-    setTimeout(function () {
-        item.animateCss('bounceInUp', { duration: '0.2s' }).visibility('');
-    }, delay);
 }
 
 function animateCss(animationName, param1, param2) {
@@ -211,11 +190,19 @@ function animateCss(animationName, param1, param2) {
     if (typeof param2 === 'function') {
         options = param1;
         callback = param2;
-    } else {
-        if (typeof param1 === 'function')
-            callback = param1;
-        else options = param1;
+    } else if (typeof param1 === 'function') {
+        callback = param1;
     }
+    if (typeof animationName !== 'string') {
+        if (typeof animationName === 'function') {
+            callback = animationName;
+        } else {
+            options = animationName;
+        }
+        animationName = '';
+    } else options = param1;
+
+    // TODO: should run all the following code for each element in the ZxQuery selection
 
     var prefixes = ['-webkit', '-moz', '-o', '-ms'];
     for (var key in options)
@@ -224,21 +211,20 @@ function animateCss(animationName, param1, param2) {
     var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
     var _t = this;
 
-    if (typeof animationName !== 'function') {
-        // stops any previously running animation
-        if (this.hasClass('animated')) {
-            this.css('transition', ''); // TODO: <-- is this really needed?
-            this.trigger('animationend');
-        }
-        // TODO: should run all the following code for each element in the ZxQuery selection
-        this.addClass('animated ' + animationName);
-    } else callback = animationName;
-
+    // stops any previously running animation
+    if (this.hasClass('animated')) {
+        this.css('transition', ''); // TODO: <-- is this really needed?
+        this.trigger('animationend');
+    }
+    this.addClass('animated ' + animationName);
+    // add event listener for animation end
     this.one(animationEnd, function () {
-        this.removeClass('animated ' + animationName);
-        //for(var key in options)
-        //    for (var p in prefixes)
-        //        _t.css(prefixes[p] + '-animation-' + key, '');
+        if (animationName !== '') {
+            this.removeClass('animated ' + animationName);
+        }
+        for(var key in options)
+            for (var p in prefixes)
+                _t.css(prefixes[p] + '-animation-' + key, '');
         if (typeof callback === 'function')
             callback.call(_t, animationName);
     });
