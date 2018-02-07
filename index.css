@@ -189,6 +189,9 @@ h3 small {
 .vertical-margin {
     margin-top: 32px;
 }
+.padding-right {
+    padding-right: 8px;
+}
 
 .more-repos {
     margin-bottom: 96px;

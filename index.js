@@ -156,6 +156,7 @@ var menuButtonClose = zuix.field('menu_button_close').hide()
     .on('click', toggleMenu);
 var menuOverlay = zuix.field('menu_overlay').visibility('hidden')
     .on('click', toggleMenu);
+var menuItems = menuOverlay.find('a');
 function toggleMenu() {
     if (!menuOverlayShowing) {
         menuOverlayShowing = true;
@@ -163,8 +164,10 @@ function toggleMenu() {
         menuButtonClose.animateCss('rotateIn', { duration: '0.3s' }, function () {
             menuButton.hide();
         }).show();
-        menuOverlay.animateCss('fadeIn', { duration: '0.5s' }).visibility('')
-            .find('a').each(function(p,el) { this.animateCss('bounceInUp', { duration: '0.3s' }); });
+        menuOverlay.animateCss('fadeIn', { duration: '0.5s' }).visibility('');
+        menuItems.each(function(p,el) {
+            this.animateCss('bounceInUp', { duration: '0.3s' });
+        });
     } else if (menuOverlayShowing) {
         menuOverlayShowing = false;
         if (menuButtonShowing) {
@@ -179,7 +182,10 @@ function toggleMenu() {
         }
         menuOverlay.animateCss('fadeOut', { duration: '0.5s' }, function () {
             this.visibility('hidden');
-        }).find('a').each(function(p,el) { this.animateCss('bounceOutDown', { duration: '0.3s' }); });
+        });
+        menuItems.each(function(p,el) {
+            this.animateCss('bounceOutDown', { duration: '0.3s' });
+        });
         menuButton.show();
     }
 }
@@ -238,9 +244,9 @@ function contact() {
 
 
 // url routing
-window.onhashchange = function () {
-    routeCurrentUrl(window.location.hash);
-};
+//window.onhashchange = function () {
+//    routeCurrentUrl(window.location.hash);
+//};
 function routeCurrentUrl(path) {
     // check if pagedView is loaded
     var anchorIndex = path.lastIndexOf('#');
@@ -250,20 +256,15 @@ function routeCurrentUrl(path) {
         path = path.substring(0, anchorIndex);
     }
     switch (path) {
-        case '#/start':
-            break;
-        case '#/docs':
-            break;
-        case '#/api':
-            break;
+        // TODO: not used
         case '':
         case '#/':
             break;
     }
-    scrollTo(pageAnchor);
+    scrollToAnchor(pageAnchor);
 }
 
-function scrollTo(pageAnchor) {
+function scrollToAnchor(pageAnchor) {
     var p = zuix.field('main');
     if (pageAnchor !== null) {
         var a = p.find('a[id=' + pageAnchor+']');

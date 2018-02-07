@@ -2,14 +2,14 @@
 <!--suppress JSCheckFunctionSignatures -->
 <html lang="en">
 <head>
-    <title>g-labs Home</title>
+    <title>G-Labs: The open source Factory</title>
+
+    <meta name="description" content="G-Labs: The open source Factory" />
+    <meta name="keywords" lang="en-us" content="G-Labs,HomeGenie,Home Automation,Smart Home,ZUIX,MVC,JavaScript Framework,MIG,Open Source,Open Source Factory,Full-Stack,Developer,Hire,Contribute" />
+    <meta name="author" content="Generoso Martello" />
 
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <meta http-equiv="Content-Language" content="en-us" />
-
-    <meta name="description" content="g-labs Home" />
-    <meta name="keywords" lang="en-us" content="g-labs,HomeGenie,Zuix,MIG,Open Source,Developer,Hire" />
-    <meta name="author" content="Generoso Martello" />
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -81,37 +81,37 @@
                  data-ui-priority="-1"
                  self="size-xxlarge" layout="columns spread-stretch" class="products"></div>
 
-            <!--
-            <div data-ui-include="content/about" data-ui-options="content_no_css"
-                 self="size-medium" layout="column top-center" class="about content-padding"></div>
-            -->
-
-            <div data-ui-include="content/more_repos" data-ui-options="content_no_css"
-                 self="size-xxlarge" layout="rows center-spread" class="more-repos"></div>
+            <section data-ui-include="content/more_repos" data-ui-options="content_no_css"
+                 self="size-xxlarge" layout="rows center-spread" class="more-repos"></section>
 
         </section>
 
-        <footer data-ui-include="content/footer" data-ui-options="content_no_css"
-                class="mdl-mini-footer" self="stretch" layout="row center-spread"></footer>
+        <footer data-ui-include="content/footer"
+                data-ui-options="content_no_css"
+                class="mdl-mini-footer"></footer>
+        <div class="content-padding mdl-color--black mdl-color-text--grey-700" self="stretch" layout="row center-left">
+            <div>copyleft &copy; 2016-to-infinity-and-beyond by <span class="mdl-color-text--grey-400">g-labs</span></div>
+            <div self="center-right">this website is <a href="#/#zuix" onclick="scrollToAnchor('zuix')" class="mdl-color-text--grey-400">powered by ZUIX</a></div>
+        </div>
 
     </div>
 
 </main>
 
-<!-- FAB menu overlay -->
+<!-- FAB menu overlay TODO: make a ZUIX component out of this -->
 <div data-ui-field="menu_overlay" layout="column stretch-stretch" class="menu-overlay">
     <div self="size-x1" layout="rows stretch-stretch">
         <div self="size-1of2" layout="column bottom-left">
             <div class="menu-item" layout="row center-left">
-                <a href="https://github.com/genielabs">
+                <a title="About..." href="#/#about" onclick="scrollToAnchor('about')">
                     <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">domain</i>
+                        <i class="material-icons">help_outline</i>
                     </span>
-                    <span self="size-x1">github</span>
+                    <span self="size-x1">about</span>
                 </a>
             </div>
             <div class="menu-item" layout="row center-left">
-                <a href="javascript:contact()">
+                <a title="Contact the author" href="#/#about" onclick="contact()">
                     <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
                         <i class="material-icons">mail_outline</i>
                     </span>
@@ -119,45 +119,53 @@
                 </a>
             </div>
             <div class="menu-item" layout="row center-left">
-                <a href="javascript:scrollTo('about')">
+                <a title="HomeGenie videos on YouTube" href="https://www.youtube.com/geniebby">
                     <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">help_outline</i>
+                        <i class="material-icons">video_library</i>
                     </span>
-                    <span self="size-x1">about</span>
+                    <span self="size-x1">youtube</span>
+                </a>
+            </div>
+            <div class="menu-item" layout="row center-left">
+                <a title="G-Labs on GitHub" href="https://github.com/genielabs">
+                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                        <i class="material-icons">domain</i>
+                    </span>
+                    <span self="size-x1">github</span>
                 </a>
             </div>
         </div>
         <div self="size-1of2" layout="column bottom-right">
             <div class="menu-item" layout="row center-right">
-                <a href="javascript:scrollTo('homegenie_plus')">
+                <a title="HomeGenie Plus for Android: smart home control panel and automation system" href="#/#homegenie_plus" onclick="scrollToAnchor('homegenie_plus')">
                     <span self="size-x1">homegenie plus</span>
                     <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                            <i class="material-icons">lightbulb_outline</i>
-                        </span>
+                        <i class="material-icons">lightbulb_outline</i>
+                    </span>
                 </a>
             </div>
             <div class="menu-item" layout="row center-right">
-                <a href="javascript:scrollTo('homegenie_server')">
+                <a title="HomeGenie Server: embeddable smart home gateway" href="#/#homegenie_server" onclick="scrollToAnchor('homegenie_server')">
                     <span self="size-x1">homegenie server</span>
                     <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                            <i class="material-icons">lightbulb_outline</i>
-                        </span>
+                        <i class="material-icons">lightbulb_outline</i>
+                    </span>
                 </a>
             </div>
             <div class="menu-item" layout="row center-right">
-                <a href="javascript:scrollTo('zuix')">
+                <a title="ZUIX: JavaScript library for component based Web" href="#/#zuix" onclick="scrollToAnchor('zuix')">
                     <span self="size-x1">zuix</span>
                     <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                            <i class="material-icons">extension</i>
-                        </span>
+                        <i class="material-icons">extension</i>
+                    </span>
                 </a>
             </div>
             <div class="menu-item" layout="row center-right">
-                <a href="javascript:scrollTo('logcam')">
+                <a title="LogCam for Android: personal video diary, dash camera and more..." href="#/#logcam" onclick="scrollToAnchor('logcam')">
                     <span self="size-x1">logcam</span>
                     <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                            <i class="material-icons">linked_camera</i>
-                        </span>
+                        <i class="material-icons">linked_camera</i>
+                    </span>
                 </a>
             </div>
         </div>
