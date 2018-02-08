@@ -1,0 +1,80 @@
+<!-- FAB menu overlay TODO: make a ZUIX component out of this -->
+<div data-ui-field="menu_overlay" layout="column stretch-stretch" class="menu-overlay">
+    <div self="size-x1" layout="rows stretch-stretch">
+        <div self="size-1of2" layout="column bottom-left">
+            <div class="menu-item" layout="row center-left">
+                <a title="About..." href="#/#about" onclick="scrollToAnchor('about')">
+                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                        <i class="material-icons">help_outline</i>
+                    </span>
+                    <span>about</span>
+                </a>
+            </div>
+            <div class="menu-item" layout="row center-left">
+                <a title="Contact the author" href="#/#about" onclick="contact()">
+                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                        <i class="material-icons">mail_outline</i>
+                    </span>
+                    <span>feedback</span>
+                </a>
+            </div>
+            <div class="menu-item" layout="row center-left">
+                <a title="HomeGenie videos on YouTube" href="https://www.youtube.com/geniebby">
+                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                        <i class="material-icons">video_library</i>
+                    </span>
+                    <span>youtube</span>
+                </a>
+            </div>
+            <div class="menu-item" layout="row center-left">
+                <a title="G-Labs on GitHub" href="https://github.com/genielabs">
+                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                        <i class="material-icons">domain</i>
+                    </span>
+                    <span>github</span>
+                </a>
+            </div>
+        </div>
+        <div self="size-1of2" layout="column bottom-right">
+            <div class="menu-item" layout="row center-right">
+                <a title="HomeGenie Plus for Android: smart home control panel and automation system" href="#/#homegenie_plus" onclick="scrollToAnchor('homegenie_plus')">
+                    <span>hg plus</span>
+                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                        <i class="material-icons">lightbulb_outline</i>
+                    </span>
+                </a>
+            </div>
+            <div class="menu-item" layout="row center-right">
+                <a title="HomeGenie Server: embeddable smart home gateway" href="#/#homegenie_server" onclick="scrollToAnchor('homegenie_server')">
+                    <span>hg server</span>
+                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                        <i class="material-icons">lightbulb_outline</i>
+                    </span>
+                </a>
+            </div>
+            <div class="menu-item" layout="row center-right">
+                <a title="ZUIX: JavaScript library for component based Web" href="#/#zuix" onclick="scrollToAnchor('zuix')">
+                    <span>zuix</span>
+                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                        <i class="material-icons">extension</i>
+                    </span>
+                </a>
+            </div>
+            <div class="menu-item" layout="row center-right">
+                <a title="LogCam for Android: personal video diary, dash camera and more..." href="#/#logcam" onclick="scrollToAnchor('logcam')">
+                    <span>logcam</span>
+                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                        <i class="material-icons">linked_camera</i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Colored FAB menu button -->
+<button data-ui-field="menu_button" class="menu-button mdl-button mdl-js-button mdl-button--fab mdl-button--accent mdl-shadow--6dp">
+    <i class="material-icons">add</i>
+</button>
+<button data-ui-field="menu_button_close" class="menu-button mdl-button mdl-js-button mdl-button--fab mdl-button--accent mdl-shadow--6dp">
+    <i class="material-icons">close</i>
+</button>

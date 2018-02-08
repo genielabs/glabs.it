@@ -50,6 +50,9 @@ a {
     margin-top: 24px;
     margin-bottom: 16px;
 }
+.media-container figure {
+    margin: 0;
+}
 .info {
     margin-bottom: 72px;
 }

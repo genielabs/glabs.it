@@ -29,26 +29,28 @@
  */
 zuix.$.ZxQuery.prototype.animateCss  = animateCss;
 
-// Splash Screen
-zuix.$.find('header').hide();
-zuix.field('main').hide();
-//zuix.load('ui/controls/scroll_helper', { view: document.body });
-zuix.field('cover').animateCss(function () {
-    setTimeout(function () {
-        zuix.$.find('header').show()
-            .animateCss('fadeInDown', { delay: '0.25s', duration: '0.75s' });
-        zuix.field('main').show()
-            .animateCss('fadeInUpBig', { delay: '0s', duration: '1.00s' }, function () {
-                zuix.field('cover').hide();
-            });
-    }, 500);
-});
-
-// Content loading options
+// Content loading default options
 var content_no_css = {
     css: false
 };
-var bootTimeout = null, updateHeaderTimeout = null;
+// Animated splash-cover load options
+var cover_load_options = {
+    priority: 1,
+    ready: function(ctx) {
+        // Start the cover animation
+        zuix.field('cover').animateCss(function () {
+            // Animation ended, hide cover, show header and content
+            zuix.field('splash-cover').removeClass('splash-cover');
+            zuix.$.find('header').show()
+                .animateCss('fadeInDown', { delay: '0.50s', duration: '1.00s' });
+            zuix.field('main').show()
+                .animateCss('fadeInUpBig', { delay: '0.0s', duration: '1.50s' }, function () {
+                    zuix.field('splash-cover').hide();
+                });
+        });
+    }
+};
+var bootTimeout = null;
 // ZUIX hooks
 zuix.hook('view:process', function(){
     // Force opening of all non-local links to a new window
@@ -62,133 +64,21 @@ zuix.hook('view:process', function(){
     }
     bootTimeout = setTimeout(function () {
         console.log("Boot completed!");
-        var currentOffset = 0;
-        zuix.field('main')
-            .on('scroll', function (e) {
-                var scrollTop = zuix.field('main').get().scrollTop;
-                if (menuButtonShowing && currentOffset < scrollTop) {
-                    menuButtonShowing = false;
-                    menuButton.animateCss('fadeOutDown', function () {
-                        this.hide();
-                    });
-                } else if (!menuButtonShowing && currentOffset > scrollTop) {
-                    menuButtonShowing = true;
-                    menuButton.animateCss('fadeInUp', function () {
-                    }).show();
-                }
-                currentOffset = scrollTop;
-                if (menuOverlayShowing) {
-                    toggleMenu();
-                }
-
-                if (updateHeaderTimeout != null) {
-                    clearTimeout(updateHeaderTimeout);
-                }
-                updateHeaderTimeout = setTimeout(updateHeaderTitle, 10);
-            });
-        headingTitles = zuix.field('main').find('h3');
         setTimeout(function () {
-            menuButton.animateCss('slideInUp').show();
             routeCurrentUrl(window.location.hash);
         }, 1000);
     }, 1000);
 });
 
-var currentIndex = -1;
-var headerLogo = zuix.field('header_logo');
-var headerTitle = zuix.field('header_title').hide();
-var headingTitles;
-function updateHeaderTitle() {
-    for (var i = 0; i < headingTitles.length()-1; i++) {
-        var currentHeader = headingTitles.eq(i);
-        var nextHeader = headingTitles.eq(i+1);
-        var chPosition = currentHeader.position();
-        var nhPosition = nextHeader.position();
-        if (i !== currentIndex && chPosition.y < 0 && nhPosition.y >= window.innerHeight/2) {
-            currentIndex = i;
-            currentHeader.animateCss('fadeOutUp', function () {
-                this.visibility('hidden');
-            });
-            headerLogo.animateCss('fadeOutDown', function () {
-                headerLogo.hide();
-            });
-            headerTitle.html(currentHeader.html())
-                .animateCss('fadeInDown')
-                .show();
-        } else if (i !== currentIndex && chPosition.y < 60 && nhPosition.y >= window.innerHeight/2) {
-            currentIndex = i;
-            currentHeader.animateCss('fadeOutUp', function () {
-                this.visibility('hidden');
-            });
-            headerLogo.animateCss('fadeOutUp', function () {
-                headerLogo.hide();
-            });
-            headerTitle.html(currentHeader.html())
-                .animateCss('fadeInUp')
-                .show();
-        } else if (currentIndex === i && chPosition.y >= 60) {
-            currentIndex = -1;
-            headerTitle.animateCss('fadeOutDown', function () {
-                this.hide();
-            });
-            headerLogo.animateCss('fadeInDown').show();
-            currentHeader.animateCss('slideInDown', function () {
-            }).visibility('');
-        } else if (currentIndex === i && nhPosition.y < window.innerHeight/2) {
-            currentIndex = -1;
-            headerTitle.animateCss('fadeOutUp', function () {
-                this.hide();
-            });
-            headerLogo.animateCss('fadeInUp').show();
-            currentHeader.animateCss('fadeIn', function () {
-            }).visibility('');
-        } else if (i !== currentIndex && currentHeader.visibility() === 'hidden') {
-            currentHeader.visibility('');
-        }
-    }
-
-}
-
-var menuOverlayShowing = false, menuButtonShowing = true;
-var menuButton = zuix.field('menu_button').hide()
-    .on('click', toggleMenu);
-var menuButtonClose = zuix.field('menu_button_close').hide()
-    .on('click', toggleMenu);
-var menuOverlay = zuix.field('menu_overlay').visibility('hidden')
-    .on('click', toggleMenu);
-var menuItems = menuOverlay.find('a');
-function toggleMenu() {
-    if (!menuOverlayShowing) {
-        menuOverlayShowing = true;
-        menuButton.animateCss('rubberBand', { duration: '0.3s' });
-        menuButtonClose.animateCss('rotateIn', { duration: '0.3s' }, function () {
-            menuButton.hide();
-        }).show();
-        menuOverlay.animateCss('fadeIn', { duration: '0.5s' }).visibility('');
-        menuItems.each(function(p,el) {
-            this.animateCss('bounceInUp', { duration: '0.3s' });
-        });
-    } else if (menuOverlayShowing) {
-        menuOverlayShowing = false;
-        if (menuButtonShowing) {
-            menuButtonClose.animateCss('rotateOut', { duration: '0.3s' }, function () {
-                this.hide();
-            });
-            menuButton.animateCss('fadeIn', { duration: '0.3s' });
-        } else {
-            menuButtonClose.animateCss('fadeOutDown', { duration: '0.3s' }, function () {
-                this.hide();
-            });
-        }
-        menuOverlay.animateCss('fadeOut', { duration: '0.5s' }, function () {
-            this.visibility('hidden');
-        });
-        menuItems.each(function(p,el) {
-            this.animateCss('bounceOutDown', { duration: '0.3s' });
-        });
-        menuButton.show();
-    }
-}
+// Hide content behind splash screen
+zuix.$.find('header').hide();
+//zuix.load('ui/controls/scroll_helper', { view: document.body });
+zuix.load('ui/controls/headings_roller', {
+    view: zuix.field('main').hide(),
+    tag: 'h3',
+    logo: 'header_logo',
+    title: 'header_title'
+});
 
 // TODO: update ZUIX component library to use this code
 function animateCss(animationName, param1, param2) {
@@ -243,11 +133,10 @@ function contact() {
     document.location.href = ('ma'+'il'+'to:info'+'@'+'glabs.it');
 }
 
-
 // url routing
-//window.onhashchange = function () {
-//    routeCurrentUrl(window.location.hash);
-//};
+window.onhashchange = function () {
+    routeCurrentUrl(window.location.hash);
+};
 function routeCurrentUrl(path) {
     // check if pagedView is loaded
     var anchorIndex = path.lastIndexOf('#');
