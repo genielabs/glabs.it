@@ -12,7 +12,6 @@ zuix.controller(function (cp) {
                 'overflow': 'hidden',
                 'position': 'relative'
             });
-        var link = null;
         slides = cp.view().children();
         slides.each(function (i, el) {
             if (i > 0) {
@@ -24,17 +23,7 @@ zuix.controller(function (cp) {
                     });
             }
             this.css('width', '100%');
-            if (link == null) {
-                link = this.attr('data-href');
-            }
         });
-        if (link != null) {
-            cp.view().parent().on('click', function () {
-                setTimeout(function () {
-                    window.open(link);
-                }, 100);
-            });
-        }
         start(cp);
     };
 

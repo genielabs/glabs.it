@@ -1,7 +1,8 @@
 zuix.controller(function (cp) {
 
     var HEADER_ROLL_OFFSET = 60;
-    var currentIndex = -1, updateHeaderTimeout = null;
+
+    var currentIndex = -1;
     var headerLogo, headerTitle, headingTitles = null;
 
     cp.create = function () {
@@ -16,12 +17,7 @@ zuix.controller(function (cp) {
             headerTitle = zuix.field('header_title').hide();
         }
         cp.view()
-            .on('scroll', function (e) {
-                if (updateHeaderTimeout != null) {
-                    clearTimeout(updateHeaderTimeout);
-                }
-                updateHeaderTimeout = setTimeout(updateHeaderTitle, 10);
-            });
+            .on('scroll', updateHeaderTitle);
     };
 
     function updateHeaderTitle() {
