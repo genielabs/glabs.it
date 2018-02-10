@@ -53,14 +53,16 @@
 
     <!-- ZUIX library  -->
     <script src="node_modules/zuix-dist/js/zuix.js"></script>
-    <!-- Enable ZUIX bundler to generate 'app.bundle.js' when going to production
+    <!-- Enable ZUIX bundler to generate 'app.bundle.js' when going to production -->
     <!--script src="https://genielabs.github.io/zuix/js/zuix-bundler.min.js"></script-->
     <!--
     Use generated app bundle. It contains all dynamically loaded resources packed into a single file)
     Dynamically loaded resource are those loaded using "data-ui-include" attribute, zuix.load(...) or
     zuix.include(...) methods.
+    Comment this line when developing otherwise all resource will be loaded from the app.bundle cache
+    instead of the actual file on disk.
     -->
-    <!--script src="app.bundle.min.js"></script-->
+    <script src="app.bundle.js"></script>
 
 </head>
 <body class="-mdl-color--blue-50 mdl-color-text--grey-800">

@@ -11,7 +11,7 @@ zuix.controller(function (cp) {
             .on('click', toggleMenu);
         menuOverlay = cp.field('menu_overlay').visibility('hidden')
             .on('click', toggleMenu);
-        menuItems = menuOverlay.find('a');
+        menuItems = menuOverlay.find('div[class*="menu-item"]');
         // show floating action button
         menuButton.animateCss('slideInUp').show();
 
@@ -50,7 +50,10 @@ zuix.controller(function (cp) {
             }).show();
             menuOverlay.animateCss('fadeIn', { duration: '0.5s' }).visibility('');
             menuItems.each(function(p,el) {
-                this.animateCss('bounceInUp', { duration: '0.3s' });
+                if (this.attr('data-ui-transition') != null) {
+                    var transition = JSON.parse(this.attr('data-ui-transition'));
+                    this.animateCss(transition.in, { duration: '0.5s', delay: transition.delay });
+                }
             });
         } else if (menuOverlayShowing) {
             menuOverlayShowing = false;
@@ -64,11 +67,14 @@ zuix.controller(function (cp) {
                     this.hide();
                 });
             }
-            menuOverlay.animateCss('fadeOut', { duration: '0.5s' }, function () {
+            menuOverlay.animateCss('fadeOut', { duration: '0.5s', delay: '0.2s' }, function () {
                 this.visibility('hidden');
             });
             menuItems.each(function(p,el) {
-                this.animateCss('bounceOutDown', { duration: '0.3s' });
+                if (this.attr('data-ui-transition') != null) {
+                    var transition = JSON.parse(this.attr('data-ui-transition'));
+                    this.animateCss(transition.out, { duration: '0.5s', delay: transition.delay });
+                }
             });
             menuButton.show();
         }

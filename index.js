@@ -61,7 +61,7 @@ zuix.hook('view:process', function(){
     // Wait some more for other lazy resources to load
     bootTimeout = setTimeout(function () {
         // Website boot completed
-        console.log('Website boot complete.')
+        console.log('Website boot complete.');
         setTimeout(function () {
             routeCurrentUrl(window.location.hash);
         }, 1000);
@@ -110,7 +110,7 @@ function scrollToAnchor(pageAnchor) {
                 zuix.$.scrollTo(p.get(), a.position().y, 750);
             }, 200);
         }
-    } //else p.get().scrollTop = 0;
+    } else zuix.$.scrollTo(p.get(), -p.get().scrollTop, 500);
 }
 function contact() {
     document.location.href = ('ma'+'il'+'to:info'+'@'+'glabs.it');
