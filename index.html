@@ -15,6 +15,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
+    <meta name=”application-name” content="G-Labs">
+    <meta name="theme-color" content="black">
+
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" sizes="192x192" href="images/android-desktop.png">
@@ -36,24 +39,27 @@
     <link rel="canonical" href="https://www.example.com/">
     -->
 
-    <!-- MDL -->
+    <!-- Google's Material Design Lite (MDL) -->
     <link rel="stylesheet" href="js/mdl/material.min.css">
     <script src="js/mdl/material.min.js"></script>
 
-    <!-- Fonts -->
+    <!-- Google's Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Dosis:200,400" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <!-- FLA, flex layout attributes -->
+    <!-- FLA, Flex Layout Attributes -->
     <link href="css/flex-layout-attribute.min.css" rel="stylesheet">
-
-    <!-- Animte.Css -->
-    <link rel="stylesheet" href="css/animate-3.5.2.min.css">
 
     <!-- ZUIX library  -->
     <script src="node_modules/zuix-dist/js/zuix.js"></script>
+    <!-- Enable ZUIX bundler to generate 'app.bundle.js' when going to production
     <!--script src="https://genielabs.github.io/zuix/js/zuix-bundler.min.js"></script-->
+    <!--
+    Use generated app bundle. It contains all dynamically loaded resources packed into a single file)
+    Dynamically loaded resource are those loaded using "data-ui-include" attribute, zuix.load(...) or
+    zuix.include(...) methods.
+    -->
     <!--script src="app.bundle.min.js"></script-->
 
 </head>

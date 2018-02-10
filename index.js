@@ -20,15 +20,6 @@
  *
  */
 
-/**
- * Extension function ZUIX+AnimateCSS
- * @param animationName
- * @param [param1] optional animation options or animation-end callback
- * @param [param2] optional animation-end callback when passed param1 is animation options object
- * @return {ZxQuery}
- */
-zuix.$.ZxQuery.prototype.animateCss  = animateCss;
-
 // Content loading default options
 var content_no_css = {
     css: false
@@ -50,20 +41,27 @@ var cover_load_options = {
         });
     }
 };
+
+// Animate CSS extension method for ZxQuery
+zuix.$.ZxQuery.prototype.animateCss = function() {};
+zuix.using('component', 'https://genielabs.github.io/zuix/ui/utils/animate_css', function(res, ctx){
+    console.log("AnimateCSS extension loaded.", res, ctx);
+});
+
+// Startup
 var bootTimeout = null;
-// ZUIX hooks
 zuix.hook('view:process', function(){
     // Force opening of all non-local links to a new window
-    zuix.$('a[href*="://"]').attr('target','_blank');
-}).hook('component:ready', function (view) {
-    console.log('component ready', this);
+    zuix.$('a[href*="://"]').attr('rel','noopener');
 }).hook('load:end', function () {
     // Initial resource loading completed...
     if (bootTimeout != null) {
         clearTimeout(bootTimeout);
     }
+    // Wait some more for other lazy resources to load
     bootTimeout = setTimeout(function () {
-        console.log("Boot completed!");
+        // Website boot completed
+        console.log('Website boot complete.')
         setTimeout(function () {
             routeCurrentUrl(window.location.hash);
         }, 1000);
@@ -73,6 +71,7 @@ zuix.hook('view:process', function(){
 // Hide content behind splash screen
 zuix.$.find('header').hide();
 //zuix.load('ui/controls/scroll_helper', { view: document.body });
+// Load 'Headings Roller' plugin
 zuix.load('ui/controls/headings_roller', {
     view: zuix.field('main').hide(),
     tag: 'h3',
@@ -80,60 +79,7 @@ zuix.load('ui/controls/headings_roller', {
     title: 'header_title'
 });
 
-// TODO: update ZUIX component library to use this code
-function animateCss(animationName, param1, param2) {
-    var callback, options;
-
-    if (typeof param2 === 'function') {
-        options = param1;
-        callback = param2;
-    } else if (typeof param1 === 'function') {
-        callback = param1;
-    }
-    if (typeof animationName !== 'string') {
-        if (typeof animationName === 'function') {
-            callback = animationName;
-        } else {
-            options = animationName;
-        }
-        animationName = '';
-    } else options = param1;
-
-    // TODO: should run all the following code for each element in the ZxQuery selection
-
-    var prefixes = ['-webkit', '-moz', '-o', '-ms'];
-    for (var key in options)
-        for (var p in prefixes)
-            this.css(prefixes[p] + '-animation-' + key, options[key]);
-    var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-    var _t = this;
-
-    // stops any previously running animation
-    if (this.hasClass('animated')) {
-        this.css('transition', ''); // TODO: <-- is this really needed?
-        this.trigger('animationend');
-    }
-    this.addClass('animated ' + animationName);
-    // add event listener for animation end
-    this.one(animationEnd, function () {
-        if (animationName !== '') {
-            this.removeClass('animated ' + animationName);
-        }
-        for(var key in options)
-            for (var p in prefixes)
-                _t.css(prefixes[p] + '-animation-' + key, '');
-        if (typeof callback === 'function')
-            callback.call(_t, animationName);
-    });
-
-    return this;
-}
-
-function contact() {
-    document.location.href = ('ma'+'il'+'to:info'+'@'+'glabs.it');
-}
-
-// url routing
+// URL routing
 window.onhashchange = function () {
     routeCurrentUrl(window.location.hash);
 };
@@ -154,6 +100,7 @@ function routeCurrentUrl(path) {
     scrollToAnchor(pageAnchor);
 }
 
+// Utility methods
 function scrollToAnchor(pageAnchor) {
     var p = zuix.field('main');
     if (pageAnchor !== null) {
@@ -164,4 +111,7 @@ function scrollToAnchor(pageAnchor) {
             }, 200);
         }
     } //else p.get().scrollTop = 0;
+}
+function contact() {
+    document.location.href = ('ma'+'il'+'to:info'+'@'+'glabs.it');
 }
