@@ -9,6 +9,9 @@ h3 {
     text-align: center;
     margin: 0 0 24px;
 }
+h4 {
+    font-weight: 600;
+}
 p {
     margin: 0 0 16px;
     font-size:120%;
@@ -25,13 +28,7 @@ a {
     margin:0;
 }
 .description {
-    padding-left: 24px;
-    padding-right: 24px;
-    margin-top: 24px;
-}
-.description-more {
-    padding-left: 24px;
-    padding-right: 24px;
+    font-size: 110%;
 }
 .description p {
     font-size: 100%;
@@ -40,6 +37,10 @@ a {
 .description ul {
     font-size: 100%;
 }
+.description-more {
+    padding-left: 24px;
+    padding-right: 24px;
+}
 .gallery {
     padding: 24px;
     text-align: right;
@@ -47,7 +48,7 @@ a {
 .media-container {
     padding: 8px;
     height: auto;
-    margin-top: 24px;
+    margin-top: 96px;
     margin-bottom: 16px;
 }
 .media-container figure {
@@ -79,4 +80,25 @@ a {
 
 .mdl-button {
     min-width: 120px;
+}
+
+@media only screen and (max-width: 640px) {
+    .description-more {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .gallery {
+        padding: 8px;
+    }
+    .media-container {
+        padding: 8px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+    .info {
+        margin-bottom: 8px;
+    }
+    .link {
+        margin-top: 8px;
+    }
 }

@@ -12,17 +12,17 @@ zuix.controller(function (cp) {
         menuOverlay = cp.field('menu_overlay').visibility('hidden')
             .on('click', toggleMenu);
         menuItems = menuOverlay.find('div[class*="menu-item"]');
-        // show floating action button
-        menuButton.animateCss('slideInUp').show();
 
         var scrollerName = cp.view().attr('data-ui-scroller');
         if (scrollerName != null) {
             scroller = zuix.field(scrollerName);
+        } else {
+            scroller = zuix.$(window);
         }
         if (scroller != null) {
             scroller.on('scroll', function (e) {
                 var scrollTop = scroller.get().scrollTop;
-                if (menuButtonShowing && currentOffset < scrollTop) {
+                if (menuButtonShowing && currentOffset < scrollTop && scrollTop > 1) {
                     menuButtonShowing = false;
                     menuButton.animateCss('fadeOutDown', function () {
                         this.hide();
@@ -38,6 +38,11 @@ zuix.controller(function (cp) {
                 }
             });
         }
+
+        zuix.using('component', 'https://genielabs.github.io/zuix/ui/utils/animate_css', function(res, ctx){
+            // show floating action button
+            menuButton.animateCss('slideInUp').show();
+        });
 
     };
 

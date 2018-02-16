@@ -1,74 +1,44 @@
 <!-- FAB menu overlay TODO: make a ZUIX component out of this -->
-<div data-ui-field="menu_overlay" layout="column stretch-stretch" class="menu-overlay">
-    <div self="size-x1" layout="rows stretch-stretch">
-        <div self="size-1of2" layout="column bottom-right">
-            <div class="menu-item" layout="row center-right" data-ui-transition='{ "in": "bounceInLeft", "out": "fadeOutLeft", "delay": "0.4s" }'>
-                <a title="G-Labs on GitHub" href="https://github.com/genielabs">
-                    <span>github</span>
-                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">domain</i>
-                    </span>
-                </a>
-            </div>
-            <div class="menu-item" layout="row center-right" data-ui-transition='{ "in": "bounceInLeft", "out": "fadeOutLeft", "delay": "0.3s" }'>
-                <a title="LogCam for Android: personal video diary, dash camera and more..." href="#/#logcam" onclick="scrollToAnchor('logcam')">
-                    <span>logcam</span>
-                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">linked_camera</i>
-                    </span>
-                </a>
-            </div>
-            <div class="menu-item" layout="row center-right" data-ui-transition='{ "in": "bounceInLeft", "out": "fadeOutLeft", "delay": "0.2s" }'>
-                <a title="ZUIX: JavaScript library for component based Web" href="#/#zuix" onclick="scrollToAnchor('zuix')">
-                    <span>zuix</span>
-                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">extension</i>
-                    </span>
-                </a>
-            </div>
-            <div class="menu-item" layout="row center-right" data-ui-transition='{ "in": "bounceInLeft", "out": "fadeOutLeft", "delay": "0.1s" }'>
-                <a title="Contact the author" href="#/#about" onclick="contact()">
-                    <span>feedback</span>
-                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">mail_outline</i>
-                    </span>
-                </a>
-            </div>
-        </div>
-        <div self="size-1of2" layout="column bottom-left">
-            <div class="menu-item" layout="row center-left" data-ui-transition='{ "in": "bounceInRight", "out": "fadeOutRight", "delay": "0.4s" }'>
-                <a title="HomeGenie videos on YouTube" href="https://www.youtube.com/geniebby">
-                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">video_library</i>
-                    </span>
-                    <span>youtube</span>
-                </a>
-            </div>
-            <div class="menu-item" layout="row center-left" data-ui-transition='{ "in": "bounceInRight", "out": "fadeOutRight", "delay": "0.3s" }'>
-                <a title="HomeGenie Server: embeddable smart home gateway" href="#/#homegenie_server" onclick="scrollToAnchor('homegenie_server')">
-                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">lightbulb_outline</i>
-                    </span>
-                    <span>hg server</span>
-                </a>
-            </div>
-            <div class="menu-item" layout="row center-left" data-ui-transition='{ "in": "bounceInRight", "out": "fadeOutRight", "delay": "0.2s" }'>
-                <a title="HomeGenie Plus for Android: smart home control panel and automation system" href="#/#homegenie_plus" onclick="scrollToAnchor('homegenie_plus')">
-                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">lightbulb_outline</i>
-                    </span>
-                    <span>hg plus</span>
-                </a>
-            </div>
-            <div class="menu-item" layout="row center-left" data-ui-transition='{ "in": "bounceInRight", "out": "fadeOutRight", "delay": "0.1s" }'>
-                <a title="About..." href="#/#about" onclick="scrollToAnchor('about')">
-                    <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                        <i class="material-icons">help_outline</i>
-                    </span>
-                    <span>about</span>
-                </a>
-            </div>
-        </div>
+<div data-ui-field="menu_overlay" layout="column bottom-right" class="menu-overlay">
+    <div class="menu-item" layout="row center-right" data-ui-transition='{ "in": "bounceInRight", "out": "fadeOutRight", "delay": "0.5s" }'>
+        <a title="G-Labs on GitHub" href="https://github.com/genielabs">
+            <span>github</span>
+            <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                <i class="material-icons">domain</i>
+            </span>
+        </a>
+    </div>
+    <div class="menu-item" layout="row center-right" data-ui-transition='{ "in": "bounceInRight", "out": "fadeOutRight", "delay": "0.4s" }'>
+        <a title="HomeGenie videos on YouTube" href="https://www.youtube.com/geniebby">
+            <span>youtube</span>
+            <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                <i class="material-icons">video_library</i>
+            </span>
+        </a>
+    </div>
+    <div class="menu-item" layout="row center-right" data-ui-transition='{ "in": "bounceInRight", "out": "fadeOutRight", "delay": "0.3s" }'>
+        <a title="Contact the author" onclick="contact()">
+            <span>feedback</span>
+            <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                <i class="material-icons">mail_outline</i>
+            </span>
+        </a>
+    </div>
+    <div class="menu-item" layout="row center-right" data-ui-transition='{ "in": "bounceInRight", "out": "fadeOutRight", "delay": "0.2s" }'>
+        <a title="Go to top" onclick="scrollToAnchor('top')">
+            <span>top</span>
+            <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                <i class="material-icons">arrow_upward</i>
+            </span>
+        </a>
+    </div>
+    <div class="menu-item" layout="row center-right" data-ui-transition='{ "in": "bounceInRight", "out": "fadeOutRight", "delay": "0.1s" }'>
+        <a title="About..." onclick="scrollToAnchor('about')">
+            <span>about</span>
+            <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+                <i class="material-icons">help_outline</i>
+            </span>
+        </a>
     </div>
 </div>
 <!-- Colored FAB menu button -->

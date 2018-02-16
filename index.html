@@ -4,7 +4,7 @@
 <head>
     <title>G-Labs: The open source Factory</title>
 
-    <meta name="description" content="G-Labs: The open source Factory" />
+    <meta name="description" content="Frontend, backend, web and apps development, smart home automation ...find out more, click me =)" />
     <meta name="keywords" lang="en-us" content="G-Labs,HomeGenie,Home Automation,Smart Home,ZUIX,MVC,JavaScript Framework,MIG,Open Source,Open Source Factory,Full-Stack,Developer,Hire,Contribute" />
     <meta name="author" content="Generoso Martello" />
 
@@ -80,31 +80,29 @@
         G-Labs on GitHub
     </a>
 </header>
-<div data-ui-field="main">
+<div data-ui-field="main" id="main">
 
     <div self="stretch center" layout="columns top-center">
 
         <!-- Products -->
         <section data-ui-include="content/products"
-             data-ui-options="content_no_css"
-             data-ui-priority="-1"
              self="size-xxlarge" layout="columns spread-stretch" class="products"></section>
 
         <!-- More repositories -->
         <section data-ui-include="content/more_repos"
              data-ui-options="content_no_css"
-             data-ui-priority="-1"
+             data-anijs="if: scroll, on: window, do: zoomIn animated, before: scrollReveal"
              self="size-xxlarge" layout="rows stretch-spread" class="more-repos"></section>
 
         <!-- Footer with 'About' note -->
+        <a id="about"></a>
         <footer data-ui-include="content/footer"
-                data-ui-options="content_no_css"
                 layout="column top-center"
                 class="mdl-color--grey-900 mdl-color-text--grey-500"></footer>
 
         <!-- Copyright notice -->
         <div class="footer_bar content-padding mdl-color--black mdl-color-text--grey-700" self="stretch" layout="rows center-center">
-            <div self="center-left"><a href="#/#zuix" onclick="scrollToAnchor('zuix')" class="mdl-color-text--grey-400 mdl-typography--font-bold">ZUIX</a> powered website</div>
+            <div self="center-left"><a href="#!zuix" onclick="scrollToAnchor('zuix')" class="mdl-color-text--grey-400 mdl-typography--font-bold">ZUIX</a> powered website</div>
             <div self="size-x1 sm-full" align="right">&copy; 2016-to-infinity-and-beyond by <span class="mdl-color-text--grey-400 mdl-typography--font-bold">g-labs</span></div>
         </div>
 
@@ -113,8 +111,7 @@
 </div>
 
 <!-- FAB menu overlay -->
-<div data-ui-load="ui/menu/menu_overlay"
-     data-ui-scroller="main"></div>
+<div data-ui-load="ui/menu/menu_overlay"></div>
 
 <!-- Splash Screen -->
 <div data-ui-include="content/cover"

@@ -1,9 +1,9 @@
 zuix.controller(function (cp) {
 
-    var HEADER_ROLL_OFFSET = 60;
+    var HEADER_ROLL_OFFSET = 100;
 
     var currentIndex = -1;
-    var headerLogo, headerTitle, headingTitles = null;
+    var headerLogo, headerTitle, headingTitles = null, scroller;
 
     cp.create = function () {
         if (cp.options().logo) {
@@ -16,7 +16,11 @@ zuix.controller(function (cp) {
         } else {
             headerTitle = zuix.field('header_title').hide();
         }
-        cp.view()
+        scroller = cp.options().scroller;
+        if (scroller == null) {
+            scroller = window;
+        }
+        zuix.$(scroller)
             .on('scroll', updateHeaderTitle);
     };
 
@@ -28,12 +32,12 @@ zuix.controller(function (cp) {
                 headingTitles = cp.view().find('h3');
             }
         }
+        var nextOffset = scroller.innerHeight/2;
         for (var i = 0; i < headingTitles.length()-1; i++) {
             var currentHeader = headingTitles.eq(i);
             var nextHeader = headingTitles.eq(i+1);
             var chPosition = currentHeader.position();
             var nhPosition = nextHeader.position();
-            var nextOffset = window.innerHeight/2;
             if (i !== currentIndex && chPosition.y < 0 && nhPosition.y >= nextOffset) {
                 currentIndex = i;
                 currentHeader.animateCss('fadeOutUp', function () {

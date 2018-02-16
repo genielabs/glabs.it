@@ -1,0 +1,16 @@
+. {
+    padding-top: 56px;
+}
+
+article {
+    margin-top: 56px;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+@media only screen and (max-width: 640px) {
+    article {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}
