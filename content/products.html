@@ -5,7 +5,7 @@
 
 <!-- HomeGenie Plus -->
 <a id="homegenie_plus"></a>
-<article data-ui-include="ui/cards/flexy"
+<article data-ui-include="ui/templates/flexy_card"
          layout="rows top-spread">
     <h3 data-ui-field="title">
         HomeGenie Plus
@@ -24,18 +24,20 @@
             Source code for this app will be released once it reaches 5000+ installations.
         </p>
     </div>
-    <div data-ui-field="images">
-        <img src="images/hg_plus/01_t.jpg">
-        <img src="images/hg_plus/02_t.jpg">
-        <img src="images/hg_plus/03_t.jpg">
-        <img src="images/hg_plus/03b_t.jpg">
-        <img src="images/hg_plus/04_t.jpg">
-        <img src="images/hg_plus/05_t.jpg">
-        <img src="images/hg_plus/06_t.jpg">
-        <img src="images/hg_plus/07_t.jpg">
-        <img src="images/hg_plus/08_t.jpg">
-        <img src="images/hg_plus/09_t.jpg">
-    </div>
+    <figure data-ui-field="picture">
+        <div data-ui-load="ui/controllers/image_ticker" data-ui-options="image_ticker_options">
+            <img src="images/hg_plus/01_t.jpg"  data-src-full="images/hg_plus/01.jpg">
+            <img src="images/hg_plus/02_t.jpg"  data-src-full="images/hg_plus/02.jpg">
+            <img src="images/hg_plus/03_t.jpg"  data-src-full="images/hg_plus/03.jpg">
+            <img src="images/hg_plus/03b_t.jpg" data-src-full="images/hg_plus/03b.jpg">
+            <img src="images/hg_plus/04_t.jpg"  data-src-full="images/hg_plus/04.jpg">
+            <img src="images/hg_plus/05_t.jpg"  data-src-full="images/hg_plus/05.jpg">
+            <img src="images/hg_plus/06_t.jpg"  data-src-full="images/hg_plus/06.jpg">
+            <img src="images/hg_plus/07_t.jpg"  data-src-full="images/hg_plus/07.jpg">
+            <img src="images/hg_plus/08_t.jpg"  data-src-full="images/hg_plus/08.jpg">
+            <img src="images/hg_plus/09_t.jpg"  data-src-full="images/hg_plus/09.jpg">
+        </div>
+    </figure>
     <div data-ui-field="desc-more-left">
         <h4>Features</h4>
         <ul>
@@ -99,11 +101,14 @@
             </ul>
         </div>
     </div>
+    <div data-ui-field="navigate">
+        <i onclick="scrollToAnchor('homegenie_server')" class="animated bounce infinite mdl-color-text--accent material-icons">arrow_downward</i>
+    </div>
 </article>
 
 <!-- HomeGenie Server -->
 <a id="homegenie_server"></a>
-<article data-ui-include="ui/cards/flexy"
+<article data-ui-include="ui/templates/flexy_card"
          layout="rows top-spread">
     <h3 data-ui-field="title">
         HomeGenie Server
@@ -140,9 +145,9 @@
                href="https://genielabs.github.io/HomeGenie">Documentation</a>
         </p>
     </div>
-    <div data-ui-field="images">
+    <figure data-ui-field="picture">
         <img src="images/homegenie.jpg">
-    </div>
+    </figure>
     <div data-ui-field="notes-b">
         <label class="mdl-color-text--blue-600">Available since</label>
         <div layout="rows center-left">
@@ -177,11 +182,14 @@
             </ul>
         </div>
     </div>
+    <div data-ui-field="navigate">
+        <i onclick="scrollToAnchor('zuix')" class="animated bounce infinite mdl-color-text--accent material-icons">arrow_downward</i>
+    </div>
 </article>
 
 <!-- ZUIX -->
 <a id="zuix"></a>
-<article data-ui-include="ui/cards/flexy"
+<article data-ui-include="ui/templates/flexy_card"
          layout="rows top-spread">
     <h3 data-ui-field="title">
         ZUIX
@@ -237,9 +245,9 @@
 
         </p>
     </div>
-    <div data-ui-field="images">
+    <figure data-ui-field="picture">
         <img src="images/zuix.jpg">
-    </div>
+    </figure>
     <div data-ui-field="notes-b">
         <label class="mdl-color-text--blue-600">Available since</label>
         <div layout="rows center-left">
@@ -267,11 +275,14 @@
             </ul>
         </div>
     </div>
+    <div data-ui-field="navigate">
+        <i onclick="scrollToAnchor('logcam')" class="animated bounce infinite mdl-color-text--accent material-icons">arrow_downward</i>
+    </div>
 </article>
 
 <!-- LogCam -->
 <a id="logcam"></a>
-<article data-ui-include="ui/cards/flexy"
+<article data-ui-include="ui/templates/flexy_card"
          layout="rows top-spread">
     <h3 data-ui-field="title">
         LogCam (beta)
@@ -289,11 +300,13 @@
         is already being developed with extra features such as
         remote control, RTSP streaming, web API and UPnP discovery.
     </p>
-    <div data-ui-field="images">
-        <!--img src="images/logcam.png" -->
-        <img src="images/logcam-01_t.jpg">
-        <img src="images/logcam-02_t.jpg">
-    </div>
+    <figure data-ui-field="picture">
+        <div data-ui-load="ui/controllers/image_ticker" data-ui-options="image_ticker_options">
+            <!--img src="images/logcam.png" -->
+            <img src="images/logcam-01_t.jpg" data-src-full="images/logcam-01.jpg">
+            <img src="images/logcam-02_t.jpg" data-src-full="images/logcam-02.jpg">
+        </div>
+    </figure>
     <div data-ui-field="notes-b">
         <label class="mdl-color-text--blue-600">Available since</label>
         <div layout="rows center-left">
@@ -313,5 +326,8 @@
                 <li>rtsp</li>
             </ul>
         </div>
+    </div>
+    <div data-ui-field="navigate">
+        <i onclick="scrollToAnchor('more_repos')" class="animated bounce infinite mdl-color-text--accent material-icons">arrow_downward</i>
     </div>
 </article>

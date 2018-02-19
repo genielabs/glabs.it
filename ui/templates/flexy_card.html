@@ -1,18 +1,20 @@
-<div self="size-1of2 sm-full md-full top" class="description" data-anijs="if: scroll, on: window, do: fadeInLeft animated, before: scrollReveal">
+<div self="size-1of1" data-anijs="if: scroll, on: window, do: fadeInUp animated, before: scrollReveal">
     <h3 data-ui-field="title" class="mdl-color-text--blue-800" layout="row center-left">
         homegenie plus
         <i class="icon material-icons">home</i>
     </h3>
-    <p data-ui-field="description" class="description">
-        Specifically designed to be an HA control panel for the end-user,
-        HomeGenie Plus is the android client app for HomeGenie.
-    </p>
 </div>
-<div self="size-1of2 sm-full md-full top" class="gallery" data-anijs="if: scroll, on: window, do: fadeInRight animated, before: scrollReveal">
-    <div self="column stretch-right" class="media-container mdl-shadow--8dp">
-        <figure data-ui-field="images"
-             data-ui-load="ui/gallery/slider" style="overflow: hidden">
-        </figure>
+<div self="size-1of1" layout="rows top-spread">
+    <div self="size-1of2 sm-full md-full top" class="description" data-anijs="if: scroll, on: window, do: fadeInLeft animated, before: scrollReveal">
+        <p data-ui-field="description" class="description">
+            Specifically designed to be a smart home control panel,
+            HomeGenie Plus is the android client app for HomeGenie.
+        </p>
+    </div>
+    <div self="size-1of2 sm-full md-full top md-first sm-first" class="gallery" data-anijs="if: scroll, on: window, do: fadeInRight animated, before: scrollReveal">
+        <div self="column stretch-right" class="media-container mdl-shadow--8dp">
+            <figure data-ui-field="picture"></figure>
+        </div>
     </div>
 </div>
 <div self="size-1of2 sm-full md-full top" class="description-more" data-ui-field="desc-more-left" data-anijs="if: scroll, on: window, do: fadeInLeft animated, before: scrollReveal">
@@ -33,3 +35,4 @@
         </div>
     </div>
 </div>
+<div self="stretch" data-ui-field="navigate" class="nav-button"></div>

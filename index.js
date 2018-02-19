@@ -28,17 +28,34 @@ var content_no_css = {
 var cover_load_options = {
     priority: 10,
     ready: function(ctx) {
-        // Start the cover animation
-        zuix.field('cover').animateCss(function () {
-            // Animation ended, hide cover, show header and content
-            // last component loaded, hide the splash-screen and show the main page
-            zuix.field('splash-cover').removeClass('splash-cover');
-            zuix.$.find('header').show()
-                .animateCss('fadeInDown', { delay: '0.50s', duration: '1.00s' });
-            zuix.field('main').show()
-                .animateCss('fadeInUpBig', { delay: '0.0s', duration: '1.50s' }, function () {
-                    zuix.field('splash-cover').hide();
-                });
+        // Load Animate CSS extension method for ZxQuery
+        zuix.using('component', 'https://genielabs.github.io/zuix/ui/utils/animate_css', function(res, ctx){
+            console.log("AnimateCSS extension loaded.", res, ctx);
+            // Start the cover animation
+            zuix.field('cover').animateCss(function () {
+                // Animation ended, hide cover, show header and content
+                // last component loaded, hide the splash-screen and show the main page
+                zuix.field('splash-cover').removeClass('splash-cover');
+                zuix.$.find('header').show()
+                    .animateCss('fadeInDown', { delay: '0.50s', duration: '1.00s' });
+                zuix.field('main').show()
+                    .animateCss('fadeInUpBig', { delay: '0.0s', duration: '1.50s' }, function () {
+                        zuix.field('splash-cover').hide();
+                    });
+            });
+        });
+    }
+};
+// Image ticker used for some products: open full screen slide-show on click
+var image_ticker_options = {
+    ready: function(ctx) {
+        ctx.on('ticker:click', function(e) {
+            var data = e.detail;
+            console.log(data.list, data.current);
+            zuix.context('slide-show')
+                .items(data.list)
+                .current(data.current)
+                .open();
         });
     }
 };
@@ -57,9 +74,12 @@ if (clientIsWebCrawler()) {
 
 // Website boot
 var bootTimeout = null;
-zuix.hook('view:process', function(){
+zuix.hook('view:process', function(view){
     // Force opening of all non-local links to a new window
     zuix.$('a[href*="://"]').attr('rel','noopener');
+    // Material Design Light integration - DOM upgrade
+    if (/*this.options().mdl &&*/ typeof componentHandler !== 'undefined')
+        componentHandler.upgradeElements(view.get());
 }).hook('componentize:end', function () {
     // Initial resource loading completed...
     if (bootTimeout != null) {
@@ -75,10 +95,6 @@ zuix.hook('view:process', function(){
 
 // Load external scripts if not already packed into the app.bundle.js
 function init() {
-    // Animate CSS extension method for ZxQuery
-    zuix.using('component', 'https://genielabs.github.io/zuix/ui/utils/animate_css', function(res, ctx){
-        console.log("AnimateCSS extension loaded.", res, ctx);
-    });
     // AniJs + plugins
     zuix.using('style', 'https://anijs.github.io/lib/anicollection/anicollection.css', function(res) {
         console.log("AniJS CSS Helper loaded.", res);
@@ -93,7 +109,7 @@ function init() {
         });
     });
     // Load 'Headings Roller' plugin
-    zuix.load('ui/controls/headings_roller', {
+    zuix.load('ui/controllers/headings_roller', {
         view: zuix.field('main'),
         tag: 'h3',
         logo: 'header_logo',
@@ -102,6 +118,7 @@ function init() {
 }
 
 // Utility methods
+
 function scrollToAnchor(pageAnchor) {
     var p = zuix.field('main');
     var anchorElement, offset = 0;
@@ -116,7 +133,7 @@ function scrollToAnchor(pageAnchor) {
         offset = p.position().y;
     }
     setTimeout(function () {
-        zuix.$.scrollTo(p.get(), offset, 750);
+        scrollTo(document.documentElement, document.documentElement.scrollTop+offset, 500);
     }, 500);
 }
 function contact() {
@@ -127,4 +144,25 @@ function clientIsWebCrawler(){
     var re = new RegExp(botPattern, 'i');
     var userAgent = navigator.userAgent;
     return re.test(userAgent);
+}
+
+var scrollEndTs, scrollInterval;
+function scrollTo(element, to, duration) {
+    if (scrollInterval != null) {
+        clearTimeout(scrollInterval);
+    }
+    var currentTs = Date.now();
+    if (duration != null) {
+        scrollEndTs = currentTs + duration;
+    }
+    duration = scrollEndTs-currentTs;
+    var difference = to - element.scrollTop;
+    if (duration <= 0) {
+        element.scrollTop = to;
+        return;
+    }
+    scrollInterval = setTimeout(function() {
+        element.scrollTop = element.scrollTop + (difference / (duration/10));
+        scrollTo(element, to);
+    });
 }

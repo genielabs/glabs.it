@@ -89,9 +89,10 @@
              self="size-xxlarge" layout="columns spread-stretch" class="products"></section>
 
         <!-- More repositories -->
+        <a id="more_repos"></a>
         <section data-ui-include="content/more_repos"
              data-ui-options="content_no_css"
-             data-anijs="if: scroll, on: window, do: zoomIn animated, before: scrollReveal"
+             data-anijs="if: scroll, on: window, do: zoomInDown animated, before: scrollReveal"
              self="size-xxlarge" layout="rows stretch-spread" class="more-repos"></section>
 
         <!-- Footer with 'About' note -->
@@ -111,7 +112,11 @@
 </div>
 
 <!-- FAB menu overlay -->
-<div data-ui-load="ui/menu/menu_overlay"></div>
+<div data-ui-load="ui/components/menu_overlay"></div>
+
+<!-- Full screen image slide show -->
+<div data-ui-load="ui/components/media_browser"
+     data-ui-context="slide-show"></div>
 
 <!-- Splash Screen -->
 <div data-ui-include="content/cover"

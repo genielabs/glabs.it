@@ -7,7 +7,7 @@ label {
 h3 {
     font-size: 200%;
     text-align: center;
-    margin: 0 0 24px;
+    margin: 0;
 }
 h4 {
     font-weight: 600;
@@ -42,20 +42,18 @@ a {
     padding-right: 24px;
 }
 .gallery {
-    padding: 24px;
-    text-align: right;
+    padding-left: 24px;
 }
 .media-container {
     padding: 8px;
     height: auto;
-    margin-top: 96px;
+    margin-top: 8px;
     margin-bottom: 16px;
 }
 .media-container figure {
     margin: 0;
 }
 .info {
-    margin-bottom: 72px;
 }
 .link {
     margin-top: 24px;
@@ -82,18 +80,33 @@ a {
     min-width: 120px;
 }
 
+.nav-button {
+    margin-top: 10vh;
+    margin-bottom: 25vh;
+}
+.nav-button i {
+    cursor: pointer;
+    font-size: 300%;
+    font-weight: 600;
+}
+
+figure {
+    overflow: hidden;
+}
+
+figure img {
+    max-width: 100%;
+}
+
 @media only screen and (max-width: 640px) {
     .description-more {
         padding-left: 8px;
         padding-right: 8px;
     }
     .gallery {
-        padding: 8px;
-    }
-    .media-container {
-        padding: 8px;
-        margin-top: 8px;
-        margin-bottom: 8px;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-bottom: 16px;
     }
     .info {
         margin-bottom: 8px;

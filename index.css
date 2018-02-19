@@ -106,6 +106,7 @@ h3 small {
 }
 
 .more-repos {
+    margin-top: 80px;
     margin-bottom: 96px;
 }
 
@@ -120,4 +121,5 @@ h3 small {
     bottom:0;
     overflow: hidden;
     background-color: black;
+    z-index: 10000;
 }
