@@ -51,7 +51,6 @@ var image_ticker_options = {
     ready: function(ctx) {
         ctx.on('ticker:click', function(e) {
             var data = e.detail;
-            console.log(data.list, data.current);
             zuix.context('slide-show')
                 .items(data.list)
                 .current(data.current)
@@ -133,7 +132,7 @@ function scrollToAnchor(pageAnchor) {
         offset = p.position().y;
     }
     setTimeout(function () {
-        scrollTo(document.documentElement, document.documentElement.scrollTop+offset, 500);
+        scrollTo((document.documentElement.scrollTop || document.body.scrollTop)+offset, 500);
     }, 500);
 }
 function contact() {
@@ -147,7 +146,7 @@ function clientIsWebCrawler(){
 }
 
 var scrollEndTs, scrollInterval;
-function scrollTo(element, to, duration) {
+function scrollTo(to, duration) {
     if (scrollInterval != null) {
         clearTimeout(scrollInterval);
     }
@@ -156,13 +155,15 @@ function scrollTo(element, to, duration) {
         scrollEndTs = currentTs + duration;
     }
     duration = scrollEndTs-currentTs;
-    var difference = to - element.scrollTop;
     if (duration <= 0) {
-        element.scrollTop = to;
+        document.documentElement.scrollTop = to;
+        document.body.scrollTop = to;
         return;
     }
     scrollInterval = setTimeout(function() {
-        element.scrollTop = element.scrollTop + (difference / (duration/10));
-        scrollTo(element, to);
+        var increment = (to - (document.documentElement.scrollTop || document.body.scrollTop)) / (duration/10);
+        document.documentElement.scrollTop += increment;
+        document.body.scrollTop += increment;
+        scrollTo(to);
     });
 }

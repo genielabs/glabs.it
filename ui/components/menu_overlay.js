@@ -21,7 +21,7 @@ zuix.controller(function (cp) {
         }
         if (scroller != null) {
             scroller.on('scroll', function (e) {
-                var scrollTop = scroller.get() === window ? document.documentElement.scrollTop : scroller.get().scrollTop;
+                var scrollTop = scroller.get() === window ? (document.documentElement.scrollTop || document.body.scrollTop) : scroller.get().scrollTop;
                 if (menuButtonShowing && currentOffset < scrollTop && scrollTop > 1) {
                     menuButtonShowing = false;
                     menuButton.animateCss('fadeOutDown', function () {
