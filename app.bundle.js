@@ -23,7 +23,7 @@
  *   ui/components/menu_overlay
  * 
  * - [html] [js] 
- *   https://genielabs.github.io/zuix/ui/utils/animate_css
+ *   https://genielabs.github.io/zuix/kit/extensions/animate_css
  * 
  * - [html] [css] [js] 
  *   ui/components/media_browser
@@ -44,7 +44,7 @@
  *   content/about
  * 
  * - [html] [css] [js] 
- *   https://genielabs.github.io/zuix/site/components/sharing
+ *   https://genielabs.github.io/zuix/kit/components/social_sharing
  * 
  * - [js] 
  *   https://anijs.github.io/lib/anijs/anijs-min.js (_res/script/script-1445777271)
@@ -108,7 +108,7 @@
             });
         }
 
-        zuix.using('component', 'https://genielabs.github.io/zuix/ui/utils/animate_css', function(res, ctx){
+        zuix.using('component', 'https://genielabs.github.io/zuix/kit/extensions/animate_css', function(res, ctx){
             // show floating action button
             menuButton.animateCss('slideInUp').show();
         });
