@@ -92,27 +92,87 @@ zuix.hook('view:process', function(view){
     }, 1000);
 });
 
+var scrollHelper; // it will be == null until component is loaded
 // Load external scripts if not already packed into the app.bundle.js
 function init() {
-    // AniJs + plugins
-    zuix.using('style', 'https://anijs.github.io/lib/anicollection/anicollection.css', function(res) {
-        console.log("AniJS CSS Helper loaded.", res);
-    });
-    zuix.using('script', 'https://anijs.github.io/lib/anijs/anijs-min.js', function(res) {
-        console.log("AniJS Script Helper loaded.", res);
-        zuix.using('script', 'https://anijs.github.io/lib/anijs/helpers/dom/anijs-helper-dom-min.js', function (res) {
-            console.log("AniJS DOM Helper loaded.", res);
-        });
-        zuix.using('script', 'https://anijs.github.io/lib/anijs/helpers/scrollreveal/anijs-helper-scrollreveal-min.js', function (res) {
-            console.log("AniJS Scroll Reveal Helper loaded.", res);
-        });
-    });
     // Load 'Headings Roller' plugin
     zuix.load('ui/controllers/headings_roller', {
         view: zuix.field('main'),
         tag: 'h3',
         logo: 'header_logo',
         title: 'header_title'
+    });
+    // Scroll Helper - Scroll-synchronized animations
+    zuix.context('scroll-helper', function() {
+        // component loaded
+        scrollHelper = this.on('scroll:change', function(e, data) {
+            switch (data.event) {
+                case 'hit-top':
+                    // reached top of page
+                    // TODO: ...
+                    break;
+                case 'scroll':
+                    // TODO: ...
+                    if (data.info.shift.y < 0) {
+                        // scrolling up
+                    } else if (data.info.shift.y > 0) {
+                        // scrolling down
+                    }
+                    // for all fields of the data.info
+                    // object see next paragraph
+                    break;
+                case 'hit-bottom':
+                    // reached end of page
+                    // TODO: ...
+                    break;
+            }
+        }).watch('.watch-reveal-sided,.watch-title', function(el, data) {
+            if (el.hasClass('watch-title')) {
+                if (data.frame.dy > 0.85) {
+                    if (el.css('opacity') !== '0') {
+                        el.css('opacity', '0');
+                    }
+                } else if (data.frame.dy >= 0.25) {
+                    el.css('opacity', Math.round((0.85-data.frame.dy)/0.6*100)/100);
+                }
+            } else {
+                const leftDiv = el.find('.sh-reveal-left', el);
+                const rightDiv = el.find('.sh-reveal-right', el);
+                if (data.frame.dy > 0.25 && data.frame.dy <= 2) {
+                    const w = scrollHelper.info().viewport.width / 2;
+                    const vy = scrollHelper.info().viewport.height;
+                    // TODO: scrollHelper.info(leftDiv)
+                    const ly = -(leftDiv.position().y / vy - 0.65);
+                    const ry = (rightDiv.position().y / vy - 0.65);
+                    if (ly <= 0) {
+                        leftDiv.css({
+                            opacity: 1 + ly,
+                            transition: '0.1s ease',
+                            transform: 'translate(' + (w * ly) + 'px)'
+                        });
+                    } else {
+                        leftDiv.css({
+                            opacity: 1,
+                            //transition: '',
+                            transform: ''
+                        });
+                    }
+                    if (ry >= 0) {
+                        rightDiv.css({
+                            opacity: 1 - ry,
+                            transition: '0.1s ease',
+                            transform: 'translate(' + (w * ry) + 'px)'
+                        });
+                    } else {
+                        rightDiv.css({
+                            opacity: 1,
+                            //transition: '',
+                            transform: ''
+                        });
+                    }
+                }
+            }
+        });
     });
 }
 
@@ -124,15 +184,12 @@ function scrollToAnchor(pageAnchor) {
     if (pageAnchor !== null && pageAnchor.length > 0) {
         anchorElement = p.find('a[id=' + pageAnchor+']');
     }
-    if (anchorElement != null && anchorElement.length() > 0) {
-        // scroll to the element
-        offset = anchorElement.position().y;
-    } else {
+    if (anchorElement == null || anchorElement.length() === 0) {
         // scroll to top of main
-        offset = p.position().y;
+        anchorElement = p.position().y;
     }
     setTimeout(function () {
-        scrollTo((document.documentElement.scrollTop || document.body.scrollTop)+offset, 500);
+        scrollHelper.scrollTo(anchorElement, 500)
     }, 500);
 }
 function contact() {
@@ -144,26 +201,9 @@ function clientIsWebCrawler(){
     var userAgent = navigator.userAgent;
     return re.test(userAgent);
 }
-
-var scrollEndTs, scrollInterval;
-function scrollTo(to, duration) {
-    if (scrollInterval != null) {
-        clearTimeout(scrollInterval);
-    }
-    var currentTs = Date.now();
-    if (duration != null) {
-        scrollEndTs = currentTs + duration;
-    }
-    duration = scrollEndTs-currentTs;
-    if (duration <= 0) {
-        document.documentElement.scrollTop = to;
-        document.body.scrollTop = to;
-        return;
-    }
-    scrollInterval = setTimeout(function() {
-        var increment = (to - (document.documentElement.scrollTop || document.body.scrollTop)) / (duration/10);
-        document.documentElement.scrollTop += increment;
-        document.body.scrollTop += increment;
-        scrollTo(to);
-    });
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }

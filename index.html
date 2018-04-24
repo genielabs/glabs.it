@@ -5,7 +5,7 @@
     <title>G-Labs: The open source Factory</title>
 
     <meta name="description" content="Frontend, backend, web and apps development, smart home automation ...find out more, click me =)" />
-    <meta name="keywords" lang="en-us" content="G-Labs,HomeGenie,Home Automation,Smart Home,ZUIX,MVC,JavaScript Framework,MIG,Open Source,Open Source Factory,Full-Stack,Developer,Hire,Contribute" />
+    <meta name="keywords" lang="en-us" content="G-Labs,HomeGenie,Home Automation,Smart Home,zUIx,MVC,JavaScript Framework,MIG,Open Source,Open Source Factory,Full-Stack,Developer,Hire,Contribute" />
     <meta name="author" content="Generoso Martello" />
 
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
@@ -51,9 +51,9 @@
     <!-- FLA, Flex Layout Attributes -->
     <link href="css/flex-layout-attribute.min.css" rel="stylesheet">
 
-    <!-- ZUIX library  -->
+    <!-- zUIx library  -->
     <script src="node_modules/zuix-dist/js/zuix.js"></script>
-    <!-- Enable ZUIX bundler to generate 'app.bundle.js' when going to production -->
+    <!-- Enable zUIx bundler to generate 'app.bundle.js' when going to production -->
     <!--script src="https://genielabs.github.io/zuix/js/zuix-bundler.min.js"></script-->
     <!--
     Use generated app bundle. It contains all dynamically loaded resources packed into a single file)
@@ -65,7 +65,9 @@
     <script src="app.bundle.js"></script>
 
 </head>
-<body class="-mdl-color--blue-50 mdl-color-text--grey-800">
+<body class="-mdl-color--blue-50 mdl-color-text--grey-800"
+      data-ui-load="@lib/controllers/scroll_helper"
+      data-ui-context="scroll-helper">
 
 <header class="mdl-color--black mdl-shadow--8dp">
     <!-- Logo -->
@@ -103,7 +105,7 @@
 
         <!-- Copyright notice -->
         <div class="footer_bar content-padding mdl-color--black mdl-color-text--grey-700" self="stretch" layout="rows center-center">
-            <div self="center-left"><a href="#!zuix" onclick="scrollToAnchor('zuix')" class="mdl-color-text--grey-400 mdl-typography--font-bold">ZUIX</a> powered website</div>
+            <div self="center-left"><a href="#!zuix" onclick="scrollToAnchor('zuix')" class="mdl-color-text--grey-400 mdl-typography--font-bold">zUIx</a> powered website</div>
             <div self="size-x1 sm-full" align="right">&copy; 2016-to-infinity-and-beyond by <span class="mdl-color-text--grey-400 mdl-typography--font-bold">g-labs</span></div>
         </div>
 
