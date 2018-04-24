@@ -147,7 +147,7 @@ function init() {
                     if (ly <= 0) {
                         leftDiv.css({
                             opacity: 1 + ly,
-                            transition: '0.1s ease',
+                            //transition: '0.1s ease',
                             transform: 'translate(' + (w * ly) + 'px)'
                         });
                     } else {
@@ -160,7 +160,7 @@ function init() {
                     if (ry >= 0) {
                         rightDiv.css({
                             opacity: 1 - ry,
-                            transition: '0.1s ease',
+                            //transition: '0.1s ease',
                             transform: 'translate(' + (w * ry) + 'px)'
                         });
                     } else {
