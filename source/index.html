@@ -87,8 +87,14 @@
     <div self="stretch center" layout="columns top-center">
 
         <!-- Products -->
+        <!--
         <section data-ui-include="content/products"
              self="size-xxlarge" layout="columns spread-stretch" class="products"></section>
+        -->
+        <section data-ui-component="content/products"
+                 self="size-xxlarge" layout="columns spread-stretch" class="products">
+            {[include "content/products"]}
+        </section>
 
         <!-- More repositories -->
         <a id="more_repos"></a>

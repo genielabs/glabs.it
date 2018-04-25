@@ -83,6 +83,7 @@ zuix.hook('view:process', function(view) {
         componentHandler.upgradeElements(view.get());
     }
 }).hook('componentize:end', function() {
+    if (bootTimeout === -1) return; // boot completed
     // Initial resource loading completed...
     if (bootTimeout != null) {
         clearTimeout(bootTimeout);
@@ -90,6 +91,7 @@ zuix.hook('view:process', function(view) {
     // Wait some more for other lazy resources to load
     bootTimeout = setTimeout(function() {
         // Website boot completed
+        bootTimeout = -1;
         console.log('Website boot complete.');
         init();
     }, 1000);
