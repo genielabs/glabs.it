@@ -1,0 +1,126 @@
+html{ font-size:100%; }
+@media( min-width:60em ){ html { font-size: 100% } }
+body {
+    background-size: cover;
+    font-family: 'Titillium Web', sans-serif !important;
+    font-size: 20px;
+    line-height: 180%;
+    overflow-x: hidden;
+}
+small {
+    font-size: 60%;
+}
+footer {
+    font-size: 150%;
+    margin-top: 16px;
+}
+header {
+    padding: 16px;
+    height:80px;
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index: 100;
+}
+header small {
+    font-size:70%;
+    font-weight: 100;
+    margin-left: 12px;
+}
+div[data-ui-field="main"] {
+    overflow-x: hidden;
+}
+section {
+    padding: 0;
+    margin: 0;
+}
+section h2 {
+    margin: 48px 0 0;
+    font-weight: 200;
+}
+section h3 {
+    line-height: 200%;
+}
+section p {
+    font-weight: 100;
+}
+a {
+    font-family: 'Dosis', sans-serif;
+    text-decoration: none;
+    color: deeppink;;
+}
+p {
+    font-size: 110%;
+    line-height: 180%;
+    margin: 0 0 24px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Dosis', sans-serif !important;
+    padding-top: 12px;
+    padding-bottom: 8px;
+    text-transform: none;
+    line-height: 200%;
+}
+h3 {
+    font-weight: 700;
+    font-size: 150%;
+    padding-top: 0;
+    margin-top: 0;
+    white-space: nowrap;
+    text-wrap: none;
+}
+h3 small {
+    text-transform: lowercase;
+}
+.header-title {
+    position: absolute;
+    left: 24px;
+    top: 8px;
+}
+.header-logo {
+    cursor: pointer;
+    font-weight: 400;
+    font-size:150%;
+    position: absolute;
+    left: 24px;
+    top: 16px;
+}
+.icon {
+    font-size:110%;
+    margin-left: 12px;
+}
+
+.intro {
+    margin-top:80px;
+    padding: 24px;
+}
+.intro h4 {
+    margin: 0;
+    padding: 0;
+}
+.content-padding {
+    padding: 24px;
+}
+.padding-right {
+    padding-right: 8px;
+    vertical-align: middle;
+}
+
+.more-repos {
+    margin-top: 80px;
+    margin-bottom: 96px;
+}
+
+.footer_bar {
+    font-size:75%;
+}
+.splash-cover {
+    position: fixed;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    overflow: hidden;
+    background-color: black;
+    z-index: 10000;
+}

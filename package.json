@@ -3,16 +3,25 @@
   "version": "1.0.0",
   "description": "G-Labs Home",
   "repository": "https://github.com/genielabs/glabs.it",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server ./"
-  },
   "author": "Generoso Martello",
   "license": "GPL-3.0",
-  "dependencies": {
-    "zuix-dist": "^0.4.9-34"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server --cors ./docs",
+    "watch": "node watch",
+    "build": "node build"
   },
   "devDependencies": {
-    "http-server": "^0.11.1"
+    "zuix-dist": "^0.4.9-34",
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
+    "http-server": "^0.11.1",
+    "static-site": "^1.3.2"
+  },
+  "dependencies": {
+    "chokidar": "^2.0.3",
+    "delay": "^2.0.0",
+    "fs-extra": "^5.0.0",
+    "ncp": "^2.0.0"
   }
 }
