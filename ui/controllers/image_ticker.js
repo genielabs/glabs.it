@@ -58,7 +58,7 @@ zuix.controller(function (cp) {
         current++;
         if (current >= imageList.length())
             current = 0;
-        imageList.eq(current).visibility('visible').animateCss('fadeIn');
+        imageList.eq(current).visibility('').animateCss('fadeIn');
         if (sliderTimeout != null) {
             clearTimeout(sliderTimeout);
         }

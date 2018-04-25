@@ -136,47 +136,46 @@ function init() {
                     el.css('opacity', Math.round((0.85-data.frame.dy)/0.6*100)/100);
                 }
             } else {
-                const leftDiv = el.find('.sh-reveal-left', el);
-                const rightDiv = el.find('.sh-reveal-right', el);
-                if (data.frame.dy > 0.25 && data.frame.dy <= 2) {
-                    const w = scrollHelper.info().viewport.width / 2;
-                    const vy = scrollHelper.info().viewport.height;
-                    // TODO: scrollHelper.info(leftDiv)
-                    const ly = -(leftDiv.position().y / vy - 0.65);
-                    const ry = (rightDiv.position().y / vy - 0.65);
-                    if (ly <= 0) {
-                        leftDiv.css({
-                            opacity: 1 + ly,
-                            //transition: '0.1s ease',
-                            transform: 'translate(' + (w * ly) + 'px)'
-                        });
-                    } else {
-                        leftDiv.css({
-                            opacity: 1,
-                            //transition: '',
-                            transform: ''
-                        });
-                    }
-                    if (ry >= 0) {
-                        rightDiv.css({
-                            opacity: 1 - ry,
-                            //transition: '0.1s ease',
-                            transform: 'translate(' + (w * ry) + 'px)'
-                        });
-                    } else {
-                        rightDiv.css({
-                            opacity: 1,
-                            //transition: '',
-                            transform: ''
-                        });
-                    }
-                }
+                revealHideBlock(el);
             }
         });
     });
+    scrollHelper.scrollTo(1);
+    window.onresize = function (ev) {
+        scrollHelper.scrollTo(scrollHelper.info().viewport.y+1);
+    };
 }
 
 // Utility methods
+
+function revealHideBlock(el) {
+    const leftDiv = el.find('.sh-reveal-left', el);
+    const rightDiv = el.find('.sh-reveal-right', el);
+    if (leftDiv.length() === 0 || leftDiv.hasClass('animated') || rightDiv.length() === 0 || rightDiv.hasClass('animated')) {
+        return;
+    }
+    const vy = scrollHelper.info().viewport.height;
+    const visible = vy - leftDiv.position().y > vy / 5;
+    if (visible) {
+        const options = {duration: '0.75s'};
+        if (!el.hasClass('sh-in')) {
+            el.removeClass('sh-out').addClass('sh-in');
+            leftDiv.animateCss('fadeInLeft', options).visibility('');
+            rightDiv.animateCss('fadeInRight', options).visibility('');
+        }
+    } else {
+        const options = {duration: '0.5s'};
+        if (!el.hasClass('sh-out')) {
+            el.removeClass('sh-in').addClass('sh-out');
+            leftDiv.animateCss('fadeOutLeft', options, function() {
+                this.visibility('hidden');
+            });
+            rightDiv.animateCss('fadeOutRight', options, function() {
+                this.visibility('hidden');
+            });
+        }
+    }
+}
 
 function scrollToAnchor(pageAnchor) {
     var p = zuix.field('main');
