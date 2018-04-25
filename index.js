@@ -134,6 +134,8 @@ function init() {
                     }
                 } else if (data.frame.dy >= 0.25) {
                     el.css('opacity', Math.round((0.85-data.frame.dy)/0.6*100)/100);
+                } else if (data.frame.dy < 0.25 && el.css('opacity') !== '1') {
+                    el.css('opacity', 1);
                 }
             } else {
                 revealHideBlock(el);
