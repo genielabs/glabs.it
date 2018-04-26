@@ -1,23 +1,44 @@
 /*
-const jade = require('jade')
+ * Copyright 2015-2017 G-Labs. All Rights Reserved.
+ *         https://genielabs.github.io/zuix
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-function (options, content, data, cb) {
-    const fn = jade.compile(content, {})
-    const html = fn(data)
-    cb(null, html)
-}
-*/
+/*
+ *
+ *  This file is part of
+ *  zUIx, Javascript library for component-based development.
+ *        https://genielabs.github.io/zuix
+ *
+ * @author Generoso Martello <generoso@martello.com>
+ */
+
+// common
 const fs = require('fs');
-
+const path = require('path');
+const util = require('util');
+// static-site
 const Promise = require('es6-promise').Promise;
 const swig = require('swig-templates');
-const path = require('path');
 const isMarkdown = require('../node_modules/static-site/lib/utils/is-markdown');
 const markdownTag = require('../node_modules/static-site/lib/utils/markdown-tag');
 const MarkdownIt = require('markdown-it');
 const hljs = require('highlight.js');
 const extras = require('swig-extras');
-const util = require("util");
+// zuix-render
+const jsdom = require('jsdom');
+const {JSDOM} = jsdom;
 
 const markdown = MarkdownIt({
     html: true,
@@ -66,35 +87,63 @@ function swigTemplate(page) {
     });
 }
 
+
 function parseHtml(sourceFolder, data) {
-    console.log('#', data.content);
-    let html;
-    do {
-        html = replaceBraces(data.content, function(value) {
-            if (value.startsWith('#include ')) {
-console.log('!', value);
-                // load html + css
-                const parts = value.split(' ');
-                const file = parts[1].trim()
-                    .replace(/["']([^"']+(?=["']))["']/g, '$1');
-                let html = fs.readFileSync(sourceFolder + '/' + file + '.html');
+    if (data.file.endsWith('.html')) {
+        const dom = new JSDOM(data.content, {runScripts: 'dangerously'});
+        const nodeList = dom.window.document.querySelectorAll('[data-ui-include]');
+        if (nodeList != null) {
+            const zuixBundle = {
+                viewList: [],
+                styleList: [],
+                controllerList: []
+            };
+            nodeList.forEach(function(el) {
+                const path = el.getAttribute('data-ui-include');
+                // HTML
                 try {
-                    let css = fs.readFileSync(sourceFolder + '/' + file + '.css').toString();
-                    html = util.format('\n<style>\n%s\n</style>\n%s\n', wrapCss('[data-ui-component="' + file + '"]:not(.zuix-css-ignore)', css), html);
+                    let htmlFile = fs.readFileSync(sourceFolder + '/' + path + '.html').toString();
+                    // TODO: recurse parseHtml(sourceFolder, htmlFile...)
+                    if (el.getAttribute('data-ui-mode') === 'unwrap') {
+                        // TODO: add HTML comment with file info
+                        el.outerHTML = htmlFile;
+                    } else {
+                        htmlFile = util.format('<div data-ui-view="%s">\n%s\n</div>', path, htmlFile);
+                        zuixBundle.viewList.push({path: path, content: htmlFile});
+                    }
                 } catch (e) {
                     // console.warn(e);
                 }
-                // TODO: implement .js loading as well
-                return html;
-            }
-        });
-        if (html != null) {
-            data.content = html;
+                // CSS
+                try {
+                    let cssFile = fs.readFileSync(sourceFolder + '/' + path + '.css').toString();
+                    if (el.getAttribute('data-ui-mode') === 'unwrap') {
+                        // TODO: add // comment with file info
+                        cssFile = util.format('\n<style id="%s">\n%s\n</style>\n', path, cssFile);
+                        dom.window.document.querySelector('head').innerHTML += util.format('\n<!--{[%s]}-->\n%s', path, cssFile);
+                    } else {
+                        cssFile = util.format('\n<style id="%s">\n%s\n</style>\n', path,
+                            wrapCss('[data-ui-component="' + path + '"]:not(.zuix-css-ignore)', cssFile));
+                        zuixBundle.styleList.push({path: path, content: cssFile});
+                    }
+                } catch (e) {
+                    // console.warn(e);
+                }
+            });
+            let bundleString = '<!-- zUIx inline resource bundle -->';
+            zuixBundle.viewList.forEach(function(v) {
+                bundleString += util.format('\n<!--{[%s]}-->\n%s', v.path, v.content);
+            });
+            zuixBundle.styleList.forEach(function(s) {
+                dom.window.document.querySelector('head').innerHTML += util.format('\n<!--{[%s]}-->\n%s', s.path, s.content);
+            });
+            dom.window.document.body.innerHTML += util.format('<div style="display:none">%s</div>', bundleString);
         }
-        console.log('.')
-    } while (data.content.indexOf('{#') >= 0);
-    html = swigTemplate(data)._result.contents;
-    return html;
+
+        data.content = dom.serialize();
+    }
+
+    return swigTemplate(data)._result.contents;
 }
 
 function replaceBraces(html, callback) {

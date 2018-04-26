@@ -91,24 +91,21 @@
         <section data-ui-include="content/products"
              self="size-xxlarge" layout="columns spread-stretch" class="products"></section>
         -->
-        <section data-ui-component="content/products"
+        <section data-ui-include="content/products"
                  self="size-xxlarge" layout="columns spread-stretch" class="products">
-            {#include "content/products"}
         </section>
 
         <!-- More repositories -->
         <a id="more_repos"></a>
-        <section data-ui-component="content/more_repos"
+        <section data-ui-include="content/more_repos" data-ui-mode="inner"
              self="size-xxlarge" layout="rows stretch-spread" class="more-repos">
-            {#include "content/more_repos"}
         </section>
 
         <!-- Footer with 'About' note -->
         <a id="about"></a>
-        <footer data-ui-component="content/footer"
+        <footer data-ui-include="content/footer"
                 layout="column top-center"
                 class="mdl-color--grey-900 mdl-color-text--grey-500">
-            {#include "content/footer"}
         </footer>
 
         <!-- Copyright notice -->
@@ -121,12 +118,8 @@
 
 </div>
 
-<!-- FAB menu overlay -->
-<div data-ui-load="ui/components/menu_overlay"></div>
-
-<!-- Full screen image slide show -->
-<div data-ui-load="ui/components/media_browser"
-     data-ui-context="slide-show"></div>
+<!-- FAB menu button overlay -->
+<div data-ui-include="content/menu_button" data-ui-mode="unwrap"></div>
 
 <!-- Splash Screen -->
 <div data-ui-include="content/cover"

@@ -53,13 +53,12 @@ var cover_load_options = {
 };
 // Image ticker used for some products: open full screen slide-show on click
 var image_ticker_options = {
+    autoSlide: true,
+    enablePaging: true,
     ready: function(ctx) {
-        ctx.on('ticker:click', function(e) {
-            var data = e.detail;
-            zuix.context('slide-show')
-                .items(data.list)
-                .current(data.current)
-                .open();
+        ctx.on('page:tap', function(e, page) {
+            console.log(e, page);
+            // TODO: open full-screen in the new media_gallery widget
         });
     }
 };
@@ -97,10 +96,11 @@ zuix.hook('view:process', function(view) {
         bootTimeout = -1;
         console.log('Website boot complete.');
         init();
-    }, 1000);
+    }, 1250);
 });
 
 var scrollHelper; // it will be == null until component is loaded
+var headingsRoller;
 // Load external scripts if not already packed into the app.bundle.js
 function init() {
     // Load 'Headings Roller' plugin
@@ -108,7 +108,10 @@ function init() {
         view: zuix.field('main'),
         tag: 'h3',
         logo: 'header_logo',
-        title: 'header_title'
+        title: 'header_title',
+        ready: function(ctx) {
+            headingsRoller = this;
+        }
     });
     // Scroll Helper - Scroll-synchronized animations
     zuix.context('scroll-helper', function() {
@@ -117,7 +120,9 @@ function init() {
             switch (data.event) {
                 case 'hit-top':
                     // reached top of page
-                    // TODO: ...
+                    if (headingsRoller != null) {
+                        headingsRoller.update();
+                    }
                     break;
                 case 'scroll':
                     // TODO: ...
@@ -134,16 +139,20 @@ function init() {
                     // TODO: ...
                     break;
             }
-        }).watch('.watch-reveal-left,.watch-reveal-right,.watch-title', function(el, data) {
+        }).watch('.watch-reveal-left,.watch-reveal-right,.watch-title,.watch-heading', function(el, data) {
             if (el.hasClass('watch-title')) {
                 if (data.frame.dy > 0.85) {
                     if (el.css('opacity') !== '0') {
                         el.css('opacity', '0');
                     }
                 } else if (data.frame.dy >= 0.25) {
-                    el.css('opacity', Math.round((0.85-data.frame.dy)/0.6*100)/100);
+                    el.css('opacity', Math.round((0.85 - data.frame.dy) / 0.6 * 100) / 100);
                 } else if (data.frame.dy < 0.25 && el.css('opacity') !== '1') {
                     el.css('opacity', 1);
+                }
+            } else if (el.hasClass('watch-heading')) {
+                if (headingsRoller != null) {
+                    headingsRoller.update();
                 }
             } else {
                 // revealHideBlock(el);

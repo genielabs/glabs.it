@@ -5,7 +5,6 @@ zuix.controller(function(cp) {
     let headerLogo;
     let headerTitle;
     let headingTitles = null;
-    let scroller;
 
     cp.create = function() {
         if (cp.options().logo) {
@@ -18,12 +17,7 @@ zuix.controller(function(cp) {
         } else {
             headerTitle = zuix.field('header_title').hide();
         }
-        scroller = cp.options().scroller;
-        if (scroller == null) {
-            scroller = window;
-        }
-        zuix.$(scroller)
-            .on('scroll', updateHeaderTitle);
+        cp.expose('update', updateHeaderTitle);
     };
 
     function updateHeaderTitle() {
@@ -34,7 +28,7 @@ zuix.controller(function(cp) {
                 headingTitles = cp.view().find('h3');
             }
         }
-        const nextOffset = scroller.innerHeight/2;
+        const nextOffset = window.innerHeight/2;
         for (let i = 0; i < headingTitles.length()-1; i++) {
             const currentHeader = headingTitles.eq(i);
             const nextHeader = headingTitles.eq(i+1);

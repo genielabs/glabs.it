@@ -23,7 +23,7 @@ staticSite({
 // console.log(new Date().toLocaleTimeString(), '... building complete.');
 
 function copyFolder(source, dest) {
-    console.log('Copying "'+source+'" to "'+dest+'" ...');
+    // console.log('Copying "'+source+'" to "'+dest+'" ...');
     const path = require('path');
     const ncp = require('ncp').ncp;
     // ncp.limit = 16;
@@ -31,6 +31,6 @@ function copyFolder(source, dest) {
         if (err) {
             return console.error(err);
         }
-        console.log('... done!');
+        // console.log('... done!');
     });
 }
