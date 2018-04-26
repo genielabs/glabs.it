@@ -67,21 +67,34 @@ function swigTemplate(page) {
 }
 
 function parseHtml(sourceFolder, data) {
-    let html = swigTemplate(data);
-    html = replaceBraces(html._result.contents, function(value) {
-        if (value.startsWith('[include ')) {
-            // TODO: load html + css
-            const parts = value.split(' ');
-            const file = parts[1]
-                .substring(0, parts[1].length-1)
-                .trim()
-                .replace(/["']([^"']+(?=["']))["']/g, '$1');
-            const html = fs.readFileSync(sourceFolder+'/'+file+'.html');
-            let css = fs.readFileSync(sourceFolder+'/'+file+'.css').toString();
-            return util.format('\n<style>\n%s\n</style>\n%s\n', wrapCss('[data-ui-component="' + file + '"]:not(.zuix-css-ignore)', css), html);
+    console.log('#', data.content);
+    let html;
+    do {
+        html = replaceBraces(data.content, function(value) {
+            if (value.startsWith('#include ')) {
+console.log('!', value);
+                // load html + css
+                const parts = value.split(' ');
+                const file = parts[1].trim()
+                    .replace(/["']([^"']+(?=["']))["']/g, '$1');
+                let html = fs.readFileSync(sourceFolder + '/' + file + '.html');
+                try {
+                    let css = fs.readFileSync(sourceFolder + '/' + file + '.css').toString();
+                    html = util.format('\n<style>\n%s\n</style>\n%s\n', wrapCss('[data-ui-component="' + file + '"]:not(.zuix-css-ignore)', css), html);
+                } catch (e) {
+                    // console.warn(e);
+                }
+                // TODO: implement .js loading as well
+                return html;
+            }
+        });
+        if (html != null) {
+            data.content = html;
         }
-    });
-    return html != null ? html : data.content;
+        console.log('.')
+    } while (data.content.indexOf('{#') >= 0);
+    html = swigTemplate(data)._result.contents;
+    return html;
 }
 
 function replaceBraces(html, callback) {

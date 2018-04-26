@@ -454,16 +454,195 @@ article  {
 
         <!-- More repositories -->
         <a id="more_repos"></a>
-        <section data-ui-include="content/more_repos"
-             data-ui-options="content_no_css"
-             data-anijs="if: scroll, on: window, do: zoomInDown animated, before: scrollReveal"
-             self="size-xxlarge" layout="rows stretch-spread" class="more-repos"></section>
+        <section data-ui-component="content/more_repos"
+             self="size-xxlarge" layout="rows stretch-spread" class="more-repos">
+            <h2 class="mdl-color-text--blue-600 watch-title"
+    self="size-xxlarge" align="center">other products</h2>
+
+<article self="size-1of2 sm-full md-half" class="content-padding watch-reveal-left">
+    <h3 align="center" class="mdl-color-text--blue-800">mig-service <i class="material-icons">code</i></h3>
+    <p>
+        .Net portable library for developing networked
+        applications and RT web apps. With <em>HTTP</em>, <em>SSE</em>, <em>WebSockets</em> and many other plugins.
+    </p>
+    <div align="center">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary"
+           href="https://github.com/genielabs/mig-service-dotnet">
+            <i class="material-icons">link</i>
+            github
+        </a>
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary"
+           href="https://www.nuget.org/packages/MIG/">
+            <i class="material-icons">link</i>
+            nuget
+        </a>
+    </div>
+</article>
+<article self="size-1of2 sm-full md-half" class="content-padding watch-reveal-right">
+    <h3 align="center" class="mdl-color-text--blue-800">serialport-lib <i class="material-icons">code</i></h3>
+    <p>
+        .Net portable library for event driven serial I/O with hot-plug support.
+        It overcomes the lack of <em>DataReceived</em> event in Mono/Linux.
+    </p>
+    <div align="center">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary"
+           href="https://github.com/genielabs/serialport-lib-dotnet">
+            <i class="material-icons">link</i>
+            github
+        </a>
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary"
+           href="https://www.nuget.org/packages/SerialPortLib/">
+            <i class="material-icons">link</i>
+            nuget
+        </a>
+    </div>
+</article>
+
+<footer self="size-x1" layout="column center-center" class="watch-title">
+    <h4 class="mdl-color-text--grey-400">
+        ... and more 20+ repos
+    </h4>
+    <a href="https://github.com/genielabs" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary mdl-button--raised">
+        <i class="material-icons">link</i>
+        see all
+    </a>
+</footer>
+
+        </section>
 
         <!-- Footer with 'About' note -->
         <a id="about"></a>
-        <footer data-ui-include="content/footer"
+        <footer data-ui-component="content/footer"
                 layout="column top-center"
-                class="mdl-color--grey-900 mdl-color-text--grey-500"></footer>
+                class="mdl-color--grey-900 mdl-color-text--grey-500">
+            
+<style>
+
+[data-ui-component="content/footer"]:not(.zuix-css-ignore) {
+    margin-top: 48px;
+}
+
+</style>
+<div data-ui-component="content/about"
+     self="size-xxlarge center">
+    
+<style>
+
+[data-ui-component="content/about"]:not(.zuix-css-ignore)
+.about  {
+    background-color: rgba(100,100,100,0.2);
+    -webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;
+}
+
+[data-ui-component="content/about"]:not(.zuix-css-ignore)
+.about h3  {
+    font-weight: 400;
+    font-size: 110%;
+    margin-bottom: 16px;
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index: 100;
+}
+
+[data-ui-component="content/about"]:not(.zuix-css-ignore)
+.about p  {
+    font-size: 100%;
+}
+
+[data-ui-component="content/about"]:not(.zuix-css-ignore)
+.about a  {
+    text-transform: none;
+    color: darkblue;
+}
+
+[data-ui-component="content/about"]:not(.zuix-css-ignore)
+.hire-donate  {
+    margin-top: 56px;
+    margin-bottom: 96px;
+}
+
+[data-ui-component="content/about"]:not(.zuix-css-ignore)
+.hire-donate .mdl-button  {
+    font-weight: 500;
+    min-width: 120px;
+}
+
+[data-ui-component="content/about"]:not(.zuix-css-ignore)
+.hire-donate .mdl-button i  {
+    margin-right: 8px;
+}
+
+[data-ui-component="content/about"]:not(.zuix-css-ignore)
+.smaller  {
+    font-size: 70%;
+}
+
+</style>
+<div class="content-padding">
+    <h2 style="margin:0;padding:0;">about</h2>
+    <p class="smaller">
+        Hello, my name is <a class="mdl-color-text--white" href="https://github.com/genemars" title="Generoso Martello's profile on GitHub">Gene</a>
+        and I started to learn computers programming in early 80's when I was 12.
+        With a passion not just for coding but also for tinkering, hacking and networking,
+        few years later, I was running a BBS which then became a FidoNet node.
+        After that the approach into the Internet era was kind of natural but still very exciting.
+    </p>
+    <p class="smaller">
+        The Net and programming became my work and since then I really never stopped creating software and growing up with technology.
+    </p>
+    <p class="smaller">
+        Today I'm what they call a <span class="mdl-color-text--grey-400">Full-Stack Developer</span>
+        with a passion for smart home, micro-controllers, the open source world and collaborative development.
+        Occasionally I also pretend to learn playing guitar. I believe that if I continue pretending,
+        it may accidentally truly happen at some point =)
+    </p>
+    <p class="smaller">
+        This is where <strong>g-labs</strong>, <em>the open source factory</em>, came from.
+    </p>
+    <div align="center">
+        <small>
+            Do you like any of my works?<br/>
+            <u>Support g-labs:</u><br/>
+            share this page / <a href="#/#about" onclick="contact()" class="mdl-color-text--grey-400 mdl-typography--font-bold">hire me</a> / contribute with a donation
+        </small>
+    </div>
+</div>
+
+
+</div>
+
+<div self="size-xxlarge center" layout="rows top-center">
+    <div class="content-padding" self="size-1of2 sm-full" align="center">
+        <div data-ui-load="https://genielabs.github.io/zuix/kit/components/social_sharing"
+             layout="row center-center">
+            <a data-ui-field="url" href="http://glabs.it">G-Labs Home</a>
+            <p data-ui-field="description">G-Labs, the open source factory.</p>
+        </div>
+    </div>
+    <div class="content-padding" self="size-1of2 sm-full" align="center">
+        <!-- PayPal Contribute -->
+        <a href="https://www.paypal.me/genielabs/10eur">
+            <span class="mdl-color-text--grey-400 mdl-typography--font-bold padding-right">contribute</span>
+            <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
+            <i class="material-icons">card_giftcard</i>
+        </span>
+        </a>
+    </div>
+</div>
+
+<div class="content-padding">
+
+    <a href="https://github.com/genielabs/glabs.it" layout="columns top-center" class="mdl-color-text--grey-400 mdl-typography--font-bold">
+        <small>
+            explore this site source code
+        </small>
+        <i class="material-icons mdl-typography--body-2">code</i>
+    </a>
+
+</div>
+
+        </footer>
 
         <!-- Copyright notice -->
         <div class="footer_bar content-padding mdl-color--black mdl-color-text--grey-700" self="stretch" layout="rows center-center">
