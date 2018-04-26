@@ -43,6 +43,9 @@ var cover_load_options = {
                 zuix.field('main').show()
                     .animateCss('fadeInUpBig', {delay: '0.0s', duration: '1.50s'}, function() {
                         zuix.field('splash-cover').hide();
+                        if (scrollHelper != null) {
+                            scrollHelper.scrollTo(1);
+                        }
                     });
             });
         });
