@@ -10,10 +10,6 @@ article {
     min-height: 50vh;
 }
 
-[data-ui-field="picture"] [data-ui-load] {
-    height: 300px;
-}
-
 @media only screen and (max-width: 640px) {
     article {
         padding-left: 8px;

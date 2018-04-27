@@ -60,6 +60,11 @@ var image_ticker_options = {
             console.log(e, page);
             // TODO: open full-screen in the new media_gallery widget
         });
+        const v = zuix.$(ctx.view());
+        const sizer = document.createElement('div');
+        sizer.innerHTML = v.children().eq(0).get().outerHTML;
+        sizer.style['visibility'] = 'hidden';
+        v.append(sizer);
     }
 };
 
@@ -96,7 +101,7 @@ zuix.hook('view:process', function(view) {
         bootTimeout = -1;
         console.log('Website boot complete.');
         init();
-    }, 1250);
+    }, 2000);
 });
 
 var scrollHelper; // it will be == null until component is loaded
@@ -186,10 +191,10 @@ function init() {
             }
         });
     });
-    scrollHelper.scrollTo(1);
     window.onresize = function(ev) {
-        scrollHelper.scrollTo(scrollHelper.info().viewport.y+1);
+        scrollHelper.scrollTo(-scrollHelper.info().viewport.y+1);
     };
+    scrollHelper.scrollTo(1).scrollTo(0);
 }
 
 // Utility methods

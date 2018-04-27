@@ -1,18 +1,21 @@
-<!DOCTYPE html><!--suppress JSCheckFunctionSignatures --><html lang="en"><head>
+<!DOCTYPE html>
+<!--suppress JSCheckFunctionSignatures -->
+<html lang="en">
+<head>
     <title>G-Labs: The open source Factory</title>
 
-    <meta name="description" content="Frontend, backend, web and apps development, smart home automation ...find out more, click me =)">
-    <meta name="keywords" lang="en-us" content="G-Labs,HomeGenie,Home Automation,Smart Home,zUIx,MVC,JavaScript Framework,MIG,Open Source,Open Source Factory,Full-Stack,Developer,Hire,Contribute">
-    <meta name="author" content="Generoso Martello">
+    <meta name="description" content="Frontend, backend, web and apps development, smart home automation ...find out more, click me =)" />
+    <meta name="keywords" lang="en-us" content="G-Labs,HomeGenie,Home Automation,Smart Home,zUIx,MVC,JavaScript Framework,MIG,Open Source,Open Source Factory,Full-Stack,Developer,Hire,Contribute" />
+    <meta name="author" content="Generoso Martello" />
 
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
-    <meta http-equiv="Content-Language" content="en-us">
+    <meta http-equiv="Content-Language" content="en-us" />
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-    <meta name="”application-name”" content="G-Labs">
+    <meta name=”application-name” content="G-Labs">
     <meta name="theme-color" content="black">
 
     <!-- Add to homescreen for Chrome on Android -->
@@ -38,7 +41,7 @@
 
     <!-- Google's Material Design Lite (MDL) -->
     <link rel="stylesheet" href="js/mdl/material.min.css">
-    <script src="https://www.google-analytics.com/analytics.js"></script><script src="js/mdl/material.min.js"></script>
+    <script src="js/mdl/material.min.js"></script>
 
     <!-- Google's Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Dosis:200,400" rel="stylesheet">
@@ -49,7 +52,7 @@
     <link href="css/flex-layout-attribute.min.css" rel="stylesheet">
 
     <!-- zUIx library  -->
-    <script src="js/zuix/zuix.js"></script>
+    <script src="js/zuix/zuix.min.js"></script>
     <!-- Enable zUIx bundler to generate 'app.bundle.js' when going to production -->
     <!--script src="js/zuix/zuix-bundler.min.js"></script-->
     <!--
@@ -61,198 +64,10 @@
     -->
     <script src="app.bundle.js"></script>
 
-
-<!--{[content/menu_button]}-->
-
-<style id="content/menu_button">
-.menu-item a {
-    font-size: 90%;
-    font-weight: 600;
-    line-height: 120%;
-    padding-left: 8px;
-    padding-right: 8px;
-    cursor: pointer;
-}
-.menu-item span {
-    margin-left: 12px;
-}
-
-</style>
-
-<!--{[content/github_corner]}-->
-
-<style id="content/github_corner">
-
-[data-ui-component="content/github_corner"]:not(.zuix-css-ignore)
-.github-corner:hover .octo-arm  {
-    animation: octocat-wave 560ms ease-in-out
-}
-@keyframes octocat-wave  {
-    0%, 100% {
-        transform: rotate(0)
-    }
-    20%, 60% {
-        transform: rotate(-25deg)
-    }
-    40%, 80% {
-        transform: rotate(10deg)
-    }
-}
-@media (max-width: 500px)  {
-  
-[data-ui-component="content/github_corner"]:not(.zuix-css-ignore)
-    .github-corner:hover .octo-arm  {
-        animation: none
-    }
-
-[data-ui-component="content/github_corner"]:not(.zuix-css-ignore)
-    .github-corner .octo-arm  {
-        animation: octocat-wave 560ms ease-in-out
-    }
-
-}
-</style>
-
-<!--{[content/products]}-->
-
-<style id="content/products">
-
-[data-ui-component="content/products"]:not(.zuix-css-ignore) {
-    padding-top: 56px;
-}
-
-[data-ui-component="content/products"]:not(.zuix-css-ignore)
-article  {
-    margin-top: 56px;
-    margin-bottom: 24px;
-    padding-left: 32px;
-    padding-right: 32px;
-    min-height: 50vh;
-}
-
-[data-ui-component="content/products"]:not(.zuix-css-ignore)
-[data-ui-field="picture"] [data-ui-load]  {
-    height: 300px;
-}
-@media only screen and (max-width: 640px)  {
-  
-[data-ui-component="content/products"]:not(.zuix-css-ignore)
-    article  {
-        padding-left: 8px;
-        padding-right: 8px;
-    }
-
-}
-</style>
-
-<!--{[content/footer]}-->
-
-<style id="content/footer">
-
-[data-ui-component="content/footer"]:not(.zuix-css-ignore) {
-    margin-top: 48px;
-}
-
-</style>
-
-<!--{[content/cover]}-->
-
-<style id="content/cover">
-
-[data-ui-component="content/cover"]:not(.zuix-css-ignore)
-.cover  {
-    position: fixed;
-    left: 0; top: 0; right: 0; bottom: 0;
-    -moz-animation-delay: 2.0s;
-    -webkit-animation-delay: 2.0s;
-    -o-animation-delay: 2.0s;
-    -ms-animation-delay: 2.0s;
-    -moz-animation-duration: 1.0s;
-    -webkit-animation-duration: 1.0s;
-    -o-animation-duration: 1.0s;
-    -ms-animation-duration: 1.0s;
-}
-
-[data-ui-component="content/cover"]:not(.zuix-css-ignore)
-.logo  {
-    margin: 8px 8px 0;
-    font-weight: 100;
-    font-size: 400%;
-    line-height: 200%;
-}
-
-[data-ui-component="content/cover"]:not(.zuix-css-ignore)
-.logo div  {
-    padding: 4px;
-}
-
-[data-ui-component="content/cover"]:not(.zuix-css-ignore)
-.logo .g  {
-    -moz-animation-delay: 0.2s;
-    -webkit-animation-delay: 0.2s;
-    -o-animation-delay: 0.2s;
-    -ms-animation-delay: 0.2s;
-    font-weight: 400;
-}
-
-[data-ui-component="content/cover"]:not(.zuix-css-ignore)
-.logo .m  {
-    -moz-animation-delay: 1.0s;
-    -webkit-animation-delay: 1.0s;
-    -o-animation-delay: 1.0s;
-    -ms-animation-delay: 1.0s;
-}
-
-[data-ui-component="content/cover"]:not(.zuix-css-ignore)
-.logo .l  {
-    -moz-animation-delay: 0.1s;
-    -webkit-animation-delay: 0.1s;
-    -o-animation-delay: 0.1s;
-    -ms-animation-delay: 0.1s;
-}
-
-[data-ui-component="content/cover"]:not(.zuix-css-ignore)
-.logo .a  {
-    -moz-animation-delay: 0.1s;
-    -webkit-animation-delay: 0.1s;
-    -o-animation-delay: 0.1s;
-    -ms-animation-delay: 0.1s;
-}
-
-[data-ui-component="content/cover"]:not(.zuix-css-ignore)
-.logo .b  {
-    -moz-animation-delay: 0.2s;
-    -webkit-animation-delay: 0.2s;
-    -o-animation-delay: 0.2s;
-    -ms-animation-delay: 0.2s;
-}
-
-[data-ui-component="content/cover"]:not(.zuix-css-ignore)
-.logo .s  {
-    -moz-animation-delay: 0.3s;
-    -webkit-animation-delay: 0.3s;
-    -o-animation-delay: 0.3s;
-    -ms-animation-delay: 0.3s;
-}
-
-[data-ui-component="content/cover"]:not(.zuix-css-ignore)
-.motto  {
-    font-size: 100%;
-    margin-top: -32px;
-    margin-left: 8px;
-    -moz-animation-delay: 0.75s;
-    -webkit-animation-delay: 0.75s;
-    -o-animation-delay: 0.75s;
-    -ms-animation-delay: 0.75s;
-    -moz-animation-duration: 1.25s;
-    -webkit-animation-duration: 1.25s;
-    -o-animation-duration: 1.25s;
-    -ms-animation-duration: 1.25s;
-}
-
-</style>
 </head>
-<body class="-mdl-color--blue-50 mdl-color-text--grey-800" data-ui-load="@lib/controllers/scroll_helper" data-ui-context="scroll-helper">
+<body class="-mdl-color--blue-50 mdl-color-text--grey-800"
+      data-ui-load="@lib/controllers/scroll_helper"
+      data-ui-context="scroll-helper">
 
 <header class="mdl-color--black mdl-shadow--8dp">
     <!-- Logo -->
@@ -276,23 +91,27 @@ article  {
         <section data-ui-include="content/products"
              self="size-xxlarge" layout="columns spread-stretch" class="products"></section>
         -->
-        <section data-ui-include="content/products" self="size-xxlarge" layout="columns spread-stretch" class="products">
+        <section data-ui-include="content/products"
+                 self="size-xxlarge" layout="columns spread-stretch" class="products">
         </section>
 
         <!-- More repositories -->
         <a id="more_repos"></a>
-        <section data-ui-include="content/more_repos" data-ui-mode="inner" self="size-xxlarge" layout="rows stretch-spread" class="more-repos">
+        <section data-ui-include="content/more_repos" data-ui-mode="inner"
+             self="size-xxlarge" layout="rows stretch-spread" class="more-repos">
         </section>
 
         <!-- Footer with 'About' note -->
         <a id="about"></a>
-        <footer data-ui-include="content/footer" layout="column top-center" class="mdl-color--grey-900 mdl-color-text--grey-500">
+        <footer data-ui-include="content/footer"
+                layout="column top-center"
+                class="mdl-color--grey-900 mdl-color-text--grey-500">
         </footer>
 
         <!-- Copyright notice -->
         <div class="footer_bar content-padding mdl-color--black mdl-color-text--grey-700" self="stretch" layout="rows center-center">
             <div self="center-left"><a href="#!zuix" onclick="scrollToAnchor('zuix')" class="mdl-color-text--grey-400 mdl-typography--font-bold">zUIx</a> powered website</div>
-            <div self="size-x1 sm-full" align="right">© 2016-to-infinity-and-beyond by <span class="mdl-color-text--grey-400 mdl-typography--font-bold">g-labs</span></div>
+            <div self="size-x1 sm-full" align="right">&copy; 2016-to-infinity-and-beyond by <span class="mdl-color-text--grey-400 mdl-typography--font-bold">g-labs</span></div>
         </div>
 
     </div>
@@ -300,49 +119,19 @@ article  {
 </div>
 
 <!-- FAB menu button overlay -->
-<div data-ui-load="@lib/components/menu_overlay">
-
-    <div data-ui-field="items">
-
-        <div class="menu-item" layout="row center-right">
-            <a title="G-Labs on GitHub" href="https://github.com/genielabs">
-                <span>github</span>
-                <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                <i class="material-icons">domain</i>
-            </span>
-            </a>
-        </div>
-        <div class="menu-item" layout="row center-right">
-            <a title="HomeGenie videos on YouTube" href="https://www.youtube.com/geniebby">
-                <span>youtube</span>
-                <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                <i class="material-icons">video_library</i>
-            </span>
-            </a>
-        </div>
-        <div class="menu-item" layout="row center-right">
-            <a title="Contact the author" onclick="contact()">
-                <span>feedback</span>
-                <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-                <i class="material-icons">mail_outline</i>
-            </span>
-            </a>
-        </div>
-
-    </div>
-
-</div>
-
-
+<div data-ui-include="content/menu_button" data-ui-mode="unwrap"></div>
 
 <!-- Splash Screen -->
-<div data-ui-include="content/cover" data-ui-options="cover_load_options" data-ui-field="splash-cover" class="splash-cover"></div>
+<div data-ui-include="content/cover"
+     data-ui-options="cover_load_options"
+     data-ui-field="splash-cover"
+     class="splash-cover"></div>
 
 <!-- Main Page includes -->
 <link rel="stylesheet" href="index.css">
-<script defer="" type="text/javascript" src="index.js"></script>
+<script defer type="text/javascript" src="index.js"></script>
 
-
+</body>
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -351,436 +140,4 @@ article  {
     ga('create', 'UA-92522504-1', 'auto');
     ga('send', 'pageview');
 </script>
-
-<div style="display:none"><!-- zUIx inline resource bundle -->
-<!--{[content/github_corner]}-->
-<div data-ui-view="content/github_corner">
-<span class="github-corner" aria-label="View source on Github">
-    <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
-    </svg>
-</span>
-
-</div>
-<!--{[content/products]}-->
-<div data-ui-view="content/products">
-<!--
-<h2 class="title mdl-color-text--blue-600"
-    self="size-xxlarge" align="center">products</h2>
--->
-
-<!-- zUIx -->
-<a id="zuix" class="watch-heading"></a>
-<article data-ui-include="ui/templates/flexy_card" layout="rows center-spread">
-    <h3 data-ui-field="title">
-        zUIx.js
-    </h3>
-    <a data-ui-field="link" href="http://zuix.it" title="ZUIX Home">
-        <span data-ui-field="link-text">HomePage</span>
-    </a>
-    <div data-ui-field="description">
-        <p>
-            A JavaScript library for creating component-based web sites and applications.
-            <br>
-            Its implementation allow a smooth transition from traditional web to
-            componentized apps.
-        </p>
-        <p>
-            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" title="zUIx source code on GitHub" href="https://github.com/genielabs/zuix">
-                <i class="material-icons">link</i>
-                github
-            </a>
-            <a title="zUIx source code on GitHub" href="https://github.com/genielabs/zuix">Source Code</a>
-        </p>
-        <h4>Built with ZUIX</h4>
-        <p>
-            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" title="zKit components for modern web made with zUIx" href="https://genielabs.github.io/zkit">
-                <i class="material-icons">link</i>
-                web
-            </a>
-            <a title="zKit components for modern web made with zUIx" href="https://genielabs.github.io/zkit">zKit</a>
-            <br>
-            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" title="zUIx Progressive Web App (PWA) demo" href="https://genielabs.github.io/zuix-hackernews">
-                <i class="material-icons">link</i>
-                demo
-            </a>
-            <a title="zUIx Progressive Web App (PWA) demo" href="https://genielabs.github.io/zuix-hackernews">Hacker News PWA</a>
-            <br>
-            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" title="zUIx TodoMVC app demo" href="https://genielabs.github.io/zuix-todomvc">
-                <i class="material-icons">link</i>
-                demo
-            </a>
-            <a title="zUIx TodoMVC app demo" href="https://genielabs.github.io/zuix-todomvc">To-Do MVC</a>
-            <br>
-            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" title="zUIx examples on CodePen" href="https://codepen.io/genielabs">
-                <i class="material-icons">link</i>
-                demo
-            </a>
-            <a title="zUIx examples on CodePen" href="https://codepen.io/genielabs">Examples on CodePen</a>
-
-        </p>
-    </div>
-    <figure data-ui-field="picture">
-        <img src="images/zuix.jpg">
-    </figure>
-    <div data-ui-field="notes-b">
-        <label class="mdl-color-text--blue-600">Available since</label>
-        <div layout="rows center-left">
-            <ul class="mdl-color-text--grey-600">
-                <li>2016</li>
-            </ul>
-        </div>
-    </div>
-    <div data-ui-field="notes-a">
-        <label class="mdl-color-text--blue-600">Employed technologies</label>
-        <div layout="rows center-left">
-            <ul class="mdl-color-text--grey-600 truncate">
-                <li>javascript</li>
-                <li>html5</li>
-                <li>css3</li>
-                <li>google-mdl</li>
-                <li>animate.css</li>
-                <li>npm</li>
-                <li>bower</li>
-                <li>gulp</li>
-                <li>google-closure</li>
-                <li>jsdoc</li>
-                <li>browser</li>
-                <li>git</li>
-            </ul>
-        </div>
-    </div>
-</article>
-
-<!-- HomeGenie Plus -->
-<a id="homegenie_plus"></a>
-<article data-ui-include="ui/templates/flexy_card" layout="rows center-spread">
-    <h3 data-ui-field="title">
-        HomeGenie Plus
-    </h3>
-    <a data-ui-field="link" title="HomeGenie Plus on Google's Play Store" href="https://play.google.com/store/apps/details?id=com.glabs.homegenieplus">
-        <span data-ui-field="link-text">Play Store</span>
-    </a>
-    <div data-ui-field="description">
-        <p>
-            A <em>control panel</em> for your smart home and connected devices.
-            Shipping with integrated automation engine, live script recording and voice control,
-            <em>HomeGenie plus</em> can seamlessly integrate mixed-type "things" and can also
-            operate as a standalone smart home server when plugged to a power source 24h.
-        </p>
-        <p>
-            Source code for this app will be released once it reaches 5000+ installations.
-        </p>
-    </div>
-    <figure data-ui-field="picture">
-        <div data-ui-load="@lib/controllers/view_pager" data-ui-options="image_ticker_options">
-            <img src="images/hg_plus/01_t.jpg" data-src-full="images/hg_plus/01.jpg">
-            <img src="images/hg_plus/02_t.jpg" data-src-full="images/hg_plus/02.jpg">
-            <img src="images/hg_plus/03_t.jpg" data-src-full="images/hg_plus/03.jpg">
-            <img src="images/hg_plus/03b_t.jpg" data-src-full="images/hg_plus/03b.jpg">
-            <img src="images/hg_plus/04_t.jpg" data-src-full="images/hg_plus/04.jpg">
-            <img src="images/hg_plus/05_t.jpg" data-src-full="images/hg_plus/05.jpg">
-            <img src="images/hg_plus/06_t.jpg" data-src-full="images/hg_plus/06.jpg">
-            <img src="images/hg_plus/07_t.jpg" data-src-full="images/hg_plus/07.jpg">
-            <img src="images/hg_plus/08_t.jpg" data-src-full="images/hg_plus/08.jpg">
-            <img src="images/hg_plus/09_t.jpg" data-src-full="images/hg_plus/09.jpg">
-        </div>
-    </figure>
-    <div data-ui-field="desc-more-left">
-        <h4>Features</h4>
-        <ul>
-            <li>Multi-standard</li>
-            <li>Voice control</li>
-            <li>Live script recording</li>
-            <li>Statistics and logs</li>
-            <li>Configuration backup/restore</li>
-            <li>Integrated and fully programmable automation engine</li>
-            <li>Javascript™ powered automation programs</li>
-            <li>Screen-saver with pictures' slide show</li>
-            <li>Light and dark theme</li>
-            <li>Works on smart phones and tablets with Android &gt;= 4.0.</li>
-        </ul>
-    </div>
-    <div data-ui-field="desc-more-right">
-        <h4>Supported device and services</h4>
-        <ul>
-            <li>
-                <strong>Belkin WeMo</strong><br>
-                Smart Wi-Fi Motion Sensor, Light Switch, Socket Switch, Insight Switch
-            </li>
-            <li>
-                <strong>HomeGenie Server</strong><br>
-                X10, Z-Wave, Insteon, RFXCom, KNX, GPIO and more...
-            </li>
-            <li>
-                <strong>LIFX</strong><br>
-                Smart Wi-Fi Color Lights and Dimmer Lights
-            </li>
-            <li>
-                <strong>Philips Hue Bridge</strong><br>
-                Color Lights, Dimmer Lights, Motion Sensors
-            </li>
-            <li>
-                <strong>TP-Link Smart Home</strong><br>
-                Smart Wi-Fi Plugs, Light Switches and Bulbs
-            </li>
-            <li>
-                <strong>UPnP/DLNA</strong><br>
-                Media Sharing / Media Server, Smart TV / Media Renderer
-            </li>
-        </ul>
-    </div>
-    <div data-ui-field="notes-b">
-        <label class="mdl-color-text--blue-600">Available since</label>
-        <div layout="rows center-left">
-            <ul class="mdl-color-text--grey-600">
-                <li>2015</li>
-            </ul>
-        </div>
-    </div>
-    <div data-ui-field="notes-a">
-        <label class="mdl-color-text--blue-600">Employed technologies</label>
-        <div layout="rows center-left">
-            <ul class="mdl-color-text--grey-600">
-                <li>android</li>
-                <li>UPnP</li>
-                <li>SSE</li>
-                <li>Voice Control</li>
-            </ul>
-        </div>
-    </div>
-</article>
-
-<!-- HomeGenie Server -->
-<a id="homegenie_server"></a>
-<article data-ui-include="ui/templates/flexy_card" layout="rows center-spread">
-    <h3 data-ui-field="title">
-        HomeGenie Server
-    </h3>
-    <a data-ui-field="link" href="http://homegenie.it" title="HomeGenie Home">
-        <span data-ui-field="link-text">HomePage</span>
-    </a>
-    <div data-ui-field="description">
-        <p>
-            Multi-standard, featured and fully programmable smart home gateway which can
-            run on embedded systems or desktop computers (Windows / Linux / Mac).
-            <br>
-            Can efficiently control from lower level peripherals like <em>GPIO</em> to widely spread HA
-            systems such as <em>X10</em>, <em>Z-Wave</em>, <em>Philips Hue</em>,
-            <em>Insteon</em>, <em>RFXCom</em>, <em>KNX</em>, <em>UPnP/DLNA</em> and more....
-        </p>
-        <p>
-            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" title="HomeGenie Server source code on GitHub" href="https://github.com/genielabs/HomeGenie">
-                <i class="material-icons">link</i>
-                github
-            </a>
-            <a title="HomeGenie Server source code on GitHub" href="https://github.com/genielabs/HomeGenie">Source Code</a>
-            <br>
-            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" title="HomeGenie Server documentation" href="https://genielabs.github.io/HomeGenie">
-                <i class="material-icons">link</i>
-                docs
-            </a>
-            <a title="HomeGenie Server documentation" href="https://genielabs.github.io/HomeGenie">Documentation</a>
-        </p>
-    </div>
-    <figure data-ui-field="picture">
-        <img src="images/homegenie.jpg">
-    </figure>
-    <div data-ui-field="notes-b">
-        <label class="mdl-color-text--blue-600">Available since</label>
-        <div layout="rows center-left">
-            <ul class="mdl-color-text--grey-600">
-                <li>2012</li>
-            </ul>
-        </div>
-    </div>
-    <div data-ui-field="notes-a">
-        <label class="mdl-color-text--blue-600">Employed technologies</label>
-        <div layout="rows center-left">
-            <ul class="mdl-color-text--grey-600 truncate">
-                <li>.Net/Mono</li>
-                <li>C#</li>
-                <li>JavaScript</li>
-                <li>jQuery</li>
-                <li>jQuery-Mobile</li>
-                <li>UPnP/DLNA</li>
-                <li>Z-Wave</li>
-                <li>X10</li>
-                <li>Insteon</li>
-                <li>Philips-Hue</li>
-                <li>MQTT</li>
-                <li>Voice-Control</li>
-                <li>Arduino</li>
-                <li>Raspberry-Pi</li>
-                <li>Linux</li>
-                <li>Windows</li>
-                <li>OsX</li>
-                <li>browser</li>
-                <li>git</li>
-            </ul>
-        </div>
-    </div>
-</article>
-
-<!-- LogCam -->
-<a id="logcam"></a>
-<article data-ui-include="ui/templates/flexy_card" layout="rows center-spread">
-    <h3 data-ui-field="title">
-        LogCam (beta)
-    </h3>
-    <a data-ui-field="link" title="LogCam Lite on Google's Play Store" href="https://play.google.com/store/apps/details?id=com.genielabs.logcam">
-        <span data-ui-field="link-text">Play Store</span>
-    </a>
-    <p data-ui-field="description">
-        A personal Video Diary / Dash Cam / Sport Cam for Android.
-        <br>
-        Featuring automatic recording on motion or sound detection, LogCam can
-        record in the background even if the device screen is off or locked.
-        <br>
-        Currently available for free in a "Lite" flavour. A fully featured version
-        is already being developed with extra features such as
-        remote control, RTSP streaming, web API and UPnP discovery.
-    </p>
-    <figure data-ui-field="picture">
-        <div data-ui-load="@lib/controllers/view_pager" data-ui-options="image_ticker_options">
-            <!--img src="images/logcam.png" -->
-            <img src="images/logcam-01_t.jpg" data-src-full="images/logcam-01.jpg">
-            <img src="images/logcam-02_t.jpg" data-src-full="images/logcam-02.jpg">
-        </div>
-    </figure>
-    <div data-ui-field="notes-b">
-        <label class="mdl-color-text--blue-600">Available since</label>
-        <div layout="rows center-left">
-            <ul class="mdl-color-text--grey-600">
-                <li>2016</li>
-            </ul>
-        </div>
-    </div>
-    <div data-ui-field="notes-a">
-        <label class="mdl-color-text--blue-600">Employed technologies</label>
-        <div layout="rows center-left">
-            <ul class="mdl-color-text--grey-600">
-                <li>android</li>
-                <li>ffmpeg</li>
-                <li>open-cv</li>
-                <li>upnp</li>
-                <li>rtsp</li>
-            </ul>
-        </div>
-    </div>
-</article>
-
-</div>
-<!--{[content/more_repos]}-->
-<div data-ui-view="content/more_repos">
-<h2 class="mdl-color-text--blue-600 watch-title" self="size-xxlarge" align="center">other products</h2>
-
-<article self="size-1of2 sm-full md-half" class="content-padding watch-reveal-left">
-    <h3 align="center" class="mdl-color-text--blue-800">mig-service <i class="material-icons">code</i></h3>
-    <p>
-        .Net portable library for developing networked
-        applications and RT web apps. With <em>HTTP</em>, <em>SSE</em>, <em>WebSockets</em> and many other plugins.
-    </p>
-    <div align="center">
-        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" href="https://github.com/genielabs/mig-service-dotnet">
-            <i class="material-icons">link</i>
-            github
-        </a>
-        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" href="https://www.nuget.org/packages/MIG/">
-            <i class="material-icons">link</i>
-            nuget
-        </a>
-    </div>
-</article>
-<article self="size-1of2 sm-full md-half" class="content-padding watch-reveal-right">
-    <h3 align="center" class="mdl-color-text--blue-800">serialport-lib <i class="material-icons">code</i></h3>
-    <p>
-        .Net portable library for event driven serial I/O with hot-plug support.
-        It overcomes the lack of <em>DataReceived</em> event in Mono/Linux.
-    </p>
-    <div align="center">
-        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" href="https://github.com/genielabs/serialport-lib-dotnet">
-            <i class="material-icons">link</i>
-            github
-        </a>
-        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" href="https://www.nuget.org/packages/SerialPortLib/">
-            <i class="material-icons">link</i>
-            nuget
-        </a>
-    </div>
-</article>
-
-<footer self="size-x1" layout="column center-center" class="watch-title">
-    <h4 class="mdl-color-text--grey-400">
-        ... and more 20+ repos
-    </h4>
-    <a href="https://github.com/genielabs" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary mdl-button--raised">
-        <i class="material-icons">link</i>
-        see all
-    </a>
-</footer>
-
-</div>
-<!--{[content/footer]}-->
-<div data-ui-view="content/footer">
-<div data-ui-include="content/about" self="size-xxlarge center"></div>
-
-<div self="size-xxlarge center" layout="rows top-center">
-    <div class="content-padding" self="size-1of2 sm-full" align="center">
-        <div data-ui-load="https://genielabs.github.io/zuix/kit/components/social_sharing" layout="row center-center">
-            <a data-ui-field="url" href="http://glabs.it">G-Labs Home</a>
-            <p data-ui-field="description">G-Labs, the open source factory.</p>
-        </div>
-    </div>
-    <div class="content-padding" self="size-1of2 sm-full" align="center">
-        <!-- PayPal Contribute -->
-        <a href="https://www.paypal.me/genielabs/10eur">
-            <span class="mdl-color-text--grey-400 mdl-typography--font-bold padding-right">contribute</span>
-            <span class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--primary">
-            <i class="material-icons">card_giftcard</i>
-        </span>
-        </a>
-    </div>
-</div>
-
-<div class="content-padding">
-
-    <a href="https://github.com/genielabs/glabs.it" layout="columns top-center" class="mdl-color-text--grey-400 mdl-typography--font-bold">
-        <small>
-            explore this site source code
-        </small>
-        <i class="material-icons mdl-typography--body-2">code</i>
-    </a>
-
-</div>
-</div>
-<!--{[content/cover]}-->
-<div data-ui-view="content/cover">
-<!--div layout="column stretch-stretch" class="splash-welcome">
-    <div layout="column center-center" class="mdl-color-text--blue-600">
-
-        <h2>welcome</h2>
-
-    </div>
-</div-->
-<div data-ui-field="cover" layout="column stretch-stretch" class="splash">
-    <div layout="column center-center" class="cover mdl-color--black animated fadeOutUpBig">
-
-        <div class="logo mdl-color-text--green-200" layout="row center-center">
-            <div class="g animated fadeInLeft">g</div>
-            <div class="m animated fadeIn mdl-color-text--yellow-200">-</div>
-            <div class="l animated fadeInLeft">l</div>
-            <div class="a animated fadeInRight">a</div>
-            <div class="b animated fadeInRight">b</div>
-            <div class="s animated fadeInRight">s</div>
-        </div>
-        <div align="center" class="motto mdl-color-text--light-green-A200 animated fadeIn">
-            the open source factory
-        </div>
-
-    </div>
-</div>
-
-</div></div></body></html>
+</html>
