@@ -89,7 +89,7 @@ function swigTemplate(page) {
 
 
 function parseHtml(sourceFolder, data) {
-    if (data.file.endsWith('.html') && false) {
+    if (data.file.endsWith('.html')) {
         const dom = new JSDOM(data.content, {runScripts: 'dangerously'});
         const nodeList = dom.window.document.querySelectorAll('[data-ui-include]');
         if (nodeList != null) {
