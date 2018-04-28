@@ -1,6 +1,6 @@
 ## www.glabs.it
 
-[G-Labs](http://glabs.it) web site, powered by [ZUIX](https://genielabs.github.io/zuix).
+[G-Labs](http://glabs.it) web site, powered by [zUIx](https://genielabs.github.io/zuix).
 
 
 

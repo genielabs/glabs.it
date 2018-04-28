@@ -44,6 +44,7 @@ var cover_load_options = {
                     .animateCss('fadeInUpBig', {delay: '0.0s', duration: '1.50s'}, function() {
                         zuix.field('splash-cover').hide();
                         if (scrollHelper != null) {
+                            // work-around for disappearing title at startup (firefox)
                             scrollHelper.scrollTo(1);
                         }
                     });
@@ -101,23 +102,13 @@ zuix.hook('view:process', function(view) {
         bootTimeout = -1;
         console.log('Website boot complete.');
         init();
-    }, 2000);
+    }, 1500);
 });
 
 var scrollHelper; // it will be == null until component is loaded
 var headingsRoller;
 // Load external scripts if not already packed into the app.bundle.js
 function init() {
-    // Load 'Headings Roller' plugin
-    zuix.load('ui/controllers/headings_roller', {
-        view: zuix.field('main'),
-        tag: 'h3',
-        logo: 'header_logo',
-        title: 'header_title',
-        ready: function(ctx) {
-            headingsRoller = this;
-        }
-    });
     // Scroll Helper - Scroll-synchronized animations
     zuix.context('scroll-helper', function() {
         // component loaded
@@ -190,11 +181,21 @@ function init() {
                 }
             }
         });
+        scrollHelper.scrollTo(1).scrollTo(0);
+        window.onresize = function(ev) {
+            scrollHelper.scrollTo(-scrollHelper.info().viewport.y+1);
+        };
     });
-    window.onresize = function(ev) {
-        scrollHelper.scrollTo(-scrollHelper.info().viewport.y+1);
-    };
-    scrollHelper.scrollTo(1).scrollTo(0);
+    // Load 'Headings Roller' plugin
+    zuix.load('ui/controllers/headings_roller', {
+        view: zuix.field('main'),
+        tag: 'h3',
+        logo: 'header_logo',
+        title: 'header_title',
+        ready: function(ctx) {
+            headingsRoller = this;
+        }
+    });
 }
 
 // Utility methods
@@ -211,8 +212,8 @@ function scrollToAnchor(pageAnchor) {
         anchorElement = p.position().y;
     }
     setTimeout(function() {
-        scrollHelper.scrollTo(anchorElement, 500);
-    }, 500);
+        scrollHelper.scrollTo(anchorElement, 300);
+    }, 300);
 }
 
 function contact() {
