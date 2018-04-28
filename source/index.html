@@ -52,7 +52,7 @@
     <link href="css/flex-layout-attribute.min.css" rel="stylesheet">
 
     <!-- zUIx library  -->
-    <script src="js/zuix/zuix.min.js"></script>
+    <script src="js/zuix/zuix.js"></script>
     <!-- Enable zUIx bundler to generate 'app.bundle.js' when going to production -->
     <!--script src="js/zuix/zuix-bundler.min.js"></script-->
     <!--
@@ -87,19 +87,16 @@
     <div self="stretch center" layout="columns top-center">
 
         <!-- Products -->
-        <!--
         <section data-ui-include="content/products"
-             self="size-xxlarge" layout="columns spread-stretch" class="products"></section>
-        -->
-        <section data-ui-include="content/products"
-                 self="size-xxlarge" layout="columns spread-stretch" class="products">
-        </section>
+                 data-ui-mode="inner"
+                 self="size-xxlarge" layout="columns spread-stretch" class="products"></section>
 
         <!-- More repositories -->
         <a id="more_repos"></a>
-        <section data-ui-include="content/more_repos" data-ui-mode="inner"
-             self="size-xxlarge" layout="rows stretch-spread" class="more-repos">
-        </section>
+        <section data-ui-include="content/more_repos"
+                 data-ui-options="content_no_css"
+                 data-ui-mode="inner"
+             self="size-xxlarge" layout="rows stretch-spread" class="more-repos"></section>
 
         <!-- Footer with 'About' note -->
         <a id="about"></a>
