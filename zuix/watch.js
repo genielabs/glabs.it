@@ -1,11 +1,13 @@
 const delay = require('delay');
 const chokidar = require('chokidar');
+const sourceFolder = process.argv[2] != null ? process.argv[2] : './source';
+const buildFolder = process.argv[3] != null ? process.argv[3] : './build';
 const BuildingState = {
     IDLE: 0,
     RUNNING: 1,
     PENDING: 2
 };
-const watcher = chokidar.watch('./source', {
+const watcher = chokidar.watch(sourceFolder, {
     ignored: /[\/\\]\./, persistent: true
 });
 let status = BuildingState.IDLE;
@@ -35,7 +37,7 @@ buildSite();
 function build() {
     status = BuildingState.RUNNING;
     const childProcess = require('child_process');
-    childProcess.execFileSync('npm', ['run', 'build'], {stdio:[0, 1, 2]});
+    childProcess.execFileSync('npm', ['run', 'build', sourceFolder, buildFolder], {stdio:[0, 1, 2]});
     delay(1000).then(function() {
         if (status === BuildingState.PENDING) {
             build();

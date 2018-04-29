@@ -2059,6 +2059,8 @@ ComponentContext.prototype.on = function(eventPath, eventHandler) {
  * @param {boolean} [enableCaching] Enable HTTP
  * @return {ComponentContext} The ```{ComponentContext}``` object itself.
  */
+// TODO: implement 'resourceRoot' via zuix.setResourceRoot('_app/')
+let resourceRoot = '_app/';
 ComponentContext.prototype.loadCss = function(options, enableCaching) {
     const context = this;
     if (util.isNoU(options)) options = {};
@@ -2071,6 +2073,9 @@ ComponentContext.prototype.loadCss = function(options, enableCaching) {
     }
     if (!enableCaching) {
         cssPath += '?'+new Date().getTime();
+    }
+    if (!cssPath.startsWith('//') && cssPath.indexOf('://') < 0) {
+        cssPath = resourceRoot + cssPath;
     }
     z$.ajax({
         url: cssPath,
@@ -2148,6 +2153,9 @@ ComponentContext.prototype.loadHtml = function(options, enableCaching) {
         const cext = util.isNoU(options.cext) ? '.html' : options.cext;
         if (htmlPath == context.componentId) {
             htmlPath += cext + (!enableCaching ? '?' + new Date().getTime() : '');
+        }
+        if (!htmlPath.startsWith('//') && htmlPath.indexOf('://') < 0) {
+            htmlPath = resourceRoot + htmlPath;
         }
         z$.ajax({
             url: htmlPath,
@@ -3830,6 +3838,7 @@ function getCachedComponent(componentId) {
  * @param {ComponentContext} context
  * @param {TaskQueue} [task]
  */
+let resourceRoot = '_app/'; // TODO: ...
 function loadController(context, task) {
     if (typeof context.options().controller === 'undefined' && context.controller() === null) {
         _log.d(context.componentId, 'controller:load');
@@ -3840,9 +3849,13 @@ function loadController(context, task) {
             context.controller(_globalHandlers[context.componentId]);
             createComponent(context, task);
         } else {
+            let jsPath = context.componentId + '.js';
+            if (!jsPath.startsWith('//') && jsPath.indexOf('://') < 0) {
+                jsPath = resourceRoot + jsPath;
+            }
             const job = function(t) {
                 z$.ajax({
-                    url: context.componentId + '.js' + (_enableHttpCaching ? '' : '?'+new Date().getTime()),
+                    url: jsPath + (_enableHttpCaching ? '' : '?'+new Date().getTime()),
                     success: function(ctrlJs) {
                         // TODO: improve js parsing!
                         try {

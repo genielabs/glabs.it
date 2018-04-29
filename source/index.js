@@ -19,9 +19,8 @@
 
  *
  */
-
 // Use `var` or `window.` prefix to declare global variables
-
+var zx = zuix;
 // Content loading default options
 var content_no_css = {
     css: false
@@ -31,18 +30,18 @@ var cover_load_options = {
     priority: 10,
     ready: function(ctx) {
         // Load Animate CSS extension method for ZxQuery
-        zuix.using('component', 'https://genielabs.github.io/zuix/kit/extensions/animate_css', function(res, ctx) {
+        zx.using('component', 'https://genielabs.github.io/zuix/kit/extensions/animate_css', function(res, ctx) {
             console.log('AnimateCSS extension loaded.', res, ctx);
             // Start the cover animation
-            zuix.field('cover').animateCss(function() {
+            zx.field('cover').animateCss(function() {
                 // Animation ended, hide cover, show header and content
                 // last component loaded, hide the splash-screen and show the main page
-                zuix.field('splash-cover').removeClass('splash-cover');
-                zuix.$.find('header').show()
+                zx.field('splash-cover').removeClass('splash-cover');
+                zx.$.find('header').show()
                     .animateCss('fadeInDown', {delay: '0.50s', duration: '1.00s'});
-                zuix.field('main').show()
+                zx.field('main').show()
                     .animateCss('fadeInUpBig', {delay: '0.0s', duration: '1.50s'}, function() {
-                        zuix.field('splash-cover').hide();
+                        zx.field('splash-cover').hide();
                         if (scrollHelper != null) {
                             // work-around for disappearing title at startup (firefox)
                             scrollHelper.scrollTo(1);
@@ -61,7 +60,7 @@ var image_ticker_options = {
             console.log(e, page);
             // TODO: open full-screen in the new media_gallery widget
         });
-        const v = zuix.$(ctx.view());
+        const v = zx.$(ctx.view());
         const sizer = document.createElement('div');
         sizer.innerHTML = v.children().eq(0).get().outerHTML;
         sizer.style['visibility'] = 'hidden';
@@ -71,21 +70,21 @@ var image_ticker_options = {
 
 if (clientIsWebCrawler()) {
     // Skip splash-screen if is a web bot or if a anchor is provided with the url
-    zuix.field('splash-cover').hide();
-    zuix.field('main').show();
-    zuix.$.find('header').show();
+    zx.field('splash-cover').hide();
+    zx.field('main').show();
+    zx.$.find('header').show();
     init();
 } else {
     // Hide content behind the splash-screen
-    zuix.$.find('header').hide();
-    zuix.field('main').hide();
+    zx.$.find('header').hide();
+    zx.field('main').hide();
 }
 
 // Website boot
 let bootTimeout = null;
-zuix.hook('view:process', function(view) {
+zx.hook('view:process', function(view) {
     // Force opening of all non-local links to a new window
-    zuix.$('a[href*="://"]').attr('rel', 'noopener');
+    zx.$('a[href*="://"]').attr('rel', 'noopener');
     // Material Design Light integration - DOM upgrade
     if (/* this.options().mdl && */ typeof componentHandler !== 'undefined') {
         componentHandler.upgradeElements(view.get());
@@ -110,7 +109,7 @@ var headingsRoller;
 // Load external scripts if not already packed into the app.bundle.js
 function init() {
     // Scroll Helper - Scroll-synchronized animations
-    zuix.context('scroll-helper', function() {
+    zx.context('scroll-helper', function() {
         // component loaded
         scrollHelper = this.on('scroll:change', function(e, data) {
             switch (data.event) {
@@ -187,8 +186,8 @@ function init() {
         };
     });
     // Load 'Headings Roller' plugin
-    zuix.load('ui/controllers/headings_roller', {
-        view: zuix.field('main'),
+    zx.load('controllers/headings_roller', {
+        view: zx.field('main'),
         tag: 'h3',
         logo: 'header_logo',
         title: 'header_title',
@@ -201,7 +200,7 @@ function init() {
 // Utility methods
 
 function scrollToAnchor(pageAnchor) {
-    const p = zuix.field('main');
+    const p = zx.field('main');
     let anchorElement;
     let offset = 0;
     if (pageAnchor !== null && pageAnchor.length > 0) {

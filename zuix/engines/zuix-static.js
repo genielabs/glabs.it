@@ -31,8 +31,8 @@ const util = require('util');
 // static-site
 const Promise = require('es6-promise').Promise;
 const swig = require('swig-templates');
-const isMarkdown = require('../node_modules/static-site/lib/utils/is-markdown');
-const markdownTag = require('../node_modules/static-site/lib/utils/markdown-tag');
+const isMarkdown = require('../../node_modules/static-site/lib/utils/is-markdown');
+const markdownTag = require('../../node_modules/static-site/lib/utils/markdown-tag');
 const MarkdownIt = require('markdown-it');
 const hljs = require('highlight.js');
 const extras = require('swig-extras');
@@ -102,7 +102,7 @@ function parseHtml(sourceFolder, data) {
                 const path = el.getAttribute('data-ui-include');
                 // HTML
                 try {
-                    let htmlFile = fs.readFileSync(sourceFolder + '/' + path + '.html').toString();
+                    let htmlFile = fs.readFileSync(sourceFolder + '/_app/' + path + '.html').toString();
                     // TODO: recurse parseHtml(sourceFolder, htmlFile...)
                     if (el.getAttribute('data-ui-mode') === 'unwrap') {
                         // TODO: add HTML comment with file info
@@ -116,7 +116,7 @@ function parseHtml(sourceFolder, data) {
                 }
                 // CSS
                 try {
-                    let cssFile = fs.readFileSync(sourceFolder + '/' + path + '.css').toString();
+                    let cssFile = fs.readFileSync(sourceFolder + '/_app/' + path + '.css').toString();
                     if (el.getAttribute('data-ui-mode') === 'unwrap') {
                         // TODO: add // comment with file info
                         cssFile = util.format('\n<style id="%s">\n%s\n</style>\n', path, cssFile);
