@@ -19,8 +19,13 @@
 
  *
  */
-// Use `var` or `window.` prefix to declare global variables
+// shorten zuix object name
 var zx = zuix;
+// set folder where to look for resources
+zx.store('config', {
+    resourcePath: './_app/'
+});
+
 // Content loading default options
 var content_no_css = {
     css: false

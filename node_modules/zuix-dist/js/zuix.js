@@ -1,4 +1,4 @@
-/* zUIx v0.4.9-38 18.04.28 16:57:03 */
+/* zUIx v0.4.9-39 18.04.29 21:21:45 */
 
 /** @typedef {Zuix} window.zuix */!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.zuix=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 /*
@@ -1711,16 +1711,23 @@ const util =
  * @this {ZxQuery}
  */
 
+// TODO: convert all 'this.<field>' to 'let' variables
+
+/** @type {Zuix} **/
+let zuix = null;
+
 /**
  * The component context object.
  *
+ * @param {Zuix} zuixInstance
  * @param {ContextOptions} options The context options.
  * @param {function} [eventCallback] Event routing callback.
  * @return {ComponentContext} The component context instance.
  * @constructor
  */
 
-function ComponentContext(options, eventCallback) {
+function ComponentContext(zuixInstance, options, eventCallback) {
+    zuix = zuixInstance;
     this._options = null;
     this.contextId = (options == null || options.contextId == null) ? null : options.contextId;
     this.componentId = null;
@@ -2059,8 +2066,6 @@ ComponentContext.prototype.on = function(eventPath, eventHandler) {
  * @param {boolean} [enableCaching] Enable HTTP
  * @return {ComponentContext} The ```{ComponentContext}``` object itself.
  */
-// TODO: implement 'resourceRoot' via zuix.setResourceRoot('_app/')
-let resourceRoot = '_app/';
 ComponentContext.prototype.loadCss = function(options, enableCaching) {
     const context = this;
     if (util.isNoU(options)) options = {};
@@ -2074,11 +2079,8 @@ ComponentContext.prototype.loadCss = function(options, enableCaching) {
     if (!enableCaching) {
         cssPath += '?'+new Date().getTime();
     }
-    if (!cssPath.startsWith('//') && cssPath.indexOf('://') < 0) {
-        cssPath = resourceRoot + cssPath;
-    }
     z$.ajax({
-        url: cssPath,
+        url: zuix.getResourcePath(cssPath),
         success: function(viewCss) {
             context.style(viewCss);
             if (util.isFunction(options.success)) {
@@ -2154,11 +2156,8 @@ ComponentContext.prototype.loadHtml = function(options, enableCaching) {
         if (htmlPath == context.componentId) {
             htmlPath += cext + (!enableCaching ? '?' + new Date().getTime() : '');
         }
-        if (!htmlPath.startsWith('//') && htmlPath.indexOf('://') < 0) {
-            htmlPath = resourceRoot + htmlPath;
-        }
         z$.ajax({
-            url: htmlPath,
+            url: zuix.getResourcePath(htmlPath),
             success: function(viewHtml) {
                 context.view(viewHtml);
                 if (util.isFunction(options.success)) {
@@ -2319,7 +2318,6 @@ const _optionAttributes =
     _dereq_('./OptionAttributes')();
 
 const LIBRARY_PATH_DEFAULT = '//genielabs.github.io/zkit/lib';
-let _libraryPath = LIBRARY_PATH_DEFAULT;
 
 /**
  * TODO: describe this...
@@ -2707,8 +2705,10 @@ function loadInline(element) {
 }
 
 function resolvePath(path) {
+    const config = zuix.store('config');
+    const libraryPath = config != null && config.libraryPath != null ? config.libraryPath : LIBRARY_PATH_DEFAULT;
     if (path.startsWith('@lib/')) {
-        path = _libraryPath+path.substring(4);
+        path = libraryPath+path.substring(4);
     }
     return path;
 }
@@ -3460,8 +3460,13 @@ let _enableHttpCaching = true;
 function Zuix() {
     _componentizer.setHost(this);
     /**
+     * @type {Array}
      * @private
+     */
+    this._store = [];
+    /**
      * @type {!Array.<ZxQuery>}
+     * @private
      **/
     this._fieldCache = [];
     return this;
@@ -3559,7 +3564,7 @@ function load(componentId, options) {
         // TODO: check if this case is of any use
         // empty context
         options = {};
-        ctx = new ComponentContext(options, trigger);
+        ctx = new ComponentContext(zuix, options, trigger);
     }
 
     // assign the given component (widget) to this context
@@ -3595,6 +3600,15 @@ function load(componentId, options) {
     }
 
     return ctx;
+}
+
+function getResourcePath(path) {
+    const config = zuix.store('config');
+    path = _componentizer.resolvePath(path);
+    if (!path.startsWith('//') && path.indexOf('://') < 0) {
+        path = (config != null && config.resourcePath != null ? config.resourcePath : '') + path;
+    }
+    return path;
 }
 
 /**
@@ -3728,7 +3742,7 @@ function unload(context) {
 
 /** @private */
 function createContext(options) {
-    const context = new ComponentContext(options, trigger);
+    const context = new ComponentContext(zuix, options, trigger);
     _contextRoot.push(context);
     return context;
 }
@@ -3838,7 +3852,6 @@ function getCachedComponent(componentId) {
  * @param {ComponentContext} context
  * @param {TaskQueue} [task]
  */
-let resourceRoot = '_app/'; // TODO: ...
 function loadController(context, task) {
     if (typeof context.options().controller === 'undefined' && context.controller() === null) {
         _log.d(context.componentId, 'controller:load');
@@ -3849,13 +3862,10 @@ function loadController(context, task) {
             context.controller(_globalHandlers[context.componentId]);
             createComponent(context, task);
         } else {
-            let jsPath = context.componentId + '.js';
-            if (!jsPath.startsWith('//') && jsPath.indexOf('://') < 0) {
-                jsPath = resourceRoot + jsPath;
-            }
             const job = function(t) {
+                const jsPath = context.componentId + '.js' + (_enableHttpCaching ? '' : '?'+new Date().getTime());
                 z$.ajax({
-                    url: jsPath + (_enableHttpCaching ? '' : '?'+new Date().getTime()),
+                    url: getResourcePath(jsPath),
                     success: function(ctrlJs) {
                         // TODO: improve js parsing!
                         try {
@@ -4552,6 +4562,26 @@ Zuix.prototype.httpCaching = function(enable) {
 Zuix.prototype.componentize = function(element) {
     _componentizer.componentize(element);
     return this;
+};
+/**
+ * Gets/Sets a global store entry.
+ * @param {string} name Entry name
+ * @param {object} value Entry value
+ * @return {object}
+ */
+Zuix.prototype.store = function(name, value) {
+    if (value != null) {
+        this._store[name] = value;
+    }
+    return this._store[name];
+};
+/**
+ * Get a resource path.
+ * @param {string} path resource id/path
+ * @return {string}
+ */
+Zuix.prototype.getResourcePath = function(path) {
+    return getResourcePath(path);
 };
 /**
  * Gets/Sets the components data bundle.
