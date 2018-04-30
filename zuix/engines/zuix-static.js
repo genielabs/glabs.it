@@ -79,7 +79,7 @@ function parseHtml(sourceFolder, data) {
                     } else {
                         //content = util.format('<div data-ui-view="%s">\n%s\n</div>', path, content);
                         parseHtml(sourceFolder, {
-                            file: sourceFolder + '/_app/' + path + '.html',
+                            file: sourceFolder + '/app/' + path + '.html',
                             content: content
                         });
                         zuixBundle.viewList.push({path: path, content: content});
@@ -135,7 +135,7 @@ function getResource(type, path, sourceFolder) {
             logger.error(util.format('Error downloading "%s" (%s).', path, res.statusCode));
         }
     } else {
-        const f = sourceFolder + '/_app/' + path;
+        const f = sourceFolder + '/app/' + path;
         try {
             content = fs.readFileSync(f).toString();
         } catch (e) {

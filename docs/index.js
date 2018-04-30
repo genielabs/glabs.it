@@ -23,7 +23,7 @@
 var zx = zuix;
 // set folder where to look for resources
 zx.store('config', {
-    resourcePath: './_app/'
+    resourcePath: './app/'
 });
 
 // Content loading default options

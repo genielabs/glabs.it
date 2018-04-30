@@ -4,7 +4,7 @@ const logger = require('npmlog');
 const sourceFolder = process.argv[2] != null ? process.argv[2] : './source';
 const buildFolder = process.argv[3] != null ? process.argv[3] : './build';
 
-let ignoreList = ['_app', 'apps', '_inc', 'css', 'images', 'js'];
+let ignoreList = ['app', 'apps', '_inc', 'css', 'images', 'js'];
 logger.info(new Date().toLocaleTimeString(), 'Building started...');
 
 // Copy things in ignore list straight to the build folder
