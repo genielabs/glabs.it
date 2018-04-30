@@ -28,7 +28,179 @@
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
-// static-site
+const request = require('sync-request');
+const stringify = require('json-stringify');
+const logger = require('npmlog');
+// zuix-bundler cli
+const jsdom = require('jsdom');
+const {JSDOM} = jsdom;
+
+const zuixBundle = {
+    viewList: [],
+    styleList: [],
+    controllerList: []
+};
+
+function parseHtml(sourceFolder, data) {
+    if (data.file.endsWith('.html')) {
+        const dom = new JSDOM(data.content, {runScripts: 'dangerously'});
+        const nodeList = dom.window.document.querySelectorAll('[data-ui-include],[data-ui-load]');
+        if (nodeList != null) {
+            nodeList.forEach(function(el) {
+                let hasJsFile = false;
+                let path = el.getAttribute('data-ui-include');
+                if (path == null || path === '') {
+                    path = el.getAttribute('data-ui-load');
+                    hasJsFile = true;
+                }
+                if (path.startsWith('@lib/')) {
+                    path = '//genielabs.github.io/zkit/lib'+path.substring(4);
+                }
+                let content;
+                if (hasJsFile) {
+                    if (alreadyBundled(zuixBundle.controllerList, path)) {
+                        return;
+                    }
+                    content = getResource('js', path, sourceFolder);
+                    if (content != null) {
+                        //content = util.format('(function(){ return %s }).for(\'%s\');', content, path);
+                        zuixBundle.controllerList.push({path: path, content: content});
+                    }
+                }
+                // HTML
+                if (alreadyBundled(zuixBundle.viewList, path)) {
+                    return;
+                }
+                content = getResource('html', path, sourceFolder);
+                if (content != null) {
+                    if (el.getAttribute('data-ui-mode') === 'unwrap') {
+                        // TODO: add HTML comment with file info
+                        el.outerHTML = content;
+                    } else {
+                        //content = util.format('<div data-ui-view="%s">\n%s\n</div>', path, content);
+                        parseHtml(sourceFolder, {
+                            file: sourceFolder + '/_app/' + path + '.html',
+                            content: content
+                        });
+                        zuixBundle.viewList.push({path: path, content: content});
+                    }
+                }
+                // CSS
+                content = getResource('css', path, sourceFolder);
+                if (content != null) {
+                    if (el.getAttribute('data-ui-mode') === 'unwrap') {
+                        // TODO: add // comment with file info
+                        content = util.format('\n<style id="%s">\n%s\n</style>\n', path, content);
+                        dom.window.document.querySelector('head').innerHTML += util.format('\n<!--{[%s]}-->\n%s', path, content);
+                    } else {
+                        //content = util.format('\n<style id="%s">\n%s\n</style>\n', path,
+                        //    wrapCss('[data-ui-component="' + path + '"]:not(.zuix-css-ignore)', content));
+                        zuixBundle.styleList.push({path: path, content: content});
+                    }
+                }
+            });
+        }
+        return dom;
+    }
+}
+
+function alreadyBundled(list, path) {
+    const AlreadyExistsException = {};
+    try {
+        list.forEach(function(b) {
+            if (b.path === path) {
+                throw AlreadyExistsException;
+            }
+        });
+    } catch (e) {
+        if (e === AlreadyExistsException) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function getResource(type, path, sourceFolder) {
+    let content = null;
+    path = path + '.' + type;
+    if (path.indexOf('://') > 0 || path.startsWith('//')) {
+        if (path.startsWith('//')) {
+            path = 'https:'+path;
+        }
+        logger.info(util.format('Downloading resource "%s"...', path));
+        const res = request('GET', path);
+        if (res.statusCode === 200) {
+            content = res.getBody('utf8');
+        } else {
+            logger.error(util.format('Error downloading "%s" (%s).', path, res.statusCode));
+        }
+    } else {
+        const f = sourceFolder + '/_app/' + path;
+        try {
+            content = fs.readFileSync(f).toString();
+        } catch (e) {
+            logger.error(e);
+        }
+    }
+    return content;
+}
+
+function getBundleItem(bundle, path) {
+    let item = null;
+    const AlreadyExistsException = {};
+    try {
+        bundle.forEach(function(b) {
+            if (b.componentId === path) {
+                item = b;
+                throw AlreadyExistsException;
+            }
+        });
+    } catch (e) {
+        if (e === AlreadyExistsException) {
+            return item;
+        }
+    }
+    item = {
+        componentId: path
+    };
+    bundle.push(item);
+    return item;
+}
+
+module.exports = function(options, template, data, cb) {
+    const dom = parseHtml(options.source, data);
+    if (dom != null) {
+        let inlineViews = '<!-- zUIx inline resource resourceBundle -->';
+        zuixBundle.viewList.forEach(function(v) {
+            logger.info('Adding view', v.path);
+            const content = util.format('<div data-ui-view="%s">\n%s\n</div>', v.path, v.content);
+            inlineViews += util.format('\n<!--{[%s]}-->\n%s', v.path, content);
+        });
+        let resourceBundle = [];
+        zuixBundle.controllerList.forEach(function(s) {
+            // TODO: ensure it ends with ;
+            logger.info('Adding controller', s.path);
+            // inlineViews += s.content;
+            getBundleItem(resourceBundle, s.path).controller = s.content;
+        });
+        zuixBundle.styleList.forEach(function(s) {
+            logger.info('Adding style', s.path);
+            getBundleItem(resourceBundle, s.path).css = s.content;
+        });
+        const json = stringify(resourceBundle, null, 2);
+        let jsonBundle = '<script>zuix.bundle('+json+')</script>';
+
+        dom.window.document.body.innerHTML += util.format('<div style="display:none">%s</div>', inlineViews);
+        dom.window.document.body.innerHTML += jsonBundle;
+
+        data.content = dom.serialize();
+    }
+    cb(null, swigTemplate(data)._result.contents);
+};
+
+
+/* BEGIN 'static-site' default engine code */
+
 const Promise = require('es6-promise').Promise;
 const swig = require('swig-templates');
 const isMarkdown = require('../../node_modules/static-site/lib/utils/is-markdown');
@@ -36,9 +208,6 @@ const markdownTag = require('../../node_modules/static-site/lib/utils/markdown-t
 const MarkdownIt = require('markdown-it');
 const hljs = require('highlight.js');
 const extras = require('swig-extras');
-// zuix-render
-const jsdom = require('jsdom');
-const {JSDOM} = jsdom;
 
 const markdown = MarkdownIt({
     html: true,
@@ -50,7 +219,6 @@ const markdown = MarkdownIt({
 });
 
 const filters = ['batch', 'groupby', 'nl2br', 'pluck', 'split', 'trim', 'truncate'];
-
 filters.forEach(function(filter) {
     extras.useFilter(swig, filter);
 });
@@ -87,146 +255,4 @@ function swigTemplate(page) {
     });
 }
 
-
-function parseHtml(sourceFolder, data) {
-    if (data.file.endsWith('.html')) {
-        const dom = new JSDOM(data.content, {runScripts: 'dangerously'});
-        const nodeList = dom.window.document.querySelectorAll('[data-ui-include]');
-        if (nodeList != null) {
-            const zuixBundle = {
-                viewList: [],
-                styleList: [],
-                controllerList: []
-            };
-            nodeList.forEach(function(el) {
-                const path = el.getAttribute('data-ui-include');
-                // HTML
-                try {
-                    let htmlFile = fs.readFileSync(sourceFolder + '/_app/' + path + '.html').toString();
-                    // TODO: recurse parseHtml(sourceFolder, htmlFile...)
-                    if (el.getAttribute('data-ui-mode') === 'unwrap') {
-                        // TODO: add HTML comment with file info
-                        el.outerHTML = htmlFile;
-                    } else {
-                        htmlFile = util.format('<div data-ui-view="%s">\n%s\n</div>', path, htmlFile);
-                        zuixBundle.viewList.push({path: path, content: htmlFile});
-                    }
-                } catch (e) {
-                    // console.warn(e);
-                }
-                // CSS
-                try {
-                    let cssFile = fs.readFileSync(sourceFolder + '/_app/' + path + '.css').toString();
-                    if (el.getAttribute('data-ui-mode') === 'unwrap') {
-                        // TODO: add // comment with file info
-                        cssFile = util.format('\n<style id="%s">\n%s\n</style>\n', path, cssFile);
-                        dom.window.document.querySelector('head').innerHTML += util.format('\n<!--{[%s]}-->\n%s', path, cssFile);
-                    } else {
-                        cssFile = util.format('\n<style id="%s">\n%s\n</style>\n', path,
-                            wrapCss('[data-ui-component="' + path + '"]:not(.zuix-css-ignore)', cssFile));
-                        zuixBundle.styleList.push({path: path, content: cssFile});
-                    }
-                } catch (e) {
-                    // console.warn(e);
-                }
-            });
-            let bundleString = '<!-- zUIx inline resource bundle -->';
-            zuixBundle.viewList.forEach(function(v) {
-                bundleString += util.format('\n<!--{[%s]}-->\n%s', v.path, v.content);
-            });
-            zuixBundle.styleList.forEach(function(s) {
-                dom.window.document.querySelector('head').innerHTML += util.format('\n<!--{[%s]}-->\n%s', s.path, s.content);
-            });
-            dom.window.document.body.innerHTML += util.format('<div style="display:none">%s</div>', bundleString);
-        }
-
-        data.content = dom.serialize();
-    }
-
-    return swigTemplate(data)._result.contents;
-}
-
-function replaceBraces(html, callback) {
-    const tags = new RegExp(/[^{}]+(?=})/g);
-    let outHtml = '';
-    let matched = 0;
-    let currentIndex = 0;
-    let result;
-    while (result = tags.exec(html)) {
-        if (typeof result[0] === 'string' && (result[0].trim().length === 0 || result[0].indexOf('\n') >= 0)) {
-            const nv = html.substr(currentIndex, result.index-currentIndex)+result[0]+'}';
-            outHtml += nv;
-            currentIndex += nv.length;
-            continue;
-        }
-        let value = '{'+result[0]+'}';
-        if (typeof callback === 'function') {
-            const r = callback(result[0]);
-            if (r != null) {
-                value = r;
-                matched++;
-            }
-        }
-        outHtml += html.substr(currentIndex, result.index-currentIndex-1)+value;
-        currentIndex = result.index+result[0].length+1;
-    }
-    if (matched > 0) {
-        outHtml += html.substr(currentIndex);
-        return outHtml;
-    }
-    return null;
-}
-function wrapCss(wrapperRule, css) {
-    const wrapReX = /((.*){([^{}]|((.*){([^}]+)[}]))*})/g;
-    let wrappedCss = '';
-    let ruleMatch;
-    // remove comments
-    css = css.replace(/\/\*[\s\S]*?\*\/|([^:]|^)\/\/.*$/g, '');
-    do {
-        ruleMatch = wrapReX.exec(css);
-        if (ruleMatch && ruleMatch.length > 1) {
-            const ruleParts = ruleMatch[2];
-            if (ruleParts != null && ruleParts.length > 0) {
-                const classes = ruleParts.split(',');
-                let isMediaQuery = false;
-                let k = 0;
-                classes.forEach(function(v) {
-                    if (v.replace(' ', '') === '.') {
-                        // a single `.` means 'self' (the container itself)
-                        // so we just add the wrapperRule
-                        wrappedCss += '\n' + wrapperRule + ' ';
-                    } else if (v.trim()[0] === '@') {
-                        // leave it as is if it's an animation or media rule
-                        wrappedCss += v + ' ';
-                        if (v.trim().toLowerCase().startsWith('@media')) {
-                            isMediaQuery = true;
-                        }
-                    } else {
-                        // wrap the class name (v)
-                        wrappedCss += '\n' + wrapperRule + '\n' + v + ' ';
-                    }
-                    if (k++ < classes.length - 1) {
-                        wrappedCss += ', ';
-                    }
-                });
-                if (isMediaQuery) {
-                    const wrappedMediaQuery = wrapCss(wrapperRule, ruleMatch[1].substring(ruleMatch[2].length).replace(/^{([^\0]*?)}$/, '$1'));
-                    wrappedCss += '{\n  '+wrappedMediaQuery+'\n}';
-                } else {
-                    wrappedCss += ruleMatch[1].substring(ruleMatch[2].length) + '\n';
-                }
-            } else {
-                console.w('wrapCss was unable to parse rule.', ruleParts, ruleMatch);
-            }
-        }
-    } while (ruleMatch);
-    if (wrappedCss !== '') {
-        css = wrappedCss;
-    }
-    return css;
-}
-
-module.exports = function(options, template, data, cb) {
-    const html = parseHtml(options.source, data);
-    cb(null, html);
-};
+/* END 'static-site' default engine code */
