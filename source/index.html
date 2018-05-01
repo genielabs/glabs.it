@@ -69,18 +69,20 @@
       data-ui-load="@lib/controllers/scroll_helper"
       data-ui-context="scroll-helper">
 
-<header class="mdl-color--black mdl-shadow--8dp">
-    <!-- Logo -->
-    <a data-ui-field="header_logo" class="header-logo mdl-color-text--green-200" href="https://github.com/genielabs" target="_parent">
-        <strong>g</strong><span class="mdl-color-text--yellow-200">-</span><span>labs</span>
-        <small class="mdl-color-text--light-green-A200">the open source factory</small>
-    </a>
-    <!-- Rolling headings title field -->
-    <h3 data-ui-field="header_title" class="header-title mdl-color-text--white"></h3>
-    <!-- GitHub corner -->
-    <a data-ui-include="content/github_corner" href="https://github.com/genielabs" target="_parent">
-        G-Labs on GitHub
-    </a>
+<header class="mdl-color--black mdl-shadow--8dp" layout="columns top-center">
+    <div self="size-xxlarge center" class="header" layout="row center-left">
+        <!-- Logo -->
+        <a data-ui-field="header_logo" class="header-logo mdl-color-text--green-200" href="https://github.com/genielabs" target="_parent">
+            <strong>g</strong><span class="mdl-color-text--yellow-200">-</span><span>labs</span>
+            <small class="mdl-color-text--light-green-A200">the open source factory</small>
+        </a>
+        <!-- Rolling headings title field -->
+        <h3 data-ui-field="header_title" class="header-title mdl-color-text--white"></h3>
+        <!-- GitHub corner -->
+        <a href="https://github.com/genielabs" class="github-logo" self="right">
+            <img src="{{root}}images/github_logo.png">
+        </a>
+    </div>
 </header>
 <div data-ui-field="main" id="main">
 
@@ -106,9 +108,11 @@
         </footer>
 
         <!-- Copyright notice -->
-        <div class="footer_bar content-padding mdl-color--black mdl-color-text--grey-700" self="stretch" layout="rows center-center">
-            <div self="center-left"><a href="#!zuix" onclick="scrollToAnchor('zuix')" class="mdl-color-text--grey-400 mdl-typography--font-bold">zUIx</a> powered website</div>
-            <div self="size-x1 sm-full" align="right">&copy; 2016-to-infinity-and-beyond by <span class="mdl-color-text--grey-400 mdl-typography--font-bold">g-labs</span></div>
+        <div self="stretch" class="footer_bar content-padding mdl-color--black mdl-color-text--grey-700">
+            <div self="size-xxlarge center" layout="rows center-center">
+                <div self="center-left"><a href="#!zuix" onclick="scrollToAnchor('zuix')" class="mdl-color-text--grey-400 mdl-typography--font-bold">zUIx</a> powered website</div>
+                <div self="size-x1 sm-full" align="right">&copy; 2016-to-infinity-and-beyond by <span class="mdl-color-text--grey-400 mdl-typography--font-bold">g-labs</span></div>
+            </div>
         </div>
 
     </div>
