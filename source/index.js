@@ -139,7 +139,12 @@ function init() {
                     // TODO: ...
                     break;
             }
-        }).watch('.watch-reveal-left,.watch-reveal-right,.watch-title,.watch-heading', function(el, data) {
+        }).watch('.watch-reveal-left,.watch-reveal-right,.watch-title,.watch-heading,.watch-footer',
+            /**
+             * @param {ZxQuery} el
+             * @param {object] data
+             */
+            function(el, data) {
             if (el.hasClass('watch-title')) {
                 if (data.frame.dy > 0.85) {
                     if (el.css('opacity') !== '0') {
@@ -153,6 +158,18 @@ function init() {
             } else if (el.hasClass('watch-heading')) {
                 if (headingsRoller != null) {
                     headingsRoller.update();
+                }
+            } else if (el.hasClass('watch-footer')) {
+                const vy = scrollHelper.info().viewport.height;
+                const bottomY = (vy - el.position().y);
+                if (el.visibility() === 'hidden') {
+                    if (bottomY > vy / 5 && !el.hasClass('animated')) {
+                        el.animateCss('fadeInUp').visibility('visible');
+                    }
+                } else if (bottomY <= vy / 5 && !el.hasClass('animated')) {
+                    el.animateCss('fadeOutDown', function() {
+                        this.visibility('hidden');
+                    });
                 }
             } else {
                 // revealHideBlock(el);

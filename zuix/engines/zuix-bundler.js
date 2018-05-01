@@ -35,13 +35,15 @@ const logger = require('npmlog');
 const jsdom = require('jsdom');
 const {JSDOM} = jsdom;
 
+const LIBRARY_PATH_DEFAULT = '//genielabs.github.io/zkit/lib';
+
 const zuixBundle = {
     viewList: [],
     styleList: [],
     controllerList: []
 };
 
-function parseHtml(sourceFolder, data) {
+function createBundle(sourceFolder, data) {
     if (data.file.endsWith('.html')) {
         const dom = new JSDOM(data.content, {runScripts: 'dangerously'});
         const nodeList = dom.window.document.querySelectorAll('[data-ui-include],[data-ui-load]');
@@ -54,31 +56,29 @@ function parseHtml(sourceFolder, data) {
                     hasJsFile = true;
                 }
                 if (path.startsWith('@lib/')) {
-                    path = '//genielabs.github.io/zkit/lib'+path.substring(4);
+                    path = LIBRARY_PATH_DEFAULT+path.substring(4);
                 }
                 let content;
                 if (hasJsFile) {
-                    if (alreadyBundled(zuixBundle.controllerList, path)) {
+                    if (isBundled(zuixBundle.controllerList, path)) {
                         return;
                     }
-                    content = getResource('js', path, sourceFolder);
+                    content = fetchResource('js', path, sourceFolder);
                     if (content != null) {
-                        //content = util.format('(function(){ return %s }).for(\'%s\');', content, path);
                         zuixBundle.controllerList.push({path: path, content: content});
                     }
                 }
                 // HTML
-                if (alreadyBundled(zuixBundle.viewList, path)) {
+                if (isBundled(zuixBundle.viewList, path)) {
                     return;
                 }
-                content = getResource('html', path, sourceFolder);
+                content = fetchResource('html', path, sourceFolder);
                 if (content != null) {
                     if (el.getAttribute('data-ui-mode') === 'unwrap') {
                         // TODO: add HTML comment with file info
                         el.outerHTML = content;
                     } else {
-                        //content = util.format('<div data-ui-view="%s">\n%s\n</div>', path, content);
-                        parseHtml(sourceFolder, {
+                        createBundle(sourceFolder, {
                             file: sourceFolder + '/app/' + path + '.html',
                             content: content
                         });
@@ -86,15 +86,13 @@ function parseHtml(sourceFolder, data) {
                     }
                 }
                 // CSS
-                content = getResource('css', path, sourceFolder);
+                content = fetchResource('css', path, sourceFolder);
                 if (content != null) {
                     if (el.getAttribute('data-ui-mode') === 'unwrap') {
                         // TODO: add // comment with file info
                         content = util.format('\n<style id="%s">\n%s\n</style>\n', path, content);
                         dom.window.document.querySelector('head').innerHTML += util.format('\n<!--{[%s]}-->\n%s', path, content);
                     } else {
-                        //content = util.format('\n<style id="%s">\n%s\n</style>\n', path,
-                        //    wrapCss('[data-ui-component="' + path + '"]:not(.zuix-css-ignore)', content));
                         zuixBundle.styleList.push({path: path, content: content});
                     }
                 }
@@ -104,7 +102,7 @@ function parseHtml(sourceFolder, data) {
     }
 }
 
-function alreadyBundled(list, path) {
+function isBundled(list, path) {
     const AlreadyExistsException = {};
     try {
         list.forEach(function(b) {
@@ -120,7 +118,7 @@ function alreadyBundled(list, path) {
     return false;
 }
 
-function getResource(type, path, sourceFolder) {
+function fetchResource(type, path, sourceFolder) {
     let content = null;
     path = path + '.' + type;
     if (path.indexOf('://') > 0 || path.startsWith('//')) {
@@ -167,8 +165,8 @@ function getBundleItem(bundle, path) {
     return item;
 }
 
-module.exports = function(options, template, data, cb) {
-    const dom = parseHtml(options.source, data);
+function generateApp(sourceFolder, data) {
+    const dom = createBundle(sourceFolder, data);
     if (dom != null) {
         let inlineViews = '<!-- zUIx inline resource resourceBundle -->';
         zuixBundle.viewList.forEach(function(v) {
@@ -195,6 +193,12 @@ module.exports = function(options, template, data, cb) {
 
         data.content = dom.serialize();
     }
+}
+
+module.exports = function(options, template, data, cb) {
+    // zUIx bundle
+    generateApp(options.source, data);
+    // Default static-site processing
     cb(null, swigTemplate(data)._result.contents);
 };
 

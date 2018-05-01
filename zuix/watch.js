@@ -51,8 +51,5 @@ function buildSite() {
 }
 
 function fileChanged(path, stats) {
-    if (stats) {
-        console.log('File', path, 'changed size to', stats.size);
-    }
     buildSite();
 }
