@@ -90,15 +90,15 @@ figure img {
     max-width: 100%;
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 780px) {
     .description-more {
         padding-left: 8px;
         padding-right: 8px;
     }
     .gallery {
-        padding-left: 4px;
-        padding-right: 4px;
-        padding-bottom: 16px;
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 24px;
     }
     .info {
         margin-bottom: 8px;

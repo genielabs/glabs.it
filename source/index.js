@@ -123,6 +123,7 @@ function init() {
                     if (headingsRoller != null) {
                         headingsRoller.update();
                     }
+                    zuix.field('github').animateCss('bounce');
                     break;
                 case 'scroll':
                     // TODO: ...
@@ -136,7 +137,7 @@ function init() {
                     break;
                 case 'hit-bottom':
                     // reached end of page
-                    // TODO: ...
+                    zuix.field('github').animateCss('bounce');
                     break;
             }
         }).watch('.watch-reveal-left,.watch-reveal-right,.watch-title,.watch-heading,.watch-footer',
