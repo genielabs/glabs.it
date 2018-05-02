@@ -1,0 +1,23 @@
+{
+  "zuix": {
+    "build": {
+      "input": "./source",
+      "output": "./docs",
+      "copy": [
+        "app",
+        "apps",
+        "_inc",
+        "css",
+        "images",
+        "js"
+      ],
+      "compile": [
+        "html",
+        "css",
+        "js",
+        "md",
+        "svg"
+      ]
+    }
+  }
+}

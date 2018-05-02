@@ -1,7 +1,10 @@
 const delay = require('delay');
 const chokidar = require('chokidar');
-const sourceFolder = process.argv[2] != null ? process.argv[2] : './source';
-const buildFolder = process.argv[3] != null ? process.argv[3] : './build';
+const config = require('config');
+const zuixConfig = config.get('zuix');
+
+const sourceFolder = zuixConfig.get('build.input');
+
 const BuildingState = {
     IDLE: 0,
     RUNNING: 1,
@@ -17,7 +20,6 @@ let status = BuildingState.IDLE;
 watcher
     .on('change', fileChanged)
     .on('add', fileChanged);
-
 /*
 watcher
     .on('add', function(path) { log('File', path, 'has been added'); })
@@ -37,7 +39,7 @@ buildSite();
 function build() {
     status = BuildingState.RUNNING;
     const childProcess = require('child_process');
-    childProcess.execFileSync('npm', ['run', 'build', sourceFolder, buildFolder], {stdio:[0, 1, 2]});
+    childProcess.execFileSync('npm', ['run', 'build'], {stdio:[0, 1, 2]});
     delay(1000).then(function() {
         if (status === BuildingState.PENDING) {
             build();

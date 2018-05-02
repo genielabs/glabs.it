@@ -31,7 +31,7 @@ const util = require('util');
 const request = require('sync-request');
 const stringify = require('json-stringify');
 // logging
-const logger = require('npmlog');
+const tlog = require('../lib/logger');
 // zuix-bundler cli
 const jsdom = require('jsdom');
 const {JSDOM} = jsdom;
@@ -43,6 +43,7 @@ const zuixBundle = {
     styleList: [],
     controllerList: []
 };
+let stats, hasErrors;
 
 function createBundle(sourceFolder, data) {
     if (data.file.endsWith('.html')) {
@@ -64,7 +65,7 @@ function createBundle(sourceFolder, data) {
                     if (isBundled(zuixBundle.controllerList, path)) {
                         return;
                     }
-                    content = fetchResource('js', path, sourceFolder);
+                    content = fetchResource('js', path, sourceFolder, true);
                     if (content != null) {
                         zuixBundle.controllerList.push({path: path, content: content});
                     }
@@ -73,7 +74,7 @@ function createBundle(sourceFolder, data) {
                 if (isBundled(zuixBundle.viewList, path)) {
                     return;
                 }
-                content = fetchResource('html', path, sourceFolder);
+                content = fetchResource('html', path, sourceFolder, !hasJsFile);
                 if (content != null) {
                     if (el.getAttribute('data-ui-mode') === 'unwrap') {
                         // TODO: add HTML comment with file info
@@ -119,26 +120,38 @@ function isBundled(list, path) {
     return false;
 }
 
-function fetchResource(type, path, sourceFolder) {
+function fetchResource(type, path, sourceFolder, reportError) {
     let content = null;
     path = path + '.' + type;
+    const error = '   ^#^R^W[%s]^:';
     if (path.indexOf('://') > 0 || path.startsWith('//')) {
         if (path.startsWith('//')) {
             path = 'https:'+path;
         }
-        logger.info(timestamp(), util.format('Downloading resource "%s"...', path));
+        tlog.update('   Downloading "%s"', path);
         const res = request('GET', path);
         if (res.statusCode === 200) {
             content = res.getBody('utf8');
-        } else {
-            logger.error(timestamp(), res.statusCode, path);
+            tlog.update('');
+        } else if (reportError) {
+            hasErrors = true;
+            tlog.term.previousLine();
+            tlog.error(error+' %s', res.statusCode, path)
+                .info();
         }
     } else {
         const f = sourceFolder + '/app/' + path;
+        tlog.update('   Reading "%s"', path);
         try {
             content = fs.readFileSync(f).toString();
+            tlog.update('');
         } catch (e) {
-            logger.error(timestamp(), e.code, f);
+            if (reportError) {
+                hasErrors = true;
+                tlog.term.previousLine();
+                tlog.error(error+' %s', e.code, f)
+                    .info();
+            }
         }
     }
     return content;
@@ -171,20 +184,22 @@ function generateApp(sourceFolder, data) {
     if (dom != null) {
         let inlineViews = '<!-- zUIx inline resource resourceBundle -->';
         zuixBundle.viewList.forEach(function(v) {
-            logger.info(timestamp(), 'Adding view', v.path);
             const content = util.format('<div data-ui-view="%s">\n%s\n</div>', v.path, v.content);
             inlineViews += util.format('\n<!--{[%s]}-->\n%s', v.path, content);
+            stats[v.path] = stats[v.path] || {};
+            stats[v.path].view = true;
         });
         let resourceBundle = [];
         zuixBundle.controllerList.forEach(function(s) {
-            // TODO: ensure it ends with ;
-            logger.info(timestamp(), 'Adding controller', s.path);
-            // inlineViews += s.content;
+            // TODO: ensure it ends with ';'
             getBundleItem(resourceBundle, s.path).controller = s.content;
+            stats[s.path] = stats[s.path] || {};
+            stats[s.path].controller = true;
         });
         zuixBundle.styleList.forEach(function(s) {
-            logger.info(timestamp(), 'Adding style', s.path);
             getBundleItem(resourceBundle, s.path).css = s.content;
+            stats[s.path] = stats[s.path] || {};
+            stats[s.path].css = true;
         });
         const json = stringify(resourceBundle, null, 2);
         let jsonBundle = '<script>zuix.bundle('+json+')</script>';
@@ -196,17 +211,37 @@ function generateApp(sourceFolder, data) {
     }
 }
 
-function timestamp() {
-    const d = new Date();
-    const ms = d.getTime() - d.getTimezoneOffset() * 60000;
-    return new Date(ms).toISOString().slice(11, -1);
-}
-
 module.exports = function(options, template, data, cb) {
+    // reset globals for every page
+    stats = [];
+    hasErrors = false;
     // zUIx bundle
+    tlog.info().info('^+^w%s^:', data.file);
+    // Generate inline zUIx bundle
+    tlog.info(' ^r*^: zuix bundle').info();
     generateApp(options.source, data);
+    tlog.term.previousLine();
+    if (!hasErrors) {
+        tlog.term.previousLine();
+        tlog.info(' ^G\u2713^: zuix bundle');
+    }
+    // output stats
+    for (const key in stats) {
+        const s = stats[key];
+        const ok = '^+^g';
+        const ko = '^w';
+        tlog.info('   ^w[^:%s^:%s^:%s^:^w]^: %s',
+            s.controller ? ok+'j' : ko+'-',
+            s.view ? ok+'v' : ko+'-',
+            s.css ? ok+'s' : ko+'-',
+            '^:'+key
+        );
+    }
     // Default static-site processing
+    tlog.info(' * static-site content');
     cb(null, swigTemplate(data)._result.contents);
+    tlog.update(' ^G\u2713^: static-site content');
+    tlog.info(' ^G\u2713^: done');
 };
 
 
