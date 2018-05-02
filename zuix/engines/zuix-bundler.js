@@ -202,9 +202,13 @@ function generateApp(sourceFolder, data) {
             stats[s.path].css = true;
         });
         const json = stringify(resourceBundle, null, 2);
-        let jsonBundle = '<script>zuix.bundle('+json+')</script>';
+        let jsonBundle = '\n<script>zuix.bundle('+json+')</script>\n';
 
-        dom.window.document.body.innerHTML += util.format('<div style="display:none">%s</div>', inlineViews);
+        // add style to hide inline views
+        dom.window.document.querySelector('head').innerHTML += '<style>[data-ui-view] { display: none; }</style>\n';
+        // add inline views
+        dom.window.document.body.innerHTML += inlineViews;
+        // add bundle
         dom.window.document.body.innerHTML += jsonBundle;
 
         data.content = dom.serialize();
@@ -213,7 +217,7 @@ function generateApp(sourceFolder, data) {
 
 module.exports = function(options, template, data, cb) {
     // reset globals for every page
-    stats = [];
+    stats = {};
     hasErrors = false;
     // zUIx bundle
     tlog.info().info('^+^w%s^:', data.file);
@@ -221,26 +225,37 @@ module.exports = function(options, template, data, cb) {
     tlog.info(' ^r*^: zuix bundle').info();
     generateApp(options.source, data);
     tlog.term.previousLine();
-    if (!hasErrors) {
+    if (Object.keys(stats).length > 0) {
+        if (!hasErrors) {
+            tlog.term.previousLine();
+            tlog.info(' ^G\u2713^: zuix bundle');
+        }
+        // output stats
+        for (const key in stats) {
+            const s = stats[key];
+            const ok = '^+^g';
+            const ko = '^w';
+            tlog.info('   ^w[^:%s^:%s^:%s^:^w]^: %s',
+                s.view ? ok + 'v' : ko + '-',
+                s.css ? ok + 's' : ko + '-',
+                s.controller ? ok + 'c' : ko + '-',
+                '^:' + key
+            );
+        }
+    } else {
         tlog.term.previousLine();
-        tlog.info(' ^G\u2713^: zuix bundle');
-    }
-    // output stats
-    for (const key in stats) {
-        const s = stats[key];
-        const ok = '^+^g';
-        const ko = '^w';
-        tlog.info('   ^w[^:%s^:%s^:%s^:^w]^: %s',
-            s.controller ? ok+'j' : ko+'-',
-            s.view ? ok+'v' : ko+'-',
-            s.css ? ok+'s' : ko+'-',
-            '^:'+key
-        );
     }
     // Default static-site processing
-    tlog.info(' * static-site content');
-    cb(null, swigTemplate(data)._result.contents);
-    tlog.update(' ^G\u2713^: static-site content');
+    tlog.info(' ^r*^: static-site content');
+    let html = swigTemplate(data)._result.contents;
+    if (html != data.content) {
+        data.content = html;
+        tlog.update(' ^G\u2713^: static-site content');
+    } else {
+        tlog.update('');
+        tlog.term.previousLine();
+    }
+    cb(null, data.content);
     tlog.info(' ^G\u2713^: done');
 };
 

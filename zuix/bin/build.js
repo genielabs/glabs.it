@@ -21,8 +21,6 @@ for (let i = 0; i < ignoreList.length; i++) {
     tlog.update('   | "%s" -> "%s"', source, destination);
     copyFolder(source, destination);
 }
-// disable Jekyll for github pages publishing
-copyFolder(util.format('%s/.nojekyll', sourceFolder), util.format('%s/.nojekyll', buildFolder));
 // Copy zuix-dist files
 tlog.update('   | "%s" -> "%s"', 'zuix-dist', 'js');
 copyFolder(util.format('%s/node_modules/zuix-dist/js', process.cwd()), util.format('%s/js/zuix', buildFolder));

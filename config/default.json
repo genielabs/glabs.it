@@ -9,7 +9,8 @@
         "_inc",
         "css",
         "images",
-        "js"
+        "js",
+        ".nojekyll"
       ],
       "compile": [
         "html",
