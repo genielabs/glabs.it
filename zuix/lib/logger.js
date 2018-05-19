@@ -39,6 +39,15 @@ function timestamp() {
     return new Date(ms).toISOString().slice(11, -1);
 }
 
+const busyCursorAnim = ['|', '/', '-', '\\', '/', '-'];
+let busyCursorFrame = 0;
+function busyCursor() {
+    if (busyCursorFrame > busyCursorAnim.length-1) {
+        busyCursorFrame = 0;
+    }
+    return busyCursorAnim[busyCursorFrame++];
+}
+
 module.exports = {
     info: info,
     error: error,
@@ -52,6 +61,7 @@ module.exports = {
 //        console.log(s);
         term.saveCursor();
     },
+    busyCursor: busyCursor,
     timestamp: timestamp,
     term: term
 };

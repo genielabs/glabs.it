@@ -1,7 +1,7 @@
-## www.glabs.it
+# www.glabs.it
 
-[G-Labs](http://glabs.it) web site, powered by [zUIx](https://genielabs.github.io/zuix).
-
+[G-Labs](http://glabs.it) website, powered by [zUIx](https://genielabs.github.io/zuix) and
+[zUIx Web Starter](https://github.com/genielabs/zuix-web-starter).
 
 
 #### Development
@@ -15,10 +15,10 @@ Development scripts are baed on [Node.Js Package Manager](https://www.npmjs.com/
 
 website source files are located in the `./source` folder and are
 generated in the `./docs` folder.
-
+This setting can be changed by modifying the `./config/default.json` file.
 
 
 ###### Resources and Docs
 
-- Static Site https://github.com/paulcpederson/static-site
 - zUIx http://zuix.it
+- Static Site https://github.com/paulcpederson/static-site

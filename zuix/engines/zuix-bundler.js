@@ -128,7 +128,7 @@ function fetchResource(type, path, sourceFolder, reportError) {
         if (path.startsWith('//')) {
             path = 'https:'+path;
         }
-        tlog.update('   Downloading "%s"', path);
+        tlog.update('   ^C%s^: downloading "%s"', tlog.busyCursor(), path);
         const res = request('GET', path);
         if (res.statusCode === 200) {
             content = res.getBody('utf8');
@@ -141,7 +141,7 @@ function fetchResource(type, path, sourceFolder, reportError) {
         }
     } else {
         const f = sourceFolder + '/app/' + path;
-        tlog.update('   Reading "%s"', path);
+        tlog.update('   ^C%s^: reading "%s"', tlog.busyCursor(), path);
         try {
             content = fs.readFileSync(f).toString();
             tlog.update('');
@@ -223,6 +223,8 @@ module.exports = function(options, template, data, cb) {
     tlog.info().info('^+^w%s^:', data.file);
     // Generate inline zUIx bundle
     tlog.info(' ^r*^: zuix bundle').info();
+    let html = swigTemplate(data)._result.contents;
+    data.content = html;
     generateApp(options.source, data);
     tlog.term.previousLine();
     if (Object.keys(stats).length > 0) {
@@ -247,7 +249,7 @@ module.exports = function(options, template, data, cb) {
     }
     // Default static-site processing
     tlog.info(' ^r*^: static-site content');
-    let html = swigTemplate(data)._result.contents;
+    html = swigTemplate(data)._result.contents;
     if (html != data.content) {
         data.content = html;
         tlog.update(' ^G\u2713^: static-site content');
