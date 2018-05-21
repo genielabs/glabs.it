@@ -6,11 +6,13 @@
       "copy": [
         "app",
         "apps",
-        "_inc",
         "css",
         "images",
         "js",
         ".nojekyll"
+      ],
+      "ignore": [
+        "_inc"
       ],
       "compile": [
         "html",
@@ -19,6 +21,12 @@
         "md",
         "svg"
       ]
+    },
+    "app": {
+      "title": "G-Labs: The open source Factory.",
+      "googleSiteId": "UA-92522504-1",
+      "resourcePath": "/app/",
+      "libraryPath": "https://genielabs.github.io/zkit/lib"
     }
   }
 }

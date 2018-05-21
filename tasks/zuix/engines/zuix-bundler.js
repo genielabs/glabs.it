@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2017 G-Labs. All Rights Reserved.
+ * Copyright 2017-2018 G-Labs. All Rights Reserved.
  *         https://genielabs.github.io/zuix
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,6 +32,15 @@ const request = require('sync-request');
 const stringify = require('json-stringify');
 // logging
 const tlog = require('../lib/logger');
+// ESLint
+const linter = require("eslint").linter;
+const lintConfig = require(process.cwd()+'/.eslintrc');
+// LESS
+const less = require('less');
+const lessConfig = require(process.cwd()+'/.lessrc');
+// config
+const config = require('config');
+const zuixConfig = config.get('zuix');
 // zuix-bundler cli
 const jsdom = require('jsdom');
 const {JSDOM} = jsdom;
@@ -81,7 +90,7 @@ function createBundle(sourceFolder, data) {
                         el.outerHTML = content;
                     } else {
                         createBundle(sourceFolder, {
-                            file: sourceFolder + '/app/' + path + '.html',
+                            file: sourceFolder + '/' + zuixConfig.app.resourcePath + '/' + path + '.html',
                             content: content
                         });
                         zuixBundle.viewList.push({path: path, content: content});
@@ -128,29 +137,29 @@ function fetchResource(type, path, sourceFolder, reportError) {
         if (path.startsWith('//')) {
             path = 'https:'+path;
         }
-        tlog.update('   ^C%s^: downloading "%s"', tlog.busyCursor(), path);
+        tlog.overwrite('   ^C%s^: downloading "%s"', tlog.busyCursor(), path);
         const res = request('GET', path);
         if (res.statusCode === 200) {
             content = res.getBody('utf8');
-            tlog.update('');
+            tlog.overwrite('');
         } else if (reportError) {
             hasErrors = true;
             tlog.term.previousLine();
             tlog.error(error+' %s', res.statusCode, path)
-                .info();
+                .br();
         }
     } else {
-        const f = sourceFolder + '/app/' + path;
-        tlog.update('   ^C%s^: reading "%s"', tlog.busyCursor(), path);
+        const f = sourceFolder + '/' + zuixConfig.app.resourcePath + '/' + path;
+        tlog.overwrite('   ^C%s^: reading "%s"', tlog.busyCursor(), path);
         try {
             content = fs.readFileSync(f).toString();
-            tlog.update('');
+            tlog.overwrite('');
         } catch (e) {
             if (reportError) {
                 hasErrors = true;
                 tlog.term.previousLine();
                 tlog.error(error+' %s', e.code, f)
-                    .info();
+                    .br();
             }
         }
     }
@@ -202,10 +211,10 @@ function generateApp(sourceFolder, data) {
             stats[s.path].css = true;
         });
         const json = stringify(resourceBundle, null, 2);
-        let jsonBundle = '\n<script>zuix.bundle('+json+')</script>\n';
+        let jsonBundle = '\n    <script>zuix.bundle('+json+')</script>\n';
 
         // add style to hide inline views
-        dom.window.document.querySelector('head').innerHTML += '<style>[data-ui-view] { display: none; }</style>\n';
+        dom.window.document.querySelector('head').innerHTML += '    <style>[data-ui-view] { display: none; }</style>\n';
         // add inline views
         dom.window.document.body.innerHTML += inlineViews;
         // add bundle
@@ -220,17 +229,20 @@ module.exports = function(options, template, data, cb) {
     stats = {};
     hasErrors = false;
     // zUIx bundle
-    tlog.info().info('^+^w%s^:', data.file);
-    // Generate inline zUIx bundle
-    tlog.info(' ^r*^: zuix bundle').info();
+    tlog.br().info('^w%s^:', data.file);
+    // Default static-site processing
+    tlog.info(' ^r*^: static-site content');
     let html = swigTemplate(data)._result.contents;
-    data.content = html;
+    let isStaticSite = (html != data.content);
+    if (isStaticSite) {
+        data.content = html;
+    }
+    // Generate inline zUIx bundle
+    tlog.overwrite(' ^r*^: zuix bundle');
     generateApp(options.source, data);
-    tlog.term.previousLine();
     if (Object.keys(stats).length > 0) {
         if (!hasErrors) {
-            tlog.term.previousLine();
-            tlog.info(' ^G\u2713^: zuix bundle');
+            tlog.overwrite(' ^G\u2713^: zuix bundle');
         }
         // output stats
         for (const key in stats) {
@@ -245,18 +257,48 @@ module.exports = function(options, template, data, cb) {
             );
         }
     } else {
-        tlog.term.previousLine();
+        // no zuix data processed ([data-ui-*] attributes)
+        tlog.overwrite();
     }
     // Default static-site processing
     tlog.info(' ^r*^: static-site content');
     html = swigTemplate(data)._result.contents;
-    if (html != data.content) {
+    if (html != data.content || isStaticSite) {
         data.content = html;
-        tlog.update(' ^G\u2713^: static-site content');
+        tlog.overwrite(' ^G\u2713^: static-site content');
     } else {
-        tlog.update('');
-        tlog.term.previousLine();
+        // no template data processed
+        tlog.overwrite();
     }
+
+    // run ESlint
+    if (data.file.endsWith('.js')) {
+        tlog.info(' ^r*^: lint');
+        const issues = linter.verify(data.content, lintConfig, data.file);
+        issues.forEach(function (m) {
+            if (m.fatal || m.severity > 1) {
+                tlog.error('   ^RError^: %s ^R(^Y%s^w:^Y%s^R)', m.message, m.line, m.column);
+            } else {
+                tlog.warn('   ^YWarning^: %s ^R(^Y%s^w:^Y%s^R)', m.message, m.line, m.column);
+            }
+        });
+        if (issues.length === 0) {
+            tlog.overwrite(' ^G\u2713^: lint');
+        }
+    }
+
+    // run LESS
+    if (data.file.endsWith('.less')) {
+        tlog.info(' ^r*^: less');
+        less.render(data.content, lessConfig, function(error, output) {
+            const baseName = data.dest.substring(0, data.dest.length - 5);
+            fs.writeFileSync(baseName+'.css', output.css);
+            // TODO: source map generation disabled
+            //fs.writeFileSync(baseName+'.css.map', output.map);
+            tlog.overwrite(' ^G\u2713^: less');
+        });
+    }
+
     cb(null, data.content);
     tlog.info(' ^G\u2713^: done');
 };
@@ -266,8 +308,8 @@ module.exports = function(options, template, data, cb) {
 
 const Promise = require('es6-promise').Promise;
 const swig = require('swig-templates');
-const isMarkdown = require('../../node_modules/static-site/lib/utils/is-markdown');
-const markdownTag = require('../../node_modules/static-site/lib/utils/markdown-tag');
+const isMarkdown = require(process.cwd()+'/node_modules/static-site/lib/utils/is-markdown');
+const markdownTag = require(process.cwd()+'/node_modules/static-site/lib/utils/markdown-tag');
 const MarkdownIt = require('markdown-it');
 const hljs = require('highlight.js');
 const extras = require('swig-extras');

@@ -1,6 +1,10 @@
 const term = require('terminal-kit').terminal;
 const util = require('util');
-
+const stats = {
+    info: 0,
+    error: 0,
+    warn: 0
+};
 term.reset().clear();
 
 function update(s, ...args) {
@@ -8,29 +12,46 @@ function update(s, ...args) {
     return this;
 }
 
+function overwrite(s, ...args) {
+    term.eraseLine().previousLine();
+    if (s != null) {
+        info(s, ...args);
+    }
+    return this;
+}
+
+function br(s, ...args) {
+    if (s == null) s = '';
+    term.bgDefaultColor('\n').defaultColor('             ^#^k^W|^: ').saveCursor(util.format(s, ...args));
+    return this;
+}
+
 function info(s, ...args) {
     if (s == null) s = '';
-    t().bgBlue().black('I')
-        .bgDefaultColor().defaultColor(' ').saveCursor(util.format(s, ...args)+'\n');
+    t().bgBrightGreen().black('I')
+        .bgDefaultColor().defaultColor(' ').saveCursor(util.format(s, ...args));
+    stats.info++;
     return this;
 }
 
 function warn(s, ...args) {
     if (s == null) s = '';
-    t().bgYellow().black('W').saveCursor()
-        .bgDefaultColor().defaultColor(' ').saveCursor(util.format(s, ...args)+'\n');
+    t().bgYellow().black('W')
+        .bgDefaultColor().defaultColor(' ').saveCursor(util.format(s, ...args));
+    stats.warn++;
     return this;
 }
 
 function error(s, ...args) {
     if (s == null) s = '';
-    t().bgRed().white('E').saveCursor()
-        .bgDefaultColor().defaultColor(' ').saveCursor(util.format(s, ...args)+'\n');
+    t().bgBrightRed().white('E')
+        .bgDefaultColor().defaultColor(' ').saveCursor(util.format(s, ...args));
+    stats.error++;
     return this;
 }
 
 function t() {
-    return term.bgDefaultColor().defaultColor(timestamp()+' ');
+    return term.bgDefaultColor('\n').white(timestamp()+' ');
 }
 
 function timestamp() {
@@ -53,13 +74,10 @@ module.exports = {
     error: error,
     warn: warn,
     update: update,
-    log: function(s, ...args) {
-        s = util.format(s, ...args);
-        if (s == null) {
-            s = '';
-        }
-//        console.log(s);
-        term.saveCursor();
+    overwrite: overwrite,
+    br: br,
+    stats: function() {
+        return stats;
     },
     busyCursor: busyCursor,
     timestamp: timestamp,

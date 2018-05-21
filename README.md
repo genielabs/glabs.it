@@ -6,7 +6,7 @@
 
 #### Development
 
-Development scripts are baed on [Node.Js Package Manager](https://www.npmjs.com/get-npm) .
+This website is based on [zUIx Web Starter](https://github.com/genemars/zuix-web-starter).
 
 1. `npm install` to install development dependencies
 2. `npm start` to start local web server
