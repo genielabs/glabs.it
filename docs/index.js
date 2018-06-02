@@ -35,7 +35,7 @@ var cover_load_options = {
     priority: 10,
     ready: function(ctx) {
         // Load Animate CSS extension method for ZxQuery
-        zx.using('component', 'https://genielabs.github.io/zuix/kit/extensions/animate_css', function(res, ctx) {
+        zx.using('component', '@lib/extensions/animate_css', function(res, ctx) {
             console.log('AnimateCSS extension loaded.', res, ctx);
             // Start the cover animation
             zx.field('cover').animateCss(function() {
