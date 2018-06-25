@@ -51,6 +51,7 @@ a {
     height: auto;
     margin-top: 8px;
     margin-bottom: 16px;
+    background: whitesmoke;
 }
 .media-container figure {
     margin: 0;
