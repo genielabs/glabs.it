@@ -21,10 +21,7 @@
  */
 // shorten zuix object name
 var zx = zuix;
-// set folder where to look for resources
-zx.store('config', {
-    resourcePath: './app/'
-});
+zx.$.ZxQuery.prototype.animateCss = function(animationName, param1, param2) { return this; }; // forward declaration (sort of)
 
 // Content loading default options
 var content_no_css = {
@@ -32,13 +29,13 @@ var content_no_css = {
 };
 // Animated splash-cover load options
 var cover_load_options = {
-    priority: 10,
+    priority: -1,
     ready: function(ctx) {
         // Load Animate CSS extension method for ZxQuery
         zx.using('component', '@lib/extensions/animate_css', function(res, ctx) {
             console.log('AnimateCSS extension loaded.', res, ctx);
             // Start the cover animation
-            zx.field('cover').animateCss(function() {
+            setTimeout(function() {
                 // Animation ended, hide cover, show header and content
                 // last component loaded, hide the splash-screen and show the main page
                 zx.field('splash-cover').removeClass('splash-cover');
@@ -52,7 +49,7 @@ var cover_load_options = {
                             scrollHelper.scrollTo(1);
                         }
                     });
-            });
+            }, 2000);
         });
     }
 };
@@ -113,6 +110,11 @@ var scrollHelper; // it will be == null until component is loaded
 var headingsRoller;
 // Load external scripts if not already packed into the app.bundle.js
 function init() {
+    // Set first card as visible to avoid the slide in effect at startup
+    zx.context('first-card', function() {
+        const view = zuix.$(this.view());
+        view.find('[class*=watch-reveal-]').addClass('scroll-helper-visible sh-in');
+    });
     // Scroll Helper - Scroll-synchronized animations
     zx.context('scroll-helper', function() {
         // component loaded
@@ -126,7 +128,7 @@ function init() {
                     zuix.field('github').animateCss('bounce');
                     break;
                 case 'scroll':
-                    // TODO: ...
+                    // TODO: ... not used yet
                     if (data.info.shift.y < 0) {
                         // scrolling up
                     } else if (data.info.shift.y > 0) {
@@ -146,63 +148,63 @@ function init() {
              * @param {object] data
              */
             function(el, data) {
-            if (el.hasClass('watch-title')) {
-                if (data.frame.dy > 0.85) {
-                    if (el.css('opacity') !== '0') {
-                        el.css('opacity', '0');
-                    }
-                } else if (data.frame.dy >= 0.25) {
-                    el.css('opacity', Math.round((0.85 - data.frame.dy) / 0.6 * 100) / 100);
-                } else if (data.frame.dy < 0.25 && el.css('opacity') !== '1') {
-                    el.css('opacity', 1);
-                }
-            } else if (el.hasClass('watch-heading')) {
-                if (headingsRoller != null) {
-                    headingsRoller.update();
-                }
-            } else if (el.hasClass('watch-footer')) {
-                const vy = scrollHelper.info().viewport.height;
-                const bottomY = (vy - el.position().y);
-                if (el.visibility() === 'hidden') {
-                    if (bottomY > vy / 5 && !el.hasClass('animated')) {
-                        el.animateCss('fadeInUp').visibility('visible');
-                    }
-                } else if (bottomY <= vy / 5 && !el.hasClass('animated')) {
-                    el.animateCss('fadeOutDown', function() {
-                        this.visibility('hidden');
-                    });
-                }
-            } else {
-                // revealHideBlock(el);
-                const vy = scrollHelper.info().viewport.height;
-                const visible = vy - el.position().y > vy / 5;
-                if (visible) {
-                    const options = {duration: '0.75s'};
-                    if (!el.hasClass('sh-in')) {
-                        el.removeClass('sh-out').addClass('sh-in');
-                        if (el.hasClass('watch-reveal-left')) {
-                            el.animateCss('fadeInLeft', options).visibility('');
-                        } else {
-                            el.animateCss('fadeInRight', options).visibility('');
+                if (el.hasClass('watch-title')) {
+                    if (data.frame.dy > 0.85) {
+                        if (el.css('opacity') !== '0') {
+                            el.css('opacity', '0');
                         }
+                    } else if (data.frame.dy >= 0.25) {
+                        el.css('opacity', Math.round((0.85 - data.frame.dy) / 0.6 * 100) / 100);
+                    } else if (data.frame.dy < 0.25 && el.css('opacity') !== '1') {
+                        el.css('opacity', 1);
+                    }
+                } else if (el.hasClass('watch-heading')) {
+                    if (headingsRoller != null) {
+                        headingsRoller.update();
+                    }
+                } else if (el.hasClass('watch-footer')) {
+                    const vy = scrollHelper.info().viewport.height;
+                    const bottomY = (vy - el.position().y);
+                    if (el.visibility() === 'hidden') {
+                        if (bottomY > vy / 5 && !el.hasClass('animated')) {
+                            el.animateCss('fadeInUp').visibility('visible');
+                        }
+                    } else if (bottomY <= vy / 5 && !el.hasClass('animated')) {
+                        el.animateCss('fadeOutDown', function() {
+                            this.visibility('hidden');
+                        });
                     }
                 } else {
-                    const options = {duration: '0.5s'};
-                    if (!el.hasClass('sh-out')) {
-                        el.removeClass('sh-in').addClass('sh-out');
-                        if (el.hasClass('watch-reveal-left')) {
-                            el.animateCss('fadeOutLeft', options, function() {
-                                this.visibility('hidden');
-                            });
-                        } else {
-                            el.animateCss('fadeOutRight', options, function() {
-                                this.visibility('hidden');
-                            });
+                    // revealHideBlock(el);
+                    const vy = scrollHelper.info().viewport.height;
+                    const visible = vy - el.position().y > vy / 5;
+                    if (visible) {
+                        const options = {duration: '0.75s'};
+                        if (!el.hasClass('sh-in')) {
+                            el.removeClass('sh-out').addClass('sh-in');
+                            if (el.hasClass('watch-reveal-left')) {
+                                el.animateCss('fadeInLeft', options).visibility('');
+                            } else {
+                                el.animateCss('fadeInRight', options).visibility('');
+                            }
+                        }
+                    } else {
+                        const options = {duration: '0.5s'};
+                        if (!el.hasClass('sh-out')) {
+                            el.removeClass('sh-in').addClass('sh-out');
+                            if (el.hasClass('watch-reveal-left')) {
+                                el.animateCss('fadeOutLeft', options, function() {
+                                    this.visibility('hidden');
+                                });
+                            } else {
+                                el.animateCss('fadeOutRight', options, function() {
+                                    this.visibility('hidden');
+                                });
+                            }
                         }
                     }
                 }
-            }
-        });
+            });
         scrollHelper.scrollTo(1).scrollTo(0);
         window.onresize = function(ev) {
             scrollHelper.scrollTo(-scrollHelper.info().viewport.y+1);

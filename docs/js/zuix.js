@@ -1,4 +1,4 @@
-/* zUIx v0.4.9-40 18.04.30 17:17:19 */
+/* zUIx v0.4.9-49 18.07.17 22:01:01 */
 
 /** @typedef {Zuix} window.zuix */!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.zuix=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 /*
@@ -528,6 +528,20 @@ module.exports = {
             // TODO: should warn when clone is not possible
         }
         return temp;
+    },
+
+    hasPassiveEvents: function hasPassiveEvents() {
+        let supportsPassive = false;
+        try {
+            const opts = Object.defineProperty({}, 'passive', {
+                get: function() {
+                    supportsPassive = true;
+                }
+            });
+            window.addEventListener('testPassive', null, opts);
+            window.removeEventListener('testPassive', null, opts);
+        } catch (e) {}
+        return supportsPassive;
     }
 
 };
@@ -596,13 +610,15 @@ const util = _dereq_('./Util.js');
  * @this {ZxQuery}
  */
 
+/** @private */
+let supportsPassive = util.hasPassiveEvents();
 
 /** @private */
 const _zuix_events_mapping = [];
 function routeEvent(e) {
     triggerEventHandlers(this, e.type, e);
 }
-function addEventHandler(el, path, handler) {
+function addEventHandler(el, path, handler, options) {
     let found = false;
     z$.each(_zuix_events_mapping, function() {
         if (this.element === el && this.path === path && this.handler === handler) {
@@ -612,8 +628,8 @@ function addEventHandler(el, path, handler) {
         }
     });
     if (!found) {
-        _zuix_events_mapping.push({element: el, path: path, handler: handler});
-        el.addEventListener(path, routeEvent, false);
+        _zuix_events_mapping.push({element: el, path: path, handler: handler, opgions: options});
+        el.addEventListener(path, routeEvent, supportsPassive && (options == null || options.passive !== false) ? {passive: true} : false);
     }
 }
 function removeEventHandler(el, path, handler) {
@@ -870,9 +886,14 @@ ZxQuery.prototype.one = function(eventPath, eventHandler) {
  */
 ZxQuery.prototype.on = function(eventPath, eventHandler) {
     const events = eventPath.match(/\S+/g) || [];
+    let options;
+    if (typeof eventHandler !== 'function') {
+        options = eventHandler;
+        eventHandler = options.handler;
+    }
     this.each(function(k, el) {
         z$.each(events, function(k, ev) {
-            addEventHandler(el, ev, eventHandler);
+            addEventHandler(el, ev, eventHandler, options);
         });
     });
     return this;
@@ -1427,19 +1448,20 @@ z$.replaceCssVars = function(css, model) {
     return css;
 };
 z$.replaceBraces = function(html, callback) {
-    const tags = new RegExp(/[^{}]+(?=})/g);
+    // TODO: add optional parameter for custom regex
+    const tags = new RegExp(/{?{.*?}?}/g); // <-- single/double braces wrapper
     let outHtml = '';
     let matched = 0;
     let currentIndex = 0;
     let result;
     while (result = tags.exec(html)) {
         if (typeof result[0] === 'string' && (result[0].trim().length === 0 || result[0].indexOf('\n') >= 0)) {
-            const nv = html.substr(currentIndex, result.index-currentIndex)+result[0]+'}';
+            const nv = html.substr(currentIndex, result.index-currentIndex)+result[0];
             outHtml += nv;
             currentIndex += nv.length;
             continue;
         }
-        let value = '{'+result[0]+'}';
+        let value = result[0];
         if (typeof callback === 'function') {
             const r = callback(result[0]);
             if (!util.isNoU(r)) {
@@ -1447,8 +1469,8 @@ z$.replaceBraces = function(html, callback) {
                 matched++;
             }
         }
-        outHtml += html.substr(currentIndex, result.index-currentIndex-1)+value;
-        currentIndex = result.index+result[0].length+1;
+        outHtml += html.substr(currentIndex, result.index-currentIndex)+value;
+        currentIndex = result.index+result[0].length;
     }
     if (matched > 0) {
         outHtml += html.substr(currentIndex);
@@ -1463,43 +1485,106 @@ z$.getClosest = function(elem, selector) {
     }
     return null;
 };
-z$.getPosition = function(el) {
-    const visible = z$.isInView(el);
-    let x = 0;
-    let y = 0;
-    let rect = el.getBoundingClientRect();
-    while (el) {
-        if (el.tagName.toLowerCase() === 'body') {
-            // deal with browser quirks with body/window/document and page scroll
-            const scrollX = el.scrollLeft || document.documentElement.scrollLeft;
-            const scrollY = el.scrollTop || document.documentElement.scrollTop;
-            x += (el.offsetLeft - scrollX + el.clientLeft);
-            y += (el.offsetTop - scrollY + el.clientTop);
-        } else {
-            // for all other non-BODY elements
-            x += (el.offsetLeft - el.scrollLeft + el.clientLeft);
-            y += (el.offsetTop - el.scrollTop + el.clientTop);
+z$.getPosition = function(el, tolerance) {
+    const visibleClass = '--ui--visible';
+    const position = (function() {
+        let x = 0;
+        let y = 0;
+        let rect = el.getBoundingClientRect();
+        let parent = el;
+        while (parent) {
+            if (parent.tagName.toLowerCase() === 'body') {
+                // deal with browser quirks with body/window/document and page scroll
+                const scrollX = parent.scrollLeft || document.documentElement.scrollLeft;
+                const scrollY = parent.scrollTop || document.documentElement.scrollTop;
+                x += (parent.offsetLeft - scrollX + parent.clientLeft);
+                y += (parent.offsetTop - scrollY + parent.clientTop);
+            } else {
+                // for all other non-BODY elements
+                x += (parent.offsetLeft - parent.scrollLeft + parent.clientLeft);
+                y += (parent.offsetTop - parent.scrollTop + parent.clientTop);
+            }
+            parent = parent.offsetParent;
         }
-        el = el.offsetParent;
-    }
-    return {
-        x: x,
-        y: y,
-        rect: rect,
-        visible: visible
+        return {
+            x: x,
+            y: y,
+            rect: rect
+        };
+    })(el);
+    const scrollInfo = {
+        size: {},
+        viewport: {x: 0, y: 0},
+        offset: {x: 0, y: 0}
     };
-};
-z$.isInView = function(el, tolerance) {
-    if (el.offsetParent === null) {
-        return false;
+    position.visible = false;
+    const scrollable = el.offsetParent;
+    if (scrollable != null) {
+        let vp = scrollable.getBoundingClientRect();
+        vp = {
+            x: el.scrollLeft | vp.x,
+            y: el.scrollTop | vp.y,
+            width: el.scrollWidth | vp.width,
+            height: el.scrollHeight | vp.height
+        };
+        scrollInfo.size.width = vp.width;
+        scrollInfo.size.height = vp.height;
+        if (scrollable === document.body) {
+            scrollInfo.size.width = document.body.offsetWidth;
+            scrollInfo.size.height = document.body.offsetHeight;
+            scrollInfo.viewport.width = document.documentElement.clientWidth || scrollInfo.size.width;
+            scrollInfo.viewport.height = document.documentElement.clientHeight || scrollInfo.size.height;
+        } else {
+            // find the scrollable container
+            let s = scrollable.offsetParent;
+            while (s != null && s.offsetParent !== null && s.offsetHeight === s.scrollHeight) {
+                s = s.offsetParent;
+            }
+            if (s != null) {
+                scrollInfo.viewport.width = s.offsetWidth;
+                scrollInfo.viewport.height = s.offsetHeight;
+            } else {
+                scrollInfo.viewport.width = scrollable.offsetWidth;
+                scrollInfo.viewport.height = scrollable.offsetHeight;
+            }
+        }
+        if (tolerance == null) tolerance = 0;
+        const r1 = {
+            left: 0,
+            top: 0,
+            right: scrollInfo.viewport.width,
+            bottom: scrollInfo.viewport.height,
+            width: scrollInfo.viewport.width,
+            height: scrollInfo.viewport.height
+        };
+        let r2 = el.getBoundingClientRect();
+        // visible status
+        let visible = !(r2.left > r1.right - tolerance ||
+            r2.right < r1.left + tolerance ||
+            r2.top > r1.bottom - tolerance ||
+            r2.bottom < r1.top + tolerance);
+        position.visible = visible;
+        // viewport-relative frame position
+        position.frame = {
+            dx: (r2.left + (r2.width / 2) - r1.left) / r1.width,
+            dy: (r2.top + (r2.height / 2) - r1.top) / r1.height
+        };
+        // update status event and and/remove 'visibleClass'
+        el = z$(el);
+        if (!visible && el.hasClass(visibleClass)) {
+            el.removeClass(visibleClass);
+            position.event = 'exit';
+        } else if (!visible) {
+            position.event = 'off-scroll';
+        } else if (visible) {
+            if (!el.hasClass(visibleClass)) {
+                position.event = 'enter';
+                el.addClass(visibleClass);
+            } else position.event = 'scroll';
+        }
     }
-    if (tolerance == null) tolerance = 0;
-    const r1 = (el.offsetParent).getBoundingClientRect();
-    const r2 = el.getBoundingClientRect();
-    return !(r2.left > r1.right-tolerance ||
-        r2.right < r1.left+tolerance ||
-        r2.top > r1.bottom-tolerance ||
-        r2.bottom < r1.top+tolerance);
+
+    return position;
 };
 
 z$.ZxQuery = ZxQuery;
@@ -1889,8 +1974,7 @@ ComponentContext.prototype.view = function(view) {
     }
     // Disable loading of nested components until the component is ready
     v.find('['+_optionAttributes.dataUiLoad+']').each(function(i, v) {
-        this.attr(_optionAttributes.dataUiLoad+'-', this.attr(_optionAttributes.dataUiLoad));
-        this.attr(_optionAttributes.dataUiLoad, null);
+        this.attr(_optionAttributes.dataUiLoaded, 'false');
     });
 
     this.modelToView();
@@ -2132,47 +2216,68 @@ ComponentContext.prototype.loadHtml = function(options, enableCaching) {
     if (!util.isNoU(options.path)) {
         htmlPath = options.path;
     }
-    // TODO: check if view caching is working in this case too
-    const inlineView = z$().find('['+_optionAttributes.dataUiView+'="' + htmlPath + '"]:not(['+_optionAttributes.dataUiComponent+'*=""])');
-    if (inlineView.length() > 0) {
-        const inlineElement = inlineView.get(0);
-        if (context.view() === inlineElement || (context.container() != null && context.container().contains(inlineElement))) {
-            // TODO: test this case
-            context.view(inlineElement);
-        } else {
-            context.view(inlineElement.outerHTML);
-        }
+    // cache inline "data-ui-view" html
+    let inlineViews = zuix.store('zuix.inlineViews');
+    if (inlineViews == null) {
+        inlineViews = [];
+        zuix.store('zuix.inlineViews', inlineViews);
+    }
+    if (inlineViews[htmlPath] != null) {
+        context.view(inlineViews[htmlPath]);
         if (util.isFunction(options.success)) {
-            (options.success).call(context, inlineElement.outerHTML);
+            (options.success).call(context, inlineViews[htmlPath]);
         }
         if (util.isFunction(options.then)) {
             (options.then).call(context);
         }
     } else {
-        const cext = util.isNoU(options.cext) ? '.html' : options.cext;
-        if (htmlPath == context.componentId) {
-            htmlPath += cext + (!enableCaching ? '?' + new Date().getTime() : '');
-        }
-        z$.ajax({
-            url: zuix.getResourcePath(htmlPath),
-            success: function(viewHtml) {
-                context.view(viewHtml);
-                if (util.isFunction(options.success)) {
-                    (options.success).call(context, viewHtml);
-                }
-            },
-            error: function(err) {
-                _log.e(err, context);
-                if (util.isFunction(options.error)) {
-                    (options.error).call(context, err);
-                }
-            },
-            then: function() {
-                if (util.isFunction(options.then)) {
-                    (options.then).call(context);
-                }
+        // TODO: check if view caching is working in this case too
+        const inlineView = z$().find('[' + _optionAttributes.dataUiView + '="' + htmlPath + '"]:not([' + _optionAttributes.dataUiComponent + '*=""])');
+        if (inlineView.length() > 0) {
+            const inlineElement = inlineView.get(0);
+            inlineViews[htmlPath] = inlineElement.innerHTML;
+            if (context.view() === inlineElement || (context.container() != null && context.container().contains(inlineElement))) {
+                // TODO: test this case better (or finally integrate some unit testing =))
+                // TODO: "html:parse" will not fire in this case (and this is the wanted behavior)
+                inlineView.attr(_optionAttributes.dataUiView, null);
+                context._view = inlineElement;
+                // trigger `view:process` hook
+                this.trigger(this, 'view:process', z$(context.view()));
+            } else {
+                context.view(inlineElement.innerHTML);
             }
-        });
+            if (util.isFunction(options.success)) {
+                (options.success).call(context, inlineElement.innerHTML);
+            }
+            if (util.isFunction(options.then)) {
+                (options.then).call(context);
+            }
+        } else {
+            const cext = util.isNoU(options.cext) ? '.html' : options.cext;
+            if (htmlPath == context.componentId) {
+                htmlPath += cext + (!enableCaching ? '?' + new Date().getTime() : '');
+            }
+            z$.ajax({
+                url: zuix.getResourcePath(htmlPath),
+                success: function(viewHtml) {
+                    context.view(viewHtml);
+                    if (util.isFunction(options.success)) {
+                        (options.success).call(context, viewHtml);
+                    }
+                },
+                error: function(err) {
+                    _log.e(err, context);
+                    if (util.isFunction(options.error)) {
+                        (options.error).call(context, err);
+                    }
+                },
+                then: function() {
+                    if (util.isFunction(options.then)) {
+                        (options.then).call(context);
+                    }
+                }
+            });
+        }
     }
     return this;
 };
@@ -2314,7 +2419,7 @@ module.exports = ComponentContext;
 const _optionAttributes =
     _dereq_('./OptionAttributes')();
 
-const LIBRARY_PATH_DEFAULT = 'https://genielabs.github.io/zkit/lib';
+const LIBRARY_PATH_DEFAULT = 'https://genielabs.github.io/zkit/lib/'; // CORS works only over HTTPS
 
 /**
  * TODO: describe this...
@@ -2525,8 +2630,8 @@ function queueLoadables(element) {
     let waitingLoad = getElementCache(element);
 //    if (waitingLoad == null || waitingLoad.length == 0) {
     waitingLoad = z$(element).find('['+
-        _optionAttributes.dataUiLoad+']:not(['+_optionAttributes.dataUiLoaded+'=true]),['+
-        _optionAttributes.dataUiInclude+']:not(['+_optionAttributes.dataUiLoaded+'=true])');
+        _optionAttributes.dataUiLoad+']:not(['+_optionAttributes.dataUiLoaded+']),['+
+        _optionAttributes.dataUiInclude+']:not(['+_optionAttributes.dataUiLoaded+'])');
     waitingLoad = Array.prototype.slice.call(waitingLoad._selection);
     setElementCache(element, waitingLoad);
 //    }
@@ -2596,7 +2701,7 @@ function getNextLoadable() {
         const isLazy = lazyElementCheck(item.element);
         if (lazyLoad() && isLazy) {
             item.lazy = true;
-            item.visible = z$.isInView(item.element, _lazyLoadingThreshold);
+            item.visible = z$.getPosition(item.element, _lazyLoadingThreshold).visible;
         } else {
             item.lazy = false;
             item.visible = true;
@@ -2626,10 +2731,12 @@ function loadNext(element) {
 /** @protected */
 function loadInline(element) {
     const v = z$(element);
-    if (v.attr(_optionAttributes.dataUiLoaded) === 'true' || v.parent('pre,code').length() > 0) {
+    if (v.attr(_optionAttributes.dataUiLoaded) != null || v.parent('pre,code').length() > 0) {
         // _log.w("Skipped", element);
         return false;
-    } else v.attr(_optionAttributes.dataUiLoaded, 'true');
+    } else {
+        v.attr(_optionAttributes.dataUiLoaded, 'true');
+    }
 
     /** @type {ContextOptions} */
     let options = v.attr(_optionAttributes.dataUiOptions);
@@ -2702,27 +2809,30 @@ function loadInline(element) {
 }
 
 function resolvePath(path) {
-    const config = zuix.store('config');
+    let config = zuix.store('config');
+    if (config[location.host] != null) {
+        config = config[location.host];
+    }
     const libraryPath = config != null && config.libraryPath != null ? config.libraryPath : LIBRARY_PATH_DEFAULT;
     if (path.startsWith('@lib/')) {
-        path = libraryPath+path.substring(4);
+        path = libraryPath+path.substring(5);
     }
     return path;
 }
 
 function applyOptions(element, options) {
-    if (element != null && !util.isNoU(options)) {
-        if (typeof options === 'string') {
-            options = util.propertyFromPath(window, options);
-        }
-        // TODO: should check if options object is valid
-        if (!util.isNoU(options.lazyLoad)) {
+    if (typeof options === 'string') {
+        options = util.propertyFromPath(window, options);
+    }
+    // TODO: should check if options object is valid
+    if (element != null && options != null) {
+        if (options.lazyLoad != null) {
             element.setAttribute(_optionAttributes.dataUiLazyload, options.lazyLoad.toString().toLowerCase());
         }
-        if (!util.isNoU(options.contextId)) {
+        if (options.contextId != null) {
             element.setAttribute(_optionAttributes.dataUiContext, options.contextId.toString().toLowerCase());
         }
-        if (!util.isNoU(options.componentId)) {
+        if (options.componentId != null) {
             element.setAttribute(_optionAttributes.dataUiLoad, options.componentId.toString().toLowerCase());
         }
         // TODO: eventually map other attributes from options
@@ -3598,7 +3708,10 @@ function load(componentId, options) {
 }
 
 function getResourcePath(path) {
-    const config = zuix.store('config');
+    let config = zuix.store('config');
+    if (config[location.host] != null) {
+        config = config[location.host];
+    }
     path = _componentizer.resolvePath(path);
     if (!path.startsWith('//') && path.indexOf('://') < 0) {
         path = (config != null && config.resourcePath != null ? config.resourcePath : '') + path;
@@ -4065,9 +4178,8 @@ function initController(c) {
     _log.t(c.context.componentId, 'controller:init', 'timer:init:start');
 
     // re-enable nested components loading
-    c.view().find('['+_optionAttributes.dataUiLoad+'-]').each(function(i, v) {
-        this.attr(_optionAttributes.dataUiLoad, this.attr(_optionAttributes.dataUiLoad+'-'));
-        this.attr(_optionAttributes.dataUiLoad+'-', null);
+    c.view().find('['+_optionAttributes.dataUiLoaded+'="false"]:not(['+_optionAttributes.dataUiComponent+'])').each(function(i, v) {
+        this.attr(_optionAttributes.dataUiLoaded, null);
     });
 
     // bind {ContextController}.field method
@@ -4105,6 +4217,8 @@ function initController(c) {
             loadResources(ctx.c, ctx.o);
         }
     }
+
+    zuix.componentize(c.view());
 }
 
 /**
