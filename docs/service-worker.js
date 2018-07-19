@@ -20,8 +20,60 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox
  */
 self.__precacheManifest = [
   {
-    "url": "app/templates/flexy_card.html",
-    "revision": "d5d956dfc853f72ad79d6cfb39a5051a"
+    "url": "app/content/about.css",
+    "revision": "e04f3019582b8db03ef1e47a97ef3fe9"
+  },
+  {
+    "url": "app/content/about.html",
+    "revision": "2e33de1a6f4ff3909245c794e05cc539"
+  },
+  {
+    "url": "app/content/cover.css",
+    "revision": "ca49d6fe14487dea527894f6f9e8d5df"
+  },
+  {
+    "url": "app/content/cover.html",
+    "revision": "85b8f3c4179d1895ef98054644365ae2"
+  },
+  {
+    "url": "app/content/footer.css",
+    "revision": "13c5cf9963093a45cdee85ff00f0da05"
+  },
+  {
+    "url": "app/content/footer.html",
+    "revision": "930cc2d203f133d354c581846a5b22dc"
+  },
+  {
+    "url": "app/content/menu_button.css",
+    "revision": "e94a60415b1c29dec482d4214e7753a1"
+  },
+  {
+    "url": "app/content/menu_button.html",
+    "revision": "ea80f8856a711b0f5178b85347ad5de4"
+  },
+  {
+    "url": "app/content/more_repos.html",
+    "revision": "6a37b52141649990d76f8e8f377b58f1"
+  },
+  {
+    "url": "app/content/products.css",
+    "revision": "451f3e06c67c18bd7a62628f4ae71847"
+  },
+  {
+    "url": "app/content/products.html",
+    "revision": "b53ff9c3ccf91b82c23973e014685758"
+  },
+  {
+    "url": "app/content/zuix_it.css",
+    "revision": "16af1150dda73c943810d02e3ef3b90c"
+  },
+  {
+    "url": "app/content/zuix_it.html",
+    "revision": "bf39d6352bcee6ac888f56c46da65a14"
+  },
+  {
+    "url": "app/controllers/headings_roller.js",
+    "revision": "a64c111cbab9477e952f61227baec116"
   },
   {
     "url": "config.js",
@@ -41,7 +93,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "d788273ef6a145dc405743669c1b3732"
+    "revision": "3ac4d45721c781c76f75fb14e30c4bfc"
   },
   {
     "url": "index.js",
