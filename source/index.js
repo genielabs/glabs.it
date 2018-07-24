@@ -110,11 +110,6 @@ var scrollHelper; // it will be == null until component is loaded
 var headingsRoller;
 // Load external scripts if not already packed into the app.bundle.js
 function init() {
-    // Set first card as visible to avoid the slide in effect at startup
-    zx.context('first-card', function() {
-        const view = zuix.$(this.view());
-        view.find('[class*=watch-reveal-]').addClass('scroll-helper-visible sh-in');
-    });
     // Scroll Helper - Scroll-synchronized animations
     zx.context('scroll-helper', function() {
         // component loaded
@@ -142,7 +137,7 @@ function init() {
                     zuix.field('github').animateCss('bounce');
                     break;
             }
-        }).watch('.watch-reveal-left,.watch-reveal-right,.watch-title,.watch-heading,.watch-footer',
+        }).watch('.watch-title,.watch-heading,.watch-footer',
             /**
              * @param {ZxQuery} el
              * @param {object] data
@@ -174,38 +169,8 @@ function init() {
                             this.visibility('hidden');
                         });
                     }
-                } else {
-                    // revealHideBlock(el);
-                    const vy = scrollHelper.info().viewport.height;
-                    const visible = vy - el.position().y > vy / 5;
-                    if (visible) {
-                        const options = {duration: '0.75s'};
-                        if (!el.hasClass('sh-in')) {
-                            el.removeClass('sh-out').addClass('sh-in');
-                            if (el.hasClass('watch-reveal-left')) {
-                                el.animateCss('fadeInLeft', options).visibility('');
-                            } else {
-                                el.animateCss('fadeInRight', options).visibility('');
-                            }
-                        }
-                    } else {
-                        const options = {duration: '0.5s'};
-                        if (!el.hasClass('sh-out')) {
-                            el.removeClass('sh-in').addClass('sh-out');
-                            if (el.hasClass('watch-reveal-left')) {
-                                el.animateCss('fadeOutLeft', options, function() {
-                                    this.visibility('hidden');
-                                });
-                            } else {
-                                el.animateCss('fadeOutRight', options, function() {
-                                    this.visibility('hidden');
-                                });
-                            }
-                        }
-                    }
                 }
             });
-        scrollHelper.scrollTo(1).scrollTo(0);
         window.onresize = function(ev) {
             scrollHelper.scrollTo(-scrollHelper.info().viewport.y+1);
         };
