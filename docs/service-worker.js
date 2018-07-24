@@ -61,7 +61,7 @@ self.__precacheManifest = [
   },
   {
     "url": "app/content/products.html",
-    "revision": "5dd04c1558aa3a0c80aec5755117e5d4"
+    "revision": "2742e4ca076e593703e8ff5f50124ca6"
   },
   {
     "url": "app/content/zuix_it.css",
@@ -70,18 +70,6 @@ self.__precacheManifest = [
   {
     "url": "app/content/zuix_it.html",
     "revision": "bf39d6352bcee6ac888f56c46da65a14"
-  },
-  {
-    "url": "app/controllers/headings_roller.js",
-    "revision": "a64c111cbab9477e952f61227baec116"
-  },
-  {
-    "url": "app/templates/flexy_card.css",
-    "revision": "c24120c0f6550d6b1f8cf94d83218043"
-  },
-  {
-    "url": "app/templates/flexy_card.html",
-    "revision": "d5d956dfc853f72ad79d6cfb39a5051a"
   },
   {
     "url": "config.js",
@@ -101,7 +89,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "3ac4d45721c781c76f75fb14e30c4bfc"
+    "revision": "28a3df4684fd5792b87ca7b13ae083de"
   },
   {
     "url": "index.js",
