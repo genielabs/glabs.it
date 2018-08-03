@@ -41,7 +41,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "eb5968d2bcf017e2429eb12669337331"
+    "revision": "43f586d763a6b5d0d24bea2b39b23fde"
   },
   {
     "url": "index.js",
@@ -50,18 +50,6 @@ self.__precacheManifest = [
   {
     "url": "js/mdl/material.css",
     "revision": "57313781c72269db589ebea903725dcc"
-  },
-  {
-    "url": "js/mdl/material.js",
-    "revision": "d4d04abe369dc10ce86e42c00ee62ccd"
-  },
-  {
-    "url": "js/mdl/material.min.css",
-    "revision": "8ce4631006b601c6253396365879a7a9"
-  },
-  {
-    "url": "js/mdl/material.min.js",
-    "revision": "df211fcb13a5c100eeb182f14fd37b44"
   },
   {
     "url": "js/zuix-bundler.js",
@@ -81,75 +69,15 @@ self.__precacheManifest = [
   },
   {
     "url": "images/donate_256.png",
-    "revision": "d41d8cd98f00b204e9800998ecf8427e"
+    "revision": "9537c28946b506894b1464308b766628"
   },
   {
     "url": "images/donate.png",
-    "revision": "d41d8cd98f00b204e9800998ecf8427e"
+    "revision": "c454f7cddf4f5a46f8d3b9fc8dca000b"
   },
   {
     "url": "images/github_logo.png",
-    "revision": "d41d8cd98f00b204e9800998ecf8427e"
-  },
-  {
-    "url": "images/hg_plus/01_t.jpg",
-    "revision": "140d2e50857dd7b8bfc66f205ee3d49b"
-  },
-  {
-    "url": "images/hg_plus/01.jpg",
-    "revision": "993d3173331ec0604aa8f9984040fce8"
-  },
-  {
-    "url": "images/hg_plus/01.png",
-    "revision": "691a063cf6a9299d4e36f4e7486eda54"
-  },
-  {
-    "url": "images/hg_plus/02_t.jpg",
-    "revision": "106920a91037a6b61f7f3476f534186f"
-  },
-  {
-    "url": "images/hg_plus/02.jpg",
-    "revision": "4e63fa1a5d7330309fe5bca005880b92"
-  },
-  {
-    "url": "images/hg_plus/02.png",
-    "revision": "b87231620fabd42cfcffd677e660933b"
-  },
-  {
-    "url": "images/hg_plus/03_t.jpg",
-    "revision": "20fb29c4ee9e7d9d88b49e8e96355348"
-  },
-  {
-    "url": "images/hg_plus/03.jpg",
-    "revision": "8d24abf5ea52fb19b358305230039515"
-  },
-  {
-    "url": "images/hg_plus/03.png",
-    "revision": "36e2283e24343abc855d296512d4192d"
-  },
-  {
-    "url": "images/hg_plus/03b_t.jpg",
-    "revision": "4bcd828882daee1adc565319ece7aef4"
-  },
-  {
-    "url": "images/hg_plus/03b.jpg",
-    "revision": "0f3d7356fb0c38a6dcbaff80ddcb3d62"
-  },
-  {
-    "url": "images/hg_plus/03b.png",
-    "revision": "03055eda35387813bd7485168ec2f2a5"
-  },
-  {
-    "url": "images/hg_plus/04_t.jpg",
-    "revision": "86eb59290f27a81b030f63e01b1437cb"
-  },
-  {
-    "url": "images/hg_plus/04.jpg",
-    "revision": "a7abbd011eaedb3700910d671d7e5565"
-  },
-  {
-    "url": "images/hg_plus/04.png",
-    "revision": "f63dce0f659c2245a80c247ff2163487"
+    "revision": "9019b95b6e56e4b9932e32ebf81c45e5"
   },
   {
     "url": "images/hg_plus/05_t.jpg",
@@ -253,7 +181,7 @@ self.__precacheManifest = [
   },
   {
     "url": "images/homegenie.jpg",
-    "revision": "d41d8cd98f00b204e9800998ecf8427e"
+    "revision": "82a3ebb370e64938e583ee12fe65138e"
   },
   {
     "url": "images/homegenie.png",
