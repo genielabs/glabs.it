@@ -20,68 +20,8 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox
  */
 self.__precacheManifest = [
   {
-    "url": "app/content/about.css",
-    "revision": "e04f3019582b8db03ef1e47a97ef3fe9"
-  },
-  {
-    "url": "app/content/about.html",
-    "revision": "2e33de1a6f4ff3909245c794e05cc539"
-  },
-  {
-    "url": "app/content/cover.css",
-    "revision": "ca49d6fe14487dea527894f6f9e8d5df"
-  },
-  {
-    "url": "app/content/cover.html",
-    "revision": "85b8f3c4179d1895ef98054644365ae2"
-  },
-  {
-    "url": "app/content/footer.css",
-    "revision": "13c5cf9963093a45cdee85ff00f0da05"
-  },
-  {
-    "url": "app/content/footer.html",
-    "revision": "930cc2d203f133d354c581846a5b22dc"
-  },
-  {
-    "url": "app/content/menu_button.css",
-    "revision": "e94a60415b1c29dec482d4214e7753a1"
-  },
-  {
-    "url": "app/content/menu_button.html",
-    "revision": "ea80f8856a711b0f5178b85347ad5de4"
-  },
-  {
-    "url": "app/content/more_repos.html",
-    "revision": "6a37b52141649990d76f8e8f377b58f1"
-  },
-  {
-    "url": "app/content/products.css",
-    "revision": "9d2f1f0a546f80938fbf855eca9fb62b"
-  },
-  {
-    "url": "app/content/products.html",
-    "revision": "2742e4ca076e593703e8ff5f50124ca6"
-  },
-  {
-    "url": "app/content/zuix_it.css",
-    "revision": "16af1150dda73c943810d02e3ef3b90c"
-  },
-  {
     "url": "app/content/zuix_it.html",
-    "revision": "bf39d6352bcee6ac888f56c46da65a14"
-  },
-  {
-    "url": "app/controllers/headings_roller.js",
-    "revision": "a64c111cbab9477e952f61227baec116"
-  },
-  {
-    "url": "app/templates/flexy_card.css",
-    "revision": "c24120c0f6550d6b1f8cf94d83218043"
-  },
-  {
-    "url": "app/templates/flexy_card.html",
-    "revision": "aa13766157035ddb76740d8dfbf6f293"
+    "revision": "469048bb8413331c0bd293b4116a5f16"
   },
   {
     "url": "config.js",
@@ -89,11 +29,11 @@ self.__precacheManifest = [
   },
   {
     "url": "css/animate-3.5.2.min.css",
-    "revision": "d41d8cd98f00b204e9800998ecf8427e"
+    "revision": "178b651958ceff556cbc5f355e08bbf1"
   },
   {
     "url": "css/flex-layout-attribute.min.css",
-    "revision": "d41d8cd98f00b204e9800998ecf8427e"
+    "revision": "c55488315343d9afb4d13ebf9cc8f97b"
   },
   {
     "url": "index.css",
@@ -101,7 +41,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "08611319ff682b087d74b24da18e95fa"
+    "revision": "eb5968d2bcf017e2429eb12669337331"
   },
   {
     "url": "index.js",
