@@ -20,20 +20,80 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox
  */
 self.__precacheManifest = [
   {
+    "url": "app/content/about.css",
+    "revision": "e04f3019582b8db03ef1e47a97ef3fe9"
+  },
+  {
+    "url": "app/content/about.html",
+    "revision": "2e33de1a6f4ff3909245c794e05cc539"
+  },
+  {
+    "url": "app/content/cover.css",
+    "revision": "ca49d6fe14487dea527894f6f9e8d5df"
+  },
+  {
+    "url": "app/content/cover.html",
+    "revision": "85b8f3c4179d1895ef98054644365ae2"
+  },
+  {
+    "url": "app/content/footer.css",
+    "revision": "13c5cf9963093a45cdee85ff00f0da05"
+  },
+  {
+    "url": "app/content/footer.html",
+    "revision": "930cc2d203f133d354c581846a5b22dc"
+  },
+  {
+    "url": "app/content/menu_button.css",
+    "revision": "e94a60415b1c29dec482d4214e7753a1"
+  },
+  {
+    "url": "app/content/menu_button.html",
+    "revision": "ea80f8856a711b0f5178b85347ad5de4"
+  },
+  {
+    "url": "app/content/more_repos.html",
+    "revision": "6a37b52141649990d76f8e8f377b58f1"
+  },
+  {
+    "url": "app/content/products.css",
+    "revision": "47a4b7ad14868fabb263842e18cf1161"
+  },
+  {
+    "url": "app/content/products.html",
+    "revision": "5487513fe11e20c8193b0be301c3ac3d"
+  },
+  {
+    "url": "app/content/zuix_it.css",
+    "revision": "16af1150dda73c943810d02e3ef3b90c"
+  },
+  {
     "url": "app/content/zuix_it.html",
     "revision": "469048bb8413331c0bd293b4116a5f16"
   },
   {
+    "url": "app/controllers/headings_roller.js",
+    "revision": "a64c111cbab9477e952f61227baec116"
+  },
+  {
+    "url": "app/templates/flexy_card.css",
+    "revision": "c24120c0f6550d6b1f8cf94d83218043"
+  },
+  {
+    "url": "app/templates/flexy_card.html",
+    "revision": "aa13766157035ddb76740d8dfbf6f293"
+  },
+  {
     "url": "config.js",
-    "revision": "ffa2ef2ff4ddec0dfdf5d83aa01d9d79"
+    "revision": "42734105a5fad2caf379be49e1979ad0"
   },
   {
     "url": "css/animate-3.5.2.min.css",
-    "revision": "178b651958ceff556cbc5f355e08bbf1"
+    "revision": "d41d8cd98f00b204e9800998ecf8427e"
   },
   {
     "url": "css/flex-layout-attribute.min.css",
-    "revision": "c55488315343d9afb4d13ebf9cc8f97b"
+    "revision": "d41d8cd98f00b204e9800998ecf8427e"
   },
   {
     "url": "index.css",
@@ -41,7 +101,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "43f586d763a6b5d0d24bea2b39b23fde"
+    "revision": "7bcc4c94474a760588066ecef27b8f77"
   },
   {
     "url": "index.js",
@@ -50,6 +110,18 @@ self.__precacheManifest = [
   {
     "url": "js/mdl/material.css",
     "revision": "57313781c72269db589ebea903725dcc"
+  },
+  {
+    "url": "js/mdl/material.js",
+    "revision": "d4d04abe369dc10ce86e42c00ee62ccd"
+  },
+  {
+    "url": "js/mdl/material.min.css",
+    "revision": "8ce4631006b601c6253396365879a7a9"
+  },
+  {
+    "url": "js/mdl/material.min.js",
+    "revision": "df211fcb13a5c100eeb182f14fd37b44"
   },
   {
     "url": "js/zuix-bundler.js",
@@ -69,15 +141,75 @@ self.__precacheManifest = [
   },
   {
     "url": "images/donate_256.png",
-    "revision": "9537c28946b506894b1464308b766628"
+    "revision": "d41d8cd98f00b204e9800998ecf8427e"
   },
   {
     "url": "images/donate.png",
-    "revision": "c454f7cddf4f5a46f8d3b9fc8dca000b"
+    "revision": "d41d8cd98f00b204e9800998ecf8427e"
   },
   {
     "url": "images/github_logo.png",
-    "revision": "9019b95b6e56e4b9932e32ebf81c45e5"
+    "revision": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  {
+    "url": "images/hg_plus/01_t.jpg",
+    "revision": "140d2e50857dd7b8bfc66f205ee3d49b"
+  },
+  {
+    "url": "images/hg_plus/01.jpg",
+    "revision": "993d3173331ec0604aa8f9984040fce8"
+  },
+  {
+    "url": "images/hg_plus/01.png",
+    "revision": "691a063cf6a9299d4e36f4e7486eda54"
+  },
+  {
+    "url": "images/hg_plus/02_t.jpg",
+    "revision": "106920a91037a6b61f7f3476f534186f"
+  },
+  {
+    "url": "images/hg_plus/02.jpg",
+    "revision": "4e63fa1a5d7330309fe5bca005880b92"
+  },
+  {
+    "url": "images/hg_plus/02.png",
+    "revision": "b87231620fabd42cfcffd677e660933b"
+  },
+  {
+    "url": "images/hg_plus/03_t.jpg",
+    "revision": "20fb29c4ee9e7d9d88b49e8e96355348"
+  },
+  {
+    "url": "images/hg_plus/03.jpg",
+    "revision": "8d24abf5ea52fb19b358305230039515"
+  },
+  {
+    "url": "images/hg_plus/03.png",
+    "revision": "36e2283e24343abc855d296512d4192d"
+  },
+  {
+    "url": "images/hg_plus/03b_t.jpg",
+    "revision": "4bcd828882daee1adc565319ece7aef4"
+  },
+  {
+    "url": "images/hg_plus/03b.jpg",
+    "revision": "0f3d7356fb0c38a6dcbaff80ddcb3d62"
+  },
+  {
+    "url": "images/hg_plus/03b.png",
+    "revision": "03055eda35387813bd7485168ec2f2a5"
+  },
+  {
+    "url": "images/hg_plus/04_t.jpg",
+    "revision": "86eb59290f27a81b030f63e01b1437cb"
+  },
+  {
+    "url": "images/hg_plus/04.jpg",
+    "revision": "a7abbd011eaedb3700910d671d7e5565"
+  },
+  {
+    "url": "images/hg_plus/04.png",
+    "revision": "f63dce0f659c2245a80c247ff2163487"
   },
   {
     "url": "images/hg_plus/05_t.jpg",
@@ -181,7 +313,7 @@ self.__precacheManifest = [
   },
   {
     "url": "images/homegenie.jpg",
-    "revision": "82a3ebb370e64938e583ee12fe65138e"
+    "revision": "d41d8cd98f00b204e9800998ecf8427e"
   },
   {
     "url": "images/homegenie.png",

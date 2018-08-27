@@ -50,7 +50,7 @@ const {JSDOM} = jsdom;
 // minifier
 const minify = require('html-minifier').minify;
 
-const LIBRARY_PATH_DEFAULT = 'https://genielabs.github.io/zkit/lib';
+const LIBRARY_PATH_DEFAULT = 'https://zuixjs.github.io/zkit/lib';
 
 const zuixBundle = {
     viewList: [],

@@ -8,6 +8,10 @@
         "genielabs.github.io": {
                 "resourcePath": "/glabs.it/app/",
                 "libraryPath": "https://genielabs.github.io/zkit/lib/"
+        },
+        "glabs.it": {
+                "resourcePath": "/app/",
+                "libraryPath": "https://zuixjs.github.io/zkit/lib/"
         }
 });
 
