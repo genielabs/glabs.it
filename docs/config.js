@@ -4,10 +4,10 @@
         "title": "G-Labs: The open source Factory.",
         "googleSiteId": "UA-92522504-1",
         "resourcePath": "./app/",
-        "libraryPath": "https://genielabs.github.io/zkit/lib/",
+        "libraryPath": "https://zuixjs.github.io/zkit/lib/",
         "genielabs.github.io": {
                 "resourcePath": "/glabs.it/app/",
-                "libraryPath": "https://genielabs.github.io/zkit/lib/"
+                "libraryPath": "https://zuixjs.github.io/zkit/lib/"
         },
         "glabs.it": {
                 "resourcePath": "/app/",

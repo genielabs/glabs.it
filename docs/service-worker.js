@@ -72,10 +72,6 @@ self.__precacheManifest = [
     "revision": "469048bb8413331c0bd293b4116a5f16"
   },
   {
-    "url": "app/controllers/headings_roller.js",
-    "revision": "a64c111cbab9477e952f61227baec116"
-  },
-  {
     "url": "app/templates/flexy_card.css",
     "revision": "c24120c0f6550d6b1f8cf94d83218043"
   },
@@ -85,7 +81,7 @@ self.__precacheManifest = [
   },
   {
     "url": "config.js",
-    "revision": "42734105a5fad2caf379be49e1979ad0"
+    "revision": "e09ae8f0bbb4df5296d861aa987c4cbb"
   },
   {
     "url": "css/animate-3.5.2.min.css",
@@ -101,7 +97,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "7bcc4c94474a760588066ecef27b8f77"
+    "revision": "61ce320297c7e909b2439cf5595d7dfa"
   },
   {
     "url": "index.js",
