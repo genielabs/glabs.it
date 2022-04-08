@@ -1,17 +1,30 @@
-# glabs.it
+# zuix.js web starter
 
-[G-Labs](https://glabs.it) website, powered by [zUIx](https://zuixjs.github.io/zuix) and
-[zUIx Web Starter](https://github.com/zuixjs/zuix-web-starter).
+The base starter project for component based web development with [zuix.js](https://zuixjs.github.io/zuixjs.org) and [Eleventy](https://www.11ty.dev).
+
+### --&gt;&gt;[ [Demo and Docs](https://zuixjs.github.io/zuix-web-starter) ]&lt;&lt;--
+
+![Lighthouse performance test](https://zuixjs.github.io/zuix-web-starter/images/lighthouse.png)
+
+## Other starter templates
+
+- **Web App** [demo](https://zuixjs.github.io/web-app)  
+  A typical mobile app layout, with side drawer, collapsible header, Material Design UI,  
+  internal search engine and adaptive design that works very well on desktop screens too.  
+  **Installs with:**  
+  `npx zuix new my-project-name -t web-app`
 
 
-#### Development
+- **News Blog**  [demo](https://zuixjs.github.io/news-blog)  
+  A fully immersive template, suitable for publishing feeds of news or blog posts. With  
+  "Save for later" and share/print functionality, internal search engine and adaptive design  
+  that works very well on desktop screens too.  
+  **Installs with:**  
+  `npx zuix new my-project-name -t news-blog`
+ 
+# Related resources
 
-This website is based on [zUIx Web Starter](https://github.com/zuixjs/zuix-web-starter).
-
-1. `npm install` to install development dependencies
-2. `npm start` to start local web server
-3. `npm run watch` to watch file tree for changes and auto-rebuild
-4. `npm run build` to manually build the files
-
-website source files are located in the `./source` folder and are
-generated in the `./docs` folder.
+- **Web Starter** https://zuixjs.github.io/zuix-web-starter
+- **zKit** https://zuixjs.github.io/zkit/
+- **zuix.js** https://zuixjs.org
+- **11ty** https://11ty.dev

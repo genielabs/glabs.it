@@ -1,25 +1,22 @@
 /* eslint-disable quotes */
 (function() {
-    zuix.store("config", {
-        "title": "G-Labs: The open source Factory.",
-        "googleSiteId": "UA-92522504-1",
-        "resourcePath": "./app/",
-        "libraryPath": "https://zuixjs.github.io/zkit/lib/",
-        "genielabs.github.io": {
-                "resourcePath": "/glabs.it/app/",
-                "libraryPath": "https://zuixjs.github.io/zkit/lib/"
-        },
-        "glabs.it": {
-                "resourcePath": "/app/",
-                "libraryPath": "https://zuixjs.github.io/zkit/lib/"
-        }
-});
-
-    // Check that service workers are registered
-    if ('serviceWorker' in navigator) {
-        // Use the window load event to keep the page load performant
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./service-worker.js');
-        });
-    }
+  zuix.store('config', {
+    "title": "glabs.it",
+    "subtitle": "the open source factory",
+    "baseUrl": "/",
+    "resourcePath": "/app/",
+    "libraryPath": {
+      "@lib": "/lib/1.1/",
+      "@hgui": "https://genielabs.github.io/homegenie-web-ui/app/",
+      "@cdnjs": "https://cdnjs.cloudflare.com/ajax/libs/"
+    },
+    "siteMapUrl": "https://glabs.it/"
+  });
+  // Check that service workers are registered
+  if ('serviceWorker' in navigator) {
+    // Use the window load event to keep the page load performant
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js');
+    });
+  }
 })();

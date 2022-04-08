@@ -1,6 +1,0 @@
-// TODO: implement config reading and remove this comment =)
-{
-  "zuix": {
-    "resourceRoot": "./app/"
-  }
-}

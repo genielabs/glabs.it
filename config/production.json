@@ -1,34 +1,39 @@
 {
   "zuix": {
     "build": {
-      "input": "./source",
-      "output": "./docs",
+      "input": "source",
+      "output": "docs",
       "copy": [
-        "app",
-        "apps",
         "css",
         "images",
-        "js",
-        ".nojekyll"
+        ".nojekyll",
+        "browserconfig.xml",
+        "manifest.json",
+        "humans.txt",
+        "favicon.ico",
+        "robots.txt",
+        "content/**/*.jpg",
+        "content/**/*.png",
+        "content/**/*.webp",
+        "content/**/*.gif",
+        "content/**/*.svg",
+        "content/**/*.json"
       ],
       "ignore": [
-        "_inc"
+        "_filters",
+        "content/**/_inc/*"
       ],
-      "compile": [
-        "html",
-        "css",
-        "js",
-        "md",
-        "svg"
-      ],
-      "prettyUrl": false,
-      "less": true,
-      "esLint": true,
+      "dataFolder": "_data",
+      "includesFolder": "_inc",
+      "componentsFolders": [ "app", "lib" ],
+      "contentFolder": "content",
       "bundle": {
         "js": true,
         "css": true,
         "zuix": true
       },
+      "mirror": "img",
+      "serviceWorker": true,
       "minify": {
         "disable": false,
         "collapseWhitespace": true,
@@ -40,19 +45,21 @@
         "collapseBooleanAttributes": true,
         "removeAttributeQuotes": false,
         "removeEmptyAttributes": true,
-        "minifyCSS": true,
+        "minifyCSS": false,
         "minifyJS": true
       }
     },
     "app": {
-      "title": "G-Labs: The open source Factory.",
-      "googleSiteId": "UA-92522504-1",
-      "resourcePath": "./app/",
-      "libraryPath": "https://genielabs.github.io/zkit/lib/",
-      "genielabs.github.io": {
-        "resourcePath": "/glabs.it/app/",
-        "libraryPath": "https://genielabs.github.io/zkit/lib/"
-      }
+      "title": "glabs.it",
+      "subtitle": "the open source factory",
+      "baseUrl": "/",
+      "resourcePath": "{{ app.baseUrl }}app/",
+      "libraryPath": {
+        "@lib": "{{ app.baseUrl }}lib/1.1/",
+        "@hgui": "https://genielabs.github.io/homegenie-web-ui/app/",
+        "@cdnjs": "https://cdnjs.cloudflare.com/ajax/libs/"
+      },
+      "siteMapUrl": "https://glabs.it{{ app.baseUrl }}"
     }
   }
 }
