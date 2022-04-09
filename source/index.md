@@ -35,9 +35,8 @@ The following are some of my latest works.
 ## Web development
 
 {% layout 'rows sm-column center-left' %}
-  {% for work in collections.web %}
-    {% include 'fragments/card' data: work.data %}
-  {% endfor %}
+  {% assign webWorks = collections.web | sort: 'data.order' %}
+  {% include 'fragments/works-list' data: work.data %}
   <div style="min-width: 288px; max-width: 288px; margin:12px">
     <div layout="column center-center">
       <a href="https://github.com/zuixjs" style="border-radius: 56px; background-color: rgba(180,180,180, 0.35); padding: 12px;"><img src="images/github-octocat.svg" width="88" height="88"></a>
@@ -49,9 +48,8 @@ The following are some of my latest works.
 ## Software development
 
 {% layout 'rows sm-column center-left' %}
-  {% for work in collections.software %}
-    {% include 'fragments/card' data: work.data %}
-  {% endfor %}
+  {% assign webWorks = collections.software | sort: 'data.order' %}
+  {% include 'fragments/works-list' data: work.data %}
   <div style="min-width: 288px; max-width: 288px; margin:12px">
     <div layout="column center-center">
       <a href="https://github.com/genielabs" style="border-radius: 56px; background-color: rgba(180,180,180, 0.35); padding: 12px;"><img src="images/github-octocat.svg" width="88" height="88"></a>
@@ -59,4 +57,3 @@ The following are some of my latest works.
     </div>
   </div>
 {% endlayout %}
-

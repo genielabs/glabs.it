@@ -5,7 +5,7 @@ tags:
 - works
 - web
 group: works
-order: 10
+order: 20
 coverMini: content/works/web/images/webstarter-cover.png
 coverLink: https://artsandculture.google.com/asset/board-0-composition-0-karol-hiller/uwGA0kZBxbbPkg
 title: Web Starter template

@@ -5,11 +5,11 @@ tags:
 - works
 - software
 group: works
-order: 10
+order: 40
 coverMini: content/works/software/images/x10lib-cover.png
 coverLink: https://artsandculture.google.com/asset/margin-of-silence/dAHyrzDs4GlJFw
-title: X10Lib
-description: X10 Home Automation library that supports both CM11 and CM15 hardware and RF messages decoding.
+title: ZWaveLib
+description: Z-Wave Home Automation library that works with most serial controllers. 100% managed code implementation.
 link: https://github.com/genielabs/zwave-lib-dotnet
 keywords:
 - dotnet

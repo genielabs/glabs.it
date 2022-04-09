@@ -5,7 +5,7 @@ tags:
 - works
 - web
 group: works
-order: 10
+order: 30
 coverMini: content/works/web/images/webapp-cover.png
 coverLink: https://artsandculture.google.com/asset/motor-boat-at-full-speed/GgH_mLiomwtBDA
 title: Web App template

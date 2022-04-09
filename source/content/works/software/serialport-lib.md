@@ -5,7 +5,7 @@ tags:
 - works
 - software
 group: works
-order: 10
+order: 30
 coverMini: content/works/software/images/serialportlib-cover.png
 coverLink: https://artsandculture.google.com/asset/swinging-tension-joseph-zenk/ogFJGTCbou_fig
 title: SerialPortLib
