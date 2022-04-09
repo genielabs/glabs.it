@@ -1,7 +1,7 @@
 {
-  "name": "zUIx Web Starter",
-  "short_name": "Web Starter",
-  "description": "A very cool web app powered by zUIx.js",
+  "name": "glabs.it",
+  "short_name": "glabs.it",
+  "description": "the open source factory",
   "theme_color": "#178038",
   "background_color": "#dafee4",
   "display": "standalone",
