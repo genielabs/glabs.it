@@ -33,7 +33,7 @@ main {
     padding-bottom: 140px;
 }
 
-main h1, main h2, main h3, main h4, main h5, main h6, main > p {
+main h1, main h2, main h3, main h4, main h5, main h6, main p {
     font-weight: 400;
     padding-left: 8px;
     padding-right: 8px;
