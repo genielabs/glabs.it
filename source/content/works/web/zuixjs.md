@@ -6,8 +6,6 @@ tags:
 - web
 group: works
 order: 10
-coverMini: content/works/web/images/zuixjs-cover.png
-coverLink: https://artsandculture.google.com/asset/rhythmic-composition-in-yellow-green-minor-roy-de-maistre/KgFKuMP-hu3zsQ
 title: zuix.js
 description: A lightweight library for creating modular and component based websites with just HTML, CSS and (maybe) JavaScript.
 link: https://zuixjs.org/

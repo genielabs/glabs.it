@@ -1,5 +1,5 @@
-<code>-~=(content)=~-</code>
-{% assign docs = collections[group] | sort: 'data.order' %}
-{%- for item in docs %}
+<code>-~=({{ app.title }})=~-</code>
+{% assign section = collections.section | sort: 'data.order' %}
+{%- for item in section %}
     <a href="{{ item.url | url }}">{{ item.data.title }}</a> |
 {% endfor -%}

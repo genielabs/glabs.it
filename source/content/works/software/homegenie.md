@@ -6,8 +6,6 @@ tags:
 - software
 group: works
 order: 10
-coverMini: content/works/software/images/homegenie-cover.png
-coverLink: https://artsandculture.google.com/asset/courtyard-juje%C3%B1o-courtyard-tilcara-acebal-idigoras/CAGZdIWxfqpU9Q
 title: HomeGenie Server
 description: The open source, programmable, home automation server for smart connected devices and applications.
 link: https://genielabs.github.io/HomeGenie/

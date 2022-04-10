@@ -3,9 +3,23 @@ body {
     font-size: 1.0em;
     margin: 0;
 }
-img {
-    max-width: 100%;
+
+input,
+textarea,
+button,
+select,
+div,
+a {
+    -webkit-tap-highlight-color: transparent;
 }
+
+img {
+    margin: auto;
+    display: block;
+    max-width: 100%;
+    border-radius: 4px;
+}
+
 nav {
     height: 72px;
     max-height: 72px;
@@ -16,23 +30,32 @@ nav h1 {
 
 main {
     min-height: calc(100vh - 64px - 200px); /* viewport height - header height - footer height */
-    padding-bottom:56px;
+    padding-bottom: 140px;
 }
+
 main h1, main h2, main h3, main h4, main h5, main h6, main p {
     font-weight: 400;
     padding-left: 8px;
     padding-right: 8px;
     margin-top: 36px;
 }
-main h1:first-of-type {
-    margin-top: 0;
+main h1 {
+    margin-top: 56px;
+}
+main h1 {
+    margin-top: 48px;
 }
 main h4 {
     font-weight: bold;
 }
+
 main p {
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
     line-height: 140%;
+}
+
+main > :first-child:not(img) {
+    padding-top: 80px;
 }
 
 ul {
@@ -42,8 +65,7 @@ ul {
 }
 li {
     font-size: 95%;
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding: 4px;
 }
 
 small {

@@ -1,0 +1,11 @@
+{% if template == blank %}
+{% assign template = 'fragments/card' %}
+{% endif %}
+{% for item in items %}
+    {% if item.data.link == blank %}
+        {% assign link = item.url  %}
+    {% else %}
+        {% assign link = item.data.link  %}
+    {% endif %}
+    {% include template, data: item.data, link: link %}
+{% endfor %}

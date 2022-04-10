@@ -1,0 +1,59 @@
+<!---
+layout: basic.liquid
+options: highlight ext-links
+tags: section
+group: works
+order: 0
+title: Works
+description: About my public works
+keywords:
+- genielabs
+- home
+- works
+--->
+
+# Works
+
+## Web development
+
+{% layout 'rows sm-column center-left' %}
+{% assign items = collections.web | sort: 'data.order' %}
+{% include 'fragments/cards-list', template: 'fragments/card-github' %}
+  <div style="min-width: 312px; max-width: 312px; padding: 12px">
+    <div layout="column center-center">
+      <a class="organization-logo" title="See more zuix.js works on GitHub" href="https://github.com/zuixjs" style="border: solid 4px transparent; border-radius: 56px"><img alt="zuix.js logo" src="{{ '/images/zuix-logo.svg' | url }}" width="80" height="80" style="opacity: 0.75"></a>
+    </div>
+  </div>
+{% endlayout %}
+
+## Software development
+
+{% layout 'rows sm-column center-left' %}
+{% assign items = collections.software | sort: 'data.order' %}
+{% include 'fragments/cards-list', template: 'fragments/card-github' %}
+  <div style="min-width: 288px; max-width: 288px; margin: 12px">
+    <div layout="column center-center">
+      <a class="organization-logo" title="See more G-Labs works on GitHub" href="https://github.com/genielabs"><img alt="G-Labs logo" src="{{ '/images/glabs-logo.svg' | url }}" width="88" height="88"></a>
+    </div>
+  </div>
+{% endlayout %}
+
+<!--
+## Hardware experiments
+
+// TODO: ...
+-->
+<style>
+.organization-logo {
+    padding: 12px;
+    border-radius: 100px;
+    box-shadow: 0 1px 3px 0 #00000077;
+    transition: box-shadow 0.3s ease-in-out;
+}
+.organization-logo:hover {
+    box-shadow: 0 2px 6px 0 #00000077;
+}
+.organization-logo:active {
+    box-shadow: 0 1px 2px 0 #00000077;
+}
+</style>

@@ -6,8 +6,6 @@ tags:
 - software
 group: works
 order: 20
-coverMini: content/works/software/images/homegenieplus-cover.png
-coverLink: https://artsandculture.google.com/asset/marinha-guaruj%C3%A1-seascape-guaruj%C3%A1-almeida-j%C3%BAnior/ZwF4JBII7C89Lw
 title: HomeGenie+ (client)
 description: Featured mobile client for HomeGenie server and other services. A control panel for your smart home/applications.
 link: https://play.google.com/store/apps/details?id=com.glabs.homegenieplus&hl=en_US&gl=US

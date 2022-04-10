@@ -1,0 +1,4 @@
+{% layout 'rows sm-column center-left' %}
+{% assign items = collections.posts | sort: data.pubDate %}
+{% include 'fragments/cards-list' %}
+{% endlayout %}
