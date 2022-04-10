@@ -120,6 +120,7 @@ blockquote span {
     max-width: calc(100vw - 104px);
     white-space: nowrap;
     overflow: hidden;
+    text-align: left;
     text-overflow: ellipsis;
 }
 .subtitle {
