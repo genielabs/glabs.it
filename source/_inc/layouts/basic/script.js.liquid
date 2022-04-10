@@ -11,10 +11,10 @@ function themeSetup() {
   toggleTheme();
   function toggleTheme(ev) {
     const checked = ev ?
-        !toggle.checked() :
+        toggle.checked() :
         localStorage.getItem(storeKey) === 'true';
-    !ev && toggle.checked(!checked);
-    !checked ? doc.addClass(themeDark) : doc.removeClass(themeDark);
+    !ev && toggle.checked(checked);
+    checked ? doc.addClass(themeDark) : doc.removeClass(themeDark);
     localStorage.setItem(storeKey, String(checked));
   }
 }
