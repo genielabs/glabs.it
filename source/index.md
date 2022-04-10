@@ -18,10 +18,18 @@ keywords:
   </blockquote>
 </div>
 
-{% include 'content/works/index.md' %}
+# Works
+
+{% include 'content/works/index_list' %}
 
 ## &nbsp;
 
 # Posts
 
 {% include 'content/posts/index_list' %}
+
+<style>
+h1, h2, h3 {
+  text-align: center;
+}
+</style>

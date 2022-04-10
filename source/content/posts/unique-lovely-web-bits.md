@@ -80,7 +80,7 @@ they're hosted on the same server or over a bunch of different ones.
 In order to make this work without issues we must guarantee 100% backward compatibility whenever a distributed component
 is updated. If this is not possible, then a new path must be assigned to the updated component.
 
-Also, we must consider that downloading resources from multiple hosts of uncertain reliability can sometime compromise
+Also, we must consider that downloading resources from multiple hosts of uncertain reliability can sometimes compromise
 performance especially in presence of network issues. That's an old lesson already taught by the use of *CDNs*.
 
 So when performance is a real concern about your application, a different strategy can be adopted and this consists of
