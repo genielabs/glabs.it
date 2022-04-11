@@ -32,7 +32,6 @@ main {
     min-height: calc(100vh - 64px - 200px); /* viewport height - header height - footer height */
     padding-bottom: 140px;
 }
-
 main h1, main h2, main h3, main h4, main h5, main h6, main p {
     font-weight: 400;
     padding-left: 8px;
@@ -48,12 +47,15 @@ main h1 {
 main h4 {
     font-weight: bold;
 }
-
 main p {
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
     line-height: 140%;
 }
-
+main img.cover {
+    margin-top: 24px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
 main > :first-child:not(img) {
     padding-top: 80px;
 }
@@ -85,6 +87,9 @@ code:not([class*=language-]) {
 
 footer {
     font-size: 90%;
+}
+footer section {
+    padding: 32px;
 }
 
 blockquote {
@@ -129,6 +134,12 @@ blockquote span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.author {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 32px;
+    font-size: 85%
 }
 
 .menu-item {

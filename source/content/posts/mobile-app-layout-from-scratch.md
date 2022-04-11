@@ -4,11 +4,11 @@ options: highlight ext-links
 tags: posts
 group: posts
 order: 10
-coverMini: /content/posts/images/mobile-app-from-scratch.jpg
+coverPreview: /content/posts/images/mobile-app-from-scratch.jpg
+coverImage: https://drive.google.com/uc?id=1bh3XAyrWiP4kipKg_uAmgDzlzeiD9AZH
+coverCopy:
 title: Mobile web app layout from scratch
 description: Create a mobile app layout in 5 minutes (@!?!) =)
-cover_image: https://drive.google.com/uc?id=1bh3XAyrWiP4kipKg_uAmgDzlzeiD9AZH
-cover_copy:
 author: Gene
 pubDate: 2018-07-22
 keywords:

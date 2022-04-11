@@ -4,11 +4,11 @@ options: highlight ext-links
 tags: posts
 group: posts
 order: 90
-coverMini: /content/posts/images/add-gesture-detection-cover.jpg
+coverPreview: /content/posts/images/add-gesture-detection-cover.jpg
+coverImage: https://thepracticaldev.s3.amazonaws.com/i/vfk4j4pk8jfn75vyj1e4.jpg
+coverCopy: photo by John Schnobrich on Unsplash
 title: Adding gesture-based interaction to your website
 description: Gesture helper that can be used on any element to detect gestures over it.
-cover_image: https://thepracticaldev.s3.amazonaws.com/i/vfk4j4pk8jfn75vyj1e4.jpg
-cover_copy: photo by John Schnobrich on Unsplash
 author: Gene
 pubDate: 2018-08-31
 keywords:

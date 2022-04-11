@@ -4,11 +4,11 @@ options: highlight ext-links
 tags: posts
 group: posts
 order: 80
-coverMini: /content/posts/images/webflix-clone-cover.jpg
+coverPreview: /content/posts/images/webflix-clone-cover.jpg
+coverImage: /content/posts/images/webflix-clone-cover-big.jpg
+coverCopy:
 title: Netflix clone web app template (PWA)
 description: Yet another Progressive Web App
-cover_image: /content/posts/images/webflix-clone-cover-big.jpg
-cover_copy:
 author: Gene
 pubDate: 2018-08-20
 keywords:

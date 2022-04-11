@@ -4,11 +4,11 @@ options: highlight ext-links
 tags: posts
 group: posts
 order: 10
-coverMini: /content/posts/images/component-based-cover.jpg
+coverPreview: /content/posts/images/component-based-cover.jpg
+coverImage: https://drive.google.com/uc?id=1M-F9RlZr9ayjWNysJWB-BrqXwOP-q_o1
+coverCopy:
 title: Component-based web with <code>zuix.js</code>
 description: Meet zUIx.js, a small yet powerful library for component-based web development.
-cover_image: https://drive.google.com/uc?id=1M-F9RlZr9ayjWNysJWB-BrqXwOP-q_o1
-cover_copy:
 author: Gene
 pubDate: 2018-07-19
 keywords:

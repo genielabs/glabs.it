@@ -4,11 +4,11 @@ options: highlight ext-links
 tags: posts
 group: posts
 order: 10
-coverMini: /content/posts/images/lovely-web-bits.jpg
+coverPreview: /content/posts/images/lovely-web-bits.jpg
+coverImage: https://thepracticaldev.s3.amazonaws.com/i/pocqyuok4f06ljdyi14j.jpg
+coverCopy:
 title: Unique, lovely web bits
 description: Just about what I was up to yesterday
-cover_image: https://thepracticaldev.s3.amazonaws.com/i/pocqyuok4f06ljdyi14j.jpg
-cover_copy:
 author: Gene
 pubDate: 2018-07-26
 keywords:

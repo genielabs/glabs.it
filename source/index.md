@@ -1,7 +1,7 @@
 ---
 layout: basic.liquid
 options: highlight ext-links no-title
-tags: section
+tags: sections
 group: home
 order: 0
 title: Home

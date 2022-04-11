@@ -1,7 +1,7 @@
 ---
 layout: basic.liquid
 options: highlight ext-links
-tags: section
+tags: sections
 group: posts
 order: 20
 title: Posts

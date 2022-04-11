@@ -1,41 +1,43 @@
 {% unless options contains 'no-footer' %}
 {% wrapDom 'footer' %}
-<footer #footer layout="columns bottom-center" style="min-height: 200px;">
+<footer #footer layout="column bottom-center" style="min-height: 200px;">
     {% include 'fragments/vic20-palette.html' %}
 
-    <div self="size-large" layout="row sm-column top-stretch">
-        <section layout="column top-left" style="padding:32px">
+    <div self="size-large" layout="rows top-justify">
+        <section>
             <div><strong>{{ app.title }}</strong></div>
             <ul>
-                {% assign sections = collections.section | sort: 'data.order' %}
+                {% assign sections = collections.sections | sort: 'data.order' %}
                 {% for item in sections %}
                     <li>
                         <a href="{{ item.url | url }}">{{ item.data.title }}</a>
                     </li>
                 {% endfor %}
             </ul>
-            <div style="margin-top: 24px">
-                <div><strong>Links</strong></div>
-                <ul>
-                    {% for item in links %}
-                        <li><a href="{{ item.link | url }}">{{ item.title }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
         </section>
-        <div self="size-x1"></div>
-        <section layout="column top-left" style="padding:32px">
+        {% assign posts = collections[group] | sort: 'data.order' | sort: 'data.pubDate' | reverse %}
+        {% if posts.size > 0 %}
+        <section>
             <div><strong>Latest posts</strong></div>
             <ul>
-                {% assign docs = collections.posts | sort: 'data.pubDate' | reverse %}
-                {% for item in docs limit:4 %}
-                    <li>
-                        <div class="primary" style="font-size: 10px">{{ item.data.pubDate | date }}</div>
-                        <a href="{{ item.url | url }}">{{ item.data.title }}</a>
-                    </li>
+                {% for item in posts limit:4 %}
+                    <li><a href="{{ item.url | url }}">{{ item.data.title }}</a></li>
                 {% endfor %}
             </ul>
         </section>
+        {% endif %}
+        {% if links.size > 0 %}
+        <section>
+            {% if links %}
+            <div><strong>Links</strong></div>
+            <ul>
+                {% for item in links %}
+                    <li><a href="{{ item.link | url }}">{{ item.title }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </section>
+        {% endif %}
     </div>
 
     <div self="size-large" layout="row sm-column center-spread" style="padding: 12px;">

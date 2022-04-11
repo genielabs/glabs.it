@@ -4,11 +4,11 @@ options: highlight ext-links
 tags: posts
 group: posts
 order: 70
-coverMini: /content/posts/images/progressive-web-app.jpg
+coverPreview: /content/posts/images/progressive-web-app.jpg
+coverImage: https://thepracticaldev.s3.amazonaws.com/i/cn8xjvhqd32zp04h8gpr.png
+coverCopy:
 title: Ready to use Progressive Web App template
 description: Faaast, simple, modern PWA template.
-cover_image: https://thepracticaldev.s3.amazonaws.com/i/cn8xjvhqd32zp04h8gpr.png
-cover_copy:
 author: Gene
 pubDate: 2018-08-13
 keywords:

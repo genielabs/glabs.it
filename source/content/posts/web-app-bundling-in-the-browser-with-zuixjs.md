@@ -4,11 +4,11 @@ options: highlight ext-links
 tags: posts
 group: posts
 order: 10
-coverMini: /content/posts/images/in-browser-bundling.jpg
+coverPreview: /content/posts/images/in-browser-bundling.jpg
+coverImage: https://thepracticaldev.s3.amazonaws.com/i/4i2nm4b8y82z8cdkhnyg.jpg
+coverCopy: Photo © Racorn | Dreamstime
 title: Web app bundling in the browser with zUIx.js
 description: You don't always need build tools to optimize page loading
-cover_image: https://thepracticaldev.s3.amazonaws.com/i/4i2nm4b8y82z8cdkhnyg.jpg
-cover_copy: Photo © Racorn | Dreamstime
 author: Gene
 pubDate: 2018-08-01
 keywords:

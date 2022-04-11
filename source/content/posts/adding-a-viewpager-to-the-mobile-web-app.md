@@ -4,11 +4,11 @@ options: highlight ext-links
 tags: posts
 group: posts
 order: 10
-coverMini: /content/posts/images/adding-a-viewpager.jpg
+coverPreview: /content/posts/images/adding-a-viewpager.jpg
+coverImage: https://thepracticaldev.s3.amazonaws.com/i/8l276dgce86ez8jdpap1.jpg
+coverCopy:
 title: Adding a ViewPager to your web app
 description: Meant to be a Twitter mobile clone, ended up in something else.
-cover_image: https://thepracticaldev.s3.amazonaws.com/i/8l276dgce86ez8jdpap1.jpg
-cover_copy:
 author: Gene
 pubDate: 2018-07-29
 keywords:

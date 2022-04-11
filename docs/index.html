@@ -46,7 +46,6 @@ main {
     min-height: calc(100vh - 64px - 200px); /* viewport height - header height - footer height */
     padding-bottom: 140px;
 }
-
 main h1, main h2, main h3, main h4, main h5, main h6, main p {
     font-weight: 400;
     padding-left: 8px;
@@ -62,12 +61,15 @@ main h1 {
 main h4 {
     font-weight: bold;
 }
-
 main p {
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
     line-height: 140%;
 }
-
+main img.cover {
+    margin-top: 24px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
 main > :first-child:not(img) {
     padding-top: 80px;
 }
@@ -99,6 +101,9 @@ code:not([class*=language-]) {
 
 footer {
     font-size: 90%;
+}
+footer section {
+    padding: 32px;
 }
 
 blockquote {
@@ -143,6 +148,12 @@ blockquote span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.author {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 32px;
+    font-size: 85%
 }
 
 .menu-item {
@@ -423,7 +434,7 @@ a {
 .date {
         text-align: right;        font-size: 12px;        padding: 6px;        margin-right: 12px;    }</style><div self="size-x1" layout="column top-stretch" style="background-image: url('/content/posts/images/mobile-app-from-scratch.jpg')" z-component="fragment" card=""><h3 class="accent" card="">Mobile web app layout from scratch</h3><p card="">Create a mobile app layout in 5 minutes (@!?!) =)<div self="bottom" class="date primary" card="">22 July 2018</div><a href="/content/posts/mobile-app-layout-from-scratch/" title="See Mobile web app layout from scratch" card=""></a></div><div self="size-x1" layout="column top-stretch" style="background-image: url('/content/posts/images/lovely-web-bits.jpg')" z-component="fragment" card=""><h3 class="accent" card="">Unique, lovely web bits</h3><p card="">Just about what I was up to yesterday<div self="bottom" class="date primary" card="">26 July 2018</div><a href="/content/posts/unique-lovely-web-bits/" title="See Unique, lovely web bits" card=""></a></div><div self="size-x1" layout="column top-stretch" style="background-image: url('/content/posts/images/adding-a-viewpager.jpg')" z-component="fragment" card=""><h3 class="accent" card="">Adding a ViewPager to your web app</h3><p card="">Meant to be a Twitter mobile clone, ended up in something else.<div self="bottom" class="date primary" card="">29 July 2018</div><a href="/content/posts/adding-a-viewpager-to-the-mobile-web-app/" title="See Adding a ViewPager to your web app" card=""></a></div><div self="size-x1" layout="column top-stretch" style="background-image: url('/content/posts/images/in-browser-bundling.jpg')" z-component="fragment" card=""><h3 class="accent" card="">Web app bundling in the browser with zUIx.js</h3><p card="">You don't always need build tools to optimize page loading<div self="bottom" class="date primary" card="">1 August 2018</div><a href="/content/posts/web-app-bundling-in-the-browser-with-zuixjs/" title="See Web app bundling in the browser with zUIx.js" card=""></a></div><div self="size-x1" layout="column top-stretch" style="background-image: url('/content/posts/images/client-side-html-css-preprocessing.jpg')" z-component="fragment" card=""><h3 class="accent" card="">Client-side HTML/CSS pre-processing</h3><p card="">Using zUIx.js global hooks to process content in a detached state.<div self="bottom" class="date primary" card="">7 August 2018</div><a href="/content/posts/client-side-html-css-preprocessing/" title="See Client-side HTML/CSS pre-processing" card=""></a></div><div self="size-x1" layout="column top-stretch" style="background-image: url('/content/posts/images/progressive-web-app.jpg')" z-component="fragment" card=""><h3 class="accent" card="">Ready to use Progressive Web App template</h3><p card="">Faaast, simple, modern PWA template.<div self="bottom" class="date primary" card="">13 August 2018</div><a href="/content/posts/ready-to-use-progressive-web-app-template/" title="See Ready to use Progressive Web App template" card=""></a></div><div self="size-x1" layout="column top-stretch" style="background-image: url('/content/posts/images/webflix-clone-cover.jpg')" z-component="fragment" card=""><h3 class="accent" card="">Netflix clone web app template (PWA)</h3><p card="">Yet another Progressive Web App<div self="bottom" class="date primary" card="">20 August 2018</div><a href="/content/posts/netflix-clone-web-app-template/" title="See Netflix clone web app template (PWA)" card=""></a></div><div self="size-x1" layout="column top-stretch" style="background-image: url('/content/posts/images/add-gesture-detection-cover.jpg')" z-component="fragment" card=""><h3 class="accent" card="">Adding gesture-based interaction to your website</h3><p card="">Gesture helper that can be used on any element to detect gestures over it.<div self="bottom" class="date primary" card="">31 August 2018</div><a href="/content/posts/adding-gesture-based-interaction-to-your-site/" title="See Adding gesture-based interaction to your website" card=""></a></div></div><style>h1, h2, h3 {
   text-align: center;
-}</style></main><footer #footer="" layout="columns bottom-center" style="min-height: 200px;" z-component="fragment" footer=""><div -self="size-large center" layout="row center-stretch" style="opacity: 0.7" footer=""><div style="height: 8px; background: #000000" footer=""></div><div style="height: 8px; background: #ffffff" footer=""></div><div style="height: 8px; background: #a8734a" footer=""></div><div style="height: 8px; background: #e9b287" footer=""></div><div style="height: 8px; background: #772D26" footer=""></div><div style="height: 8px; background: #b66862" footer=""></div><div style="height: 8px; background: #85d4dc" footer=""></div><div style="height: 8px; background: #cfffff" footer=""></div><div style="height: 8px; background: #a85fb4" footer=""></div><div style="height: 8px; background: #e99df5" footer=""></div><div style="height: 8px; background: #559e4a" footer=""></div><div style="height: 8px; background: #92df87" footer=""></div><div style="height: 8px; background: #42348b" footer=""></div><div style="height: 8px; background: #7e70ca" footer=""></div><div style="height: 8px; background: #bdcc71" footer=""></div><div style="height: 8px; background: #ffffb0" footer=""></div></div><div self="size-large" layout="row sm-column top-stretch" footer=""><section layout="column top-left" style="padding:32px" footer=""><div footer=""><strong footer="">glabs.it</strong></div><ul footer=""><li footer=""><a href="/" footer="">Home</a><li footer=""><a href="/content/posts/" footer="">Posts</a><li footer=""><a href="/content/about/" footer="">About</a></ul><div style="margin-top: 24px" footer=""><div footer=""><strong footer="">Links</strong></div><ul footer=""><li footer=""><a href="https://zuixjs.org" footer="">zuix.js docs</a><li footer=""><a href="https://zuixjs.github.io/zkit" footer="">zKit components</a><li footer=""><a href="https://genielabs.github.io/HomeGenie" footer="">HomeGenie</a></ul></div></section><div self="size-x1" footer=""></div><section layout="column top-left" style="padding:32px" footer=""><div footer=""><strong footer="">Latest posts</strong></div><ul footer=""><li footer=""><div class="primary" style="font-size: 10px" footer="">2018-08-31</div><a href="/content/posts/adding-gesture-based-interaction-to-your-site/" footer="">Adding gesture-based interaction to your website</a><li footer=""><div class="primary" style="font-size: 10px" footer="">2018-08-20</div><a href="/content/posts/netflix-clone-web-app-template/" footer="">Netflix clone web app template (PWA)</a><li footer=""><div class="primary" style="font-size: 10px" footer="">2018-08-13</div><a href="/content/posts/ready-to-use-progressive-web-app-template/" footer="">Ready to use Progressive Web App template</a><li footer=""><div class="primary" style="font-size: 10px" footer="">2018-08-07</div><a href="/content/posts/client-side-html-css-preprocessing/" footer="">Client-side HTML/CSS pre-processing</a></ul></section></div><div self="size-large" layout="row sm-column center-spread" style="padding: 12px;" footer=""><div self="right" footer="">powered by <a href="https://zuixjs.github.io/zkit" footer=""><strong footer="">zKit</strong></a> and <a href="https://zuixjs.org" footer=""><strong footer="">zuix⚡js</strong></a></div></div></footer><style>[z-component][footer]
+}</style></main><footer #footer="" layout="column bottom-center" style="min-height: 200px;" z-component="fragment" footer=""><div -self="size-large center" layout="row center-stretch" style="opacity: 0.7" footer=""><div style="height: 8px; background: #000000" footer=""></div><div style="height: 8px; background: #ffffff" footer=""></div><div style="height: 8px; background: #a8734a" footer=""></div><div style="height: 8px; background: #e9b287" footer=""></div><div style="height: 8px; background: #772D26" footer=""></div><div style="height: 8px; background: #b66862" footer=""></div><div style="height: 8px; background: #85d4dc" footer=""></div><div style="height: 8px; background: #cfffff" footer=""></div><div style="height: 8px; background: #a85fb4" footer=""></div><div style="height: 8px; background: #e99df5" footer=""></div><div style="height: 8px; background: #559e4a" footer=""></div><div style="height: 8px; background: #92df87" footer=""></div><div style="height: 8px; background: #42348b" footer=""></div><div style="height: 8px; background: #7e70ca" footer=""></div><div style="height: 8px; background: #bdcc71" footer=""></div><div style="height: 8px; background: #ffffb0" footer=""></div></div><div self="size-large" layout="rows top-justify" footer=""><section footer=""><div footer=""><strong footer="">glabs.it</strong></div><ul footer=""><li footer=""><a href="/" footer="">Home</a><li footer=""><a href="/content/posts/" footer="">Posts</a><li footer=""><a href="/content/about/" footer="">About</a></ul></section><section footer=""><div footer=""><strong footer="">Links</strong></div><ul footer=""><li footer=""><a href="https://zuixjs.org" footer="">zuix.js docs</a><li footer=""><a href="https://zuixjs.github.io/zkit" footer="">zKit components</a><li footer=""><a href="https://genielabs.github.io/HomeGenie" footer="">HomeGenie</a></ul></section></div><div self="size-large" layout="row sm-column center-spread" style="padding: 12px;" footer=""><div self="right" footer="">powered by <a href="https://zuixjs.github.io/zkit" footer=""><strong footer="">zKit</strong></a> and <a href="https://zuixjs.org" footer=""><strong footer="">zuix⚡js</strong></a></div></div></footer><style>[z-component][footer]
 ul {
         margin: 12px 0 0;        padding: 0;        font-size: 90%;    }
 

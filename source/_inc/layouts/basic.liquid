@@ -35,8 +35,8 @@
 
 <main self="size-{{ layout_size }}">
 
-    {% if cover_image -%}
-        <img src="{{ cover_image }}">
+    {% if coverImage -%}
+        <img src="{{ coverImage }}" alt="Cover image" class="cover">
     {%- endif %}
 
     {% if title and false == options contains 'no-title' %}
@@ -44,7 +44,7 @@
     {% endif %}
 
     {% if author %}
-    <div style="padding-left: 12px; padding-right: 12px;padding-bottom: 32px; font-size: 85%">
+    <div class="author">
         by <em><a href="{{ '/content/about/' |  url }}">{{ author }}</a></em> &mdash;
         posted on {{ pubDate | date: 'D MMMM YYYY' }}
     </div>

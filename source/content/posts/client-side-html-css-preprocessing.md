@@ -4,11 +4,11 @@ options: highlight ext-links
 tags: posts
 group: posts
 order: 60
-coverMini: /content/posts/images/client-side-html-css-preprocessing.jpg
+coverPreview: /content/posts/images/client-side-html-css-preprocessing.jpg
+coverImage: https://thepracticaldev.s3.amazonaws.com/i/8e2qhxdctwm3bnb73z1z.jpg
+coverCopy:
 title: Client-side HTML/CSS pre-processing
 description: Using zUIx.js global hooks to process content in a detached state.
-cover_image: https://thepracticaldev.s3.amazonaws.com/i/8e2qhxdctwm3bnb73z1z.jpg
-cover_copy:
 author: Gene
 pubDate: 2018-08-07
 keywords:
