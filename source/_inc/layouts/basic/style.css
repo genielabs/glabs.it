@@ -1,28 +1,19 @@
 body {
     font-family: "Times New Roman", Times, Georgia, "Bookman Old Style", serif;
-    font-size: 1.0em;
+    font-size: 0.9em;
     margin: 0;
-}
-
-input,
-textarea,
-button,
-select,
-div,
-a {
-    -webkit-tap-highlight-color: transparent;
 }
 
 img {
     margin: auto;
     display: block;
     max-width: 100%;
-    border-radius: 4px;
 }
 
 nav {
-    height: 72px;
-    max-height: 72px;
+    height: 64px;
+    max-height: 64px;
+    padding: 8px;
 }
 nav h1 {
     margin: 0;
@@ -30,19 +21,13 @@ nav h1 {
 
 main {
     min-height: calc(100vh - 64px - 200px); /* viewport height - header height - footer height */
-    padding-bottom: 140px;
+    padding-bottom:56px;
 }
 main h1, main h2, main h3, main h4, main h5, main h6, main p {
     font-weight: 400;
     padding-left: 8px;
     padding-right: 8px;
-    margin-top: 36px;
-}
-main h1 {
-    margin-top: 56px;
-}
-main h1 {
-    margin-top: 48px;
+    margin-top: 1.5em;
 }
 main h4 {
     font-weight: bold;
@@ -52,12 +37,12 @@ main p {
     line-height: 140%;
 }
 main img.cover {
-    margin-top: 24px;
+    margin-top: 2px;
+    /*margin-top: 24px;
     border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-}
-main > :first-child:not(img) {
-    padding-top: 80px;
+    border-top-right-radius: 12px;*/
+    aspect-ratio: 10 / 4;
+    width: 100%;
 }
 
 ul {
@@ -67,7 +52,8 @@ ul {
 }
 li {
     font-size: 95%;
-    padding: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
 small {
@@ -149,7 +135,6 @@ blockquote span {
 .icon-button {
     width: 48px;
     height: 48px;
-    top: 4px;
     cursor: pointer;
     background-color: transparent;
     outline: none;
@@ -157,7 +142,6 @@ blockquote span {
     position: relative;
     -webkit-tap-highlight-color: transparent;
 }
-
 .icon-button:hover {
 
 }
@@ -186,24 +170,95 @@ blockquote span {
 }
 
 .button {
+    cursor: pointer;
     display: flex;
     padding: 6px;
     height: 48px;
     align-items: center;
     border-radius: 6px;
-    box-shadow: 0 0 4px 1px var(--lite-color-text);
-    transition: box-shadow 200ms ease-in-out;
+    background-color: #bbbbbb15;
+    box-shadow: 0 1px 4px 0 #00000055;
+    transition-property: background-color, box-shadow;
+    transition: 0.1s ease-in-out;
 }
 .button:hover {
-    box-shadow: 0 0 6px 2px var(--lite-color-text);
-    transition: box-shadow 200ms ease-in-out;
+    background-color: #bbbbbb1a;
+    box-shadow: 0 3px 8px 0 #00000055;
 }
 .theme-dark .button:hover {
     box-shadow: 0 0 6px 2px var(--dark-color-text);
 }
 .button:active {
-    box-shadow: 0 0 4px 1px var(--lite-color-text);
+    background-color: #bbbbbb26;
+    box-shadow: 0 0 2px 0 #00000055;
 }
-.theme-dark .button:active {
-    box-shadow: 0 0 4px 1px var(--dark-color-text);
+.button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+    box-shadow: 0 0 0 0 #00000055;
+}
+
+/* from https://codepen.io/nikstech/pen/xmMxpr */
+
+.input-container {
+    position: relative;
+    margin-bottom: 25px;
+}
+.input-container label {
+    position:absolute;
+    top: 12px;
+    left: 0;
+    pointer-event: none!important;
+    transition: all 0.15s ease-in-out;
+}
+.input-container input, input:not([type="checkbox"]):not([type="radio"]) {
+    z-index: 1;
+    border:0;
+    width: 100%;
+    background: transparent;
+    border-bottom: 1px solid;
+    padding: 8px 0 5px 0;
+}
+.input-container input:focus, input:focus:not([type="checkbox"]):not([type="radio"]) {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #bd0505;
+}
+.input-container input:focus ~ label,
+.input-container input:valid ~ label {
+    top: -14px;
+    font-size: 80%;
+    font-weight: bold;
+}
+
+
+[type=radio],
+[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+    border: solid 1px;
+}
+[type=radio],
+[type=checkbox] {
+    width: 22px!important;
+    height: 18px;
+    margin-left: 6px;
+    margin-right: 6px;
+    position: relative;
+    border: solid 1px;
+    border-radius: 2px;
+}
+[type=radio]:checked::before,
+[type=checkbox]:checked::before {
+    content: "";
+    width: 12px;
+    height: 10px;
+    position: absolute;
+    top: 3px;
+    left: 4px;
+}
+[type=radio],
+[type=radio]:checked::before{
+    border-radius: 100%;
 }

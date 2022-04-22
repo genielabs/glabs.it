@@ -9,7 +9,6 @@ description: the open source factory
 keywords:
 - genielabs
 - home
-- 
 ---
 
 <div layout="row center-center">

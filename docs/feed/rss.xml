@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<channel>
+    <title>glabs.it</title>
+    <link href="https://glabs.it/"/>
+    <atom:link href="https://glabs.it//feed/rss.xml" rel="self"></atom:link>
+    <description></description>
+    <language></language>
+    <copyright></copyright>
+    <lastBuildDate></lastBuildDate>
+    <pubDate></pubDate>
+    <image>
+        <title>NYT &gt; Top Stories</title>
+        <url>https://glabs.it//images/icons/icon-152x152.png</url>
+        <link>https://glabs.it/</link>
+    </image>
+    <item>
+        <title>Web App template</title>
+        <link>https://glabs.it/.</link>
+        <guid isPermaLink="true">https://glabs.it/.</guid>
+        <atom:link href="https://glabs.it/." rel="standout" />
+        <description>A typical mobile app layout, with side drawer, collapsible header, Material Design UI.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it/.." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Web Starter template</title>
+        <link>https://glabs.it/.</link>
+        <guid isPermaLink="true">https://glabs.it/.</guid>
+        <atom:link href="https://glabs.it/." rel="standout" />
+        <description>Basic template with light/dark modes, collapsible header and FAB menu. The one used for this page.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it/.." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>zuix.js</title>
+        <link>https://glabs.it/.</link>
+        <guid isPermaLink="true">https://glabs.it/.</guid>
+        <atom:link href="https://glabs.it/." rel="standout" />
+        <description>A lightweight library for creating modular and component based websites with just HTML, CSS and (maybe) JavaScript.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it/.." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>HomeGenie+ (client)</title>
+        <link>https://glabs.it/.</link>
+        <guid isPermaLink="true">https://glabs.it/.</guid>
+        <atom:link href="https://glabs.it/." rel="standout" />
+        <description>Featured mobile client for HomeGenie server and other services. A control panel for your smart home/applications.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it/.." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>HomeGenie Server</title>
+        <link>https://glabs.it/.</link>
+        <guid isPermaLink="true">https://glabs.it/.</guid>
+        <atom:link href="https://glabs.it/." rel="standout" />
+        <description>The open source, programmable, home automation server for smart connected devices and applications.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it/.." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>SerialPortLib</title>
+        <link>https://glabs.it/.</link>
+        <guid isPermaLink="true">https://glabs.it/.</guid>
+        <atom:link href="https://glabs.it/." rel="standout" />
+        <description>Cross platform serialport helper class with hot plug and automatic reconnection on error/disconnect.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it/.." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>X10Lib</title>
+        <link>https://glabs.it/.</link>
+        <guid isPermaLink="true">https://glabs.it/.</guid>
+        <atom:link href="https://glabs.it/." rel="standout" />
+        <description>X10 Home Automation library that supports both CM11 / CM15 hardware and RF messages decoding.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it/.." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>ZWaveLib</title>
+        <link>https://glabs.it/.</link>
+        <guid isPermaLink="true">https://glabs.it/.</guid>
+        <atom:link href="https://glabs.it/." rel="standout" />
+        <description>Z-Wave Home Automation library that works with most serial controllers. 100% managed code implementation.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it/.." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>News Blog template</title>
+        <link>https://glabs.it/.</link>
+        <guid isPermaLink="true">https://glabs.it/.</guid>
+        <atom:link href="https://glabs.it/." rel="standout" />
+        <description>Fully immersive template, suitable either for publishing feeds of news or blog posts. With search and bookmark.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it/.." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>zKit components</title>
+        <link>https://glabs.it/.</link>
+        <guid isPermaLink="true">https://glabs.it/.</guid>
+        <atom:link href="https://glabs.it/." rel="standout" />
+        <description>A collection of framework-agnostic components for the web, built with zuix.js.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it/.." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Component-based web with &lt;code&gt;zuix.js&lt;/code&gt;</title>
+        <link>https://glabs.it//content/posts/component-based-web-with-zuixjs/</link>
+        <guid isPermaLink="true">https://glabs.it//content/posts/component-based-web-with-zuixjs/</guid>
+        <atom:link href="https://glabs.it//content/posts/component-based-web-with-zuixjs/" rel="standout" />
+        <description>Meet zUIx.js, a small yet powerful library for component-based web development.</description>
+        <dc:creator>Gene</dc:creator>
+        <pubDate>Thu Jul 19 2018 02:00:00 GMT+0200 (Ora legale dell’Europa centrale)</pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/posts/component-based-web-with-zuixjs/https://drive.google.com/uc?id=1M-F9RlZr9ayjWNysJWB-BrqXwOP-q_o1" />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Mobile web app layout from scratch</title>
+        <link>https://glabs.it//content/posts/mobile-app-layout-from-scratch/</link>
+        <guid isPermaLink="true">https://glabs.it//content/posts/mobile-app-layout-from-scratch/</guid>
+        <atom:link href="https://glabs.it//content/posts/mobile-app-layout-from-scratch/" rel="standout" />
+        <description>Create a mobile app layout in 5 minutes (@!?!) =)</description>
+        <dc:creator>Gene</dc:creator>
+        <pubDate>Sun Jul 22 2018 02:00:00 GMT+0200 (Ora legale dell’Europa centrale)</pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/posts/mobile-app-layout-from-scratch/https://drive.google.com/uc?id=1bh3XAyrWiP4kipKg_uAmgDzlzeiD9AZH" />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Unique, lovely web bits</title>
+        <link>https://glabs.it//content/posts/unique-lovely-web-bits/</link>
+        <guid isPermaLink="true">https://glabs.it//content/posts/unique-lovely-web-bits/</guid>
+        <atom:link href="https://glabs.it//content/posts/unique-lovely-web-bits/" rel="standout" />
+        <description>Just about what I was up to yesterday</description>
+        <dc:creator>Gene</dc:creator>
+        <pubDate>Thu Jul 26 2018 02:00:00 GMT+0200 (Ora legale dell’Europa centrale)</pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/posts/unique-lovely-web-bits/https://thepracticaldev.s3.amazonaws.com/i/pocqyuok4f06ljdyi14j.jpg" />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Adding a ViewPager to your web app</title>
+        <link>https://glabs.it//content/posts/adding-a-viewpager-to-the-mobile-web-app/</link>
+        <guid isPermaLink="true">https://glabs.it//content/posts/adding-a-viewpager-to-the-mobile-web-app/</guid>
+        <atom:link href="https://glabs.it//content/posts/adding-a-viewpager-to-the-mobile-web-app/" rel="standout" />
+        <description>Meant to be a Twitter mobile clone, ended up in something else.</description>
+        <dc:creator>Gene</dc:creator>
+        <pubDate>Sun Jul 29 2018 02:00:00 GMT+0200 (Ora legale dell’Europa centrale)</pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/posts/adding-a-viewpager-to-the-mobile-web-app/https://thepracticaldev.s3.amazonaws.com/i/8l276dgce86ez8jdpap1.jpg" />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Web app bundling in the browser with zUIx.js</title>
+        <link>https://glabs.it//content/posts/web-app-bundling-in-the-browser-with-zuixjs/</link>
+        <guid isPermaLink="true">https://glabs.it//content/posts/web-app-bundling-in-the-browser-with-zuixjs/</guid>
+        <atom:link href="https://glabs.it//content/posts/web-app-bundling-in-the-browser-with-zuixjs/" rel="standout" />
+        <description>You don&#39;t always need build tools to optimize page loading</description>
+        <dc:creator>Gene</dc:creator>
+        <pubDate>Wed Aug 01 2018 02:00:00 GMT+0200 (Ora legale dell’Europa centrale)</pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/posts/web-app-bundling-in-the-browser-with-zuixjs/https://thepracticaldev.s3.amazonaws.com/i/4i2nm4b8y82z8cdkhnyg.jpg" />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Client-side HTML/CSS pre-processing</title>
+        <link>https://glabs.it//content/posts/client-side-html-css-preprocessing/</link>
+        <guid isPermaLink="true">https://glabs.it//content/posts/client-side-html-css-preprocessing/</guid>
+        <atom:link href="https://glabs.it//content/posts/client-side-html-css-preprocessing/" rel="standout" />
+        <description>Using zUIx.js global hooks to process content in a detached state.</description>
+        <dc:creator>Gene</dc:creator>
+        <pubDate>Tue Aug 07 2018 02:00:00 GMT+0200 (Ora legale dell’Europa centrale)</pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/posts/client-side-html-css-preprocessing/https://thepracticaldev.s3.amazonaws.com/i/8e2qhxdctwm3bnb73z1z.jpg" />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Ready to use Progressive Web App template</title>
+        <link>https://glabs.it//content/posts/ready-to-use-progressive-web-app-template/</link>
+        <guid isPermaLink="true">https://glabs.it//content/posts/ready-to-use-progressive-web-app-template/</guid>
+        <atom:link href="https://glabs.it//content/posts/ready-to-use-progressive-web-app-template/" rel="standout" />
+        <description>Faaast, simple, modern PWA template.</description>
+        <dc:creator>Gene</dc:creator>
+        <pubDate>Mon Aug 13 2018 02:00:00 GMT+0200 (Ora legale dell’Europa centrale)</pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/posts/ready-to-use-progressive-web-app-template/https://thepracticaldev.s3.amazonaws.com/i/cn8xjvhqd32zp04h8gpr.png" />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Netflix clone web app template (PWA)</title>
+        <link>https://glabs.it//content/posts/netflix-clone-web-app-template/</link>
+        <guid isPermaLink="true">https://glabs.it//content/posts/netflix-clone-web-app-template/</guid>
+        <atom:link href="https://glabs.it//content/posts/netflix-clone-web-app-template/" rel="standout" />
+        <description>Yet another Progressive Web App</description>
+        <dc:creator>Gene</dc:creator>
+        <pubDate>Mon Aug 20 2018 02:00:00 GMT+0200 (Ora legale dell’Europa centrale)</pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/posts/netflix-clone-web-app-template//content/posts/images/webflix-clone-cover-big.jpg" />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Adding gesture-based interaction to your website</title>
+        <link>https://glabs.it//content/posts/adding-gesture-based-interaction-to-your-site/</link>
+        <guid isPermaLink="true">https://glabs.it//content/posts/adding-gesture-based-interaction-to-your-site/</guid>
+        <atom:link href="https://glabs.it//content/posts/adding-gesture-based-interaction-to-your-site/" rel="standout" />
+        <description>Gesture helper that can be used on any element to detect gestures over it.</description>
+        <dc:creator>Gene</dc:creator>
+        <pubDate>Fri Aug 31 2018 02:00:00 GMT+0200 (Ora legale dell’Europa centrale)</pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/posts/adding-gesture-based-interaction-to-your-site/https://thepracticaldev.s3.amazonaws.com/i/vfk4j4pk8jfn75vyj1e4.jpg" />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Untitled</title>
+        <link>https://glabs.it//content/works/</link>
+        <guid isPermaLink="true">https://glabs.it//content/works/</guid>
+        <atom:link href="https://glabs.it//content/works/" rel="standout" />
+        <description>No description provided.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/works/." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Posts</title>
+        <link>https://glabs.it//content/posts/</link>
+        <guid isPermaLink="true">https://glabs.it//content/posts/</guid>
+        <atom:link href="https://glabs.it//content/posts/" rel="standout" />
+        <description>When I feel inspired I occasionally write some posts</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/posts/." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>About</title>
+        <link>https://glabs.it//content/about/</link>
+        <guid isPermaLink="true">https://glabs.it//content/about/</guid>
+        <atom:link href="https://glabs.it//content/about/" rel="standout" />
+        <description>About me</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/about/." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Untitled</title>
+        <link>https://glabs.it//content/museum/</link>
+        <guid isPermaLink="true">https://glabs.it//content/museum/</guid>
+        <atom:link href="https://glabs.it//content/museum/" rel="standout" />
+        <description>No description provided.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/museum/." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Untitled</title>
+        <link>https://glabs.it//content/posts/index_list/</link>
+        <guid isPermaLink="true">https://glabs.it//content/posts/index_list/</guid>
+        <atom:link href="https://glabs.it//content/posts/index_list/" rel="standout" />
+        <description>No description provided.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/posts/index_list/." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Untitled</title>
+        <link>https://glabs.it//content/works/index_list/</link>
+        <guid isPermaLink="true">https://glabs.it//content/works/index_list/</guid>
+        <atom:link href="https://glabs.it//content/works/index_list/" rel="standout" />
+        <description>No description provided.</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/works/index_list/." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Search</title>
+        <link>https://glabs.it//search/</link>
+        <guid isPermaLink="true">https://glabs.it//search/</guid>
+        <atom:link href="https://glabs.it//search/" rel="standout" />
+        <description>Search this website</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//search/." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+    <item>
+        <title>Home</title>
+        <link>https://glabs.it//</link>
+        <guid isPermaLink="true">https://glabs.it//</guid>
+        <atom:link href="https://glabs.it//" rel="standout" />
+        <description>the open source factory</description>
+        <dc:creator></dc:creator>
+        <pubDate></pubDate>
+        <!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//." />
+        <media:credit></media:credit>
+        <media:description></media:description>
+    </item>
+</channel>
+</rss>

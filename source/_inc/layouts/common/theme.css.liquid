@@ -42,8 +42,12 @@ nav, {{ tc -}} footer {
     transition: color 300ms ease-in, background-color 300ms ease-in;
 }
 {{ tc -}}
-nav svg, {{ tc -}} svg  {
+nav svg, {{ tc -}} .menu-button svg {
     fill:var(--{{ theme }}-nav-color-text);
+}
+{{ tc -}}
+svg {
+    fill:var(--{{ theme }}-color-text);
 }
 {{ tc -}}
 nav a, {{ tc -}} footer a {
@@ -63,32 +67,60 @@ a {
 {{ tc -}}
 .accent {
     color: var(--{{ theme }}-color--accent);
+    fill: var(--{{ theme }}-color--accent);
 }
 {{ tc -}}
 .primary {
     color: var(--{{ theme }}-color--primary);
+    fill: var(--{{ theme }}-color--primary);
+}
+{{ tc -}}
+.background {
+    background-color: var(--{{ theme }}-color);
+}
+{{ tc -}}
+.input-container input, {{ tc }} input {
+  color: var(--{{ theme }}-color-text);
+  border-bottom-color: var(--{{ theme }}-color--primary);
+}
+{{ tc -}}
+.input-container input:valid, {{ tc }} input:valid {
+  border-bottom-color: var(--{{ theme }}-color--primary)!important;
+}
+{{ tc }}
+[type=radio]:checked::before,
+{{ tc }}
+[type=checkbox]:checked::before {
+    background-color: var(--{{ theme }}-color--accent);
+}
+{{ tc }}
+[type=radio],
+{{ tc }}
+[type=checkbox] {
+    border-color: var(--{{ theme }}-color--primary);
 }
 {% endfor %}
 /*
 ---------------------------------
  */
 
-.theme-toggle {
+.theme-toggle[type=checkbox] {
     margin: 0;
     --size: 32px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     outline: none;
+    border: none;
     cursor: pointer;
-    width: var(--size);
-    height: var(--size);
+    width: var(--size)!important;
+    height: var(--size)!important;
     box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
     border-radius: var(--size);
     transition: all 500ms;
     color: var(--lite-nav-color-text);
 }
-.theme-toggle:checked {
+.theme-toggle[type=checkbox]:checked {
     --ray-size: calc(var(--size) * -0.4);
     --offset-orthogonal: calc(var(--size) * 0.65);
     --offset-diagonal: calc(var(--size) * 0.45);
@@ -103,6 +135,10 @@ a {
         calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size),
         var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
     color: var(--dark-nav-color-text);
+    background-color: transparent!important;
+}
+.theme-toggle[type=checkbox]:checked::before {
+    background-color: transparent!important;
 }
 
 /* ----- MENU OVERLAY COMPONENT ----- */
@@ -116,6 +152,6 @@ a {
     background-color: var(--dark-nav-color)!important;
     fill: var(--dark-nav-color-text)!important;
 }
-.theme-dark [z-context="menu-overlay"] div[z-field="menu_overlay"] {
+.theme-dark [z-load*="/components/menu-overlay"] div[z-field="menu_overlay"] {
     background: radial-gradient(circle at bottom, black, #000000dd, #00000077, transparent)!important;
 }

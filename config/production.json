@@ -27,6 +27,11 @@
       "includesFolder": "_inc",
       "componentsFolders": [ "app", "lib" ],
       "contentFolder": "content",
+      "dependencies": [{
+        "zuix-dist/js": "js/zuix",
+        "fuse.js/dist": "js/fuse",
+        "flex-layout-attribute/css": "css/fla"
+      }],
       "bundle": {
         "js": true,
         "css": true,
