@@ -31,7 +31,6 @@ body{{ tc -}} {
     background-color: var(--{{ theme }}-color);
     color: var(--{{ theme }}-color-text);
     font-weight: var(--{{ theme }}-font--weigth);
-    transition: color 300ms ease-in, background-color 300ms ease-in;
 }
 {{ tc -}}
 nav, {{ tc -}} footer {
@@ -39,7 +38,6 @@ nav, {{ tc -}} footer {
     color: var(--{{ theme }}-nav-color-text);
     fill: var(--{{ theme }}-nav-color-text);
     box-shadow: 0 4px 6px 0 rgb(0 0 0 / 20%), 0 -4px 12px 0 rgb(0 0 0 / 20%);
-    transition: color 300ms ease-in, background-color 300ms ease-in;
 }
 {{ tc -}}
 nav svg, {{ tc -}} .menu-button svg {
@@ -99,6 +97,11 @@ a {
 [type=checkbox] {
     border-color: var(--{{ theme }}-color--primary);
 }
+{{ tc }}
+button {
+    color: var(--{{ theme }}-color-text);
+    fill: var(--{{ theme }}-color-text);
+}
 {% endfor %}
 /*
 ---------------------------------
@@ -126,14 +129,14 @@ a {
     --offset-diagonal: calc(var(--size) * 0.45);
     transform: scale(0.75);
     box-shadow: inset 0 0 0 var(--size),
-        calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
-        var(--offset-orthogonal) 0 0 var(--ray-size),
-        0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size),
-        0 var(--offset-orthogonal) 0 var(--ray-size),
-        calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size),
-        var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
-        calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size),
-        var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
+    calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
+    var(--offset-orthogonal) 0 0 var(--ray-size),
+    0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size),
+    0 var(--offset-orthogonal) 0 var(--ray-size),
+    calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size),
+    var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
+    calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size),
+    var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
     color: var(--dark-nav-color-text);
     background-color: transparent!important;
 }
@@ -142,12 +145,12 @@ a {
 }
 
 /* ----- MENU OVERLAY COMPONENT ----- */
-[z-context="menu-overlay"] .circle-button {
+[z-load*="/components/menu-overlay"] .circle-button {
     border: solid 1px var(--lite-color);
     background-color: var(--lite-nav-color)!important;
     fill: var(--lite-nav-color-text)!important;
 }
-.theme-dark [z-context="menu-overlay"] .circle-button {
+.theme-dark [z-load*="/components/menu-overlay"] .circle-button {
     border: solid 1px var(--dark-color);
     background-color: var(--dark-nav-color)!important;
     fill: var(--dark-nav-color-text)!important;

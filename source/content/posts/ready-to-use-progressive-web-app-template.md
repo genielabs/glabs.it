@@ -3,7 +3,7 @@ layout: basic.liquid
 options: highlight ext-links
 tags: posts
 group: posts
-order: 70
+order: 10
 coverPreview: /content/posts/images/progressive-web-app.jpg
 coverImage: https://thepracticaldev.s3.amazonaws.com/i/cn8xjvhqd32zp04h8gpr.png
 coverCopy:

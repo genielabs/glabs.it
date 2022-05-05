@@ -26,7 +26,6 @@ eleventyExcludeFromCollections: true
     <script src="{{ '/config.js' | url }}"></script>
 
     <style>
-        {% include "layouts/basic/style.css" %}
         {% include "layouts/common/theme.css.liquid" %}
     </style>
 
@@ -238,6 +237,7 @@ eleventyExcludeFromCollections: true
     browserSync = window['___browserSync___'];
     // setup IO events handlers
     browserSync.socket.on('zuix:loadContent:done', function(response) {
+      browserSync.socket.disconnect();
       // TODO: should ask before replacing content for subsequent requests
       if (originalContent !== response.content && savePostponeTimeout == null && !pendingSaveResponse) {
         originalContent = response.content;
@@ -254,6 +254,11 @@ eleventyExcludeFromCollections: true
     });
     browserSync.socket.on('zuix:build:done', function() {
       browserSync.socket.disconnect();
+      try {
+          if (parent.refresh) {
+              parent.refresh();
+          }
+      } catch (e) { }
     });
     browserSync.socket.on('zuix:eleventy:error', function(err) {
       pendingSaveResponse = false;
@@ -270,12 +275,21 @@ eleventyExcludeFromCollections: true
     loadContent();
   });
 
+  const connect = function() {
+    browserSync.socket.connect();
+  };
   document.querySelector('iframe').onload = function() {
     zuixEditor = null;
     waitObject(function() {
       return previewFrame.contentWindow.zuixEditor;
     }, function(zed) {
       zuixEditor = zed;
+      try {
+        if (parent.setEditorData) {
+          zuixEditor.data.host = previewFrame.contentWindow;
+          parent.setEditorData(zuixEditor.data, true);
+        }
+      } catch (e) { }
       document.location.hash = previewFrame.contentWindow.location.pathname;
       if (browserSync) {
         if (browserSync.socket.connected) {
@@ -285,7 +299,7 @@ eleventyExcludeFromCollections: true
             pendingSaveResponse = false;
             loadContent();
           });
-          browserSync.socket.connect();
+          setTimeout(connect, 500);
         }
       }
     });
@@ -314,8 +328,8 @@ eleventyExcludeFromCollections: true
         originalContent = content;
         pendingSaveResponse = true;
       } else {
-        // TODO: report connection error
-        console.log('NOT CONNECTED!');
+        browserSync.socket.once('connect', saveContent);
+        browserSync.socket.connect();
       }
     } else if (!isClean()) {
       savePostponeTimeout = setTimeout(saveContent, 100);

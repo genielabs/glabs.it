@@ -1,6 +1,7 @@
 {% include "head_open.liquid" %}
 <style>
 {% include "./basic/style.css" %}
+{% include "./common/forms.css" %}
 {% include "./common/theme.css.liquid" %}
 </style>
 {% include "head_close.html" %}
@@ -11,9 +12,11 @@
       ctrl z-load="@lib/controllers/header-auto-hide"
       data-o-header="header-bar" z-lazy="scroll">
 
-<nav layout="column top-center" #header-bar style="padding-top: 4px">
-    <div self="size-{{ layout_size }} center" layout="row center-center" style="gap: 8px;margin-bottom: 4px">
-        <a class="icon-button" aria-label="Home" href="{{ '/' |  url }}">
+<nav layout="row top-center" #header-bar>
+    <div self="size-{{ layout_size }} stretch" layout="row center-center" style="gap: 8px;">
+        {% if page.url == '/' %}<!-- HOME LOGO -->
+        <a class="icon-button" aria-label="Home" href="{{ '/' |  url }}" style="width: 48px">
+            <!-- put your logo here -->
             <!--
             <svg width="48px" height="48px" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0V0z" fill="none"/>
@@ -22,6 +25,21 @@
             -->
             <img src="{{ '/images/glabs-logo.svg' |  url }}" height="40" width="40" alt="Logo" style="margin-top: 4px">
         </a>
+        {% elsif tags contains 'sections' or group == blank %}<!-- BACK TO HOME CONTENTS -->
+        <a class="icon-button" aria-label="Back to home contents" href="{{ '/' |  url }}" style="width: 48px">
+            <svg height="48px" viewBox="0 0 24 24" width="48px">
+                <path d="M0 0h24v24H0V0z" fill="none"/>
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+            </svg>
+        </a>
+        {% else %}<!-- BACK TO POST LIST -->
+        <a class="icon-button" aria-label="Back to post list" href="{{ '..' |  url }}" style="width: 48px">
+            <svg height="48px" viewBox="0 0 24 24" width="48px">
+                <path d="M0 0h24v24H0V0z" fill="none"/>
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+            </svg>
+        </a>
+        {% endif %}
         <div self="size-x1">
             <h1 class="title">{{ app.title }}</h1>
             <div class="subtitle">{{ title }}</div>
@@ -36,13 +54,15 @@
             <input class="theme-toggle" type="checkbox" aria-label="Toggle theme" checked>
         </div>
     </div>
-    {% include 'fragments/vic20-palette.html' %}
 </nav>
 
 <main self="size-{{ layout_size }}">
 
     {% if coverImage -%}
-        <img src="{{ coverImage }}" alt="Cover image" class="cover">
+        <div self="size-large" style="position: relative;width: 100%;;display: block">
+            <img class="image-cover" src="{{ coverPreview }}" alt="Cover image preview" style="position: absolute;display: block">
+            <img class="image-cover" src="{{ coverImage }}" alt="Cover image" style="position: relative;display: block; z-index: 1">
+        </div>
     {%- endif %}
 
     {% if title and false == options contains 'no-title' %}
@@ -73,17 +93,7 @@
 
 </div>
 
-{% if app.environment == 'default' or app.environment == 'development' -%}
-<div z-load="cms/zuix-editor" z-context="zuix-editor" z-lazy="false" class="visible-on-ready">
-    <div #sections>
-        {% for s in collections.sections %}
-            <div>
-                <div #name>{{ s.data.group }}</div>
-            </div>
-        {% endfor %}
-    </div>
-</div>
-{%- endif %}
+{% include './common/zuix-editor.liquid' %}
 
 {% include "body_end.liquid" %}
 <script>

@@ -3,7 +3,7 @@ layout: basic.liquid
 options: highlight ext-links
 tags: posts
 group: posts
-order: 60
+order: 10
 coverPreview: /content/posts/images/client-side-html-css-preprocessing.jpg
 coverImage: https://thepracticaldev.s3.amazonaws.com/i/8e2qhxdctwm3bnb73z1z.jpg
 coverCopy:

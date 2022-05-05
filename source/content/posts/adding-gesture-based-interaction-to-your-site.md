@@ -3,7 +3,7 @@ layout: basic.liquid
 options: highlight ext-links
 tags: posts
 group: posts
-order: 90
+order: 10
 coverPreview: /content/posts/images/add-gesture-detection-cover.jpg
 coverImage: https://thepracticaldev.s3.amazonaws.com/i/vfk4j4pk8jfn75vyj1e4.jpg
 coverCopy: photo by John Schnobrich on Unsplash

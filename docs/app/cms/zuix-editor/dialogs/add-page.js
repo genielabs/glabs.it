@@ -2,9 +2,9 @@
  * @param cp {ContextController}
  */
 function addPageDialog(cp) {
-  const _browserSync = ___browserSync___;
-  let _data;
+  let _browserSync;
   cp.create = function() {
+    _browserSync = zuix.context(cp.view().parent('[z-load]')).browserSync;
     cp.expose({open, close})
         .view().hide();
 
@@ -31,7 +31,11 @@ function addPageDialog(cp) {
 
     if (_browserSync) {
       _browserSync.socket.on('zuix:addPage:done', function(redirectUrl) {
-        document.location.hash += '#reload(' + redirectUrl + ')';
+        cp.trigger('success', {
+          action: 'add-page',
+          section: cp.field('section-name').value(),
+          url: redirectUrl
+        });
       });
       _browserSync.socket.on('zuix:addPage:error', function(err) {
         console.log('ERROR', err);
@@ -39,14 +43,18 @@ function addPageDialog(cp) {
         cp.trigger('error', err);
       });
     }
-
-    enableDrag();
   };
 
   function open(data, $opener) {
-    _data = data;
     setError('');
-    cp.field('section-name').value(data.group);
+    if (data) {
+      const sections = cp.field('sections').children();
+      let sectionName = data.section;
+      if (!sectionName && sections.length() > 0) {
+        sectionName = sections.get(0).textContent.trim();
+      }
+      cp.field('section-name').value(sectionName);
+    }
     cp.trigger('open', $opener);
     cp.field('page-name').value('')
         .get().focus();
@@ -79,28 +87,6 @@ function addPageDialog(cp) {
     } else {
       setError('Could not send command');
     }
-  }
-
-  function enableDrag() {
-    /*
-    // TODO: ... create a generic controller for this (eg. draggable.js)
-    const dialog = cp.view('.dialog');
-    const currentTranslate = {x: 0, y: 0};
-    zuix.using('component', '@lib/controllers/gesture-helper', function(id, gestureHelper) {
-      gestureHelper.on({
-        'gesture:pan': function(e, tp) {
-          if (tp.event.path.indexOf(dialog.get()) !== -1) {
-            const tx = {x: tp.shiftX - currentTranslate.x, y: tp.shiftY - currentTranslate.y};
-            dialog.css({transform: 'translate(' + tx.x + 'px, ' + tx.y + 'px)'});
-          }
-        },
-        'gesture:release': function(e, tp) {
-          currentTranslate.x -= tp.shiftX;
-          currentTranslate.y -= tp.shiftY;
-        }
-      });
-    });
-    */
   }
 }
 

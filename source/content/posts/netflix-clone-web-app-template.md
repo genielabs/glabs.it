@@ -3,7 +3,7 @@ layout: basic.liquid
 options: highlight ext-links
 tags: posts
 group: posts
-order: 80
+order: 10
 coverPreview: /content/posts/images/webflix-clone-cover.jpg
 coverImage: /content/posts/images/webflix-clone-cover-big.jpg
 coverCopy:

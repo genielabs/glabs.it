@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="description" content="No description provided."><meta name="viewport" content="width=device-width,initial-scale=1"><title>Untitled</title><link rel="author" href="humans.txt"><!-- Disable tap highlight on IE --><meta name="msapplication-tap-highlight" content="no"><!-- Progressive Web App --><meta name="theme-color" content="white"><link rel="manifest" href="/manifest.json"><!-- Add to homescreen for Chrome on Android --><meta name="mobile-web-app-capable" content="yes"><link rel="icon" sizes="192x192" href="/images/icons/desktop/android-chrome-192x192.png"><link rel="icon" sizes="512x512" href="/images/icons/desktop/android-chrome-512x512.png"><!-- Add to homescreen for Safari on iOS --><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="A zUIx website"><link rel="apple-touch-icon-precomposed" href="/images/icons/desktop/apple-touch-icon.png"><link rel="mask-icon" href="/images/icons/desktop/safari-pinned-tab.svg" color="#5bbad5"><!-- Tile color for Windows --><meta name="msapplication-TileImage" content="/images/icons/desktop/mstile-150x150.png"><meta name="msapplication-TileColor" content="#ffc40d"><!-- Place favicon.ico in the root directory --><link rel="icon" type="image/png" sizes="32x32" href="/images/icons/desktop/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/images/icons/desktop/favicon-16x16.png"><!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones --><!--
+<!DOCTYPE html><html lang="en"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="description" content="No description provided."><meta name="viewport" content="width=device-width,initial-scale=1"><title>Untitled</title><link rel="author" href="humans.txt"><link rel="alternate" type="application/rss+xml" title="RSS Feed for Untitled" href="/feed/rss.xml"><!-- Disable tap highlight on IE --><meta name="msapplication-tap-highlight" content="no"><!-- Progressive Web App --><meta name="theme-color" content="white"><link rel="manifest" href="/manifest.json"><!-- Add to home screen for Chrome on Android --><meta name="mobile-web-app-capable" content="yes"><link rel="icon" sizes="192x192" href="/images/icons/desktop/android-chrome-192x192.png"><link rel="icon" sizes="512x512" href="/images/icons/desktop/android-chrome-512x512.png"><!-- Add to home screen for Safari on iOS --><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="A zUIx website"><link rel="apple-touch-icon-precomposed" href="/images/icons/desktop/apple-touch-icon.png"><link rel="mask-icon" href="/images/icons/desktop/safari-pinned-tab.svg" color="#5bbad5"><!-- Tile color for Windows --><meta name="msapplication-TileImage" content="/images/icons/desktop/mstile-150x150.png"><meta name="msapplication-TileColor" content="#ffc40d"><!-- Place favicon.ico in the root directory --><link rel="icon" type="image/png" sizes="32x32" href="/images/icons/desktop/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/images/icons/desktop/favicon-16x16.png"><!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones --><!--
     <link rel="canonical" href="https://www.example.com/">
     --><style z-ref="/css/fla/flex-layout-attribute.min.css">/**
  * Flex layout attribute
@@ -49,7 +49,7 @@ main p {
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
     line-height: 140%;
 }
-main img.cover {
+main img.image-cover {
     margin-top: 2px;
     /*margin-top: 24px;
     border-top-left-radius: 12px;
@@ -129,7 +129,7 @@ blockquote span {
 }
 .subtitle {
     font-size: 95%;
-    max-width: calc(100vw - 104px);
+    max-width: calc(100vw - 172px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -182,17 +182,19 @@ blockquote span {
     transform: scale(97%);
 }
 
+/* forms */
+/* forms */
+
 .button {
     cursor: pointer;
     display: flex;
     padding: 6px;
     height: 48px;
+    margin: 6px;
     align-items: center;
     border-radius: 6px;
     background-color: #bbbbbb15;
     box-shadow: 0 1px 4px 0 #00000055;
-    transition-property: background-color, box-shadow;
-    transition: 0.1s ease-in-out;
 }
 .button:hover {
     background-color: #bbbbbb1a;
@@ -211,20 +213,18 @@ blockquote span {
     box-shadow: 0 0 0 0 #00000055;
 }
 
-/* from https://codepen.io/nikstech/pen/xmMxpr */
-
 .input-container {
     position: relative;
     margin-bottom: 25px;
 }
 .input-container label {
     position:absolute;
-    top: 12px;
+    top: 8px;
     left: 0;
     pointer-event: none!important;
     transition: all 0.15s ease-in-out;
 }
-.input-container input, input:not([type="checkbox"]):not([type="radio"]) {
+.input-container input, input:not([type="checkbox"]):not([type="radio"]):not(.mdl-textfield__input) {
     z-index: 1;
     border:0;
     width: 100%;
@@ -304,14 +304,12 @@ body{
     background-color: var(--lite-color);
     color: var(--lite-color-text);
     font-weight: var(--lite-font--weigth);
-    transition: color 300ms ease-in, background-color 300ms ease-in;
 }
 nav, footer {
     background-color: var(--lite-nav-color);
     color: var(--lite-nav-color-text);
     fill: var(--lite-nav-color-text);
     box-shadow: 0 4px 6px 0 rgb(0 0 0 / 20%), 0 -4px 12px 0 rgb(0 0 0 / 20%);
-    transition: color 300ms ease-in, background-color 300ms ease-in;
 }
 nav svg, .menu-button svg {
     fill:var(--lite-nav-color-text);
@@ -363,6 +361,11 @@ code:not([class*=language-]), pre:not([class*=language-]) {
     border-color: var(--lite-color--primary);
 }
 
+button {
+    color: var(--lite-color-text);
+    fill: var(--lite-color-text);
+}
+
 /*========================*\
       Theme 'dark'
 \*========================*/
@@ -371,14 +374,12 @@ body.theme-dark {
     background-color: var(--dark-color);
     color: var(--dark-color-text);
     font-weight: var(--dark-font--weigth);
-    transition: color 300ms ease-in, background-color 300ms ease-in;
 }
 .theme-dark nav, .theme-dark footer {
     background-color: var(--dark-nav-color);
     color: var(--dark-nav-color-text);
     fill: var(--dark-nav-color-text);
     box-shadow: 0 4px 6px 0 rgb(0 0 0 / 20%), 0 -4px 12px 0 rgb(0 0 0 / 20%);
-    transition: color 300ms ease-in, background-color 300ms ease-in;
 }
 .theme-dark nav svg, .theme-dark .menu-button svg {
     fill:var(--dark-nav-color-text);
@@ -429,6 +430,11 @@ body.theme-dark {
 [type=checkbox] {
     border-color: var(--dark-color--primary);
 }
+.theme-dark 
+button {
+    color: var(--dark-color-text);
+    fill: var(--dark-color-text);
+}
 
 /*
 ---------------------------------
@@ -456,14 +462,14 @@ body.theme-dark {
     --offset-diagonal: calc(var(--size) * 0.45);
     transform: scale(0.75);
     box-shadow: inset 0 0 0 var(--size),
-        calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
-        var(--offset-orthogonal) 0 0 var(--ray-size),
-        0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size),
-        0 var(--offset-orthogonal) 0 var(--ray-size),
-        calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size),
-        var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
-        calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size),
-        var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
+    calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
+    var(--offset-orthogonal) 0 0 var(--ray-size),
+    0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size),
+    0 var(--offset-orthogonal) 0 var(--ray-size),
+    calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size),
+    var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
+    calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size),
+    var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
     color: var(--dark-nav-color-text);
     background-color: transparent!important;
 }
@@ -472,24 +478,19 @@ body.theme-dark {
 }
 
 /* ----- MENU OVERLAY COMPONENT ----- */
-[z-context="menu-overlay"] .circle-button {
+[z-load*="/components/menu-overlay"] .circle-button {
     border: solid 1px var(--lite-color);
     background-color: var(--lite-nav-color)!important;
     fill: var(--lite-nav-color-text)!important;
 }
-.theme-dark [z-context="menu-overlay"] .circle-button {
+.theme-dark [z-load*="/components/menu-overlay"] .circle-button {
     border: solid 1px var(--dark-color);
     background-color: var(--dark-nav-color)!important;
     fill: var(--dark-nav-color-text)!important;
 }
 .theme-dark [z-load*="/components/menu-overlay"] div[z-field="menu_overlay"] {
     background: radial-gradient(circle at bottom, black, #000000dd, #00000077, transparent)!important;
-}</style><body layout="column stretch-center" ctrl="" z-load="@lib/controllers/header-auto-hide" data-o-header="header-bar" z-lazy="scroll"><nav layout="column top-center" #header-bar="" style="padding-top: 4px"><div self="size-large center" layout="row center-center" style="gap: 8px;margin-bottom: 4px"><a class="icon-button" aria-label="Home" href="/"><!--
-            <svg width="48px" height="48px" viewBox="0 0 24 24">
-                <path d="M0 0h24v24H0V0z" fill="none"/>
-                <path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/>
-            </svg>
-            --> <img src="/images/glabs-logo.svg" height="40" width="40" alt="Logo" style="margin-top: 4px"></a><div self="size-x1"><h1 class="title">glabs.it</h1><div class="subtitle">Untitled</div></div><a class="icon-button" href="/search"><svg width="48px" height="48px" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></a><div style="padding-top: 4px; padding-right: 4px"><input class="theme-toggle" type="checkbox" aria-label="Toggle theme" checked></div></div><div -self="size-large center" layout="row center-stretch" style="opacity: 0.7"><div style="height: 8px; background: #000000"></div><div style="height: 8px; background: #ffffff"></div><div style="height: 8px; background: #a8734a"></div><div style="height: 8px; background: #e9b287"></div><div style="height: 8px; background: #772D26"></div><div style="height: 8px; background: #b66862"></div><div style="height: 8px; background: #85d4dc"></div><div style="height: 8px; background: #cfffff"></div><div style="height: 8px; background: #a85fb4"></div><div style="height: 8px; background: #e99df5"></div><div style="height: 8px; background: #559e4a"></div><div style="height: 8px; background: #92df87"></div><div style="height: 8px; background: #42348b"></div><div style="height: 8px; background: #7e70ca"></div><div style="height: 8px; background: #bdcc71"></div><div style="height: 8px; background: #ffffb0"></div></div></nav><main self="size-large"><h1>Untitled</h1><h2>Web development</h2><div layout="rows sm-column center-left" undefined=""><div self="size-x1" layout="column top-stretch" z-component="fragment" github-card=""><h3 class="accent" github-card="">zuix.js</h3><p github-card="">A lightweight library for creating modular and component based websites with just HTML, CSS and (maybe) JavaScript.</p><a href="https://zuixjs.org/" title="See zuix.js" github-card=""></a></div><style>[z-component][github-card] {
+}</style><body layout="column stretch-center" ctrl="" z-load="@lib/controllers/header-auto-hide" data-o-header="header-bar" z-lazy="scroll"><nav layout="row top-center" #header-bar=""><div self="size-large stretch" layout="row center-center" style="gap: 8px;"><!-- BACK TO POST LIST --> <a class="icon-button" aria-label="Back to post list" href=".." style="width: 48px"><svg height="48px" viewBox="0 0 24 24" width="48px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg></a><div self="size-x1"><h1 class="title">glabs.it</h1><div class="subtitle">Untitled</div></div><a class="icon-button" href="/search"><svg width="48px" height="48px" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></a><div style="padding-top: 4px; padding-right: 4px"><input class="theme-toggle" type="checkbox" aria-label="Toggle theme" checked></div></div></nav><main self="size-large"><h1>Untitled</h1><h2>Web development</h2><div layout="rows sm-column center-left" undefined=""><div self="size-x1" layout="column top-stretch" z-component="fragment" github-card=""><h3 class="accent" github-card="">zuix.js</h3><p github-card="">A lightweight library for creating modular and component based websites with just HTML, CSS and (maybe) JavaScript.</p><a href="https://zuixjs.org/" title="See zuix.js" github-card=""></a></div><style>[z-component][github-card] {
 position: relative;        cursor: pointer;        background-repeat: no-repeat;        background-position: 1px 1px;        background-color: #bbbbbb15;        border-radius: 12px;        min-width: 288px;        width: 288px;        max-width: 288px;        height: 135px;        min-height: 135px;        max-height: 135px;        margin: 12px;        box-shadow: 0 1px 4px 0 #00000055;        transition-property: background-color, box-shadow;        transition: 0.2s ease-in-out;    }
 [z-component][github-card]:hover {
 background-color: #bbbbbb1a;        box-shadow: 0 3px 8px 0 #00000055;    }
@@ -523,7 +524,7 @@ position: absolute;        top: 0; left: 0;        height: 100%;        width: 1
     }
     .organization-logo:active {
         box-shadow: 0 1px 2px 0 #00000077;
-    }</style></main><div self="size-large" layout="rows center-spread" class="page-navigation"><div>&nbsp;</div><a href="/content/posts/index_list/" style="text-align: center;"><div layout="row center-center" class="navigation-direction"><span style="padding-left: 24px">Next</span> <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8-8-8z"></path></svg></div><div class="navigation-title">Untitled</div></a></div><style>.page-navigation {
+    }</style></main><div self="size-large" layout="rows center-spread" class="page-navigation"><a href="/content/posts/index_list/" style="text-align: center;"><div layout="row center-center" class="navigation-direction"><svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg> <span style="padding-right: 24px">Previous</span></div><div class="navigation-title">Untitled</div></a><div>&nbsp;</div></div><style>.page-navigation {
             margin-top: 40px;
             gap:12px;
             margin-bottom: 80px;
@@ -551,10 +552,10 @@ position: absolute;        top: 0; left: 0;        height: 100%;        width: 1
         }
         .theme-dark .navigation-title {
             color: var(--dark-color-text);
-        }</style><footer #footer="" layout="column bottom-center" style="min-height: 200px;" z-component="fragment" footer=""><div -self="size-large center" layout="row center-stretch" style="opacity: 0.7" footer=""><div style="height: 8px; background: #000000" footer=""></div><div style="height: 8px; background: #ffffff" footer=""></div><div style="height: 8px; background: #a8734a" footer=""></div><div style="height: 8px; background: #e9b287" footer=""></div><div style="height: 8px; background: #772D26" footer=""></div><div style="height: 8px; background: #b66862" footer=""></div><div style="height: 8px; background: #85d4dc" footer=""></div><div style="height: 8px; background: #cfffff" footer=""></div><div style="height: 8px; background: #a85fb4" footer=""></div><div style="height: 8px; background: #e99df5" footer=""></div><div style="height: 8px; background: #559e4a" footer=""></div><div style="height: 8px; background: #92df87" footer=""></div><div style="height: 8px; background: #42348b" footer=""></div><div style="height: 8px; background: #7e70ca" footer=""></div><div style="height: 8px; background: #bdcc71" footer=""></div><div style="height: 8px; background: #ffffb0" footer=""></div></div><div self="size-large" layout="rows top-justify" footer=""><section footer=""><div footer=""><strong footer="">glabs.it</strong></div><ul footer=""><li footer=""><a href="/" footer="">Home</a><li footer=""><a href="/content/posts/" footer="">Posts</a><li footer=""><a href="/content/about/" footer="">About</a></ul></section><section footer=""><div footer=""><strong footer="">Latest posts</strong></div><ul footer=""><li footer=""><a href="/content/posts/adding-gesture-based-interaction-to-your-site/" footer="">Adding gesture-based interaction to your website</a><li footer=""><a href="/content/posts/netflix-clone-web-app-template/" footer="">Netflix clone web app template (PWA)</a><li footer=""><a href="/content/posts/ready-to-use-progressive-web-app-template/" footer="">Ready to use Progressive Web App template</a><li footer=""><a href="/content/posts/client-side-html-css-preprocessing/" footer="">Client-side HTML/CSS pre-processing</a></ul></section><section footer=""><div footer=""><strong footer="">Links</strong></div><ul footer=""><li footer=""><a href="https://zuixjs.org" footer="">zuix.js docs</a><li footer=""><a href="https://zuixjs.github.io/zkit" footer="">zKit components</a><li footer=""><a href="https://genielabs.github.io/HomeGenie" footer="">HomeGenie</a></ul></section></div><div self="size-large" layout="row sm-column center-spread" style="padding: 12px;" footer=""><a self="left" href="https://pagespeed.web.dev/report?url=https://glabs.it//content/works/index_list/" footer=""><div layout="row center-left" style="gap: 8px;" footer=""><img width="24" height="24" alt="PageSpeed Insight logo" src="/images/page-speed-insight-icon.png" footer=""> <span footer="">PageSpeed Insight</span></div></a><div self="right" footer="">powered by <a href="https://zuixjs.github.io/zkit" footer=""><strong footer="">zKit</strong></a> and <a href="https://zuixjs.org" footer=""><strong footer="">zuix⚡js</strong></a></div></div></footer><style>[z-component][footer]
+        }</style><footer #footer="" layout="column bottom-center" style="min-height: 200px;" z-component="fragment" footer=""><div -self="size-large center" layout="row center-stretch" style="opacity: 0.7" footer=""><div style="height: 8px; background: #000000" footer=""></div><div style="height: 8px; background: #ffffff" footer=""></div><div style="height: 8px; background: #a8734a" footer=""></div><div style="height: 8px; background: #e9b287" footer=""></div><div style="height: 8px; background: #772D26" footer=""></div><div style="height: 8px; background: #b66862" footer=""></div><div style="height: 8px; background: #85d4dc" footer=""></div><div style="height: 8px; background: #cfffff" footer=""></div><div style="height: 8px; background: #a85fb4" footer=""></div><div style="height: 8px; background: #e99df5" footer=""></div><div style="height: 8px; background: #559e4a" footer=""></div><div style="height: 8px; background: #92df87" footer=""></div><div style="height: 8px; background: #42348b" footer=""></div><div style="height: 8px; background: #7e70ca" footer=""></div><div style="height: 8px; background: #bdcc71" footer=""></div><div style="height: 8px; background: #ffffb0" footer=""></div></div><div self="size-large" layout="rows top-justify" footer=""><section footer=""><div footer=""><strong footer="">glabs.it</strong></div><ul footer=""><li footer=""><a href="/" footer="">Home</a><li footer=""><a href="/content/posts/" footer="">Posts</a><li footer=""><a href="/content/about/" footer="">About</a></ul></section><section footer=""><div footer=""><strong footer="">Latest posts</strong></div><ul footer=""><li footer=""><a href="/content/posts/adding-gesture-based-interaction-to-your-site/" footer="">Adding gesture-based interaction to your website</a><li footer=""><a href="/content/posts/netflix-clone-web-app-template/" footer="">Netflix clone web app template (PWA)</a><li footer=""><a href="/content/posts/ready-to-use-progressive-web-app-template/" footer="">Ready to use Progressive Web App template</a><li footer=""><a href="/content/posts/client-side-html-css-preprocessing/" footer="">Client-side HTML/CSS pre-processing</a></ul></section><section footer=""><div footer=""><strong footer="">Links</strong></div><ul footer=""><li footer=""><a href="https://zuixjs.org" footer="">zuix.js docs</a><li footer=""><a href="https://zuixjs.github.io/zkit" footer="">zKit components</a><li footer=""><a href="https://genielabs.github.io/HomeGenie" footer="">HomeGenie</a></ul></section></div><div self="size-large" layout="row sm-column center-spread" style="padding: 12px;" footer=""><div self="left" footer=""><a href="/feed/rss.xml" layout="row center-left" style="gap: 8px" footer=""><img src="/images/rss-feed.png" width="24" height="24" footer=""> <strong footer="">RSS feed</strong></a></div><div self="right" footer="">powered by <a href="https://zuixjs.github.io/zkit" footer=""><strong footer="">zKit</strong></a> and <a href="https://zuixjs.org" footer=""><strong footer="">zuix⚡js</strong></a></div></div></footer><style>[z-component][footer]
 ul {
         margin: 12px 0 0;        padding: 0;        font-size: 90%;    }
 
 [z-component][footer]
 li {
-        display: flex;        flex-direction: column;        align-items: flex-start;        align-content: center;        list-style: none;        vertical-align: middle;    }</style><div z-load="@lib/components/menu-overlay" z-context="menu-overlay" data-o-position="center" data-o-before="footer"><div #items=""><code>-~=(glabs.it)=~-</code> <a href="/">Home</a> | <a href="/content/posts/">Posts</a> | <a href="/content/about/">About</a> |</div></div><script>function themeSetup(){const a=zuix.$(document.body),o=a.find(".theme-toggle"),c="theme-dark",n="app.theme";function e(e){var t=e?o.checked():"true"===localStorage.getItem(n);e||o.checked(t),t?a.addClass(c):a.removeClass(c),localStorage.setItem(n,String(t))}o.on("change",e),e()}zuix.lazyLoad(!0),themeSetup()</script><!-- zUIx.js inline resources bundle --><script src="index.bundle.js"></script><!-- zUIx.js inline resources bundle --><script src="index.bundle.ext.js"></script>
+        display: flex;        flex-direction: column;        align-items: flex-start;        align-content: center;        list-style: none;        vertical-align: middle;    }</style><div z-load="@lib/components/menu-overlay" z-context="menu-overlay" data-o-position="center" data-o-before="footer"><div #items=""><code>-~=(glabs.it)=~-</code> <a href="/">Home</a> | <a href="/content/posts/">Posts</a> | <a href="/content/about/">About</a> |</div></div><script>function themeSetup(){const o=zuix.$(document.body),n=o.find(".theme-toggle"),s="theme-dark",a="app.theme",e={transition:"color 300ms ease-in, background-color 300ms ease-in"};function t(e){var t=e?n.checked():"true"===localStorage.getItem(a);e||n.checked(t),t?o.addClass(s):o.removeClass(s),localStorage.setItem(a,String(t))}setTimeout(function(){o.css(e),o.find("header").css(e),o.find("nav").css(e),o.find("footer").css(e)},100),n.on("change",t),t()}zuix.lazyLoad(!0),themeSetup()</script><!-- zUIx.js inline resources bundle --><script src="index.bundle.js"></script><!-- zUIx.js inline resources bundle --><script src="index.bundle.ext.js"></script>
