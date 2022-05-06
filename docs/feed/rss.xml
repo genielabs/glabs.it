@@ -5,10 +5,10 @@
     <link>https://glabs.it/</link>
     <atom:link href="https://glabs.it//feed/rss.xml" rel="self"></atom:link>
     <description></description>
-    <language></language>
+    <language>en</language>
     <copyright></copyright>
-    <lastBuildDate>Thu, 05 May 2022 09:36:55 +0200</lastBuildDate>
-    <pubDate>Thu, 05 May 2022 09:36:55 +0200</pubDate>
+    <lastBuildDate>Fri, 06 May 2022 18:26:04 +0200</lastBuildDate>
+    <pubDate>Fri, 06 May 2022 18:26:04 +0200</pubDate>
     <image>
         <title>glabs.it</title>
         <url>https://glabs.it//images/icons/icon-152x152.png</url>
@@ -136,7 +136,7 @@
         <link>https://glabs.it//content/posts/</link>
         <guid isPermaLink="true">https://glabs.it//content/posts/</guid>
         <description>When I feel inspired I occasionally write some posts</description>
-        <pubDate>Thu, 05 May 2022 09:36:55 +0200</pubDate>
+        <pubDate>Fri, 06 May 2022 18:26:04 +0200</pubDate>
         <atom:link href="https://glabs.it//content/posts/" rel="self" />
         <dc:creator></dc:creator>
     </item>
@@ -145,7 +145,7 @@
         <link>https://glabs.it//content/about/</link>
         <guid isPermaLink="true">https://glabs.it//content/about/</guid>
         <description>About me</description>
-        <pubDate>Thu, 05 May 2022 09:36:55 +0200</pubDate>
+        <pubDate>Fri, 06 May 2022 18:26:04 +0200</pubDate>
         <atom:link href="https://glabs.it//content/about/" rel="self" />
         <dc:creator></dc:creator>
     </item>
@@ -154,7 +154,7 @@
         <link>https://glabs.it//</link>
         <guid isPermaLink="true">https://glabs.it//</guid>
         <description>the open source factory</description>
-        <pubDate>Thu, 05 May 2022 09:36:55 +0200</pubDate>
+        <pubDate>Fri, 06 May 2022 18:26:04 +0200</pubDate>
         <atom:link href="https://glabs.it//" rel="self" />
         <dc:creator></dc:creator>
     </item>
@@ -163,7 +163,7 @@
         <link>https://glabs.it//search/</link>
         <guid isPermaLink="true">https://glabs.it//search/</guid>
         <description>Search this website</description>
-        <pubDate>Thu, 05 May 2022 09:36:55 +0200</pubDate>
+        <pubDate>Fri, 06 May 2022 18:26:04 +0200</pubDate>
         <atom:link href="https://glabs.it//search/" rel="self" />
         <dc:creator></dc:creator>
     </item>

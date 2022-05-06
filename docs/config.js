@@ -3,6 +3,7 @@
   zuix.store('config', {
     "title": "glabs.it",
     "subtitle": "the open source factory",
+    "language": "en",
     "baseUrl": "/",
     "resourcePath": "/app/",
     "libraryPath": {
@@ -10,7 +11,8 @@
       "@hgui": "https://genielabs.github.io/homegenie-web-ui/app/",
       "@cdnjs": "https://cdnjs.cloudflare.com/ajax/libs/"
     },
-    "siteMapUrl": "https://glabs.it/"
+    "siteMapUrl": "https://glabs.it/",
+    "googleSiteId": "UA-92522504-1"
   });
   // Check that service workers are registered
   if ('serviceWorker' in navigator) {

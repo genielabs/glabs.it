@@ -71,6 +71,7 @@
     "app": {
       "title": "glabs.it",
       "subtitle": "the open source factory",
+      "language": "en",
       "baseUrl": "/",
       "resourcePath": "{{ app.baseUrl }}app/",
       "libraryPath": {
@@ -78,7 +79,8 @@
         "@hgui": "https://genielabs.github.io/homegenie-web-ui/app/",
         "@cdnjs": "https://cdnjs.cloudflare.com/ajax/libs/"
       },
-      "siteMapUrl": "https://zuixjs.github.io{{ app.baseUrl }}"
+      "siteMapUrl": "https://zuixjs.github.io{{ app.baseUrl }}",
+      "googleSiteId": "UA-92522504-1"
     }
   }
 }

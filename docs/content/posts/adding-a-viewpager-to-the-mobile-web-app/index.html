@@ -184,7 +184,6 @@ blockquote span {
 }
 
 /* forms */
-/* forms */
 
 .button {
     cursor: pointer;
@@ -222,7 +221,6 @@ blockquote span {
     position:absolute;
     top: 8px;
     left: 0;
-    pointer-event: none!important;
     transition: all 0.15s ease-in-out;
 }
 .input-container input, input:not([type="checkbox"]):not([type="radio"]):not(.mdl-textfield__input) {
@@ -484,6 +482,12 @@ button {
     background-color: var(--lite-nav-color)!important;
     fill: var(--lite-nav-color-text)!important;
 }
+[z-load*="/components/menu-overlay"] .circle-button .material-icons {
+    color: var(--lite-nav-color-text);
+}
+.theme-dark [z-load*="/components/menu-overlay"] .circle-button .material-icons {
+    color: var(--dark-nav-color-text);
+}
 .theme-dark [z-load*="/components/menu-overlay"] .circle-button {
     border: solid 1px var(--dark-color);
     background-color: var(--dark-nav-color)!important;
@@ -559,4 +563,4 @@ ul {
 
 [z-component][footer]
 li {
-        display: flex;        flex-direction: column;        align-items: flex-start;        align-content: center;        list-style: none;        vertical-align: middle;    }</style><div z-load="@lib/components/menu-overlay" z-context="menu-overlay" data-o-position="center" data-o-before="footer"><div #items=""><code>-~=(glabs.it)=~-</code> <a href="/">Home</a> | <a href="/content/posts/">Posts</a> | <a href="/content/about/">About</a> |</div></div><script>function themeSetup(){const n=zuix.$(document.body),o=n.find(".theme-toggle"),s="theme-dark",r="app.theme",e={transition:"color 300ms ease-in, background-color 300ms ease-in"};function t(e){var t=e?o.checked():"true"===localStorage.getItem(r);e||o.checked(t),t?n.addClass(s):n.removeClass(s),localStorage.setItem(r,String(t))}setTimeout(function(){n.css(e),n.find("header").css(e),n.find("nav").css(e),n.find("footer").css(e)},100),o.on("change",t),t()}function processExternalLinks(e){zuix.$(e).find('a[href*="://"]').attr("target","_blank").attr("rel","noreferrer")}zuix.lazyLoad(!0),themeSetup(),zuix.hook("view:process",function(e){processExternalLinks(e)}),processExternalLinks(document)</script><!-- zUIx.js inline resources bundle --><script src="index.bundle.js"></script><!-- zUIx.js inline resources bundle --><script src="index.bundle.ext.js"></script>
+        display: flex;        flex-direction: column;        align-items: flex-start;        align-content: center;        list-style: none;        vertical-align: middle;    }</style><div z-load="@lib/components/menu-overlay" z-context="menu-overlay" data-o-position="center" data-o-before="footer"><div #items=""><code>-~=(glabs.it)=~-</code> <a href="/">Home</a> | <a href="/content/posts/">Posts</a> | <a href="/content/about/">About</a> |</div></div><!-- Built with love using zUIx Web Starter --><script>"localhost"!==location.hostname&&"127.0.0.1"!==location.hostname&&(!function(a,e,t,n,o,c){a.GoogleAnalyticsObject=n,a.ga=a.ga||function(){(a.ga.q=a.ga.q||[]).push(arguments)},a.ga.l=+new Date,o=e.createElement(t),c=e.getElementsByTagName(t)[0],o.async=1,o.src="https://www.google-analytics.com/analytics.js",c.parentNode.insertBefore(o,c)}(window,document,"script","ga"),ga("create","UA-92522504-1","auto"),ga("send","pageview"))</script><script>function themeSetup(){const n=zuix.$(document.body),o=n.find(".theme-toggle"),s="theme-dark",r="app.theme",e={transition:"color 300ms ease-in, background-color 300ms ease-in"};function t(e){var t=e?o.checked():"true"===localStorage.getItem(r);e||o.checked(t),t?n.addClass(s):n.removeClass(s),localStorage.setItem(r,String(t))}setTimeout(function(){n.css(e),n.find("header").css(e),n.find("nav").css(e),n.find("footer").css(e)},100),o.on("change",t),t()}function processExternalLinks(e){zuix.$(e).find('a[href*="://"]').attr("target","_blank").attr("rel","noreferrer")}zuix.lazyLoad(!0),themeSetup(),zuix.hook("view:process",function(e){processExternalLinks(e)}),processExternalLinks(document)</script><!-- zUIx.js inline resources bundle --><script src="index.bundle.js"></script><!-- zUIx.js inline resources bundle --><script src="index.bundle.ext.js"></script>

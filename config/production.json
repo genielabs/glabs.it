@@ -57,6 +57,7 @@
     "app": {
       "title": "glabs.it",
       "subtitle": "the open source factory",
+      "language": "en",
       "baseUrl": "/",
       "resourcePath": "{{ app.baseUrl }}app/",
       "libraryPath": {
