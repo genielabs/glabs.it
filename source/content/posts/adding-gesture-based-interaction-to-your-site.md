@@ -16,6 +16,8 @@ keywords:
 - post
 ---
 
+{% include 'fragments/zuixjs-deprecated-content-notice.html' %}
+
 One of the common problems with desktop and mobile development is that, except for the 'click' event, mouse
 events will not work on mobile and since they are touch-based devices, a different set of events must be used.
 

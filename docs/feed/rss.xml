@@ -7,8 +7,8 @@
     <description></description>
     <language>en</language>
     <copyright></copyright>
-    <lastBuildDate>Sat, 07 May 2022 11:41:18 +0200</lastBuildDate>
-    <pubDate>Sat, 07 May 2022 11:41:18 +0200</pubDate>
+    <lastBuildDate>Sun, 15 May 2022 13:25:55 +0200</lastBuildDate>
+    <pubDate>Sun, 15 May 2022 13:25:55 +0200</pubDate>
     <image>
         <title>glabs.it</title>
         <url>https://glabs.it//images/icons/icon-152x152.png</url>
@@ -18,7 +18,7 @@
         <title>Component-based web with &lt;code&gt;zuix.js&lt;/code&gt;</title>
         <link>https://glabs.it//content/posts/component-based-web-with-zuixjs/</link>
         <guid isPermaLink="true">https://glabs.it//content/posts/component-based-web-with-zuixjs/</guid>
-        <description>Meet zUIx.js, a small yet powerful library for component-based web development.</description>
+        <description>Meet zuix.js, a small yet powerful library for component-based web development.</description>
         <pubDate>Thu, 19 Jul 2018 02:00:00 +0200</pubDate>
         <atom:link href="https://glabs.it//content/posts/component-based-web-with-zuixjs/" rel="self" />
         <dc:creator>Gene</dc:creator><!-- TODO: resolve cover image url either local or on a different site -->
@@ -67,7 +67,7 @@
         <media:description></media:description>
     </item>
     <item>
-        <title>Web app bundling in the browser with zUIx.js</title>
+        <title>Web app bundling in the browser with zuix.js</title>
         <link>https://glabs.it//content/posts/web-app-bundling-in-the-browser-with-zuixjs/</link>
         <guid isPermaLink="true">https://glabs.it//content/posts/web-app-bundling-in-the-browser-with-zuixjs/</guid>
         <description>You don&#39;t always need build tools to optimize page loading</description>
@@ -83,7 +83,7 @@
         <title>Client-side HTML/CSS pre-processing</title>
         <link>https://glabs.it//content/posts/client-side-html-css-preprocessing/</link>
         <guid isPermaLink="true">https://glabs.it//content/posts/client-side-html-css-preprocessing/</guid>
-        <description>Using zUIx.js global hooks to process content in a detached state.</description>
+        <description>Using zuix.js global hooks to process content in a detached state.</description>
         <pubDate>Tue, 07 Aug 2018 02:00:00 +0200</pubDate>
         <atom:link href="https://glabs.it//content/posts/client-side-html-css-preprocessing/" rel="self" />
         <dc:creator>Gene</dc:creator><!-- TODO: resolve cover image url either local or on a different site -->
@@ -136,7 +136,7 @@
         <link>https://glabs.it//content/posts/</link>
         <guid isPermaLink="true">https://glabs.it//content/posts/</guid>
         <description>When I feel inspired I occasionally write some posts</description>
-        <pubDate>Sat, 07 May 2022 11:41:18 +0200</pubDate>
+        <pubDate>Sun, 15 May 2022 13:25:55 +0200</pubDate>
         <atom:link href="https://glabs.it//content/posts/" rel="self" />
         <dc:creator></dc:creator>
     </item>
@@ -145,7 +145,7 @@
         <link>https://glabs.it//content/about/</link>
         <guid isPermaLink="true">https://glabs.it//content/about/</guid>
         <description>About me</description>
-        <pubDate>Sat, 07 May 2022 11:41:18 +0200</pubDate>
+        <pubDate>Sun, 15 May 2022 13:25:55 +0200</pubDate>
         <atom:link href="https://glabs.it//content/about/" rel="self" />
         <dc:creator></dc:creator>
     </item>
@@ -154,7 +154,7 @@
         <link>https://glabs.it//</link>
         <guid isPermaLink="true">https://glabs.it//</guid>
         <description>the open source factory</description>
-        <pubDate>Sat, 07 May 2022 11:41:18 +0200</pubDate>
+        <pubDate>Sun, 15 May 2022 13:25:55 +0200</pubDate>
         <atom:link href="https://glabs.it//" rel="self" />
         <dc:creator></dc:creator>
     </item>
@@ -163,7 +163,7 @@
         <link>https://glabs.it//search/</link>
         <guid isPermaLink="true">https://glabs.it//search/</guid>
         <description>Search this website</description>
-        <pubDate>Sat, 07 May 2022 11:41:18 +0200</pubDate>
+        <pubDate>Sun, 15 May 2022 13:25:55 +0200</pubDate>
         <atom:link href="https://glabs.it//search/" rel="self" />
         <dc:creator></dc:creator>
     </item>

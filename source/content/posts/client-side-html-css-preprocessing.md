@@ -8,13 +8,15 @@ coverPreview: /content/posts/images/client-side-html-css-preprocessing.jpg
 coverImage: https://thepracticaldev.s3.amazonaws.com/i/8e2qhxdctwm3bnb73z1z.jpg
 coverCopy:
 title: Client-side HTML/CSS pre-processing
-description: Using zUIx.js global hooks to process content in a detached state.
+description: Using zuix.js global hooks to process content in a detached state.
 author: Gene
 pubDate: 2018-08-07
 keywords:
 - blog
 - post
 ---
+
+{% include 'fragments/zuixjs-deprecated-content-notice.html' %}
 
 Client-side *pre-processing* is intended as the task of *transforming* some content or style file before it is actually
 added to the [DOM](https://www.w3schools.com/js/js_htmldom.asp).

@@ -16,6 +16,8 @@ keywords:
 - post
 ---
 
+{% include 'fragments/zuixjs-deprecated-content-notice.html' %}
+
 First we add the header bar, with the logo and a menu button.
 
 ```html

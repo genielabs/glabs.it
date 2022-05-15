@@ -10,7 +10,7 @@
     <div self="bottom" class="date primary">
         {{ item.data.pubDate | date: 'D MMMM YYYY' }}
     </div>
-    <a href="{{ link | url }}" title="See {{ item.data.title }}"></a>
+    <a href="{{ link | url }}" title="Go to '{{ item.data.title | strip_html }}'"></a>
 </div>
 
 {% endwrapDom %}

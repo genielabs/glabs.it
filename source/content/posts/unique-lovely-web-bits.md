@@ -16,6 +16,8 @@ keywords:
 - post
 ---
 
+{% include 'fragments/zuixjs-deprecated-content-notice.html' %}
+
 Yesterday I wanted to complete the documentation of the animated `hamburger_icon` button used in my previous post.
 
 As often happens, documenting things will help to improve them and this will require a few last-minute changes, that in
@@ -89,7 +91,7 @@ downloading all the employed resources and packing them into a single local file
 But before you start to think I'm going to talk about build systems, package managers, web packers and such, I want to
 reassure you that it is not.
 
-Well, that would also be an option, but if we don't want yet to deal with those build tools, by just using *zUIx.js* we
+Well, that would also be an option, but if we don't want yet to deal with those build tools, by just using *zuix.js* we
 can generate the application bundle directly in the browser console.
 
 ![Impossible](https://media.giphy.com/media/xTiTntReleqBnhBNwQ/giphy.gif)

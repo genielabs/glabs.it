@@ -16,6 +16,8 @@ keywords:
 - post
 ---
 
+{% include 'fragments/zuixjs-deprecated-content-notice.html' %}
+
 ## What is a ViewPager?
 
 As described in *Android Developers* documentation, a *ViewPager* is a

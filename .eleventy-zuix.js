@@ -447,6 +447,10 @@ function configure(eleventyConfig) {
     return rawFileInclude(this.page, fileName);
   });
 
+  eleventyConfig.addShortcode('yt', function(videoId) {
+    return `<iframe width="100%" style="min-height: 236px;aspect-ratio: 16/9" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+  });
+
   eleventyConfig.addPairedShortcode('unpre', function(content) {
     content = content.substring(content.indexOf('```') + 3);
     content = content.substring(content.indexOf('\n') + 1);

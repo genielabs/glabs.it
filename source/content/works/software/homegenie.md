@@ -8,7 +8,7 @@ group: works
 order: 10
 title: HomeGenie Server
 description: The open source, programmable, home automation server for smart connected devices and applications.
-link: https://genielabs.github.io/HomeGenie/
+link: https://homegenie.it/
 keywords:
 - homegenie
 - home

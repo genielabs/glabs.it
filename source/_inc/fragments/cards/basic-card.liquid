@@ -3,7 +3,7 @@
 <div self="size-x1" layout="column top-stretch">
     <h3 class="accent">{{ item.data.title }}</h3>
     <p>{{ item.data.description }}</p>
-    <a href="{{ link | url }}" title="See {{ item.data.title }}"></a>
+    <a href="{{ link | url }}" title="Go to '{{ item.data.title | strip_html }}'"></a>
 </div>
 
 {% endwrapDom %}

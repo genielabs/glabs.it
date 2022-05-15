@@ -7,7 +7,7 @@ order: 10
 coverPreview: /content/posts/images/in-browser-bundling.jpg
 coverImage: https://thepracticaldev.s3.amazonaws.com/i/4i2nm4b8y82z8cdkhnyg.jpg
 coverCopy: Photo © Racorn | Dreamstime
-title: Web app bundling in the browser with zUIx.js
+title: Web app bundling in the browser with zuix.js
 description: You don't always need build tools to optimize page loading
 author: Gene
 pubDate: 2018-08-01
@@ -15,6 +15,8 @@ keywords:
 - blog
 - post
 ---
+
+{% include 'fragments/zuixjs-deprecated-content-notice.html' %}
 
 ## What is web page/app bundling?
 
@@ -96,7 +98,7 @@ zuix.using('script', momentJs, function(res, scriptObject){
 });
 // Loading a zuix component
 zuix.using('component', '@lib/extensions/animate_css', function(res, componentContext){
-   console.log("Added AnimateCSS extension for zUIx.", res, componentContext);
+   console.log("Added AnimateCSS extension for zuix.", res, componentContext);
 });
 ```
 
@@ -154,13 +156,13 @@ This is the [source code](https://glitch.com/edit/#!/zuix-app-6) for `zuix-app-6
 
 ## Web Starter bundling
 
-![zUIx Web Starter](https://thepracticaldev.s3.amazonaws.com/i/wkumb20jphd5k5a8mt22.gif)
+![zuix Web Starter](https://thepracticaldev.s3.amazonaws.com/i/wkumb20jphd5k5a8mt22.gif)
 
 The image above shows the bundling process of `zuix-web-starter` used for the zuix website itself.
 
 But... since it's already kind of a long post, I'll just briefly put the main features here:
 
-- zUIx web components and app bundler
+- zuix web components and app bundler
 - Static Site with: Front-Matter, Data Files, Helpers, Collections, Templates
 - LESS to CSS compiling
 - ESLint .js code linting

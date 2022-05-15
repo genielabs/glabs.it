@@ -16,10 +16,12 @@ keywords:
 - post
 ---
 
+{% include 'fragments/zuixjs-deprecated-content-notice.html' %}
+
 I've spent some time in the last two days developing a new web app template and I wanted to share it here.
 
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/Y6FhQNHlpco" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% yt 'Y6FhQNHlpco' %}
 
 
 Source code and documentation are as usual available on GitHub:

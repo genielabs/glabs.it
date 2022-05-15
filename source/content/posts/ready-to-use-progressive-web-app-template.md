@@ -16,10 +16,12 @@ keywords:
 - post
 ---
 
+{% include 'fragments/zuixjs-deprecated-content-notice.html' %}
+
 It was supposed to be just part of a series of examples and tutorials, but it turned out to be something good to share as a new open-source product.
 So, if you did read my previous posts you can see the pattern that brought me to the creation of this *Progressive Web App* template:
 
-https://github.com/zuixjs/zuix-html-pwa
+[zuix-html-pwa on GitHub](https://github.com/zuixjs/zuix-html-pwa)
 
 Looks like a real mobile app with the plus of a responsive layout that works well both on a small screen (phone) or a desktop/tablet screen.
 
@@ -31,7 +33,7 @@ Those familiar with *Android* and *Material* design will definitely notice some 
 - Context Menu used for displaying news item options
 
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/UmgtHGiOo0w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% yt 'UmgtHGiOo0w' %}
 
 
 These components only implement the interaction logic and the visual feedback (animations), so the developer can fill in the structure with content using any UI framework or just with plain HTML and CSS.
