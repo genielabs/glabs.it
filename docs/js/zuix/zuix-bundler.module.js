@@ -1,4 +1,4 @@
-/* zuix.js v1.1.13 22.06.16 00:19:35 */
+/* zuix.js v1.1.10 22.06.10 19:58:26 */
 
 /******/ var __webpack_modules__ = ({
 
@@ -9,8 +9,7 @@
 /*!
  * @license
  * Copyright 2015-2022 G-Labs. All Rights Reserved.
- *
- *           https://zuixjs.org
+ *         https://zuixjs.github.io/zuix
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +27,7 @@
 /**
  *
  *  zUIx, Javascript library for component-based development.
- *        https://zuixjs.org
+ *        https://zuixjs.github.io/zuix
  *
  * @author Generoso Martello  -  https://github.com/genemars
  */
@@ -59,6 +58,8 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/* FileSaver.js
 
 /* global self */
 /* jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
+
+/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
 
 var saveAs = saveAs || (function(view) {
 	"use strict";
@@ -365,8 +366,7 @@ module.exports = function serialize(obj, options) {
 
 /*
  * Copyright 2015-2022 G-Labs. All Rights Reserved.
- *
- *           https://zuixjs.org
+ *         https://zuixjs.github.io/zuix
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -385,7 +385,7 @@ module.exports = function serialize(obj, options) {
  *
  *  This file is part of
  *  zUIx, Javascript library for component-based development.
- *        https://zuixjs.org
+ *        https://zuixjs.github.io/zuix
  *
  * @author Generoso Martello  -  https://github.com/genemars
  */
@@ -475,8 +475,7 @@ module.exports = function() {
 
 /*
  * Copyright 2015-2022 G-Labs. All Rights Reserved.
- *
- *           https://zuixjs.org
+ *         https://zuixjs.github.io/zuix
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -495,7 +494,7 @@ module.exports = function() {
  *
  *  This file is part of
  *  zUIx, Javascript library for component-based development.
- *        https://zuixjs.org
+ *        https://zuixjs.github.io/zuix
  *
  * @author Generoso Martello  -  https://github.com/genemars
  */
