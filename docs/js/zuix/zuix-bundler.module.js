@@ -1,4 +1,4 @@
-/* zuix.js v1.1.6 22.05.26 17:50:11 */
+/* zuix.js v1.1.13 22.06.16 00:19:35 */
 
 /******/ var __webpack_modules__ = ({
 
@@ -9,7 +9,8 @@
 /*!
  * @license
  * Copyright 2015-2022 G-Labs. All Rights Reserved.
- *         https://zuixjs.github.io/zuix
+ *
+ *           https://zuixjs.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +28,7 @@
 /**
  *
  *  zUIx, Javascript library for component-based development.
- *        https://zuixjs.github.io/zuix
+ *        https://zuixjs.org
  *
  * @author Generoso Martello  -  https://github.com/genemars
  */
@@ -58,8 +59,6 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/* FileSaver.js
 
 /* global self */
 /* jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
-
-/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
 
 var saveAs = saveAs || (function(view) {
 	"use strict";
@@ -366,7 +365,8 @@ module.exports = function serialize(obj, options) {
 
 /*
  * Copyright 2015-2022 G-Labs. All Rights Reserved.
- *         https://zuixjs.github.io/zuix
+ *
+ *           https://zuixjs.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -385,7 +385,7 @@ module.exports = function serialize(obj, options) {
  *
  *  This file is part of
  *  zUIx, Javascript library for component-based development.
- *        https://zuixjs.github.io/zuix
+ *        https://zuixjs.org
  *
  * @author Generoso Martello  -  https://github.com/genemars
  */
@@ -475,7 +475,8 @@ module.exports = function() {
 
 /*
  * Copyright 2015-2022 G-Labs. All Rights Reserved.
- *         https://zuixjs.github.io/zuix
+ *
+ *           https://zuixjs.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -494,7 +495,7 @@ module.exports = function() {
  *
  *  This file is part of
  *  zUIx, Javascript library for component-based development.
- *        https://zuixjs.github.io/zuix
+ *        https://zuixjs.org
  *
  * @author Generoso Martello  -  https://github.com/genemars
  */
@@ -514,8 +515,6 @@ const OptionAttributes = Object.freeze({
         'z-context',
   zField:
         'z-field',
-  zInclude:
-        'z-include',
   zLazy:
         'z-lazy',
   zLoad:
@@ -524,6 +523,8 @@ const OptionAttributes = Object.freeze({
         'z-loaded',
   zOptions:
         'z-options',
+  zUsing:
+        'z-using',
   zPriority:
         'z-priority',
   zView:

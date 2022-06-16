@@ -7,8 +7,8 @@
     <description></description>
     <language>en</language>
     <copyright></copyright>
-    <lastBuildDate>Thu, 16 Jun 2022 12:53:33 +0200</lastBuildDate>
-    <pubDate>Thu, 16 Jun 2022 12:53:33 +0200</pubDate>
+    <lastBuildDate>Thu, 16 Jun 2022 13:03:23 +0200</lastBuildDate>
+    <pubDate>Thu, 16 Jun 2022 13:03:23 +0200</pubDate>
     <image>
         <title>glabs.it</title>
         <url>https://glabs.it//images/icons/icon-152x152.png</url>
@@ -136,7 +136,7 @@
         <link>https://glabs.it//content/about/</link>
         <guid isPermaLink="true">https://glabs.it//content/about/</guid>
         <description>About me</description>
-        <pubDate>Thu, 16 Jun 2022 12:53:33 +0200</pubDate>
+        <pubDate>Thu, 16 Jun 2022 13:03:23 +0200</pubDate>
         <atom:link href="https://glabs.it//content/about/" rel="self" />
         <dc:creator></dc:creator>
     </item>
@@ -145,7 +145,7 @@
         <link>https://glabs.it//</link>
         <guid isPermaLink="true">https://glabs.it//</guid>
         <description>the open source factory</description>
-        <pubDate>Thu, 16 Jun 2022 12:53:33 +0200</pubDate>
+        <pubDate>Thu, 16 Jun 2022 13:03:23 +0200</pubDate>
         <atom:link href="https://glabs.it//" rel="self" />
         <dc:creator></dc:creator>
     </item>
@@ -154,7 +154,7 @@
         <link>https://glabs.it//search/</link>
         <guid isPermaLink="true">https://glabs.it//search/</guid>
         <description>Search this website</description>
-        <pubDate>Thu, 16 Jun 2022 12:53:33 +0200</pubDate>
+        <pubDate>Thu, 16 Jun 2022 13:03:23 +0200</pubDate>
         <atom:link href="https://glabs.it//search/" rel="self" />
         <dc:creator></dc:creator>
     </item>
@@ -163,7 +163,7 @@
         <link>https://glabs.it//test/</link>
         <guid isPermaLink="true">https://glabs.it//test/</guid>
         <description>Test page</description>
-        <pubDate>Thu, 16 Jun 2022 12:53:33 +0200</pubDate>
+        <pubDate>Thu, 16 Jun 2022 13:03:23 +0200</pubDate>
         <atom:link href="https://glabs.it//test/" rel="self" />
         <dc:creator></dc:creator>
     </item>
@@ -172,7 +172,7 @@
         <link>https://glabs.it//content/posts/</link>
         <guid isPermaLink="true">https://glabs.it//content/posts/</guid>
         <description>No description provided.</description>
-        <pubDate>Thu, 16 Jun 2022 12:53:33 +0200</pubDate>
+        <pubDate>Thu, 16 Jun 2022 13:03:23 +0200</pubDate>
         <atom:link href="https://glabs.it//content/posts/" rel="self" />
         <dc:creator></dc:creator>
     </item>
