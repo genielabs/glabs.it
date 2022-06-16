@@ -1,0 +1,535 @@
+<!DOCTYPE html><html lang="en"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="description" content="Test page"><meta name="keywords" content="genielabshome"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Test</title><link rel="author" href="humans.txt"><link rel="alternate" type="application/rss+xml" title="RSS Feed for Test" href="/feed/rss.xml"><!-- Disable tap highlight on IE --><meta name="msapplication-tap-highlight" content="no"><!-- Progressive Web App --><meta name="theme-color" content="white"><link rel="manifest" href="/manifest.json"><!-- Add to home screen for Chrome on Android --><meta name="mobile-web-app-capable" content="yes"><link rel="icon" sizes="192x192" href="/images/icons/desktop/android-chrome-192x192.png"><link rel="icon" sizes="512x512" href="/images/icons/desktop/android-chrome-512x512.png"><!-- Add to home screen for Safari on iOS --><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="A zUIx website"><link rel="apple-touch-icon-precomposed" href="/images/icons/desktop/apple-touch-icon.png"><link rel="mask-icon" href="/images/icons/desktop/safari-pinned-tab.svg" color="#5bbad5"><!-- Tile color for Windows --><meta name="msapplication-TileImage" content="/images/icons/desktop/mstile-150x150.png"><meta name="msapplication-TileColor" content="#ffc40d"><!-- Place favicon.ico in the root directory --><link rel="icon" type="image/png" sizes="32x32" href="/images/icons/desktop/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/images/icons/desktop/favicon-16x16.png"><!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones --><!--
+    <link rel="canonical" href="https://www.example.com/">
+    --><style z-ref="/css/prism-tomorrow.min.css">code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+/*# sourceMappingURL=prism-tomorrow.min.css.map */</style><style z-ref="/css/fla/flex-layout-attribute.min.css">/**
+ * Flex layout attribute
+ * HTML layout helper based on CSS flexbox specification.
+ * 
+ * VERSION: v1.0.3
+ * DATE:    2016-06-21
+ * URL:     http://progressivered.com/fla/
+ * AUTHOR:  Stefan Kovac | stef@progressivered.com | http://progressivered.com/
+ * LICENSE: MIT 
+ */
+ 
+html{box-sizing:border-box}*,:after,:before{box-sizing:inherit}[layout]{display:-ms-flexbox;display:flex}[layout*=column],[layout*=row]{width:100%;max-width:100%}[layout^=row]{-ms-flex-direction:row;flex-direction:row}[layout^=column]{-ms-flex-direction:column;flex-direction:column}[layout*=row][layout*=reverse]{-ms-flex-direction:row-reverse;flex-direction:row-reverse}[layout*=column][layout*=reverse]{-ms-flex-direction:column-reverse;flex-direction:column-reverse}[layout*=columns],[layout*=rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}[layout=none]{-ms-flex:none;flex:none}[layout*=column][layout*=top-],[layout*=row][layout*=-left]{-ms-flex-pack:start;justify-content:flex-start}[layout*=column][layout*=center-],[layout*=row][layout*=-center],[layout~=centered]{-ms-flex-pack:center;justify-content:center}[layout*=column][layout*=bottom-],[layout*=row][layout*=-right]{-ms-flex-pack:end;justify-content:flex-end}[layout*=column][layout*=spread-],[layout*=row][layout*=-spread]{-ms-flex-pack:distribute;justify-content:space-around}[layout*=column][layout*=justify-],[layout*=row][layout*=-justify]{-ms-flex-pack:justify;justify-content:space-between}[layout*=column][layout*=-left],[layout*=row][layout*=top-]{-ms-flex-align:start;-ms-grid-row-align:flex-start;align-items:flex-start}[layout*=column][layout*=-center],[layout*=row][layout*=center-],[layout~=centered]{-ms-flex-align:center;-ms-grid-row-align:center;align-items:center}[layout*=column][layout*=-right],[layout*=row][layout*=bottom-]{-ms-flex-align:end;-ms-grid-row-align:flex-end;align-items:flex-end}[layout*=column][layout*=-stretch],[layout*=row][layout*=stretch-]{-ms-flex-align:stretch;-ms-grid-row-align:stretch;align-items:stretch}[layout*=columns][layout*=-left],[layout*=rows][layout*=top-]{-ms-flex-line-pack:start;align-content:flex-start}[layout*=columns][layout*=-right],[layout*=rows][layout*=bottom-]{-ms-flex-line-pack:end;align-content:flex-end}[layout*=columns][layout*=-center],[layout*=rows][layout*=center-]{-ms-flex-line-pack:center;align-content:center}[layout*=columns][layout*=-justify],[layout*=rows][layout*=justify-]{-ms-flex-line-pack:justify;align-content:space-between}[layout*=columns][layout*=-spread],[layout*=rows][layout*=spread-]{-ms-flex-line-pack:distribute;align-content:space-around}[layout*=columns][layout*=-stretch],[layout*=rows][layout*=stretch-]{-ms-flex-line-pack:stretch;align-content:stretch}@media (-ms-high-contrast:none),screen and (-ms-high-contrast:active){[layout*=column]:not([layout*=row])>*{max-width:auto}[layout*=column][self*=top]{height:auto!important}[self~=size-]>*{height:auto}}[layout*=column]:not([layout*=row]) [self*=left],[layout*=row]:not([layout*=column]) [self*=top]{-ms-flex-item-align:start;align-self:flex-start}[self~=center]{-ms-flex-item-align:center;align-self:center}[layout*=column]:not([layout*=row]) [self*=right],[layout*=row]:not([layout*=column]) [self*=bottom]{-ms-flex-item-align:end;align-self:flex-end}[self*=stretch]{-ms-flex-item-align:stretch;align-self:stretch}[layout][self*=center]{margin-left:auto;margin-right:auto}[layout][self*=right]{margin-right:0}[layout][self*=left]{margin-left:0}[layout*=column] [self*=bottom]{margin-top:auto}[layout*=column] [self*=top]{margin-bottom:auto}[layout*=row] [self*=left]{margin-right:auto}[layout*=row] [self*=right]{margin-left:auto}[self~=size-1of5]{width:20%}[self~=size-1of4]{width:25%}[self~=size-1of3]{width:33.33333%}[self~=size-2of5]{width:40%}[self~=size-1of2]{width:50%}[self~=size-3of5]{width:60%}[self~=size-2of3]{width:66.6666%}[self~=size-3of4]{width:75%}[self~=size-4of5]{width:80%}[self~=size-1of1]{width:100%}[layout*=column][layout*=stretch-]>:not([self*=size-]),[layout*=row][layout*=-stretch]>:not([self*=size-]),[self~=size-x1]{-ms-flex:1 0 0%!important;flex:1 0 0%!important}[self~=size-x2]{-ms-flex:2 0 0%!important;flex:2 0 0%!important}[self~=size-x3]{-ms-flex:3 0 0%!important;flex:3 0 0%!important}[self~=size-x4]{-ms-flex:4 0 0%!important;flex:4 0 0%!important}[self~=size-x5]{-ms-flex:5 0 0%!important;flex:5 0 0%!important}[self~=size-x6]{-ms-flex:6 0 0%!important;flex:6 0 0%!important}[self~=size-x7]{-ms-flex:7 0 0%!important;flex:7 0 0%!important}[self~=size-x8]{-ms-flex:8 0 0%!important;flex:8 0 0%!important}[self~=size-x9]{-ms-flex:9 0 0%!important;flex:9 0 0%!important}[self*=size-auto]{-ms-flex:1 1 auto;flex:1 1 auto}[self*=size-x0]{-ms-flex:0 0 auto;flex:0 0 auto}[self~=size-xxlarge]{max-width:1440px;width:100%}[self~=size-xlarge]{max-width:1200px;width:100%}[self~=size-large]{max-width:960px;width:100%}[self~=size-larger]{max-width:840px;width:100%}[self~=size-medium]{max-width:720px;width:100%}[self~=size-smaller]{max-width:600px;width:100%}[self~=size-small]{max-width:480px;width:100%}[self~=size-xsmall]{max-width:360px;width:100%}[self~=size-xxsmall]{max-width:240px;width:100%}[self*=size-x]:not([self*=small]):not([self*=large]){-ms-flex-negative:1;flex-shrink:1}[self~=first]{-ms-flex-order:-1;order:-1}[self~=order-1]{-ms-flex-order:1;order:1}[self~=order-2]{-ms-flex-order:2;order:2}[self~=order-3]{-ms-flex-order:3;order:3}[self~=last]{-ms-flex-order:999;order:999}[layout*=column]:not([layout*=row])>*{-ms-flex-negative:0;flex-shrink:0;-ms-flex-preferred-size:auto;flex-basis:auto}@media screen and (max-width:64em){[layout*=lg-row]{-ms-flex-direction:row;flex-direction:row}[layout*=lg-column]{-ms-flex-direction:column;flex-direction:column}[layout*=lg-columns],[layout*=lg-rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}}@media screen and (max-width:52em){[layout*=md-row]{-ms-flex-direction:row;flex-direction:row}[layout*=md-column]{-ms-flex-direction:column;flex-direction:column}[layout*=md-columns],[layout*=md-rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}}@media screen and (max-width:40em){[layout*=sm-row]{-ms-flex-direction:row;flex-direction:row}[layout*=sm-column]{-ms-flex-direction:column;flex-direction:column}[layout*=sm-columns],[layout*=sm-rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}}@media screen and (max-width:64em){[self*=lg-full]{-ms-flex:1 1 100%!important;flex:1 1 100%!important;width:100%;max-width:100%}[self*=lg-half]{-ms-flex:1 1 50%!important;flex:1 1 50%!important;width:50%;max-width:50%}[self~=lg-first]{-ms-flex-order:-1;order:-1}[self~=lg-last]{-ms-flex-order:999;order:999}[self~=lg-hide]{display:none}[self~=lg-show]{display:inherit}}@media screen and (max-width:52em){[self*=md-full]{-ms-flex:1 1 100%!important;flex:1 1 100%!important;width:100%;max-width:100%}[self*=md-half]{-ms-flex:1 1 50%!important;flex:1 1 50%!important;width:50%;max-width:50%}[self~=md-first]{-ms-flex-order:-1;order:-1}[self~=md-last]{-ms-flex-order:999;order:999}[self~=md-hide]{display:none}[self~=md-show]{display:inherit}}@media screen and (max-width:40em){[self*=sm-full]{-ms-flex:1 1 100%!important;flex:1 1 100%!important;width:100%;max-width:100%}[self*=sm-half]{-ms-flex:1 1 50%!important;flex:1 1 50%!important;width:50%;max-width:50%}[self~=sm-first]{-ms-flex-order:-1;order:-1}[self~=sm-last]{-ms-flex-order:999;order:999}[self~=sm-hide]{display:none}[self~=sm-show]{display:inherit}}</style><!-- zuix.js https://github.com/zuixjs/zuix --><!--
+    <link rel="preload" as="script" href="/js/zuix/zuix.min.js">
+    <link rel="preload" as="script" href="/config.js">
+    <script src="/js/zuix/zuix.min.js"></script>
+    <script src="/config.js"></script>
+    --><script type="module">import '/js/zuix/zuix.module.min.js';
+        import '/config.js';
+        import '/app/time-clock.mjs';
+        initPage();</script><style>body {
+    font-family: "Times New Roman", Times, Georgia, "Bookman Old Style", serif;
+    font-size: 1.0em;
+    margin: 0;
+}
+
+img {
+    margin: auto;
+    display: block;
+    max-width: 100%;
+}
+
+nav {
+    height: 64px;
+    max-height: 64px;
+    padding: 8px;
+}
+nav h1 {
+    margin: 0;
+}
+
+main {
+    min-height: calc(100vh - 64px - 200px); /* viewport height - header height - footer height */
+    padding-bottom:56px;
+}
+main h1, main h2, main h3, main h4, main h5, main h6, main p {
+    font-weight: 400;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 1.5em;
+}
+main h4 {
+    font-weight: bold;
+}
+main p {
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    line-height: 140%;
+}
+main img.image-cover {
+    margin-top: 2px;
+    /*margin-top: 24px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;*/
+    aspect-ratio: 10 / 4;
+    width: 100%;
+}
+
+ul {
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    line-height: 120%;
+    padding-left: 32px;
+}
+li {
+    font-size: 95%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+small {
+    font-size: 90%;
+    opacity: 0.8;
+}
+
+pre:not([class*=language-]) {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+}
+code:not([class*=language-]) {
+    word-break: break-word;
+    line-height: 140%;
+}
+
+footer {
+    font-size: 90%;
+}
+footer section {
+    padding: 32px;
+}
+
+blockquote {
+    font-size: 1.4em;
+    margin:50px auto;
+    font-style:italic;
+    padding:1.2em 30px 1.2em 75px;
+    line-height:1.6;
+    position: relative;
+    opacity: 0.8;
+}
+blockquote::before {
+    font-family: Arial, serif;
+    content: "\201C";
+    font-size:4em;
+    position: absolute;
+    left: 12px;
+    top:-24px;
+}
+blockquote::after {
+    content: '';
+}
+blockquote span {
+    opacity: 0.6;
+    display:block;
+    font-style: normal;
+    font-weight: bold;
+    margin-top:12px;
+}
+
+.title {
+    font-size: 110%;
+    max-width: calc(100vw - 104px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+}
+.subtitle {
+    font-size: 95%;
+    max-width: calc(100vw - 172px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.author {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 32px;
+    font-size: 85%
+}
+
+.menu-item {
+    padding: 8px;
+}
+
+.icon-button {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+.icon-button:hover {
+
+}
+.icon-button:before {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 4em;
+    transform: translate(20px, 20px);
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    box-shadow: 0 0 0 0  rgba(255,255,255,0.1);
+    transition: 0s;
+}
+.icon-button:active:before {
+    position: absolute;
+    border-radius: 4em;
+    transform: translate(20px, 20px);
+    opacity: 1;
+    box-shadow: 0 0 12px 30px rgba(255,255,255,0.1);
+    transition: all 150ms ease-in-out;
+}
+.icon-button:active svg {
+    transform: scale(97%);
+}
+
+/* forms */
+
+.button {
+    cursor: pointer;
+    display: flex;
+    padding: 6px;
+    height: 48px;
+    margin: 6px;
+    align-items: center;
+    border-radius: 6px;
+    background-color: #bbbbbb15;
+    box-shadow: 0 1px 4px 0 #00000055;
+}
+.button:hover {
+    background-color: #bbbbbb1a;
+    box-shadow: 0 3px 8px 0 #00000055;
+}
+.theme-dark .button:hover {
+    box-shadow: 0 0 6px 2px var(--dark-color-text);
+}
+.button:active {
+    background-color: #bbbbbb26;
+    box-shadow: 0 0 2px 0 #00000055;
+}
+.button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+    box-shadow: 0 0 0 0 #00000055;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 25px;
+}
+.input-container label {
+    position:absolute;
+    top: 8px;
+    left: 0;
+    transition: all 0.15s ease-in-out;
+}
+.input-container input, input:not([type="checkbox"]):not([type="radio"]):not(.mdl-textfield__input) {
+    z-index: 1;
+    border:0;
+    width: 100%;
+    background: transparent;
+    border-bottom: 1px solid;
+    padding: 8px 0 5px 0;
+}
+.input-container input:focus, input:focus:not([type="checkbox"]):not([type="radio"]) {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #bd0505;
+}
+.input-container input:focus ~ label,
+.input-container input:valid ~ label {
+    top: -14px;
+    font-size: 80%;
+    font-weight: bold;
+}
+
+
+[type=radio],
+[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+    border: solid 1px;
+}
+[type=radio],
+[type=checkbox] {
+    width: 22px!important;
+    height: 18px;
+    margin-left: 6px;
+    margin-right: 6px;
+    position: relative;
+    border: solid 1px;
+    border-radius: 2px;
+}
+[type=radio]:checked::before,
+[type=checkbox]:checked::before {
+    content: "";
+    width: 12px;
+    height: 10px;
+    position: absolute;
+    top: 3px;
+    left: 4px;
+}
+[type=radio],
+[type=radio]:checked::before{
+    border-radius: 100%;
+}
+
+:root {
+    --lite-color: #fff;
+    --lite-color-text: #000;
+    --lite-nav-color: #c5ffff;
+    --lite-nav-color-text: #444;
+    --lite-color--accent: #a820bf;
+    --lite-color--primary: #3954be;
+    --lite-color--code: #005000;
+    --lite-font--weigth: 400;
+
+    --dark-color: #171b28;
+    --dark-color-text: #d2d2d2;
+    --dark-nav-color: #482d43; /* #014b76; */ /* #60142d; */
+    --dark-nav-color-text: #ccc;
+    --dark-color--accent: #beaa5a;
+    --dark-color--primary: #7dc558;
+    --dark-color--code: #63c2c5;
+    --dark-font--weigth: 400;
+}
+
+/*========================*\
+      Theme 'lite'
+\*========================*/
+
+body{
+    background-color: var(--lite-color);
+    color: var(--lite-color-text);
+    font-weight: var(--lite-font--weigth);
+}
+nav, footer {
+    background-color: var(--lite-nav-color);
+    color: var(--lite-nav-color-text);
+    fill: var(--lite-nav-color-text);
+    box-shadow: 0 4px 6px 0 rgb(0 0 0 / 20%), 0 -4px 12px 0 rgb(0 0 0 / 20%);
+}
+nav svg, .menu-button svg {
+    fill:var(--lite-nav-color-text);
+}
+svg {
+    fill:var(--lite-color-text);
+}
+nav a, footer a {
+    color: var(--lite-nav-color-text);
+}
+a {
+    color: var(--lite-color--accent);
+    text-decoration: none;
+}
+main h1, main h2, main h3 {
+    color: var(--lite-color--primary);
+}
+code:not([class*=language-]), pre:not([class*=language-]) {
+    color: var(--lite-color--code);
+}
+.accent {
+    color: var(--lite-color--accent);
+    fill: var(--lite-color--accent);
+}
+.primary {
+    color: var(--lite-color--primary);
+    fill: var(--lite-color--primary);
+}
+.background {
+    background-color: var(--lite-color);
+}
+.input-container input,  input {
+  color: var(--lite-color-text);
+  border-bottom-color: var(--lite-color--primary);
+}
+.input-container input:valid,  input:valid {
+  border-bottom-color: var(--lite-color--primary)!important;
+}
+
+[type=radio]:checked::before,
+
+[type=checkbox]:checked::before {
+    background-color: var(--lite-color--accent);
+}
+
+[type=radio],
+
+[type=checkbox] {
+    border-color: var(--lite-color--primary);
+}
+
+button {
+    color: var(--lite-color-text);
+    fill: var(--lite-color-text);
+}
+
+/*========================*\
+      Theme 'dark'
+\*========================*/
+
+body.theme-dark {
+    background-color: var(--dark-color);
+    color: var(--dark-color-text);
+    font-weight: var(--dark-font--weigth);
+}
+.theme-dark nav, .theme-dark footer {
+    background-color: var(--dark-nav-color);
+    color: var(--dark-nav-color-text);
+    fill: var(--dark-nav-color-text);
+    box-shadow: 0 4px 6px 0 rgb(0 0 0 / 20%), 0 -4px 12px 0 rgb(0 0 0 / 20%);
+}
+.theme-dark nav svg, .theme-dark .menu-button svg {
+    fill:var(--dark-nav-color-text);
+}
+.theme-dark svg {
+    fill:var(--dark-color-text);
+}
+.theme-dark nav a, .theme-dark footer a {
+    color: var(--dark-nav-color-text);
+}
+.theme-dark a {
+    color: var(--dark-color--accent);
+    text-decoration: none;
+}
+.theme-dark main h1, .theme-dark main h2, .theme-dark main h3 {
+    color: var(--dark-color--primary);
+}
+.theme-dark code:not([class*=language-]), .theme-dark pre:not([class*=language-]) {
+    color: var(--dark-color--code);
+}
+.theme-dark .accent {
+    color: var(--dark-color--accent);
+    fill: var(--dark-color--accent);
+}
+.theme-dark .primary {
+    color: var(--dark-color--primary);
+    fill: var(--dark-color--primary);
+}
+.theme-dark .background {
+    background-color: var(--dark-color);
+}
+.theme-dark .input-container input, .theme-dark  input {
+  color: var(--dark-color-text);
+  border-bottom-color: var(--dark-color--primary);
+}
+.theme-dark .input-container input:valid, .theme-dark  input:valid {
+  border-bottom-color: var(--dark-color--primary)!important;
+}
+.theme-dark 
+[type=radio]:checked::before,
+.theme-dark 
+[type=checkbox]:checked::before {
+    background-color: var(--dark-color--accent);
+}
+.theme-dark 
+[type=radio],
+.theme-dark 
+[type=checkbox] {
+    border-color: var(--dark-color--primary);
+}
+.theme-dark 
+button {
+    color: var(--dark-color-text);
+    fill: var(--dark-color-text);
+}
+
+/*
+---------------------------------
+ */
+
+.theme-toggle[type=checkbox] {
+    margin: 0;
+    --size: 32px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: var(--size)!important;
+    height: var(--size)!important;
+    box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+    border-radius: var(--size);
+    transition: all 500ms;
+    color: var(--lite-nav-color-text);
+}
+.theme-toggle[type=checkbox]:checked {
+    --ray-size: calc(var(--size) * -0.4);
+    --offset-orthogonal: calc(var(--size) * 0.65);
+    --offset-diagonal: calc(var(--size) * 0.45);
+    transform: scale(0.75);
+    box-shadow: inset 0 0 0 var(--size),
+    calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
+    var(--offset-orthogonal) 0 0 var(--ray-size),
+    0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size),
+    0 var(--offset-orthogonal) 0 var(--ray-size),
+    calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size),
+    var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
+    calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size),
+    var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
+    color: var(--dark-nav-color-text);
+    background-color: transparent!important;
+}
+.theme-toggle[type=checkbox]:checked::before {
+    background-color: transparent!important;
+}
+
+/* ----- MENU OVERLAY COMPONENT ----- */
+[z-load*="/components/menu-overlay"] .circle-button {
+    border: solid 1px var(--lite-color);
+    background-color: var(--lite-nav-color)!important;
+    fill: var(--lite-nav-color-text)!important;
+}
+[z-load*="/components/menu-overlay"] .circle-button .material-icons {
+    color: var(--lite-nav-color-text);
+}
+.theme-dark [z-load*="/components/menu-overlay"] .circle-button .material-icons {
+    color: var(--dark-nav-color-text);
+}
+.theme-dark [z-load*="/components/menu-overlay"] .circle-button {
+    border: solid 1px var(--dark-color);
+    background-color: var(--dark-nav-color)!important;
+    fill: var(--dark-nav-color-text)!important;
+}
+.theme-dark [z-load*="/components/menu-overlay"] div[z-field="menu_overlay"] {
+    background: radial-gradient(circle at bottom, black, #000000dd, #00000077, transparent)!important;
+}</style><!-- zUIx.js inline resources bundle --><script src="index.bundle.js"></script><body layout="column stretch-center" ctrl="" z-load="@lib/controllers/header-auto-hide" data-o-header="header-bar" z-lazy="scroll"><nav layout="row top-center" #header-bar=""><div self="size-large stretch" layout="row center-center" style="gap: 8px;"><!-- BACK TO HOME CONTENTS --> <a class="icon-button" aria-label="Back to home contents" href="/" style="width: 48px"><svg height="48px" viewBox="0 0 24 24" width="48px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg></a><div self="size-x1"><h1 class="title">glabs.it</h1><div class="subtitle">Test</div></div><a class="icon-button" href="/search"><svg width="48px" height="48px" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></a><div style="padding-top: 4px; padding-right: 4px"><input class="theme-toggle" type="checkbox" aria-label="Toggle theme" checked></div></div></nav><main self="size-large"><p><time-clock></time-clock><main layout="rows center-center"><!-- Card 1: load the card component directly from its CodePen url --><article z-load="card" z-on="cardEventsHandler" class="visible-on-ready" self="size-1of2 sm-full" layout="column stretch-center"><img #cover="" src="/assets/mirror/picsum.photos/seed/zuix.js-p2/320/200"><h1 #title="">The spectacle was indeed sublime.</h1><div #date="">2018/09/10</div><a #link="" href="#test/1">Read more</a></article><!-- Card 2: load the card component directly from its CodePen url --><article z-load="card" z-options="card_2" class="visible-on-ready" self="size-1of2 sm-full" layout="column stretch-center"></article></main><!-- the context menu is hosted on
+https://zuixjs.github.io/zkit/ (@lib) --><div z-load="@lib/components/context-menu" z-context="ctx-menu"><div #menu=""><button>1</button> <button>2</button> <button>3</button> <button>4</button></div></div><script></script><script type="module">import '/js/zuix/zuix.module.js';
+// using a shared events handler for both `card_1` and `card_2`
+self.cardEventsHandler = {
+'item:menu': handleItemMenu,
+'item:open': handleItemOpen
+};
+// Card 2 options
+self.card_2 = {
+model: {
+id: 2,
+title: 'The quick brown fox jumped over the lazy dog.',
+date: '2018/09/13',
+cover: 'https://picsum.photos/seed/zuix.js-p1/320/200',
+link: '#test/2'
+},
+on: cardEventsHandler
+};
+function handleItemMenu(e, item) {
+zuix.context('ctx-menu').show();
+}
+function handleItemOpen(e, item) {
+alert('Should open this link: "'+(item.link.href ? item.link.href : item.link)+'"');
+}</script></main><footer #footer="" layout="column bottom-center" style="min-height: 200px;" z-component="fragment" footer=""><div -self="size-large center" layout="row center-stretch" style="opacity: 0.7" footer=""><div style="height: 8px; background: #000000" footer=""></div><div style="height: 8px; background: #ffffff" footer=""></div><div style="height: 8px; background: #a8734a" footer=""></div><div style="height: 8px; background: #e9b287" footer=""></div><div style="height: 8px; background: #772D26" footer=""></div><div style="height: 8px; background: #b66862" footer=""></div><div style="height: 8px; background: #85d4dc" footer=""></div><div style="height: 8px; background: #cfffff" footer=""></div><div style="height: 8px; background: #a85fb4" footer=""></div><div style="height: 8px; background: #e99df5" footer=""></div><div style="height: 8px; background: #559e4a" footer=""></div><div style="height: 8px; background: #92df87" footer=""></div><div style="height: 8px; background: #42348b" footer=""></div><div style="height: 8px; background: #7e70ca" footer=""></div><div style="height: 8px; background: #bdcc71" footer=""></div><div style="height: 8px; background: #ffffb0" footer=""></div></div><div self="size-large" layout="rows top-justify" footer=""><section footer=""><div footer=""><strong footer="">glabs.it</strong></div><ul footer=""><li footer=""><a href="/" footer="">Home</a><li footer=""><a href="/content/posts/" footer="">Posts</a><li footer=""><a href="/content/about/" footer="">About</a></ul></section><section footer=""><div footer=""><strong footer="">Latest posts</strong></div><ul footer=""><li footer=""><a href="/content/posts/adding-gesture-based-interaction-to-your-site/" footer="">Adding gesture-based interaction to your website</a><li footer=""><a href="/content/posts/netflix-clone-web-app-template/" footer="">Netflix clone web app template (PWA)</a><li footer=""><a href="/content/posts/ready-to-use-progressive-web-app-template/" footer="">Ready to use Progressive Web App template</a><li footer=""><a href="/content/posts/client-side-html-css-preprocessing/" footer="">Client-side HTML/CSS pre-processing</a></ul></section><section footer=""><div footer=""><strong footer="">Links</strong></div><ul footer=""><li footer=""><a href="https://zuixjs.org" footer="">zuix.js docs</a><li footer=""><a href="https://zuixjs.github.io/zkit" footer="">zKit components</a><li footer=""><a href="https://genielabs.github.io/HomeGenie" footer="">HomeGenie</a></ul></section></div><div self="size-large" layout="row sm-column center-spread" style="padding: 12px;" footer=""><div self="left" footer=""><a href="/feed/rss.xml" layout="row center-left" style="gap: 8px" footer=""><img src="/images/rss-feed.png" width="24" height="24" alt="RSS feed logo" footer=""> <strong footer="">RSS feed</strong></a></div><div self="right" footer="">powered by <a href="https://zuixjs.github.io/zkit" footer=""><strong footer="">zKit</strong></a> and <a href="https://zuixjs.org" footer=""><strong footer="">zuix⚡js</strong></a></div></div></footer><style>[z-component][footer]
+ul {
+        margin: 12px 0 0;        padding: 0;        font-size: 90%;    }
+
+[z-component][footer]
+li {
+        display: flex;        flex-direction: column;        align-items: flex-start;        align-content: center;        list-style: none;        vertical-align: middle;    }</style><div z-load="@lib/components/menu-overlay" z-context="menu-overlay" data-o-position="center" data-o-before="footer"><div #items=""><code>-~=(glabs.it)=~-</code> <a href="/">Home</a> | <a href="/content/posts/">Posts</a> | <a href="/content/about/">About</a> |</div></div><!-- Built with love using zUIx Web Starter --><script>"localhost"!==location.hostname&&"127.0.0.1"!==location.hostname&&(!function(a,e,t,n,o,c){a.GoogleAnalyticsObject=n,a.ga=a.ga||function(){(a.ga.q=a.ga.q||[]).push(arguments)},a.ga.l=+new Date,o=e.createElement(t),c=e.getElementsByTagName(t)[0],o.async=1,o.src="https://www.google-analytics.com/analytics.js",c.parentNode.insertBefore(o,c)}(window,document,"script","ga"),ga("create","UA-92522504-1","auto"),ga("send","pageview"))</script><script>function initPage(){zuix.lazyLoad(!0);{const o=zuix.$(document.body),n=o.find(".theme-toggle"),c="theme-dark",r="app.theme",a={transition:"color 300ms ease-in, background-color 300ms ease-in"};function e(e){var t=e?n.checked():"true"===localStorage.getItem(r);e||n.checked(t),t?o.addClass(c):o.removeClass(c),document.documentElement.style.setProperty("color-scheme",t?"dark":"light"),localStorage.setItem(r,String(t))}setTimeout(function(){o.css(a),o.find("header").css(a),o.find("nav").css(a),o.find("footer").css(a)},100),n.on("change",e),e()}function t(e){zuix.$(e).find('a[href*="://"]').attr("target","_blank").attr("rel","noreferrer")}zuix.hook("view:process",function(e){t(e)}),t(document)}</script>

@@ -95,7 +95,7 @@ function startWatcher(eleventyConfig, browserSync) {
     f = path.resolve(path.join(sourceFolder, f));
     watchFiles.push(f);
   });
-  const templateExtensions = ['.html', '.js', '.css', '.less', '.scss', '.njk'];
+  const templateExtensions = ['.js', '.mjs', '.html', '.css', '.less', '.scss', '.njk'];
   const templateFolders = componentsFolders.map(f =>  path.resolve(path.join(sourceFolder, f)));
   const copyFilesWatcher = chokidar.watch(watchFiles).on('all', (event, file, stats) => {
     if (watchEvents[event] && fs.existsSync(file) && file.indexOf('/_inc/') === -1) {

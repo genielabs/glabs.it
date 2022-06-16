@@ -1,49 +1,52 @@
+function initPage() {
 //window.__zuix__debug = true;
-zuix.lazyLoad(true);
-{% include '../common/theme.js' %}
+  zuix.lazyLoad(true);
+  {% include '../common/theme.js' %}
 
-{% if options contains 'ext-links' -%}
-{% include '../common/external-links.js' %}
-{% endif %}
+  {% if options contains 'ext-links' -%}
+  {% include '../common/external-links.js' %}
+  {% endif %}
 
-{% if zuixEditor -%}
-// zuix-editor events handling
-zuix.context('zuix-editor', function(ed) {
-  const data = ed.data;
-  if (data.tags && data.tags.indexOf('sections') !== -1) {
-    data.section = data.group;
-  }
-  setEditorData(ed.data);
-  ed.on({
-    'zuix:action:progress': function(e, ar) {
-      if (ar.action === 'delete-page' && ar.data.tags.indexOf('sections') === -1) {
-        document.location.href = ar.redirect + '#waitReload';
-      }
-    },
-    'zuix:action:result': function(e, ar) {
-      if (ar) {
-        switch(ar.action) {
-          case 'add-page':
-            document.location.href = ar.url;
-            break;
-          case 'delete-page':
-            if (ar.data.tags.indexOf('sections') !== -1) { // whole section
-              document.location.href = data.app.baseUrl;
-            } else { // single page
-              refresh();
-            }
-            break;
-          case 'add-component':
-            refresh();
-            break;
-        }
-      } else {
-        ed.browserSync.socket.connect();
-      }
+  {% if zuixEditor -%}
+  initEditor();
+  // zuix-editor events handling
+  zuix.context('zuix-editor', function(ed) {
+    const data = ed.data;
+    if (data.tags && data.tags.indexOf('sections') !== -1) {
+      data.section = data.group;
     }
+    setEditorData(ed.data);
+    ed.on({
+      'zuix:action:progress': function(e, ar) {
+        if (ar.action === 'delete-page' && ar.data.tags.indexOf('sections') === -1) {
+          document.location.href = ar.redirect + '#waitReload';
+        }
+      },
+      'zuix:action:result': function(e, ar) {
+        if (ar) {
+          switch(ar.action) {
+            case 'add-page':
+              document.location.href = ar.url;
+              break;
+            case 'delete-page':
+              if (ar.data.tags.indexOf('sections') !== -1) { // whole section
+                document.location.href = data.app.baseUrl;
+              } else { // single page
+                refresh();
+              }
+              break;
+            case 'add-component':
+              refresh();
+              break;
+          }
+        } else {
+          ed.browserSync.socket.connect();
+        }
+      }
+    });
   });
-});
-function refresh(scrollTop) {
-  document.location.reload();
+  function refresh(scrollTop) {
+    document.location.reload();
+  }
+  {% endif -%}
 }
-{% endif -%}

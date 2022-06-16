@@ -3,4 +3,4 @@
 # Allow crawling of all content
 User-agent: *
 Disallow:
-Sitemap: https://glabs.it//sitemap.xml
+Sitemap: https://glabs.it/sitemap.xml
