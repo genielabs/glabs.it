@@ -25,8 +25,8 @@
       {% endfor %}
 
       function initEditor() {
-        var zuixEditor = null;
-        zuix.context('zuix-editor', function(ctx) {
+        self.zuixEditor = null;
+        zuixEditor = zuix.context('zuix-editor', function(ctx) {
           zuixEditor = ctx
           zuixEditor.data = {{ eleventyComputed._data | json }};
         });
