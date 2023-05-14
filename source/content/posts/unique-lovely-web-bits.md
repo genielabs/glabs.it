@@ -5,7 +5,7 @@ tags: posts
 group: posts
 order: 10
 coverPreview: /content/posts/images/lovely-web-bits.jpg
-coverImage: https://thepracticaldev.s3.amazonaws.com/i/pocqyuok4f06ljdyi14j.jpg
+coverImage: /assets/mirror/thepracticaldev.s3.amazonaws.com/i/pocqyuok4f06ljdyi14j.jpg
 coverCopy:
 title: Unique, lovely web bits
 description: Just about what I was up to yesterday
@@ -29,7 +29,7 @@ a couple of other projects on GitHub pages.
 
 > Does that mean I've to copy the new code all over the different projects that are using the *hamburger_icon* and publish all of them once again?
 
-![Oh Sh*t!](https://media.giphy.com/media/E2USislQIlsfm/giphy.gif)
+![Oh Sh*t!](/assets/mirror/media.giphy.com/media/E2USislQIlsfm/giphy.gif)
 
 Luckily that's **not the case** since none of those projects were holding a copy of employed bits but rather a direct
 link to the original source of each.
@@ -71,7 +71,7 @@ This means that if the `layout/header` is modified on the host `zuix-app-1` it w
 and `zuix-app-3`, but also means that whenever the `components/hamburger_icon` is updated on *zuixjs.github.io/zkit*, it
 will be seamlessly and instantly updated on all examples hosted on *Glitch*!
 
-![What?!@#?](https://media.giphy.com/media/glmRyiSI3v5E4/giphy.gif)
+![What?!@#?](/assets/mirror/media.giphy.com/media/glmRyiSI3v5E4/giphy.gif)
 
 So, using an unique reference to components has obvious advantages both for productivity and creativity, either when
 they're hosted on the same server or over a bunch of different ones.
@@ -94,6 +94,6 @@ reassure you that it is not.
 Well, that would also be an option, but if we don't want yet to deal with those build tools, by just using *zuix.js* we
 can generate the application bundle directly in the browser console.
 
-![Impossible](https://media.giphy.com/media/xTiTntReleqBnhBNwQ/giphy.gif)
+![Impossible](/assets/mirror/media.giphy.com/media/xTiTntReleqBnhBNwQ/giphy.gif)
 
 That's what I call **in-browser bundling** (or client-side bundling), but I'll be writing about this later.

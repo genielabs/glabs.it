@@ -5,7 +5,7 @@ tags: posts
 group: posts
 order: 10
 coverPreview: /content/posts/images/mobile-app-from-scratch.jpg
-coverImage: https://drive.google.com/uc?id=1bh3XAyrWiP4kipKg_uAmgDzlzeiD9AZH
+coverImage: /assets/mirror/drive.google.com/1bh3XAyrWiP4kipKg_uAmgDzlzeiD9AZH
 coverCopy:
 title: Mobile web app layout from scratch
 description: Create a mobile app layout in 5 minutes (@!?!) =)

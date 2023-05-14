@@ -5,7 +5,7 @@ tags: posts
 group: posts
 order: 10
 coverPreview: /content/posts/images/progressive-web-app.jpg
-coverImage: https://thepracticaldev.s3.amazonaws.com/i/cn8xjvhqd32zp04h8gpr.png
+coverImage: /assets/mirror/thepracticaldev.s3.amazonaws.com/i/cn8xjvhqd32zp04h8gpr.png
 coverCopy:
 title: Ready to use Progressive Web App template
 description: Faaast, simple, modern PWA template.
@@ -42,7 +42,7 @@ Usually my approach is the latter as I think that simple HTML and CSS nowadays a
 
 Also this template doesn't require any build tool. **Just HTML, CSS, JavaScript and your favorite editor**, but nevertheless it is a Progressive Web App with a rather good score:
 
-![LightHouse report](https://zuixjs.github.io/zuix-html-pwa/images/lighthouse-report.png)
+![LightHouse report](/assets/mirror/zuixjs.github.io/zuix-html-pwa/images/lighthouse-report.png)
 
 You can see it live here: [HTML-PWA](https://zuixjs.github.io/zuix-html-pwa/).
 
@@ -50,7 +50,7 @@ You can see it live here: [HTML-PWA](https://zuixjs.github.io/zuix-html-pwa/).
 
 While setting up this template I also had a chance to write a new component and add it to the [zKit](https://zuixjs.github.io/zkit/) collection, which is the *Context Menu*.
 
-![Context Menu](https://thepracticaldev.s3.amazonaws.com/i/vlnoa89vnnf62fcdjccx.png)
+![Context Menu](/assets/mirror/thepracticaldev.s3.amazonaws.com/i/vlnoa89vnnf62fcdjccx.png)
 
 Like all other companions in the *zKit* collection, the context menu is a *framework-agnostic* component that can be integrated easily in any project.
 
@@ -108,4 +108,4 @@ Easy-peasy when everything is a component =)
 
 Ok, so it's now time to take a break and possibly go for a swim later. Talk to you soon.
 
-![Sea Time](https://media.giphy.com/media/T1wXTcV8KhVHq/giphy.gif)
+![Sea Time](/assets/mirror/media.giphy.com/media/T1wXTcV8KhVHq/giphy.gif)

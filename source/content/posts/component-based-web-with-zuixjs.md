@@ -5,7 +5,7 @@ tags: posts
 group: posts
 order: 10
 coverPreview: /content/posts/images/component-based-cover.jpg
-coverImage: https://drive.google.com/uc?id=1M-F9RlZr9ayjWNysJWB-BrqXwOP-q_o1
+coverImage: /assets/mirror/drive.google.com/1M-F9RlZr9ayjWNysJWB-BrqXwOP-q_o1
 coverCopy:
 title: Component-based web with <code>zuix.js</code>
 description: Meet zuix.js, a small yet powerful library for component-based web development.
@@ -25,7 +25,7 @@ library out of some code I had written back in 2012 for HomeGenie web UI.
 
 *In the picture below you can see the old, but still good, HomeGenie web UI.*
 
-![HomeGenie Web UI](https://genielabs.github.io/HomeGenie/images/docs/dashboard_page_01.jpg)
+![HomeGenie Web UI](/assets/mirror/genielabs.github.io/HomeGenie/images/docs/dashboard_page_01.jpg)
 
 The cool thing about this smart home software is that one can customize and write new widgets by using the integrated web
 editor (you can read more about it in the [Widgets](https://homegenie.it/content/devs/widgets/) documentation page).

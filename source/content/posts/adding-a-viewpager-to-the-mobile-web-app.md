@@ -5,7 +5,7 @@ tags: posts
 group: posts
 order: 10
 coverPreview: /content/posts/images/adding-a-viewpager.jpg
-coverImage: https://thepracticaldev.s3.amazonaws.com/i/8l276dgce86ez8jdpap1.jpg
+coverImage: /assets/mirror/thepracticaldev.s3.amazonaws.com/i/8l276dgce86ez8jdpap1.jpg
 coverCopy:
 title: Adding a ViewPager to your web app
 description: Meant to be a Twitter mobile clone, ended up in something else.
@@ -49,7 +49,7 @@ Add the ViewPager as described below:
 
 The example app design was initially inspired to *Twitter* mobile but it can be used and adapted as a starting base for different kind of projects.
 
-![Web App 4-1](https://thepracticaldev.s3.amazonaws.com/i/f3mib65guw55oj39n83k.gif)
+![Web App 4-1](/assets/mirror/thepracticaldev.s3.amazonaws.com/i/f3mib65guw55oj39n83k.gif)
 
 Design summary:
 

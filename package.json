@@ -35,11 +35,11 @@
   "dependencies": {
     "flex-layout-attribute": "^1.0.3",
     "fuse.js": "^6.6.2",
-    "zuix-dist": "1.1.13"
+    "zuix-dist": "^1.1.26"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.0-canary.11",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@11ty/eleventy-server-browsersync": "^1.0.2",
     "capture-console": "^1.0.1",
     "chalk": "^4.1.2",
@@ -54,7 +54,7 @@
     "mkdirp": "^1.0.4",
     "moment": "^2.29.3",
     "nunjucks": "^3.2.3",
-    "yaml": "^1.10.2",
+    "yaml": "^2.2.2",
     "yesno": "^0.3.1",
     "zuix": "^0.4.0-beta.13"
   }

@@ -5,7 +5,7 @@ tags: posts
 group: posts
 order: 10
 coverPreview: /content/posts/images/in-browser-bundling.jpg
-coverImage: https://thepracticaldev.s3.amazonaws.com/i/4i2nm4b8y82z8cdkhnyg.jpg
+coverImage: /assets/mirror/thepracticaldev.s3.amazonaws.com/i/4i2nm4b8y82z8cdkhnyg.jpg
 coverCopy: Photo © Racorn | Dreamstime
 title: Web app bundling in the browser with zuix.js
 description: You don't always need build tools to optimize page loading
@@ -136,27 +136,27 @@ Here is a comparison between the two versions.
 
 #### zuix-app-5: total files **18**
 
-![zuix-app-5 files](https://thepracticaldev.s3.amazonaws.com/i/g02hdgw86q2nfivsfhzu.png)
+![zuix-app-5 files](/assets/mirror/thepracticaldev.s3.amazonaws.com/i/g02hdgw86q2nfivsfhzu.png)
 
 #### zuix-app-5: network performance
 
-![zuix-app-5 perf](https://thepracticaldev.s3.amazonaws.com/i/2gk48dshoa4zok3rh1z4.png)
+![zuix-app-5 perf](/assets/mirror/thepracticaldev.s3.amazonaws.com/i/2gk48dshoa4zok3rh1z4.png)
 
 
 #### zuix-app-6: total files **4**
 
-![zuix-app-6 files](https://thepracticaldev.s3.amazonaws.com/i/e6g0ex68dmf08msb41rf.png)
+![zuix-app-6 files](/assets/mirror/thepracticaldev.s3.amazonaws.com/i/e6g0ex68dmf08msb41rf.png)
 
 #### zuix-app-6: network performance
 
-![zuix-app-6 perf](https://thepracticaldev.s3.amazonaws.com/i/ysapo252grk4t7g2xa4p.png)
+![zuix-app-6 perf](/assets/mirror/thepracticaldev.s3.amazonaws.com/i/ysapo252grk4t7g2xa4p.png)
 
 This is the [source code](https://glitch.com/edit/#!/zuix-app-6) for `zuix-app-6`.
 
 
 ## Web Starter bundling
 
-![zuix Web Starter](https://thepracticaldev.s3.amazonaws.com/i/wkumb20jphd5k5a8mt22.gif)
+![zuix Web Starter](/assets/mirror/thepracticaldev.s3.amazonaws.com/i/wkumb20jphd5k5a8mt22.gif)
 
 The image above shows the bundling process of `zuix-web-starter` used for the zuix website itself.
 
@@ -169,4 +169,4 @@ But... since it's already kind of a long post, I'll just briefly put the main fe
 - Minifier
 - Progressive Web App generator
 
-![gotta go](https://media.giphy.com/media/3o7btYYfqOuQAz7SYE/giphy.gif)
+![gotta go](/assets/mirror/media.giphy.com/media/3o7btYYfqOuQAz7SYE/giphy.gif)

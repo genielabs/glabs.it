@@ -5,7 +5,7 @@ tags: posts
 group: posts
 order: 10
 coverPreview: /content/posts/images/client-side-html-css-preprocessing.jpg
-coverImage: https://thepracticaldev.s3.amazonaws.com/i/8e2qhxdctwm3bnb73z1z.jpg
+coverImage: /assets/mirror/thepracticaldev.s3.amazonaws.com/i/8e2qhxdctwm3bnb73z1z.jpg
 coverCopy:
 title: Client-side HTML/CSS pre-processing
 description: Using zuix.js global hooks to process content in a detached state.
