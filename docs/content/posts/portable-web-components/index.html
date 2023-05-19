@@ -1,0 +1,696 @@
+<!DOCTYPE html><html lang="en"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="description" content="Common pitfalls and tips about creating reusable and portable Web Components."><meta name="keywords" content="blog,post"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Authoring reusable and portable Web Components</title><link rel="author" href="humans.txt"><link rel="alternate" type="application/rss+xml" title="RSS Feed for Authoring reusable and portable Web Components" href="/feed/rss.xml"><!-- Disable tap highlight on IE --><meta name="msapplication-tap-highlight" content="no"><!-- Progressive Web App --><meta name="theme-color" content="white"><link rel="manifest" href="/manifest.json"><!-- Add to home screen for Chrome on Android --><meta name="mobile-web-app-capable" content="yes"><link rel="icon" sizes="192x192" href="/images/icons/desktop/android-chrome-192x192.png"><link rel="icon" sizes="512x512" href="/images/icons/desktop/android-chrome-512x512.png"><!-- Add to home screen for Safari on iOS --><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="A zUIx website"><link rel="apple-touch-icon-precomposed" href="/images/icons/desktop/apple-touch-icon.png"><link rel="mask-icon" href="/images/icons/desktop/safari-pinned-tab.svg" color="#5bbad5"><!-- Tile color for Windows --><meta name="msapplication-TileImage" content="/images/icons/desktop/mstile-150x150.png"><meta name="msapplication-TileColor" content="#ffc40d"><!-- Place favicon.ico in the root directory --><link rel="icon" type="image/png" sizes="32x32" href="/images/icons/desktop/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/images/icons/desktop/favicon-16x16.png"><!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones --><!--
+    <link rel="canonical" href="https://www.example.com/">
+    --><style z-ref="/css/prism-tomorrow.min.css">code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+/*# sourceMappingURL=prism-tomorrow.min.css.map */</style><style z-ref="/css/fla/flex-layout-attribute.min.css">/**
+ * Flex layout attribute
+ * HTML layout helper based on CSS flexbox specification.
+ * 
+ * VERSION: v1.0.3
+ * DATE:    2016-06-21
+ * URL:     http://progressivered.com/fla/
+ * AUTHOR:  Stefan Kovac | stef@progressivered.com | http://progressivered.com/
+ * LICENSE: MIT 
+ */
+ 
+html{box-sizing:border-box}*,:after,:before{box-sizing:inherit}[layout]{display:-ms-flexbox;display:flex}[layout*=column],[layout*=row]{width:100%;max-width:100%}[layout^=row]{-ms-flex-direction:row;flex-direction:row}[layout^=column]{-ms-flex-direction:column;flex-direction:column}[layout*=row][layout*=reverse]{-ms-flex-direction:row-reverse;flex-direction:row-reverse}[layout*=column][layout*=reverse]{-ms-flex-direction:column-reverse;flex-direction:column-reverse}[layout*=columns],[layout*=rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}[layout=none]{-ms-flex:none;flex:none}[layout*=column][layout*=top-],[layout*=row][layout*=-left]{-ms-flex-pack:start;justify-content:flex-start}[layout*=column][layout*=center-],[layout*=row][layout*=-center],[layout~=centered]{-ms-flex-pack:center;justify-content:center}[layout*=column][layout*=bottom-],[layout*=row][layout*=-right]{-ms-flex-pack:end;justify-content:flex-end}[layout*=column][layout*=spread-],[layout*=row][layout*=-spread]{-ms-flex-pack:distribute;justify-content:space-around}[layout*=column][layout*=justify-],[layout*=row][layout*=-justify]{-ms-flex-pack:justify;justify-content:space-between}[layout*=column][layout*=-left],[layout*=row][layout*=top-]{-ms-flex-align:start;-ms-grid-row-align:flex-start;align-items:flex-start}[layout*=column][layout*=-center],[layout*=row][layout*=center-],[layout~=centered]{-ms-flex-align:center;-ms-grid-row-align:center;align-items:center}[layout*=column][layout*=-right],[layout*=row][layout*=bottom-]{-ms-flex-align:end;-ms-grid-row-align:flex-end;align-items:flex-end}[layout*=column][layout*=-stretch],[layout*=row][layout*=stretch-]{-ms-flex-align:stretch;-ms-grid-row-align:stretch;align-items:stretch}[layout*=columns][layout*=-left],[layout*=rows][layout*=top-]{-ms-flex-line-pack:start;align-content:flex-start}[layout*=columns][layout*=-right],[layout*=rows][layout*=bottom-]{-ms-flex-line-pack:end;align-content:flex-end}[layout*=columns][layout*=-center],[layout*=rows][layout*=center-]{-ms-flex-line-pack:center;align-content:center}[layout*=columns][layout*=-justify],[layout*=rows][layout*=justify-]{-ms-flex-line-pack:justify;align-content:space-between}[layout*=columns][layout*=-spread],[layout*=rows][layout*=spread-]{-ms-flex-line-pack:distribute;align-content:space-around}[layout*=columns][layout*=-stretch],[layout*=rows][layout*=stretch-]{-ms-flex-line-pack:stretch;align-content:stretch}@media (-ms-high-contrast:none),screen and (-ms-high-contrast:active){[layout*=column]:not([layout*=row])>*{max-width:auto}[layout*=column][self*=top]{height:auto!important}[self~=size-]>*{height:auto}}[layout*=column]:not([layout*=row]) [self*=left],[layout*=row]:not([layout*=column]) [self*=top]{-ms-flex-item-align:start;align-self:flex-start}[self~=center]{-ms-flex-item-align:center;align-self:center}[layout*=column]:not([layout*=row]) [self*=right],[layout*=row]:not([layout*=column]) [self*=bottom]{-ms-flex-item-align:end;align-self:flex-end}[self*=stretch]{-ms-flex-item-align:stretch;align-self:stretch}[layout][self*=center]{margin-left:auto;margin-right:auto}[layout][self*=right]{margin-right:0}[layout][self*=left]{margin-left:0}[layout*=column] [self*=bottom]{margin-top:auto}[layout*=column] [self*=top]{margin-bottom:auto}[layout*=row] [self*=left]{margin-right:auto}[layout*=row] [self*=right]{margin-left:auto}[self~=size-1of5]{width:20%}[self~=size-1of4]{width:25%}[self~=size-1of3]{width:33.33333%}[self~=size-2of5]{width:40%}[self~=size-1of2]{width:50%}[self~=size-3of5]{width:60%}[self~=size-2of3]{width:66.6666%}[self~=size-3of4]{width:75%}[self~=size-4of5]{width:80%}[self~=size-1of1]{width:100%}[layout*=column][layout*=stretch-]>:not([self*=size-]),[layout*=row][layout*=-stretch]>:not([self*=size-]),[self~=size-x1]{-ms-flex:1 0 0%!important;flex:1 0 0%!important}[self~=size-x2]{-ms-flex:2 0 0%!important;flex:2 0 0%!important}[self~=size-x3]{-ms-flex:3 0 0%!important;flex:3 0 0%!important}[self~=size-x4]{-ms-flex:4 0 0%!important;flex:4 0 0%!important}[self~=size-x5]{-ms-flex:5 0 0%!important;flex:5 0 0%!important}[self~=size-x6]{-ms-flex:6 0 0%!important;flex:6 0 0%!important}[self~=size-x7]{-ms-flex:7 0 0%!important;flex:7 0 0%!important}[self~=size-x8]{-ms-flex:8 0 0%!important;flex:8 0 0%!important}[self~=size-x9]{-ms-flex:9 0 0%!important;flex:9 0 0%!important}[self*=size-auto]{-ms-flex:1 1 auto;flex:1 1 auto}[self*=size-x0]{-ms-flex:0 0 auto;flex:0 0 auto}[self~=size-xxlarge]{max-width:1440px;width:100%}[self~=size-xlarge]{max-width:1200px;width:100%}[self~=size-large]{max-width:960px;width:100%}[self~=size-larger]{max-width:840px;width:100%}[self~=size-medium]{max-width:720px;width:100%}[self~=size-smaller]{max-width:600px;width:100%}[self~=size-small]{max-width:480px;width:100%}[self~=size-xsmall]{max-width:360px;width:100%}[self~=size-xxsmall]{max-width:240px;width:100%}[self*=size-x]:not([self*=small]):not([self*=large]){-ms-flex-negative:1;flex-shrink:1}[self~=first]{-ms-flex-order:-1;order:-1}[self~=order-1]{-ms-flex-order:1;order:1}[self~=order-2]{-ms-flex-order:2;order:2}[self~=order-3]{-ms-flex-order:3;order:3}[self~=last]{-ms-flex-order:999;order:999}[layout*=column]:not([layout*=row])>*{-ms-flex-negative:0;flex-shrink:0;-ms-flex-preferred-size:auto;flex-basis:auto}@media screen and (max-width:64em){[layout*=lg-row]{-ms-flex-direction:row;flex-direction:row}[layout*=lg-column]{-ms-flex-direction:column;flex-direction:column}[layout*=lg-columns],[layout*=lg-rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}}@media screen and (max-width:52em){[layout*=md-row]{-ms-flex-direction:row;flex-direction:row}[layout*=md-column]{-ms-flex-direction:column;flex-direction:column}[layout*=md-columns],[layout*=md-rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}}@media screen and (max-width:40em){[layout*=sm-row]{-ms-flex-direction:row;flex-direction:row}[layout*=sm-column]{-ms-flex-direction:column;flex-direction:column}[layout*=sm-columns],[layout*=sm-rows]{-ms-flex-wrap:wrap;flex-wrap:wrap}}@media screen and (max-width:64em){[self*=lg-full]{-ms-flex:1 1 100%!important;flex:1 1 100%!important;width:100%;max-width:100%}[self*=lg-half]{-ms-flex:1 1 50%!important;flex:1 1 50%!important;width:50%;max-width:50%}[self~=lg-first]{-ms-flex-order:-1;order:-1}[self~=lg-last]{-ms-flex-order:999;order:999}[self~=lg-hide]{display:none}[self~=lg-show]{display:inherit}}@media screen and (max-width:52em){[self*=md-full]{-ms-flex:1 1 100%!important;flex:1 1 100%!important;width:100%;max-width:100%}[self*=md-half]{-ms-flex:1 1 50%!important;flex:1 1 50%!important;width:50%;max-width:50%}[self~=md-first]{-ms-flex-order:-1;order:-1}[self~=md-last]{-ms-flex-order:999;order:999}[self~=md-hide]{display:none}[self~=md-show]{display:inherit}}@media screen and (max-width:40em){[self*=sm-full]{-ms-flex:1 1 100%!important;flex:1 1 100%!important;width:100%;max-width:100%}[self*=sm-half]{-ms-flex:1 1 50%!important;flex:1 1 50%!important;width:50%;max-width:50%}[self~=sm-first]{-ms-flex-order:-1;order:-1}[self~=sm-last]{-ms-flex-order:999;order:999}[self~=sm-hide]{display:none}[self~=sm-show]{display:inherit}}</style><!-- zuix.js https://github.com/zuixjs/zuix --><link rel="preload" as="script" href="/js/zuix/zuix.min.js"><script src="/js/zuix/zuix.min.js"></script><style>body {
+    font-family: "Times New Roman", Times, Georgia, "Bookman Old Style", serif;
+    font-size: 1.0em;
+    margin: 0;
+}
+
+img {
+    margin: auto;
+    display: block;
+    max-width: 100%;
+}
+
+nav {
+    height: 64px;
+    max-height: 64px;
+    padding: 8px;
+}
+nav h1 {
+    margin: 0;
+}
+
+main {
+    min-height: calc(100vh - 64px - 200px); /* viewport height - header height - footer height */
+    padding-bottom:56px;
+}
+main h1, main h2, main h3, main h4, main h5, main h6, main p {
+    font-weight: 400;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 1.5em;
+}
+main h4 {
+    font-weight: bold;
+}
+main p {
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    line-height: 140%;
+}
+main img.image-cover {
+    margin-top: 2px;
+    /*margin-top: 24px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;*/
+    aspect-ratio: 10 / 4;
+    width: 100%;
+}
+
+ul {
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    line-height: 120%;
+    padding-left: 32px;
+}
+li {
+    font-size: 95%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+small {
+    font-size: 90%;
+    opacity: 0.8;
+}
+
+pre:not([class*=language-]) {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+}
+code:not([class*=language-]) {
+    word-break: break-word;
+    line-height: 140%;
+}
+
+footer {
+    font-size: 90%;
+}
+footer section {
+    padding: 32px;
+}
+
+blockquote {
+    font-size: 1.4em;
+    margin:50px auto;
+    font-style:italic;
+    padding:1.2em 30px 1.2em 75px;
+    line-height:1.6;
+    position: relative;
+    opacity: 0.8;
+}
+blockquote::before {
+    font-family: Arial, serif;
+    content: "\201C";
+    font-size:4em;
+    position: absolute;
+    left: 12px;
+    top:-24px;
+}
+blockquote::after {
+    content: '';
+}
+blockquote span {
+    opacity: 0.6;
+    display:block;
+    font-style: normal;
+    font-weight: bold;
+    margin-top:12px;
+}
+
+.title {
+    font-size: 110%;
+    max-width: calc(100vw - 104px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+}
+.subtitle {
+    font-size: 95%;
+    max-width: calc(100vw - 172px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.author {
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 32px;
+    font-size: 85%
+}
+
+.menu-item {
+    padding: 8px;
+}
+
+.icon-button {
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+.icon-button:hover {
+
+}
+.icon-button:before {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 4em;
+    transform: translate(20px, 20px);
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    box-shadow: 0 0 0 0  rgba(255,255,255,0.1);
+    transition: 0s;
+}
+.icon-button:active:before {
+    position: absolute;
+    border-radius: 4em;
+    transform: translate(20px, 20px);
+    opacity: 1;
+    box-shadow: 0 0 12px 30px rgba(255,255,255,0.1);
+    transition: all 150ms ease-in-out;
+}
+.icon-button:active svg {
+    transform: scale(97%);
+}
+
+/* forms */
+
+.button {
+    cursor: pointer;
+    display: flex;
+    padding: 6px;
+    height: 48px;
+    margin: 6px;
+    align-items: center;
+    border-radius: 6px;
+    background-color: #bbbbbb15;
+    box-shadow: 0 1px 4px 0 #00000055;
+}
+.button:hover {
+    background-color: #bbbbbb1a;
+    box-shadow: 0 3px 8px 0 #00000055;
+}
+.theme-dark .button:hover {
+    box-shadow: 0 0 6px 2px var(--dark-color-text);
+}
+.button:active {
+    background-color: #bbbbbb26;
+    box-shadow: 0 0 2px 0 #00000055;
+}
+.button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+    box-shadow: 0 0 0 0 #00000055;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 25px;
+}
+.input-container label {
+    position:absolute;
+    top: 8px;
+    left: 0;
+    transition: all 0.15s ease-in-out;
+}
+.input-container input, input:not([type="checkbox"]):not([type="radio"]):not(.mdl-textfield__input) {
+    z-index: 1;
+    border:0;
+    width: 100%;
+    background: transparent;
+    border-bottom: 1px solid;
+    padding: 8px 0 5px 0;
+}
+.input-container input:focus, input:focus:not([type="checkbox"]):not([type="radio"]) {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #bd0505;
+}
+.input-container input:focus ~ label,
+.input-container input:valid ~ label {
+    top: -14px;
+    font-size: 80%;
+    font-weight: bold;
+}
+
+
+[type=radio],
+[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+    border: solid 1px;
+}
+[type=radio],
+[type=checkbox] {
+    width: 22px!important;
+    height: 18px;
+    margin-left: 6px;
+    margin-right: 6px;
+    position: relative;
+    border: solid 1px;
+    border-radius: 2px;
+}
+[type=radio]:checked::before,
+[type=checkbox]:checked::before {
+    content: "";
+    width: 12px;
+    height: 10px;
+    position: absolute;
+    top: 3px;
+    left: 4px;
+}
+[type=radio],
+[type=radio]:checked::before{
+    border-radius: 100%;
+}
+
+:root {
+    --lite-color: #fff;
+    --lite-color-text: #000;
+    --lite-nav-color: #c5ffff;
+    --lite-nav-color-text: #444;
+    --lite-color--accent: #a820bf;
+    --lite-color--primary: #3954be;
+    --lite-color--code: #005000;
+    --lite-font--weigth: 400;
+
+    --dark-color: #171b28;
+    --dark-color-text: #d2d2d2;
+    --dark-nav-color: #482d43; /* #014b76; */ /* #60142d; */
+    --dark-nav-color-text: #ccc;
+    --dark-color--accent: #beaa5a;
+    --dark-color--primary: #7dc558;
+    --dark-color--code: #63c2c5;
+    --dark-font--weigth: 400;
+}
+
+/*========================*\
+      Theme 'lite'
+\*========================*/
+
+body{
+    background-color: var(--lite-color);
+    color: var(--lite-color-text);
+    font-weight: var(--lite-font--weigth);
+}
+nav, footer {
+    background-color: var(--lite-nav-color);
+    color: var(--lite-nav-color-text);
+    fill: var(--lite-nav-color-text);
+    box-shadow: 0 4px 6px 0 rgb(0 0 0 / 20%), 0 -4px 12px 0 rgb(0 0 0 / 20%);
+}
+nav svg, .menu-button svg {
+    fill:var(--lite-nav-color-text);
+}
+svg {
+    fill:var(--lite-color-text);
+}
+nav a, footer a {
+    color: var(--lite-nav-color-text);
+}
+a {
+    color: var(--lite-color--accent);
+    text-decoration: none;
+}
+main h1, main h2, main h3 {
+    color: var(--lite-color--primary);
+}
+code:not([class*=language-]), pre:not([class*=language-]) {
+    color: var(--lite-color--code);
+}
+.accent {
+    color: var(--lite-color--accent);
+    fill: var(--lite-color--accent);
+}
+.primary {
+    color: var(--lite-color--primary);
+    fill: var(--lite-color--primary);
+}
+.background {
+    background-color: var(--lite-color);
+}
+.input-container input,  input {
+  color: var(--lite-color-text);
+  border-bottom-color: var(--lite-color--primary);
+}
+.input-container input:valid,  input:valid {
+  border-bottom-color: var(--lite-color--primary)!important;
+}
+
+[type=radio]:checked::before,
+
+[type=checkbox]:checked::before {
+    background-color: var(--lite-color--accent);
+}
+
+[type=radio],
+
+[type=checkbox] {
+    border-color: var(--lite-color--primary);
+}
+
+button {
+    color: var(--lite-color-text);
+    fill: var(--lite-color-text);
+}
+
+/*========================*\
+      Theme 'dark'
+\*========================*/
+
+body.theme-dark {
+    background-color: var(--dark-color);
+    color: var(--dark-color-text);
+    font-weight: var(--dark-font--weigth);
+}
+.theme-dark nav, .theme-dark footer {
+    background-color: var(--dark-nav-color);
+    color: var(--dark-nav-color-text);
+    fill: var(--dark-nav-color-text);
+    box-shadow: 0 4px 6px 0 rgb(0 0 0 / 20%), 0 -4px 12px 0 rgb(0 0 0 / 20%);
+}
+.theme-dark nav svg, .theme-dark .menu-button svg {
+    fill:var(--dark-nav-color-text);
+}
+.theme-dark svg {
+    fill:var(--dark-color-text);
+}
+.theme-dark nav a, .theme-dark footer a {
+    color: var(--dark-nav-color-text);
+}
+.theme-dark a {
+    color: var(--dark-color--accent);
+    text-decoration: none;
+}
+.theme-dark main h1, .theme-dark main h2, .theme-dark main h3 {
+    color: var(--dark-color--primary);
+}
+.theme-dark code:not([class*=language-]), .theme-dark pre:not([class*=language-]) {
+    color: var(--dark-color--code);
+}
+.theme-dark .accent {
+    color: var(--dark-color--accent);
+    fill: var(--dark-color--accent);
+}
+.theme-dark .primary {
+    color: var(--dark-color--primary);
+    fill: var(--dark-color--primary);
+}
+.theme-dark .background {
+    background-color: var(--dark-color);
+}
+.theme-dark .input-container input, .theme-dark  input {
+  color: var(--dark-color-text);
+  border-bottom-color: var(--dark-color--primary);
+}
+.theme-dark .input-container input:valid, .theme-dark  input:valid {
+  border-bottom-color: var(--dark-color--primary)!important;
+}
+.theme-dark 
+[type=radio]:checked::before,
+.theme-dark 
+[type=checkbox]:checked::before {
+    background-color: var(--dark-color--accent);
+}
+.theme-dark 
+[type=radio],
+.theme-dark 
+[type=checkbox] {
+    border-color: var(--dark-color--primary);
+}
+.theme-dark 
+button {
+    color: var(--dark-color-text);
+    fill: var(--dark-color-text);
+}
+
+/*
+---------------------------------
+ */
+
+.theme-toggle[type=checkbox] {
+    margin: 0;
+    --size: 32px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: var(--size)!important;
+    height: var(--size)!important;
+    box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+    border-radius: var(--size);
+    transition: all 500ms;
+    color: var(--lite-nav-color-text);
+}
+.theme-toggle[type=checkbox]:checked {
+    --ray-size: calc(var(--size) * -0.4);
+    --offset-orthogonal: calc(var(--size) * 0.65);
+    --offset-diagonal: calc(var(--size) * 0.45);
+    transform: scale(0.75);
+    box-shadow: inset 0 0 0 var(--size),
+    calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),
+    var(--offset-orthogonal) 0 0 var(--ray-size),
+    0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size),
+    0 var(--offset-orthogonal) 0 var(--ray-size),
+    calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size),
+    var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size),
+    calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size),
+    var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
+    color: var(--dark-nav-color-text);
+    background-color: transparent!important;
+}
+.theme-toggle[type=checkbox]:checked::before {
+    background-color: transparent!important;
+}
+
+/* ----- MENU OVERLAY COMPONENT ----- */
+[z-load*="/components/menu-overlay"] .circle-button {
+    border: solid 1px var(--lite-color);
+    background-color: var(--lite-nav-color)!important;
+    fill: var(--lite-nav-color-text)!important;
+}
+[z-load*="/components/menu-overlay"] .circle-button .material-icons {
+    color: var(--lite-nav-color-text);
+}
+.theme-dark [z-load*="/components/menu-overlay"] .circle-button .material-icons {
+    color: var(--dark-nav-color-text);
+}
+.theme-dark [z-load*="/components/menu-overlay"] .circle-button {
+    border: solid 1px var(--dark-color);
+    background-color: var(--dark-nav-color)!important;
+    fill: var(--dark-nav-color-text)!important;
+}
+.theme-dark [z-load*="/components/menu-overlay"] div[z-field="menu_overlay"] {
+    background: radial-gradient(circle at bottom, black, #000000dd, #00000077, transparent)!important;
+}</style><!-- zUIx.js inline resources bundle --><script src="index.bundle.js"></script><body layout="column stretch-center" ctrl="" z-load="@lib/controllers/header-auto-hide" data-o-header="header-bar" z-lazy="scroll"><nav layout="row top-center" #header-bar=""><div self="size-large stretch" layout="row center-center" style="gap: 8px;"><!-- BACK TO POST LIST --> <a class="icon-button" aria-label="Back to post list" href=".." style="width: 48px"><svg height="48px" viewBox="0 0 24 24" width="48px"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg></a><div self="size-x1"><h1 class="title">glabs.it</h1><div class="subtitle">Authoring reusable and portable Web Components</div></div><a class="icon-button" href="/search"><svg width="48px" height="48px" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></a><div style="padding-top: 4px; padding-right: 4px"><input class="theme-toggle" type="checkbox" aria-label="Toggle theme" checked></div></div></nav><main self="size-large"><div self="size-large" style="position: relative;width: 100%;;display: block"><img class="image-cover" src="/content/posts/images/creativity_free_from_chains-preview.jpg" alt="Cover image preview" style="position: absolute;display: block"> <img class="image-cover" src="/content/posts/images/creativity_free_from_chains.jpg" alt="Cover image" style="position: relative;display: block; z-index: 1"></div><h1>Authoring reusable and portable Web Components</h1><div class="author">by <em>Gene</em> — posted on 19 May 2023</div><p>This article describes how to create a reusable and portable <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components">Web Component</a>.<p>The term <em>reusable</em> implies that such component can be reused in multiple websites or applications without creating any copy of it; hence we are just downloading the component resources at their origin and adding it directly to the page or bundle.<p>The term <em>portable</em> implies that such a component is not tied to any particular framework or technology other than the web platform itself, as far as possible.<p>As an example, we'll start with a fully working component and see how it has been implemented.<p>The component is a <strong>Playground</strong> for creating Web Components, and it features embedded <code>.html</code> / <code>.css</code> / <code>.js</code> files editor with parsing and runtime error reporting, a live preview of the edited component, and an option to download it as a zip archive containing the view + style + controller files that can be then imported into any web page. This <em>playground</em> can also be used to create other portable web components.<p>You can see it in action here &gt;&gt; <a href="https://zuixjs.org/playground/#/app/widgets/analog-clock">⚽ Playground</a><p>But before that, let's see a brief list of the challenges behind such an implementation.<h2>A component is reusable and portable when:</h2><ul><li>it can be added to any page by just importing a <em>module</em> (dynamically as well)<li>does not require the developer to install additional files or dependencies other than the imported module (or none at all if components can be declared inline)<li>it won't mess up with existing page styles and can optionally inherit them selectively<li>it offers a standard way for interoperating with other components and scripts<li>should let the developer provide an alternative HTML-static presentation where JavaScript is disabled<li>does not add any complexity, like additional scripts for implementing a certain functionality, unless the user accesses that particular functionality (fine-grained resource allocation)<li>component files and related resources must not require any server-side code to function; otherwise, it won't be that portable <sup>(*)</sup></ul><p>and also, preferably:<ul><li>does not load any resources (e.g. styles, images) and does not start any script or inner components until the user visualize the component itself<li>should not force the developer to learn and adopt additional abstractions or dialects that are not strictly required and that could be implemented anyway with the standard Web APIs in a more performant way</ul><div style="padding-left:12px;padding-right:12px"><small><strong>(*)</strong> If the component requires a backend (e.g., a login form) it can just implement a generic API that can be then provided by any server technology / backend / transport, though it should not be using any server-side functionality at all if the required functionality can be implemented otherwise on the client-side (e.g., the download <em>zip archive</em> feature of the <em>Playground</em> component described later).<br>This approach, besides reducing network traffic, also naturally preserves users privacy by keeping the information exchange between the user's client and online servers to a minimum.</small></div><h2>How can all of this be achieved?</h2><p>Well, I'd like to say that the state of the art of web technologies is that the web is already designed for this, but that's not the case, and there are still some features lacking on the web platform.<p>Standards proceed very slowly, it's a delicate matter that takes time, but in the meantime, the web development scene got overwhelmed with bundlers, package managers, and frameworks with fancy and sometimes scary abstractions, not to mention continuous breaking changes that do not certainly make a developer happy.<p>Anyway, back to the missing web features, just to mention some, though it's already possible to dynamically import <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import">JavaScript</a> modules and <a href="https://web.dev/css-module-scripts/">CSS</a> files (not for all browsers), it's not yet possible to <strong>load a document fragment or template from a <code>.html</code> file</strong>.<p>So the <code>CSS</code> and <code>HTML</code> code must be generated from the Web Component class too, or as a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">template</a> in the same HTML document hosting the component.<p>In my opinion, this is kind of a limitation if we think of a reusable component, since all reusable parts get mixed with other elements.<p>We can get around these limitations using some utility libraries; there are a few, and here I am using a library I wrote that, among other things, can dynamically load the component view and style from separate files (<code>.html</code>, <code>.css</code>), though it's not the library that's the focus of this article but rather the common pitfalls a developer might encounter in writing a portable component.<h2>Implementation</h2><p>So, let's now discover how this can be implemented, using as an example the web components' <em>Playground</em> described at the beginning of this article.<p>The first implementation step is to determine what resources the component requires in order to implement its functionality. With "resources", I mean any additional scripts, libraries, modules, or styles.<p>Some of these resources will be required to be available <em>before the component starts</em> its main business logic; otherwise, there might be runtime errors due to premature access to objects that are not instantiated yet. I'll call these <em>core resources</em>.<p>Specifically, the <em>Playground</em> component requires the following before it can start:<ul><li><a href="https://microsoft.github.io/monaco-editor/">Monaco Editor</a><br>The code editor used for inline editing of HTML / CSS / JS<li><a href="https://zuixjs.org/js/zuix/zx-context.module.js">zx-context.module.js</a><br>A custom element that can dynamically load and unload components and that is used to preview in real-time the edited component<li><a href="https://getmdl.io/">Material Design Lite</a> (inherited)<br>Material Design button and menu modules, just to have some nice UI elements</ul><h3>Loading core resources</h3><p>The web platform already offers a way for dynamically loading ES modules via the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import">dynamic import(..)</a>, so we can use that for loading the MDL button, MDL menu, and the <em>zx-context</em> modules.<p>But there's no web API for loading regular scripts or libraries other than using the <code>&lt;script src=".."&gt;&lt;/script&gt;</code> tag, which can also be implemented programmatically. There are plenty of articles about that, but here I'll be adopting the <a href="https://zuixjs.org/pages/documentation/api/zuix/Zuix/#using"><code>zuix.using(..)</code></a> utility method that was implemented to get around this issue.<p>This method, besides regular scripts, can also dynamically load styles and singleton components, and it has a built-in caching mechanism.<p>In the <em>Playground</em> component, this is used for <em>Monaco Editor</em> (I was not able to load it with a dynamic import) and with two other libraries that are not available as ES modules.<h3>Synchronization and interoperability</h3><p>Since components and resources are loaded asynchronously, some additional checks must be implemented to ensure that a component is ready before we can get a reference to its element and also use any public method or property that the underlying class implements.<p>So, in the case of a vanilla JS implementation, the component class can be implemented in a <code>.js</code> module along with the HTML and CSS code:<p><strong>File: test-component.js</strong> (pseudo-code)<pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">TestComponent</span> <span class="token keyword">extends</span> <span class="token class-name">HTMLElement</span> <span class="token punctuation">{</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> shadow <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">attachShadow</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">'closed'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// component implementation ..</span>
+    <span class="token comment">// ...</span>
+    <span class="token comment">// add component style and view</span>
+    shadow<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>style<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    shadow<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>view<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//...</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">testMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">loadCoreResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// dynamic imports ...</span>
+    <span class="token comment">// ... then ... then ...</span>
+    <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">loadCoreResources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// all core resources have been loaded, finally</span>
+  <span class="token comment">// define custom element associated to this component</span>
+  customElements
+    <span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'test-component'</span><span class="token punctuation">,</span> TestComponent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>Of course, when loading core resources, all paths must be absolute in order to ensure that the component is also <em>reusable</em> and thus loadable from any server other than the one hosting the component itself.<p>So, the component's module above takes care of loading all <em>core resources</em> before <a href="https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define">defining the custom element</a> associated with its class, and on the other end, the consumer can use the <code>customElements.whenDefined</code> method to ensure the component is ready before accessing any of its functionality:<pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- the module is loaded asynchronously --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">async</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>test-component.js<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- the custom element of the component --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>test-component</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>my-component<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>test-component</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token comment">// ensure component is ready before using it</span>
+    <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> wc <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#my-component'</span><span class="token punctuation">)</span>
+<span class="token comment">//        wc.testMethod(); // &lt;-- this would throw an exception</span>
+        <span class="token comment">// ...the component module and its core resources</span>
+        <span class="token comment">// get asynchronously imported at some point...</span>
+        <span class="token keyword">await</span> customElements<span class="token punctuation">.</span><span class="token function">whenDefined</span><span class="token punctuation">(</span><span class="token string">'test-component'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// Component is ready and can be safely used now</span>
+        wc<span class="token punctuation">.</span><span class="token function">testMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre><p><strong>A brief note on actual implementation</strong><p>In the actual implementation of the <em>Playground</em> component, which makes use of <em>zuix.js</em>, the component extends <a href="https://zuixjs.org/pages/documentation/controller/#Implementation"><code>ControllerInstance</code></a>, a base class that implements common lifecycle patterns of a component and that already addresses all common pitfalls of component development.<p>In particular, inside the <a href="https://zuixjs.org/pages/documentation/controller/#onInit"><code>onInit</code></a> lifecycle callback, it overrides the <a href="https://zuixjs.org/pages/documentation/active_refresh/#default_ready_handler"><code>ready</code></a> handler and uses a state variable to signal when all core resources have been loaded.<p><strong>File: zx-playground.js</strong> (excerpt)<pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">ZxPlayground</span> <span class="token keyword">extends</span> <span class="token class-name">ControllerInstance</span> <span class="token punctuation">{</span>
+ 
+  <span class="token comment">// ...</span>
+ 
+  <span class="token function">onInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    
+    <span class="token comment">// this state variable is decremented</span>
+    <span class="token comment">// after each core resource has been loaded</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>waitingResources <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// override the default "ready" handler in order to wait for</span>
+    <span class="token comment">// resources to be loaded before starting the component</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">declare</span><span class="token punctuation">(</span><span class="token string">'ready'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>waitingResources <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//...</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span></code></pre><p>Nothing else has to be done, and the consumer can then use the <code>zuix.context(..)</code> method from JS code or the <code>z-using</code> attribute in the HTML code in order to guarantee safe and automatic synchronization of interoperating components.<p>For instance, consider the case where we have a Material Design button that, when clicked, opens up a <a href="https://zuixjs.github.io/zkit/content/components/context-menu/">Context Menu</a> component. Both components are loaded asynchronously.<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span> <span class="token attr-name">z-using</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>my-menu<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mdl-button</span> <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>myMenu.show()<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    Open menu
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mdl-button</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>context-menu</span> <span class="token attr-name">z-context</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>my-menu<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">#menu</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">&gt;</span></span>Option 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">&gt;</span></span>Option 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">&gt;</span></span>Option 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+  
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>context-menu</span><span class="token punctuation">&gt;</span></span></code></pre><p>The <code>z-using</code> attribute will create a new scripting scope out of a simple HTML tag in the page (the <code>main</code> tag in this case, but it could have been a simple <code>div</code> also).<p>So the button <code>(click)</code> event handler code (as for any script eventually defined inside that scope) will not be executed until the <code>context-menu</code> component is ready.<p>Furthermore, any component specified in the <code>z-using</code> tag is automatically available as a variable in that scripting scope, with the name converted to <a href="https://en.wikipedia.org/wiki/Camel_case">Camel case</a> (so <code>my-menu</code> becomes <code>myMenu</code>):<p class="codepen" data-height="421" data-theme-id="dark" data-default-tab="result" data-slug-hash="RwQepbV" data-user="genielabs" style="height: 421px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"><span>See the Pen <a href="https://codepen.io/genielabs/pen/RwQepbV">Gesture Helper</a> by g-labs (<a href="https://codepen.io/genielabs">@genielabs</a>) on <a href="https://codepen.io">CodePen</a>.</span><p>As shown in the example above, there's no need to implement any "<code>then</code>" logic to determine when all components are ready.<p>With this approach, nearly anything on the page could be loaded asynchronously without worrying about synchronization between components. <strong>It's all automagic</strong>.<p>And this is really something I would also like to see implemented in the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components">Web Components API</a> some day. Scripts that run only in a given context (I called these, maybe improperly, <a href="https://zuixjs.org/pages/documentation/active_refresh/#scoped_scripts">"scoped scripts"</a>), and a mechanism to synchronize and use components without writing any code other than simple handlers.</p><!--
+<std-playground id="test"></std-playground>
+<script async src="./examples/test.module.js" type="module"></script>
+<script>
+async function start() {
+const wc = document.querySelector('#test')
+//        wc.testMethod(); // <-- this would throw an exception
+// the component module gets dynamically
+// imported at some point...
+await customElements.whenDefined('std-playground');
+// component is ready and can be safely used now
+wc.testMethod();
+}
+start();
+</script>
+--><h3>Deferred resource loading</h3><p>Besides the <em>core resources</em>, a component might require other resources to be loaded at some point when the user accesses certain functionality.<p>Following this design pattern, we are ensuring that unnecessary data and resources do not weigh on the initial component payload. A service worker can eventually be employed to prefetch and cache all other component files in the background.<p>The <em>Playground</em> component also requires the following additional resources:<ul><li><p>When a runtime error occurs in the edited component<ul><li><a href="https://www.stacktracejs.com/#!/docs/error-stack-parser">ErrorStackParser</a></ul><li><p>When the user clicks on the "download" option<ul><li><a href="https://stuk.github.io/jszip/">JSZip</a><li>Blob saver (shipped with <em>zuix.js bundler</em>)</ul></ul><p>We can use <em>dynamic import</em> and the <em>zuix.using(..)</em> methods like before, but in this case only when that particular functionality is being used for the first time.<p>So, when an error occurs, the following method will be called:<p><strong>File: zx-playground.js</strong> (excerpt)<pre class="language-js"><code class="language-js"><span class="token function">setError</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  zuix<span class="token punctuation">.</span><span class="token function">using</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>_paths<span class="token punctuation">.</span>errorParser<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">dist/error-stack-parser.min.js</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> frames <span class="token operator">=</span> self<span class="token punctuation">.</span>ErrorStackParser<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> errorFrame <span class="token operator">=</span> frames<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// &lt;-- TODO: find by 'fileName'</span>
+    errorFrame<span class="token punctuation">.</span>lineNumber <span class="token operator">-=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// adjust source line</span>
+    <span class="token comment">// set error</span>
+    <span class="token keyword">const</span> error <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">startLineNumber</span><span class="token operator">:</span> errorFrame<span class="token punctuation">.</span>lineNumber<span class="token punctuation">,</span>
+      <span class="token literal-property property">startColumn</span><span class="token operator">:</span> errorFrame<span class="token punctuation">.</span>columnNumber<span class="token punctuation">,</span>
+      <span class="token literal-property property">endLineNumber</span><span class="token operator">:</span> errorFrame<span class="token punctuation">.</span>lineNumber<span class="token punctuation">,</span>
+      <span class="token literal-property property">endColumn</span><span class="token operator">:</span> errorFrame<span class="token punctuation">.</span>columnNumber<span class="token punctuation">,</span>
+      <span class="token literal-property property">message</span><span class="token operator">:</span> err<span class="token punctuation">.</span>message<span class="token punctuation">,</span>
+      <span class="token literal-property property">severity</span><span class="token operator">:</span> monaco<span class="token punctuation">.</span>MarkerSeverity<span class="token punctuation">.</span>Error
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> model <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_editorJs<span class="token punctuation">.</span><span class="token function">getModel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    monaco<span class="token punctuation">.</span>editor<span class="token punctuation">.</span><span class="token function">setModelMarkers</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> <span class="token string">'service'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>error<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// check for other errors (view scripting scope)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">checkErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre><p>and when the user clicks on the <em>download</em> option, the following code is used to zip the component files and then save the resulting archive to the client. This all will happens on the client side; no server-side code is used.<p><strong>File: zx-playground.js</strong> (excerpt)<pre class="language-js"><code class="language-js">zuix<span class="token punctuation">.</span><span class="token function">using</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">,</span> <span class="token string">'@cdnjs/jszip/3.10.1/jszip.min.js'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> zip <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JSZip</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  zip<span class="token punctuation">.</span><span class="token function">file</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>componentName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.html</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>componentData<span class="token punctuation">.</span>html<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  zip<span class="token punctuation">.</span><span class="token function">file</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>componentName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.css</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>componentData<span class="token punctuation">.</span>css<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  zip<span class="token punctuation">.</span><span class="token function">file</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>componentName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.js</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>componentData<span class="token punctuation">.</span>js<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// ...</span>
+  zip<span class="token punctuation">.</span><span class="token function">generateAsync</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'blob'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">content</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      zuix<span class="token punctuation">.</span><span class="token function">using</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">,</span> <span class="token string">'https://zuixjs.github.io/zuix/js/zuix-bundler.min.js'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        zuix<span class="token punctuation">.</span><span class="token function">saveBlob</span><span class="token punctuation">(</span>content<span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>componentName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.zip</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>Even if it's not implemented in this example, a state variable could be employed to provide visual feedback and let the user know that a resource is being downloaded. Anyway, if a service worker already cached those files, this might not be necessary at all.<h2>Final considerations</h2><p>So, today, the Web Platform almost offers all it takes to implement a reusable and portable web component, maybe sometimes with the help of some library that brings some particular functionality the component requires, rather than a whole framework of which we will be using only 1% of the features. In most cases, we can do without any framework, bundler, or package manager.<p>And this is also the path to a free web and to freeing us developers and users from the chains of proprietary technologies that only add complexity and aim to captivate developers with courses, seminars, and social media brainwashing, and all of this is not always because they want a better web. Some of them only want to create and grow their business and dominance, even if their product offers no real value other than for their own pockets.<p>Therefore, it is advisable to first check if a component can be implemented without requiring the adoption of any third-party technology that might make a project less reuseable and cause a waste of time and effort.<p>With this in mind, I also created <a href="https://zuixjs.github.io/zkit/">zKit</a>, which has been around for 7 years and never had a single breaking change, while in the meantime I've also been using frameworks for other projects.<br>And in my experience using these frameworks, I can say it's not a good time at all whenever you have to upgrade dependencies because of "security vulnerabilities" (which mainly affect the development dependencies) and because of ongoing framework breaking changes that force a developer to rewrite many parts of the code when some dependencies are not upgradable to the latest framework version.<p>Of course, this is just my two pence worth about reusable and portable web components, and I'm just a developer like many others who hope for a better web.<p>Happy reuseable and portable web component authoring =)<p><a href="https://zuixjs.org/playground/#/app/widgets/analog-clock">Try out the Playground component</a></p><!--
+
+## Playground component in action
+
+
+
+
+
+
+```html
+<script async type="module">
+  import "https://zuixjs.github.io/zkit/lib/1.2/components/zx-playground.module.js";
+</script>
+<zx-playground :menu-items="[
+  {link: '#https://zuixjs.org/app/examples/new-component', description: 'Hello World'},
+  {link: '#https://zuixjs.org/app/widgets/analog-clock', description: 'Analog Clock'}
+]"></zx-playground>
+
+```
+
+### Result
+
+<script async type="module">
+  import "https://zuixjs.github.io/zkit/lib/1.2/components/zx-playground.module.js";
+</script>
+<zx-playground :menu-items="[
+  {link: '#https://zuixjs.org/app/examples/new-component', description: 'Hello World'},
+  {link: '#https://zuixjs.org/app/widgets/analog-clock', description: 'Analog Clock'}
+]"></zx-playground>
+
+
+--></main><div self="size-large" layout="rows center-spread" class="page-navigation"><a href="/content/posts/adding-gesture-based-interaction-to-your-site/" style="text-align: center;"><div layout="row center-center" class="navigation-direction"><svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg> <span style="padding-right: 24px">Previous</span></div><div class="navigation-title">Adding gesture-based interaction to your website</div></a><div>&nbsp;</div></div><style>.page-navigation {
+            margin-top: 40px;
+            gap:12px;
+            margin-bottom: 80px;
+            padding-left: 8px;
+            padding-right: 8px;
+            font-size: 140%
+        }
+        .navigation-direction {
+            gap: 8px;
+            color: var(--lite-color--primary);
+            fill: var(--lite-color--primary);
+        }
+        .theme-dark .navigation-direction {
+            color: var(--dark-color--primary);
+            fill: var(--dark-color--primary);
+        }
+        .navigation-title {
+            color: var(--lite-color-text);
+            margin: 8px;
+            font-size: 70%;
+            max-width: 80vw;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .theme-dark .navigation-title {
+            color: var(--dark-color-text);
+        }</style><footer #footer="" layout="column bottom-center" style="min-height: 200px;" z-component="fragment" footer=""><div -self="size-large center" layout="row center-stretch" style="opacity: 0.7" footer=""><div style="height: 8px; background: #000000" footer=""></div><div style="height: 8px; background: #ffffff" footer=""></div><div style="height: 8px; background: #a8734a" footer=""></div><div style="height: 8px; background: #e9b287" footer=""></div><div style="height: 8px; background: #772D26" footer=""></div><div style="height: 8px; background: #b66862" footer=""></div><div style="height: 8px; background: #85d4dc" footer=""></div><div style="height: 8px; background: #cfffff" footer=""></div><div style="height: 8px; background: #a85fb4" footer=""></div><div style="height: 8px; background: #e99df5" footer=""></div><div style="height: 8px; background: #559e4a" footer=""></div><div style="height: 8px; background: #92df87" footer=""></div><div style="height: 8px; background: #42348b" footer=""></div><div style="height: 8px; background: #7e70ca" footer=""></div><div style="height: 8px; background: #bdcc71" footer=""></div><div style="height: 8px; background: #ffffb0" footer=""></div></div><div self="size-large" layout="rows top-justify" footer=""><section footer=""><div footer=""><strong footer="">glabs.it</strong></div><ul footer=""><li footer=""><a href="/" footer="">Home</a><li footer=""><a href="/content/posts/" footer="">Posts</a><li footer=""><a href="/content/about/" footer="">About</a></ul></section><section footer=""><div footer=""><strong footer="">Latest posts</strong></div><ul footer=""><li footer=""><a href="/content/posts/portable-web-components/" footer="">Authoring reusable and portable Web Components</a><li footer=""><a href="/content/posts/adding-gesture-based-interaction-to-your-site/" footer="">Adding gesture-based interaction to your website</a><li footer=""><a href="/content/posts/netflix-clone-web-app-template/" footer="">Netflix clone web app template (PWA)</a><li footer=""><a href="/content/posts/ready-to-use-progressive-web-app-template/" footer="">Ready to use Progressive Web App template</a></ul></section><section footer=""><div footer=""><strong footer="">Links</strong></div><ul footer=""><li footer=""><a href="https://zuixjs.org" footer="">zuix.js docs</a><li footer=""><a href="https://zuixjs.github.io/zkit" footer="">zKit components</a><li footer=""><a href="https://genielabs.github.io/HomeGenie" footer="">HomeGenie</a><li footer=""><a rel="me" href="https://mastodon.uno/@jayjean" footer=""></a></ul></section></div><div self="size-large" layout="row sm-column center-spread" style="padding: 12px;" footer=""><div self="left" footer=""><a href="/feed/rss.xml" layout="row center-left" style="gap: 8px" footer=""><img src="/images/rss-feed.png" width="24" height="24" alt="RSS feed logo" footer=""> <strong footer="">RSS feed</strong></a></div><div self="right" footer="">powered by <a href="https://zuixjs.github.io/zkit" footer=""><strong footer="">zKit</strong></a> and <a href="https://zuixjs.org" footer=""><strong footer="">zuix⚡js</strong></a></div></div></footer><style>[z-component][footer]
+ul {
+        margin: 12px 0 0;        padding: 0;        font-size: 90%;    }
+
+[z-component][footer]
+li {
+        display: flex;        flex-direction: column;        align-items: flex-start;        align-content: center;        list-style: none;        vertical-align: middle;    }</style><div z-load="@lib/components/menu-overlay" z-context="menu-overlay" data-o-position="center" data-o-before="footer"><div #items=""><code>-~=(glabs.it)=~-</code> <a href="/">Home</a> | <a href="/content/posts/">Posts</a> | <a href="/content/about/">About</a> |</div></div><!-- Built with love using zUIx Web Starter --><script>"localhost"!==location.hostname&&"127.0.0.1"!==location.hostname&&(!function(a,e,t,n,o,c){a.GoogleAnalyticsObject=n,a.ga=a.ga||function(){(a.ga.q=a.ga.q||[]).push(arguments)},a.ga.l=+new Date,o=e.createElement(t),c=e.getElementsByTagName(t)[0],o.async=1,o.src="https://www.google-analytics.com/analytics.js",c.parentNode.insertBefore(o,c)}(window,document,"script","ga"),ga("create","UA-92522504-1","auto"),ga("send","pageview"))</script><script>function initPage(){zuix.lazyLoad(!0);{const o=zuix.$(document.body),n=o.find(".theme-toggle"),r="theme-dark",a="app.theme",c={transition:"color 300ms ease-in, background-color 300ms ease-in"};function e(e){var t=e?n.checked():"true"===localStorage.getItem(a);e||n.checked(t),t?o.addClass(r):o.removeClass(r),document.documentElement.style.setProperty("color-scheme",t?"dark":"light"),localStorage.setItem(a,String(t))}setTimeout(function(){o.css(c),o.find("header").css(c),o.find("nav").css(c),o.find("footer").css(c)},100),n.on("change",e),e()}function t(e){zuix.$(e).find('a[href*="://"]:not([rel="me"])').attr("target","_blank").attr("rel","noreferrer")}zuix.hook("view:process",function(e){t(e)}),t(document)}initPage()</script><!-- zUIx.js inline resources bundle --><script src="index.bundle.ext.js"></script>

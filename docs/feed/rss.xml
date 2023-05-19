@@ -7,8 +7,8 @@
     <description></description>
     <language>en</language>
     <copyright></copyright>
-    <lastBuildDate>Sun, 14 May 2023 18:03:07 +0200</lastBuildDate>
-    <pubDate>Sun, 14 May 2023 18:03:07 +0200</pubDate>
+    <lastBuildDate>Fri, 19 May 2023 21:20:36 +0200</lastBuildDate>
+    <pubDate>Fri, 19 May 2023 21:20:36 +0200</pubDate>
     <image>
         <title>glabs.it</title>
         <url>https://glabs.it//images/icons/icon-152x152.png</url>
@@ -135,8 +135,8 @@
         <title>About</title>
         <link>https://glabs.it//content/about/</link>
         <guid isPermaLink="true">https://glabs.it//content/about/</guid>
-        <description>About me</description>
-        <pubDate>Sun, 14 May 2023 18:03:07 +0200</pubDate>
+        <description>About Generoso Martello and G-Labs</description>
+        <pubDate>Fri, 19 May 2023 21:20:36 +0200</pubDate>
         <atom:link href="https://glabs.it//content/about/" rel="self" />
         <dc:creator></dc:creator>
     </item>
@@ -145,7 +145,7 @@
         <link>https://glabs.it//</link>
         <guid isPermaLink="true">https://glabs.it//</guid>
         <description>the open source factory</description>
-        <pubDate>Sun, 14 May 2023 18:03:07 +0200</pubDate>
+        <pubDate>Fri, 19 May 2023 21:20:36 +0200</pubDate>
         <atom:link href="https://glabs.it//" rel="self" />
         <dc:creator></dc:creator>
     </item>
@@ -154,7 +154,7 @@
         <link>https://glabs.it//search/</link>
         <guid isPermaLink="true">https://glabs.it//search/</guid>
         <description>Search this website</description>
-        <pubDate>Sun, 14 May 2023 18:03:07 +0200</pubDate>
+        <pubDate>Fri, 19 May 2023 21:20:36 +0200</pubDate>
         <atom:link href="https://glabs.it//search/" rel="self" />
         <dc:creator></dc:creator>
     </item>
@@ -163,9 +163,22 @@
         <link>https://glabs.it//content/posts/</link>
         <guid isPermaLink="true">https://glabs.it//content/posts/</guid>
         <description>No description provided.</description>
-        <pubDate>Sun, 14 May 2023 18:03:07 +0200</pubDate>
+        <pubDate>Fri, 19 May 2023 21:20:36 +0200</pubDate>
         <atom:link href="https://glabs.it//content/posts/" rel="self" />
         <dc:creator></dc:creator>
+    </item>
+    <item>
+        <title>Authoring reusable and portable Web Components</title>
+        <link>https://glabs.it//content/posts/portable-web-components/</link>
+        <guid isPermaLink="true">https://glabs.it//content/posts/portable-web-components/</guid>
+        <description>Common pitfalls and tips about creating reusable and portable Web Components.</description>
+        <pubDate>Fri, 19 May 2023 02:00:00 +0200</pubDate>
+        <atom:link href="https://glabs.it//content/posts/portable-web-components/" rel="self" />
+        <dc:creator>Gene</dc:creator><!-- TODO: resolve cover image url either local or on a different site -->
+        <media:content medium="image" width="300" height="125"
+                       url="https://glabs.it//content/posts/portable-web-components//content/posts/images/creativity_free_from_chains-preview.jpg" />
+        <media:credit></media:credit>
+        <media:description></media:description>
     </item>
 </channel>
 </rss>
