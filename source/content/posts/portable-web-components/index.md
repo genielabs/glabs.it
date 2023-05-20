@@ -413,7 +413,7 @@ is not always because they want a better web. Some of them only want to create a
 even if their product offers no real value other than for their own pockets.
 
 Therefore, it is advisable to first check if a component can be implemented without requiring the adoption of any
-third-party technology that might make a project less reuseable and cause a waste of time and effort.
+third-party technology that might make a project less reusable and cause a waste of time and effort.
 
 
 With this in mind, I also created [zKit](https://zuixjs.github.io/zkit/), which has been around for 7 years and never
@@ -428,7 +428,7 @@ latest framework version.
 Of course, this is just my two pence worth about reusable and portable web components, and I'm just a developer like
 many others who hope for a better web.
 
-Happy reuseable and portable web component authoring =)
+Happy reusable and portable web component authoring =)
 
 
 [Try out the Playground component](https://zuixjs.org/playground/#/app/widgets/analog-clock)
