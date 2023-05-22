@@ -80,8 +80,7 @@
         "@hgui": "https://genielabs.github.io/homegenie-web-ui/app/",
         "@cdnjs": "https://cdnjs.cloudflare.com/ajax/libs/"
       },
-      "siteMapUrl": "https://glabs.it{{ app.baseUrl }}",
-      "googleSiteId": "UA-92522504-1"
+      "siteMapUrl": "https://glabs.it{{ app.baseUrl }}"
     }
   }
 }

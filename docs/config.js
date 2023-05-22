@@ -12,7 +12,7 @@
       "@cdnjs": "https://cdnjs.cloudflare.com/ajax/libs/"
     },
     "siteMapUrl": "https://glabs.it/",
-    "googleSiteId": "UA-92522504-1"
+    "googleSiteId": null
   });
   // Check that service workers are registered
   if ('serviceWorker' in navigator) {
