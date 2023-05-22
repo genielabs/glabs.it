@@ -16,30 +16,32 @@ keywords:
 - post
 ---
 
-This article describes how to create a reusable and portable [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components).
+When a [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components) can be considered reusable and portable?
 
-The term *reusable* implies that such component can be reused in multiple websites or applications without
-creating any copy of it; hence we are just downloading the component resources at their origin and adding it
-directly to the page or bundle.
+The term **reusable** implies that such component can be reused in multiple websites or applications without
+creating any copy of it; hence we are just fetching the component resources at their origin and adding them
+directly to the page or to a bundle.
 
-The term *portable* implies that such a component is not tied to any particular framework or technology other
+The term **portable** implies that such a component is not tied to any particular framework or technology other
 than the web platform itself, as far as possible.
 
-As an example, we'll start with a fully working component and see how it has been implemented.
+As an example, I'll start with a fully working component and describe how it has been implemented.
 
-The component is a **Playground** for creating Web Components, and it features embedded
-`.html` / `.css` / `.js` files editor with parsing and runtime error reporting, a live preview of the edited component, and
-an option to download it as a zip archive containing the view + style + controller files that can be then imported into any
-web page. This *playground* can also be used to create other portable web components.
+The component is a **Playground** for creating *Web Components*, and it features:
+- embedded `.html` / `.css` / `.js` files editor
+- parsing and runtime error reporting
+- a live preview of the edited component
+- option to download the edited component as a zip archive containing the view, style, and controller files that can be
+then dynamically imported into any page
 
-You can see it in action here &gt;&gt; [⚽ Playground](https://zuixjs.org/playground/#/app/widgets/analog-clock)
+You can see it in action here &gt;&gt; [⚽ Playground](https://zuixjs.github.io/zkit/content/components/zx-playground/)
 
 But before that, let's see a brief list of the challenges behind such an implementation. 
 
 ## A component is reusable and portable when:
 
 - it can be added to any page by just importing a *module* (dynamically as well)
-- does not require the developer to install additional files or dependencies other than the imported module (or none at all if components can be declared inline)
+- does not require the developer to install additional files or dependencies other than the imported module
 - it won't mess up with existing page styles and can optionally inherit them selectively
 - it offers a standard way for interoperating with other components and scripts
 - should let the developer provide an alternative HTML-static presentation where JavaScript is disabled
@@ -108,7 +110,7 @@ its functionality. With "resources", I mean any additional scripts, libraries, m
 
 Some of these resources will be required to be available *before the component starts* its main business logic;
 otherwise, there might be runtime errors due to premature access to objects that are not instantiated yet.
-I'll call these *core resources*.
+I'll call these **core resources**.
 
 Specifically, the *Playground* component requires the following before it can start:
 
@@ -134,7 +136,7 @@ I'll be adopting the [`zuix.using(..)`](https://zuixjs.org/pages/documentation/a
 This method, besides regular scripts, can also dynamically load styles and singleton components, and it has a built-in caching
 mechanism.
 
-In the *Playground* component, this is used for *Monaco Editor* (I was not able to load it with a dynamic import) and with
+In the *Playground*, this is used for *Monaco Editor* (I was not able to load it with a dynamic import) and with
 two other libraries that are not available as ES modules.
 
 ### Synchronization and interoperability
@@ -219,9 +221,9 @@ is ready before accessing any of its functionality:
 
 **A brief note on actual implementation**
 
-In the actual implementation of the *Playground* component, which makes use of *zuix.js*, the component extends
+In the actual implementation of the *Playground*, which makes use of *zuix.js*, the component extends
 [`ControllerInstance`](https://zuixjs.org/pages/documentation/controller/#Implementation), a base class that implements
-common lifecycle patterns of a component and that already addresses all common pitfalls of component development.
+common lifecycle patterns of a component.
 
 In particular, inside the [`onInit`](https://zuixjs.org/pages/documentation/controller/#onInit) lifecycle callback, it overrides
 the [`ready`](https://zuixjs.org/pages/documentation/active_refresh/#default_ready_handler) handler and uses a state variable
@@ -277,14 +279,14 @@ For instance, consider the case where we have a Material Design button that, whe
 </context-menu>
 ```
 
-The `z-using` attribute will create a new scripting scope out of a simple HTML tag in the page (the `main` tag in this case,
+The `z-using` attribute will create a new scripting context out of a simple HTML tag in the page (the `main` tag in this case,
 but it could have been a simple `div` also).
 
-So the button `(click)` event handler code (as for any script eventually defined inside that scope) will not be executed until the `context-menu`
-component is ready.
+So the button `(click)` event handler code (as for any script eventually defined inside that context) will not be executed
+until the `my-menu` component is ready.
 
-Furthermore, any component specified in the `z-using` tag is automatically available as a variable in that
-scripting scope, with the name converted to [Camel case](https://en.wikipedia.org/wiki/Camel_case) (so `my-menu` becomes `myMenu`):
+Furthermore, any component specified inside the `z-using` tag is automatically available as a variable in that
+scripting context, with the name converted to [Camel case](https://en.wikipedia.org/wiki/Camel_case) (so `my-menu` becomes `myMenu`):
 
 
 <p class="codepen" data-height="421" data-theme-id="dark" data-default-tab="result" data-slug-hash="RwQepbV" data-user="genielabs" style="height: 421px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
@@ -354,7 +356,7 @@ So, when an error occurs, the following method will be called:
 **File: zx-playground.js** (excerpt)
 ```js
 setError(err) {
-  zuix.using('script', `${_paths.errorParser}dist/error-stack-parser.min.js`, () => {
+  zuix.using('script', `https://cdn.jsdelivr.net/npm/error-stack-parser@2.1.4/dist/error-stack-parser.min.js`, () => {
     const frames = self.ErrorStackParser.parse(err);
     const errorFrame = frames[0]; // <-- TODO: find by 'fileName'
     errorFrame.lineNumber -= 2; // adjust source line
@@ -376,7 +378,7 @@ setError(err) {
 ```
 
 and when the user clicks on the *download* option, the following code is used to zip the component files and then save
-the resulting archive to the client. This all will happens on the client side; no server-side code is used.
+the resulting archive to the client. This all will happen on the client side; **no server-side code** is used.
 
 **File: zx-playground.js** (excerpt)
 ```js
@@ -402,15 +404,17 @@ Anyway, if a service worker already cached those files, this might not be necess
 
 ## Final considerations
 
-So, today, the Web Platform almost offers all it takes to implement a reusable and portable web component, maybe
-sometimes with the help of some library that brings some particular functionality the component requires, rather than a
-whole framework of which we will be using only 1% of the features. In most cases, we can do without any framework, bundler,
-or package manager.
+So, today, the Web Platform almost offers all it takes to implement a reusable and portable web component,
+maybe sometimes with the help of some library that brings some particular functionality the component requires,
+rather than a whole framework of which it will be using only 1% of the features.  
+In most cases, it can be done without any framework, bundler, or package manager.
 
+<!--
 And this is also the path to a free web and to freeing us developers and users from the chains of proprietary technologies that only add
 complexity and aim to captivate developers with courses, seminars, and social media brainwashing, and all of this
 is not always because they want a better web. Some of them only want to create and grow their business and dominance,
 even if their product offers no real value other than for their own pockets.
+-->
 
 Therefore, it is advisable to first check if a component can be implemented without requiring the adoption of any
 third-party technology that might make a project less reusable and cause a waste of time and effort.
@@ -424,14 +428,12 @@ changes that force a developer to rewrite many parts of the code when some depen
 latest framework version.
 
 
-
 Of course, this is just my two pence worth about reusable and portable web components, and I'm just a developer like
 many others who hope for a better web.
 
 Happy reusable and portable web component authoring =)
 
-
-[Try out the Playground component](https://zuixjs.org/playground/#/app/widgets/analog-clock)
+[Try out the ⚽ Playground component](https://zuixjs.github.io/zkit/content/components/zx-playground/)
 
 <!--
 
