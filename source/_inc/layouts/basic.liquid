@@ -10,7 +10,7 @@
 {% endif %}
 <body layout="column stretch-center"
       ctrl z-load="@lib/controllers/header-auto-hide"
-      data-o-header="header-bar" z-lazy="scroll">
+      :header="'header-bar'" z-lazy="scroll">
 
 <nav layout="row top-center" #header-bar>
     <div self="size-{{ layout_size }} stretch" layout="row center-center" style="gap: 8px;">
@@ -85,7 +85,7 @@
 {% include "footer.liquid" %}
 
 <div z-load="@lib/components/menu-overlay" z-context="menu-overlay"
-     data-o-position="center" data-o-before="footer">
+     :position="'center'" :before="'footer'">
 
     <div #items>
         {% include './basic/menu-items.liquid' %}
