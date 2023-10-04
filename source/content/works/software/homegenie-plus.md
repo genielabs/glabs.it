@@ -6,7 +6,7 @@ tags:
 - software
 group: works
 order: 20
-title: HomeGenie+ (client)
+title: HomeGenie Panel
 description: Featured mobile client for HomeGenie server and other services. A control panel for your smart home/applications.
 link: https://play.google.com/store/apps/details?id=com.glabs.homegenieplus&hl=en_US&gl=US
 keywords:
@@ -20,7 +20,7 @@ keywords:
 permalink: false
 ---
 
-## HomeGenie client
+## HomeGenie Panel
 
 A control panel for your smart home and connected devices. Shipping with integrated automation engine, live script recording and voice control, HomeGenie plus can seamlessly integrate mixed-type "things" and can also operate as a standalone smart home server when plugged to a power source 24h.
 
