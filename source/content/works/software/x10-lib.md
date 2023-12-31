@@ -3,7 +3,7 @@ layout: basic.liquid
 options: highlight ext-links
 tags:
 - works
-- software
+- software-unlisted
 group: works
 order: 50
 title: X10Lib
